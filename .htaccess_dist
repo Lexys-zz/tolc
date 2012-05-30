@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+
+RewriteBase /
+
+# root: rewrite to 'app/index.php'
+# L means stop processing more rules
+RewriteRule ^(/)?$ app/index.php [L]
+
+# non existed URLs (files or directories): rewrite to 'app/index.php'
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ app/index.php
+
+# existed URLs (files or directories) will be called normally (Options -Indexes is useful to avoid directory listing)
+
+</IfModule>
