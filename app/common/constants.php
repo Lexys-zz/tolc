@@ -1,5 +1,8 @@
 <?php
 
+define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
+
+
 define('CSS_DEFAULT_URL', PROJECT_URL . '/css/default.css?version=1');
 
 // LIB
@@ -34,6 +37,6 @@ define('TINYMCE_POPUP_URL', JQUERY_TINYMCE_PATH . '/tiny_mce_popup.js');
 define('EZFILEMANAGER_URL', JQUERY_TINYMCE_PATH . '/plugins/ezfilemanager/index.php');
 
 // adodb
-define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb/adodb_5.17');
+define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
 
 ?>
