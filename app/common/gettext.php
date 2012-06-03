@@ -1,9 +1,9 @@
 <?php
-if (isset($_GET["locale"])) {
-    $locale = $_GET["locale"];
+if (isset($_SESSION["locale"])) {
+    $locale = $_SESSION["locale"];
     putenv("LC_ALL=$locale");
     setlocale(LC_ALL, $locale);
-    bindtextdomain("test", "./i18n");
-    textdomain("test");
+    bindtextdomain("tolc", "./i18n");
+    textdomain("tolc");
 }
 ?>

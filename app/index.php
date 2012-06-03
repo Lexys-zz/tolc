@@ -1,6 +1,7 @@
 <?php
 require_once 'common/settings.php';
 require_once 'common/constants.php';
+require_once 'common/gettext.php';
 require_once ADODB_PATH. '/adodb.inc.php';
 
 
