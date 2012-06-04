@@ -2,16 +2,19 @@
 require_once 'common/settings.php';
 require_once 'common/constants.php';
 require_once 'common/gettext.php';
-require_once ADODB_PATH. '/adodb.inc.php';
+require_once ADODB_PATH . '/adodb.inc.php';
+$admin_mode = isset($_SESSION['isLoggedIn']) ? true : false;
 
-
-echo _("Welcome");
-echo '<br>';
-
-echo 'HTTP_HOST=' . $_SERVER['HTTP_HOST'];
-echo '<br>';
-
-echo 'REQUEST_URI=' . $_SERVER['REQUEST_URI'];
-echo '<br>';
+$url=DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen(PROJECT_URL)) ;
+echo 'url=' . $url;
+echo '<br>33333333';
+define('TEMPLATE_URL', PROJECT_URL . '/app/templates/variant-trio/');
+//include PROJECT_DIR . '/app/templates/variant-trio/index.php';
 
 ?>
+
+
+<script type="text/javascript" src="<?php print JQUERY_URL ?>"></script>
+<script type="text/javascript" src="<?php print PROJECT_URL ?>/app/index.js?version=1"></script>
+
+<div id="tolc"></div>

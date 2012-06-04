@@ -2,7 +2,11 @@
 Options +FollowSymLinks -Indexes
 RewriteEngine On
 
+# a domain is used, e.g. http://www.domain.tld/request
 RewriteBase /
+
+# server name or IP is used, e.g. http://servername/path/to/tolc/request
+#RewriteBase /path/to/tolc
 
 # root: rewrite to 'app/index.php'
 # L means stop processing more rules

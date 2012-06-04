@@ -10,7 +10,7 @@ define('LIB_URL', PROJECT_URL . '/lib');
 define('LIB_DIR', PROJECT_DIR . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
-define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery.v.1.7.1/jquery-1.7.1.min.js');
+define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.7.2/jquery-1.7.2.min.js');
 
 define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.16.custom/js/jquery-ui-1.8.16.custom.min.js');
 define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.16.custom/css/ui-lightness/jquery-ui-1.8.16.custom.css');
