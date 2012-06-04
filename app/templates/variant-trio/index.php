@@ -1,18 +1,16 @@
-<?php
-require_once '../../common/settings.php';
-require_once '../../common/constants.php';
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-
+    <base href="<?php print PROJECT_URL  ?>/app/templates/variant-trio/">
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Your description goes here" />
 	<meta name="keywords" content="your,keywords,goes,here" />
 	<meta name="author" content="Your Name" />
-	<link rel="stylesheet" type="text/css" href="<?php print PROJECT_URL  ?>/app/templates/variant-trio/variant-trio.css" title="Variant Trio" media="screen,projection" />
+	<link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
+
+    <?php include PROJECT_DIR . '/app/common/tolc.js.php'; ?>
+
 	<title>Variant Trio v1.0</title>
 </head>
 
@@ -60,7 +58,7 @@ require_once '../../common/constants.php';
 	</div>
 	
 	<div id="content">
-		<div class="full">
+		<div class="full" id="test">
 		<h2>The Variant Trio template</h2>
 		<p>Inspired by the <a href="http://andreasviklund.com/templates/variant-duo/">Variant Duo</a> template, here is <a href="http://andreasviklund.com/templates/variant-trio/">Variant Trio</a>.  It gives you the option to choose between two or three columns with a sidebar menu. This is a completely free template, and it may be used without any limitations or obligations. If you decide to use this template to build a website or a blog/CMS theme, please leave the design credits in the footer.</p>
 		</div>

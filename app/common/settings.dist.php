@@ -1,9 +1,14 @@
 <?php
 // -----------------------------------------------------------------------------
+// URI - USE OF DOMAIN
+// -----------------------------------------------------------------------------
+define('DOMAIN_USED', true); // CONFIGURE
+
+// -----------------------------------------------------------------------------
 // URI - PATH MAPPING
 // -----------------------------------------------------------------------------
-define('PROJECT_DIR', '/srv/http/dev/tolc');  // CONFIGURE
-define('PROJECT_URL', '/dev/tolc');  // CONFIGURE
+define('PROJECT_DIR', DOMAIN_USED ? $_SERVER['DOCUMENT_ROOT'] : '/path/to/tolc'); // CONFIGURE
+define('PROJECT_URL', DOMAIN_USED ? '' : '/url/to/tolc'); // CONFIGURE
 
 $host = $_SERVER['SERVER_NAME'];
 $port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];
@@ -13,8 +18,10 @@ define('PROJECT_HOST', $http_prot . '://' . $host . $port);
 // -----------------------------------------------------------------------------
 // SITES DATABASE PER SITE
 // -----------------------------------------------------------------------------
-$sites['tolc.lo'] = 'dev_tolc';  // CONFIGURE
-$sites['www.tolc.lo'] = 'dev_tolc';  // CONFIGURE
+if (DOMAIN_USED) {
+    $domains_db['tolc.lo'] = 'dev_tolc'; // CONFIGURE
+    $domains_db['www.tolc.lo'] = 'dev_tolc'; // CONFIGURE
+}
 
 // -----------------------------------------------------------------------------
 // DATABASE CONNECTION STRING

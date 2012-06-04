@@ -1,3 +1,6 @@
 $(function () {
-    $("#tolc").load("/app/templates/variant-trio/index.php");
+
+    $(this).attr("title", "sometitle");
+
+    $("#test").html("<h1>τεστ</h1>");
 });
