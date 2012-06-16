@@ -2,5 +2,5 @@ $(function () {
 
     $(this).attr("title", "sometitle");
 
-    $("#test").html("<h1>τεστ</h1>");
+    $("#test").html("<h1>τεστ 123</h1>");
 });

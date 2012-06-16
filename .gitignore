@@ -1,6 +1,8 @@
 # APP SETTINGS -----------------------------------------------------------------
-/app/common/settings.php
 /.htaccess
+/app/common/settings.php
+/app/common/error_handler.php
+/app/common/tolc.js.php
 
 # APP DATA ---------------------------------------------------------------------
 /templates/*
@@ -9,6 +11,8 @@
 /files/*
 
 # APP LOGS ---------------------------------------------------------------------
+/log/*
+#/lib/ext/tiny_mce_jquery_v.3.4.4/plugins/filemanager/logs
 
 # APP CACHE --------------------------------------------------------------------
 
