@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-    <base href="<?php print PROJECT_URL  ?>/app/templates/variant-trio/">
+
+    <base href="<?php print TEMPLATE_URL  ?>">
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Your description goes here" />
@@ -11,10 +12,15 @@
 
     <?php include PROJECT_DIR . '/app/common/tolc.js.php'; ?>
 
-	<title>Variant Trio v1.0</title>
+    <title>Variant Trio v1.0</title>
 </head>
 
 <body>
+
+<?php
+if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
+?>
+
 <div id="wrap">
 	<h1><a href="index.html">Variant Trio</a></h1>
 	<p class="slogan">A two/three column template</p>
@@ -65,7 +71,7 @@
 
 		<div class="left">
 			<h3>Sample image</h3>
-			<p><img src="<?php print TEMPLATE_URL ?>sample.jpg" width="355" height="175" alt="sample content image" /></p>
+			<p><img src="sample.jpg" width="355" height="175" alt="sample content image" /></p>
 		</div>
 
 		<div class="right">
@@ -83,5 +89,8 @@
 	</div>
 
 </div>
+
+<?php include PROJECT_DIR . '/app/common/tolc.hidden.php'; ?>
+
 </body>
 </html>

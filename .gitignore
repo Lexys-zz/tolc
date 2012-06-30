@@ -2,7 +2,10 @@
 /.htaccess
 /app/common/settings.php
 /app/common/error_handler.php
+/app/common/db_utils.php
 /app/common/tolc.js.php
+/app/common/tolc.hidden.php
+/app/common/tolc.panel.css
 
 # APP DATA ---------------------------------------------------------------------
 /templates/*

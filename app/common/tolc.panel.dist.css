@@ -1,0 +1,21 @@
+#tolc_panel {
+    background: #fdff76;
+    height: 50px;
+    display: none;
+}
+.slide {
+    margin: 0;
+    padding: 0;
+    border-top: solid 4px #422410;
+}
+.btn-slide {
+    text-align: center;
+    width: 144px;
+    height: 31px;
+    padding: 10px 10px 0 0;
+    margin: 0 auto;
+    display: block;
+    font: bold 120%/100% Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
