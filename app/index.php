@@ -29,7 +29,7 @@ if($rs->RecordCount() == 0) {
 
 
 // get template for this url
-$sql = 'SELECT t.template_path FROM www_pages p INNER JOIN www_templates t ON (p.www_templates_id = t.id) ' .
+$sql = 'SELECT t.template_path, t.template_file FROM www_pages p INNER JOIN www_templates t ON (p.www_templates_id = t.id) ' .
        'WHERE p.url = ' . $conn->qstr($url);
 $rs = $conn->Execute($sql);
 if ($rs === false) {
@@ -37,8 +37,9 @@ if ($rs === false) {
 }
 if($rs->RecordCount() == 1) {
     $template_path = $rs->fields['template_path'];
-    define('TEMPLATE_URL', PROJECT_HOST . PROJECT_URL . $template_path . '/');
-    include PROJECT_DIR . $template_path . '/index.php';
+    $template_file = $rs->fields['template_file'];
+    define('TEMPLATE_URL', PROJECT_HOST . PROJECT_URL . $template_path);
+    include PROJECT_DIR . $template_path . $template_file;
 } else {
     print 'No template found...';
 }
