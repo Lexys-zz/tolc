@@ -65,17 +65,17 @@ if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
 	</div>
 	
 	<div id="content">
-		<div class="full" id="test">
+		<div class="full" id="test1">
 		<h2>The Variant Trio template</h2>
 		<p>Inspired by the <a href="http://andreasviklund.com/templates/variant-duo/">Variant Duo</a> template, here is <a href="http://andreasviklund.com/templates/variant-trio/">Variant Trio</a>.  It gives you the option to choose between two or three columns with a sidebar menu. This is a completely free template, and it may be used without any limitations or obligations. If you decide to use this template to build a website or a blog/CMS theme, please leave the design credits in the footer.</p>
 		</div>
 
-		<div class="left">
+		<div class="left" id="test2">
 			<h3>Sample image</h3>
 			<p><img src="sample.jpg" width="355" height="175" alt="sample content image" /></p>
 		</div>
 
-		<div class="right">
+		<div class="right" id="test3">
 			<h3>Two or three columns</h3>
 			<p>To use two columns, put your main content inside a div with the class name "full". To use three columns, make one div with the class name "left" and another with the class name "right" and then place a hr with the class name "clear" after both divs.</p>
 			<p>More templates, as well as articles and tutorials on how to build websites using templates, can be found on <a href="http://andreasviklund.com/">andreasviklund.com</a>.</p>
