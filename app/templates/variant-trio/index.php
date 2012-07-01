@@ -8,9 +8,10 @@
 	<meta name="description" content="Your description goes here" />
 	<meta name="keywords" content="your,keywords,goes,here" />
 	<meta name="author" content="Your Name" />
-	<link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
 
     <?php include PROJECT_DIR . '/app/common/tolc.js.php'; ?>
+
+    <link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
 
     <title>Variant Trio v1.0</title>
 </head>

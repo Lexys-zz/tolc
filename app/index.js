@@ -15,7 +15,6 @@ $(function () {
             $.each(j, function (index, value) {
                 if (j[index].group == 'html_title') {
                     html_title = j[index].val;
-                    console.log('html_title=' + html_title);
                 }
                 if (j[index].group == 'active_divs') {
 
@@ -26,10 +25,50 @@ $(function () {
         }
     });
 
-    $(".btn-slide").click(function(){
-        $("#tolc_panel").slideToggle("slow");
-        return false;
-    });
+    if($("#admin_mode").val() == '1') {
+        $("#tolc_btn_slide").click(function(){
+            $("#tolc_panel").slideToggle("slow");
+            return false;
+        });
+
+        $("#tp_edit_page").button({
+            icons: {
+                primary: 'ui-icon-pencil'
+            }
+        });
+
+        $("#tp_sitemap").button({
+            icons: {
+                primary: 'ui-icon-pin-w'
+            }
+        });
+
+        $("#tp_templates").button({
+            icons: {
+                primary: 'ui-icon-wrench'
+            }
+        });
+
+        $("#tp_users").button({
+            icons: {
+                primary: 'ui-icon-person'
+            }
+        });
+
+        $("#tp_logout").button({
+            icons: {
+                primary: 'ui-icon-power'
+            }
+        });
+
+        $("#tp_about").button({
+            icons: {
+                primary: 'ui-icon-home'
+            }
+        });
+    }
+
+
 
     //$(this).attr("title", html_title);
     //$("#test").html("<h1>τεστ 123</h1>");

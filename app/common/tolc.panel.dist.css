@@ -1,21 +1,30 @@
 #tolc_panel {
     background: #fdff76;
-    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: none;
 }
-.slide {
+#tolc_slide {
     margin: 0;
     padding: 0;
-    border-top: solid 4px #422410;
+    border-top: solid 3px #0A246A;
 }
-.btn-slide {
+#tolc_btn_slide {
     text-align: center;
-    width: 144px;
-    height: 31px;
-    padding: 10px 10px 0 0;
+    width: 300px;
+    height: 20px;
+    padding: 0;
     margin: 0 auto;
     display: block;
-    font: bold 120%/100% Arial, Helvetica, sans-serif;
-    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000000;
     text-decoration: none;
+    background: #eb8f00;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.tp_btn {
+    font-size: 11px;
 }

@@ -12,6 +12,7 @@ $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options)
 
 // define mode
 $admin_mode = isset($_SESSION['isLoggedIn']) ? true : false;
+$admin_mode = true;
 
 // get url
 $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen(PROJECT_URL));
@@ -36,7 +37,7 @@ if ($rs === false) {
 }
 if($rs->RecordCount() == 1) {
     $template_path = $rs->fields['template_path'];
-    define('TEMPLATE_URL', PROJECT_URL . $template_path . '/');
+    define('TEMPLATE_URL', PROJECT_HOST . PROJECT_URL . $template_path . '/');
     include PROJECT_DIR . $template_path . '/index.php';
 } else {
     print 'No template found...';
