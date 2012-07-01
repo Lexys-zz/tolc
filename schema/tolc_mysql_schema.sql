@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.23, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.25, for Linux (x86_64)
 --
 -- Host: localhost    Database: tolc_tmpl
 -- ------------------------------------------------------
--- Server version	5.5.23
+-- Server version	5.5.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -53,8 +53,8 @@ CREATE TABLE `www_lookup_data` (
   KEY `www_lookup_data_ix1` (`www_lookups_id`),
   KEY `www_lookup_data_ix2` (`www_languages_id`),
   KEY `www_lookup_data_ix3` (`any_lang_id`),
-  CONSTRAINT `www_lookup_data_fk2` FOREIGN KEY (`www_languages_id`) REFERENCES `www_languages` (`id`),
-  CONSTRAINT `www_lookup_data_fk1` FOREIGN KEY (`www_lookups_id`) REFERENCES `www_lookups` (`id`)
+  CONSTRAINT `www_lookup_data_fk1` FOREIGN KEY (`www_lookups_id`) REFERENCES `www_lookups` (`id`),
+  CONSTRAINT `www_lookup_data_fk2` FOREIGN KEY (`www_languages_id`) REFERENCES `www_languages` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,8 +156,8 @@ CREATE TABLE `www_sections` (
   PRIMARY KEY (`id`),
   KEY `www_sections_ix1` (`www_pages_id`),
   KEY `www_sections_ix2` (`www_template_active_divs_id`),
-  CONSTRAINT `www_sections_fk2` FOREIGN KEY (`www_template_active_divs_id`) REFERENCES `www_template_active_divs` (`id`),
-  CONSTRAINT `www_sections_fk1` FOREIGN KEY (`www_pages_id`) REFERENCES `www_pages` (`id`)
+  CONSTRAINT `www_sections_fk1` FOREIGN KEY (`www_pages_id`) REFERENCES `www_pages` (`id`),
+  CONSTRAINT `www_sections_fk2` FOREIGN KEY (`www_template_active_divs_id`) REFERENCES `www_template_active_divs` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -174,8 +174,9 @@ CREATE TABLE `www_template_active_divs` (
   `div_id` varchar(254) NOT NULL,
   `www_modules_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `www_template_active_divs_ix1` (`www_templates_id`),
-  UNIQUE KEY `www_template_active_divs_ix2` (`www_modules_id`),
+  UNIQUE KEY `www_template_active_divs_ix3` (`www_templates_id`,`div_id`),
+  KEY `www_template_active_divs_ix1` (`www_templates_id`),
+  KEY `www_template_active_divs_ix2` (`www_modules_id`),
   CONSTRAINT `www_template_active_divs_fk2` FOREIGN KEY (`www_modules_id`) REFERENCES `www_modules` (`id`),
   CONSTRAINT `www_template_active_divs_fk1` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -232,4 +233,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-05-24 20:59:00
+-- Dump completed on 2012-07-01 21:25:37
