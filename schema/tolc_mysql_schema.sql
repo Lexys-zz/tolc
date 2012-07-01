@@ -193,8 +193,11 @@ CREATE TABLE `www_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `template_name` varchar(254) NOT NULL,
   `template_path` varchar(254) NOT NULL,
+  `template_file` varchar(254) NOT NULL,
   `display_order` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `www_templates_ix1` (`template_name`),
+  UNIQUE KEY `www_templates_ix2` (`template_path`,`template_file`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -233,4 +236,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-01 21:25:37
+-- Dump completed on 2012-07-01 21:43:00
