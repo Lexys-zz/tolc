@@ -6,6 +6,8 @@
 
 <title>Fresh Pick</title>
 
+<base href="<?php print TEMPLATE_URL  ?>">
+
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="author" content="Erwin Aligam - styleshout.com" />
 <meta name="description" content="Site Description Here" />
@@ -13,11 +15,17 @@
 <meta name="robots" content="index, follow, noarchive" />
 <meta name="googlebot" content="noarchive" />
 
+<?php include PROJECT_DIR . '/app/common/tolc.js.php'; ?>
+
 <link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
 
 </head>
 
 <body>
+
+<?php
+if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
+?>
 
 <!-- wrap starts here -->
 <div id="wrap">
@@ -289,6 +297,8 @@
 	
 <!-- wrap ends here -->
 </div>
+
+<?php include PROJECT_DIR . '/app/common/tolc.hidden.php'; ?>
 
 </body>
 </html>

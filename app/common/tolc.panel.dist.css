@@ -1,13 +1,15 @@
 #tolc_panel {
-    background: #fdff76;
+    background: #fdf5ce;
     padding-top: 5px;
     padding-bottom: 5px;
+    clear: both;
     display: none;
 }
 #tolc_slide {
     margin: 0;
     padding: 0;
     border-top: solid 3px #0A246A;
+    clear: both;
 }
 #tolc_btn_slide {
     text-align: center;
@@ -23,8 +25,10 @@
     background: #eb8f00;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    opacity:0.5;
+    filter:Alpha(opacity=50); /* IE8 and earlier */
 }
 
-.tp_btn {
+.tolc_panel_btn {
     font-size: 11px;
 }
