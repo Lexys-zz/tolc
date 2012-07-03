@@ -24,6 +24,14 @@ if (DOMAIN_USED) {
 }
 
 // -----------------------------------------------------------------------------
+// DEFAULT TEMPLATES PER DOMAIN
+// -----------------------------------------------------------------------------
+if (DOMAIN_USED) {
+    $domains_tmpl['tolc.lo'] = 1; // CONFIGURE
+    $domains_tmpl['www.tolc.lo'] = 1; // CONFIGURE
+}
+
+// -----------------------------------------------------------------------------
 // DATABASE CONNECTION STRING
 // -----------------------------------------------------------------------------
 $DBServer = 'localhost'; // CONFIGURE
@@ -44,5 +52,5 @@ define('PREF_DATE_SEPARATOR', '/');
 define('PREF_DECIMAL_SYMBOL', ',');
 define('PREF_GROUPING_SYMBOL', '.');
 define('PREF_AUTOCOMPLETE_ROWS', 10);
-
+define('PREF_LOGIN_URL', '/login');
 ?>

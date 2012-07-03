@@ -8,6 +8,7 @@
 /app/common/tolc.panel.css
 
 # APP DATA ---------------------------------------------------------------------
+favicon.ico
 /templates/*
 /modules/*
 /images/*
