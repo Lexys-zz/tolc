@@ -34,10 +34,14 @@ if (DOMAIN_USED) {
 // -----------------------------------------------------------------------------
 // DATABASE CONNECTION STRING
 // -----------------------------------------------------------------------------
+$DBType = 'mysqlt'; // CONFIGURE
 $DBServer = 'localhost'; // CONFIGURE
 $DBUser = 'username'; // CONFIGURE
-$DBPass = 'password'; // CONFIGURE
-$DBName = $sites[$host];
+$DBPass = rawurlencode('password'); // CONFIGURE
+$DBName = DOMAIN_USED ? $domains_db[$host] : 'dev_tolc'; // CONFIGURE
+
+$dsn_options='?persist=0&fetchmode=2';
+$dsn = "$DBType://$DBUser:$DBPass@$DBServer/$DBName$dsn_options";
 
 // -----------------------------------------------------------------------------
 // ERRORS

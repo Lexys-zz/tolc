@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_regenerate_id();
 require_once 'common/settings.php';
 require_once 'common/constants.php';
 require_once 'common/error_handler.php';
@@ -13,27 +14,40 @@ $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options)
 
 // get url
 $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen(PROJECT_URL));
-print '$url = ' . $url . '<br>';
-print '$_SESSION[url] = ' . $_SESSION['url'] . '<br>';
+//print '$url = ' . $url . '<br>';
+//print '$_SESSION[url] = ' . $_SESSION['url'] . '<br>';
 
-if($url == PREF_LOGIN_URL) {
+if ($url == PREF_LOGIN_URL) {
     $login = true;
     $url_sql =  $conn->qstr('/');
     $url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
+    //print '$url_to_go = ' . PROJECT_FULL_URL . $url_to_go . '<br>';
+    //exit;
     header('Location: ' . PROJECT_FULL_URL . $url_to_go);
     //exit;
 } else {
+
+    $ftest = '/srv/http/dev/tolc/log/test.log';
+    if (!file_exists($ftest)) {
+        touch($ftest);
+        $cur = 1;
+    } else {
+        $cur = file_get_contents($ftest);
+        $cur = $cur + 1;
+    }
+    file_put_contents($ftest, $cur);
+
     $login = false;
     $url_sql =  $conn->qstr($url);
     $_SESSION['url'] = $url;
-    print '123 $_SESSION[url] = ' . $_SESSION['url'] . '<br>';
+    //print 'nologin $_SESSION[url] = ' . $_SESSION['url'] . '<br>';
 }
 
 // define mode
 $admin_mode = isset($_SESSION['isLoggedIn']) ? true : false;
 //$admin_mode = true;
 
-
+//exit;
 
 $sql = 'SELECT id FROM www_pages WHERE url=' . $url_sql;
 $rs = $conn->Execute($sql);

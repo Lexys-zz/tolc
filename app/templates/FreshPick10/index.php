@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, noarchive" />
 <meta name="googlebot" content="noarchive" />
 
-<?php include PROJECT_DIR . '/app/common/tolc.js.php'; ?>
+<?php include PROJECT_DIR . '/app/common/tolc_head.php'; ?>
 
 <link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
 
@@ -24,7 +24,7 @@
 <body>
 
 <?php
-if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
+if($admin_mode) include PROJECT_DIR . '/app/common/tolc_panel.php';
 ?>
 
 <!-- wrap starts here -->
@@ -298,7 +298,7 @@ if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
 <!-- wrap ends here -->
 </div>
 
-<?php include PROJECT_DIR . '/app/common/tolc.hidden.php'; ?>
+<?php include PROJECT_DIR . '/app/common/tolc_functions.php'; ?>
 
 </body>
 </html>

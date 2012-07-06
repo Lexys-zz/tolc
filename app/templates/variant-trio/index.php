@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 
-    <base href="<?php print TEMPLATE_URL  ?>">
+    <base href="<?php print TEMPLATE_URL  ?>" />
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Your description goes here" />
 	<meta name="keywords" content="your,keywords,goes,here" />
 	<meta name="author" content="Your Name" />
 
-    <?php include PROJECT_DIR . '/app/common/tolc.js.php'; ?>
+    <?php include PROJECT_DIR . '/app/common/tolc_head.php'; ?>
 
     <link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
 
@@ -19,7 +19,7 @@
 <body>
 
 <?php
-if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
+if($admin_mode) include PROJECT_DIR . '/app/common/tolc_panel.php';
 ?>
 
 <div id="wrap">
@@ -91,7 +91,7 @@ if($admin_mode) include PROJECT_DIR . '/app/common/tolc.panel.php';
 
 </div>
 
-<?php include PROJECT_DIR . '/app/common/tolc.hidden.php'; ?>
+<?php include PROJECT_DIR . '/app/common/tolc_functions.php'; ?>
 
 </body>
 </html>
