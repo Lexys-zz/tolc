@@ -23,17 +23,17 @@ if($admin_mode) include PROJECT_DIR . '/app/common/tolc_panel.php';
 ?>
 
 <div id="wrap">
-	<h1><a href="index.html">Variant Trio</a></h1>
+	<h1><a href="/">Variant Trio</a></h1>
 	<p class="slogan">A two/three column template</p>
 		
 	<div id="topmenu">
 		<p>
 		<strong class="hide">Main menu:</strong>
-		<a class="active" href="index.html">Home</a><span class="hide"> | </span>
-		<a href="index.html">Page 2</a><span class="hide"> | </span>
-		<a href="index.html">Page 3</a><span class="hide"> | </span>
-		<a href="index.html">Page 4</a><span class="hide"> | </span>
-		<a href="index.html">Page 5</a>
+		<a class="active" href="/">Home</a><span class="hide"> | </span>
+		<a href="/page2">Page 2</a><span class="hide"> | </span>
+		<a href="/page3">Page 3</a><span class="hide"> | </span>
+		<a href="/page4">Page 4</a><span class="hide"> | </span>
+		<a href="/page5">Page 5</a>
 		</p>
 	</div>
 	

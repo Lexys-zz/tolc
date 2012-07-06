@@ -36,6 +36,15 @@ $(function () {
     }
 
 
+    if($("#admin_mode").val() == '0' && $("#login").val() == '1') {
+        $("#login").dialog({
+            autoOpen: true,
+            show: "blind",
+            hide: "explode",
+            width: 500,
+            height: 400
+        });
+    }
 
 
 

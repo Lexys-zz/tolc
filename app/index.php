@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_regenerate_id();
+session_regenerate_id(true);
 require_once 'common/settings.php';
 require_once 'common/constants.php';
 require_once 'common/error_handler.php';
@@ -26,16 +26,6 @@ if ($url == PREF_LOGIN_URL) {
     header('Location: ' . PROJECT_FULL_URL . $url_to_go);
     //exit;
 } else {
-
-    $ftest = '/srv/http/dev/tolc/log/test.log';
-    if (!file_exists($ftest)) {
-        touch($ftest);
-        $cur = 1;
-    } else {
-        $cur = file_get_contents($ftest);
-        $cur = $cur + 1;
-    }
-    file_put_contents($ftest, $cur);
 
     $login = false;
     $url_sql =  $conn->qstr($url);

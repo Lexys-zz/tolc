@@ -33,17 +33,17 @@ if($admin_mode) include PROJECT_DIR . '/app/common/tolc_panel.php';
 	<!--header -->
 	<div id="header">			
 				
-		<h1 id="logo-text"><a href="index.html" title="">Freshpick</a></h1>		
+		<h1 id="logo-text"><a href="/" title="">Freshpick</a></h1>
 		<p id="slogan">Just Another Styleshout CSS Template... </p>	
 		
 		<div  id="nav">
 			<ul>
-				<li class="first" id="current"><a href="index.html">Home</a></li>
-				<li><a href="style.html">Style Demo</a></li>
-				<li><a href="blog.html">Blog</a></li>
-				<li><a href="archives.html">Archives</a></li>
-				<li><a href="index.html">Support</a></li>
-				<li><a href="index.html">About</a></li>		
+				<li class="first" id="current"><a href="/">Home</a></li>
+				<li><a href="/page1">Style Demo</a></li>
+				<li><a href="/page2">Blog</a></li>
+				<li><a href="/page3">Archives</a></li>
+				<li><a href="/page4">Support</a></li>
+				<li><a href="/page5">About</a></li>
 			</ul>		
 		</div>	
 		
