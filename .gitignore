@@ -1,5 +1,6 @@
 # APP SETTINGS -----------------------------------------------------------------
 /.htaccess
+/app/index.css
 /app/common/settings.php
 /app/common/error_handler.php
 /app/common/db_utils.php

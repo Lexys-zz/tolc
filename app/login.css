@@ -1,0 +1,59 @@
+#user_message {
+
+}
+
+#login_form input, select {
+    margin: 5px 0;
+    padding: 5px;
+    color: #6A6969;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #D4D4D4 #EBEBEB #EBEBEB #D4D4D4;
+    font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    float: left;
+}
+
+
+#login_form input:focus, select:focus {
+    color: #7BA857;
+    background: #EFFAE6;
+}
+
+#login_form label {
+    font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #000000;
+    width: 120px;
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+
+.field_container {
+    width: 380px;
+    height: 40px;
+    clear: both;
+    margin: auto;
+}
+
+#username, #password {
+    width: 200px;
+}
+
+#row_login_buttons {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.required {
+    color: #9c1821 !important;
+    font-weight: bold !important;
+}
+
+.btn_login {
+    font-size: 14px !important;
+}

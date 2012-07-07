@@ -25,7 +25,7 @@ $(function () {
         }
     });
 
-    if($("#admin_mode").val() == '0' && $("#new_page").val() == '1') {
+    if ($("#admin_mode").val() == '0' && $("#new_page").val() == '1') {
         $("#login_required_new_page").dialog({
             autoOpen: true,
             show: "blind",
@@ -34,63 +34,6 @@ $(function () {
             height: 200
         });
     }
-
-
-    if($("#admin_mode").val() == '0' && $("#login").val() == '1') {
-        $("#login").dialog({
-            autoOpen: true,
-            show: "blind",
-            hide: "explode",
-            width: 500,
-            height: 400
-        });
-    }
-
-
-
-    if($("#admin_mode").val() == '1') {
-        $("#tolc_btn_slide").click(function(){
-            $("#tolc_panel").slideToggle("slow");
-            return false;
-        });
-
-        $("#tp_edit_page").button({
-            icons: {
-                primary: 'ui-icon-pencil'
-            }
-        });
-
-        $("#tp_sitemap").button({
-            icons: {
-                primary: 'ui-icon-pin-w'
-            }
-        });
-
-        $("#tp_templates").button({
-            icons: {
-                primary: 'ui-icon-wrench'
-            }
-        });
-
-        $("#tp_users").button({
-            icons: {
-                primary: 'ui-icon-person'
-            }
-        });
-
-        $("#tp_logout").button({
-            icons: {
-                primary: 'ui-icon-power'
-            }
-        });
-
-        $("#tp_about").button({
-            icons: {
-                primary: 'ui-icon-home'
-            }
-        });
-    }
-
 
 
     //$(this).attr("title", html_title);

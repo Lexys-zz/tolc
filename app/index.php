@@ -18,23 +18,18 @@ $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_
 //print '$_SESSION[url] = ' . $_SESSION['url'] . '<br>';
 
 if ($url == PREF_LOGIN_URL) {
-    $login = true;
-    $url_sql =  $conn->qstr('/');
+    $_SESSION['login'] = true;
     $url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
-    //print '$url_to_go = ' . PROJECT_FULL_URL . $url_to_go . '<br>';
-    //exit;
     header('Location: ' . PROJECT_FULL_URL . $url_to_go);
-    //exit;
 } else {
-
-    $login = false;
+    $login = isset($_SESSION['login']) ? true : false;
+    unset($_SESSION['login']);
     $url_sql =  $conn->qstr($url);
     $_SESSION['url'] = $url;
-    //print 'nologin $_SESSION[url] = ' . $_SESSION['url'] . '<br>';
 }
 
 // define mode
-$admin_mode = isset($_SESSION['isLoggedIn']) ? true : false;
+$admin_mode = $_SESSION['isLoggedIn'];
 //$admin_mode = true;
 
 //exit;
