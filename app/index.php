@@ -1,7 +1,11 @@
 <?php
 session_start();
 session_regenerate_id(true);
+if (!isset($_SESSION['isLoggedIn']))
+    $_SESSION['isLoggedIn'] = false;
 require_once 'common/settings.php';
+if (!isset($_SESSION['www_languages_id']))
+    $_SESSION['www_languages_id'] = PREF_DEFAULT_LANG_ID;
 require_once 'common/constants.php';
 require_once 'common/error_handler.php';
 require_once 'common/gettext.php';
