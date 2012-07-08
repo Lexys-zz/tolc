@@ -39,4 +39,7 @@ define('EZFILEMANAGER_URL', JQUERY_TINYMCE_PATH . '/plugins/ezfilemanager/index.
 // adodb
 define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
 
+
+define('CONST_USER_STATUS_ACTIVE', 2);
+
 ?>

@@ -50,6 +50,14 @@ $(function () {
         });
     });
 
-
+    if ($("#admin_mode").val() == '1' && $("#login").val() == '1') {
+        $("#already_login").dialog({
+            autoOpen: true,
+            show: "blind",
+            hide: "explode",
+            width: 300,
+            height: 200
+        });
+    }
 
 });

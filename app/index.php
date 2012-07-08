@@ -17,22 +17,19 @@ $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_
 //print '$url = ' . $url . '<br>';
 //print '$_SESSION[url] = ' . $_SESSION['url'] . '<br>';
 
+$login = isset($_SESSION['login']) ? true : false;
 if ($url == PREF_LOGIN_URL) {
     $_SESSION['login'] = true;
     $url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
     header('Location: ' . PROJECT_FULL_URL . $url_to_go);
 } else {
-    $login = isset($_SESSION['login']) ? true : false;
     unset($_SESSION['login']);
-    $url_sql =  $conn->qstr($url);
+    $url_sql = $conn->qstr($url);
     $_SESSION['url'] = $url;
 }
 
 // define mode
 $admin_mode = $_SESSION['isLoggedIn'];
-//$admin_mode = true;
-
-//exit;
 
 $sql = 'SELECT id FROM www_pages WHERE url=' . $url_sql;
 $rs = $conn->Execute($sql);
@@ -57,15 +54,15 @@ if ($rs === false) {
 $template_path = $rs->fields['template_path'];
 $template_file = $rs->fields['template_file'];
 
-
 define('TEMPLATE_URL', PROJECT_HOST . PROJECT_URL . $template_path);
 include PROJECT_DIR . $template_path . $template_file;
 
 // free memory
-$rs->Close();
+if ($rs)
+    $rs->Close();
 //database disconnect
-$conn->Close();
-
+if ($conn)
+    $conn->Close();
 ?>
 
 

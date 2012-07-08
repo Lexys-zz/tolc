@@ -51,6 +51,9 @@ error_reporting(E_ALL ^ E_NOTICE);  // CONFIGURE
 // -----------------------------------------------------------------------------
 // GLOBAL PREFERENCES
 // -----------------------------------------------------------------------------
+define('PREF_DEFAULT_LOCALE_CODE', 'en_GB');
+define('PREF_DEFAULT_LOCALE_ENCODING', 'UTF-8');
+define('PREF_DEFAULT_LOCALE', PREF_DEFAULT_LOCALE_CODE . '.' . PREF_DEFAULT_LOCALE_ENCODING);
 define('PREF_CHARSET', 'utf-8');
 define('PREF_DATE_SEPARATOR', '/');
 define('PREF_DECIMAL_SYMBOL', ',');
