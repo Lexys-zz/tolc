@@ -24,15 +24,15 @@ DROP TABLE IF EXISTS `www_languages`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `www_languages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `lang_code` varchar(10) NOT NULL,
-  `lang_name_intl` varchar(254) NOT NULL,
-  `lang_name_local` varchar(254) NOT NULL,
+  `locale` varchar(10) NOT NULL,
+  `lang_intl` varchar(254) NOT NULL,
+  `lang_local` varchar(254) NOT NULL,
   `admin_interface` tinyint(4) DEFAULT NULL,
   `website_content` tinyint(4) DEFAULT NULL,
   `display_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `www_languages_ix1` (`lang_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `www_languages_new_ix1` (`locale`)
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,8 +53,8 @@ CREATE TABLE `www_lookup_data` (
   KEY `www_lookup_data_ix1` (`www_lookups_id`),
   KEY `www_lookup_data_ix2` (`www_languages_id`),
   KEY `www_lookup_data_ix3` (`any_lang_id`),
-  CONSTRAINT `www_lookup_data_fk1` FOREIGN KEY (`www_lookups_id`) REFERENCES `www_lookups` (`id`),
-  CONSTRAINT `www_lookup_data_fk2` FOREIGN KEY (`www_languages_id`) REFERENCES `www_languages` (`id`)
+  CONSTRAINT `www_lookup_data_fk2` FOREIGN KEY (`www_languages_id`) REFERENCES `www_languages` (`id`),
+  CONSTRAINT `www_lookup_data_fk1` FOREIGN KEY (`www_lookups_id`) REFERENCES `www_lookups` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -177,8 +177,8 @@ CREATE TABLE `www_template_active_divs` (
   UNIQUE KEY `www_template_active_divs_ix3` (`www_templates_id`,`div_id`),
   KEY `www_template_active_divs_ix1` (`www_templates_id`),
   KEY `www_template_active_divs_ix2` (`www_modules_id`),
-  CONSTRAINT `www_template_active_divs_fk2` FOREIGN KEY (`www_modules_id`) REFERENCES `www_modules` (`id`),
-  CONSTRAINT `www_template_active_divs_fk1` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`)
+  CONSTRAINT `www_template_active_divs_fk1` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`),
+  CONSTRAINT `www_template_active_divs_fk2` FOREIGN KEY (`www_modules_id`) REFERENCES `www_modules` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -236,4 +236,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-01 21:51:13
+-- Dump completed on 2012-07-08 15:32:43
