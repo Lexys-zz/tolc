@@ -52,14 +52,14 @@ error_reporting(E_ALL ^ E_NOTICE);  // CONFIGURE
 // GLOBAL PREFERENCES
 // -----------------------------------------------------------------------------
 define('PREF_DEFAULT_LOCALE_CODE', 'en_GB');
-define('PREF_DEFAULT_LOCALE_ENCODING', 'UTF-8');
-define('PREF_DEFAULT_LOCALE', PREF_DEFAULT_LOCALE_CODE . '.' . PREF_DEFAULT_LOCALE_ENCODING);
+define('PREF_DEFAULT_LOCALE_ENCODING', '.UTF-8');
+define('PREF_DEFAULT_LOCALE', PREF_DEFAULT_LOCALE_CODE . PREF_DEFAULT_LOCALE_ENCODING);
 define('PREF_DEFAULT_LANG_ID', 19); // ENGLISH en_GB
 
-define('PREF_CHARSET', 'utf-8');
+define('PREF_LOGIN_URL', '/login');
+
 define('PREF_DATE_SEPARATOR', '/');
 define('PREF_DECIMAL_SYMBOL', ',');
 define('PREF_GROUPING_SYMBOL', '.');
 define('PREF_AUTOCOMPLETE_ROWS', 10);
-define('PREF_LOGIN_URL', '/login');
 ?>
