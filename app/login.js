@@ -1,4 +1,6 @@
 $(function () {
+    var btn_do_login_value = $("#btn_do_login_value").val();
+    var btn_cancel_login_value = $("#btn_cancel_login_value").val();
 
     $("#login_form").dialog({
         autoOpen: true,
@@ -8,12 +10,12 @@ $(function () {
         height: 300,
         resizable: true,
         open: function () {
-            $('.ui-dialog-buttonpane').find('button:contains("Login")').button({
+            $('.ui-dialog-buttonpane').find('button:contains("' + btn_do_login_value + '")').button({
                 icons: {
                     primary: 'ui-icon-check'
                 }
             });
-            $('.ui-dialog-buttonpane').find('button:contains("Cancel")').button({
+            $('.ui-dialog-buttonpane').find('button:contains("' + btn_cancel_login_value + '")').button({
                 icons: {
                     primary: 'ui-icon-cancel'
                 }
@@ -21,7 +23,7 @@ $(function () {
         },
         buttons: [
             {
-                text: $("#btn_do_login_value").val(),
+                text: btn_do_login_value,
                 click: function () {
                     switch (validate_login_form()) {
                         case 1:
@@ -54,12 +56,18 @@ $(function () {
                 }
             },
             {
-                text: $("#btn_cancel_login_value").val(),
+                text: btn_cancel_login_value,
                 click: function () {
                     $(this).dialog("close");
                 }
             }
         ]
+    });
+
+    $('#login_form').keypress(function(e) {
+        if (e.keyCode == $.ui.keyCode.ENTER) {
+            $('.ui-button:contains("' + btn_do_login_value + '")').click()
+        }
     });
 
     $("#username").focus(function() {
