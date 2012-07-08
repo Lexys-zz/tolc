@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-03 19:34+0200\n"
-"PO-Revision-Date: 2012-06-03 19:34+0200\n"
+"POT-Creation-Date: 2012-07-08 16:17+0200\n"
+"PO-Revision-Date: 2012-07-08 16:20+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,7 +17,82 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:8
-msgid "Welcome"
-msgstr "Καλωσήλθατε"
+#: ajax_login.php:44
+#: ajax_login.php:47
+msgid "Login failed"
+msgstr "Η σύνδεση απέτυχε"
 
+#: ajax_retrieve_page.php:25
+msgid "New page"
+msgstr "Νέα σελίδα"
+
+#: common/tolc_panel.php:3
+msgid "Page properties"
+msgstr "Διόρθωση"
+
+#: common/tolc_panel.php:5
+msgid "Sitemap"
+msgstr "Χάρτης"
+
+#: common/tolc_panel.php:7
+msgid "Templates"
+msgstr "Πρότυπα"
+
+#: common/tolc_panel.php:10
+msgid "Users"
+msgstr "Χρήστες"
+
+#: common/tolc_panel.php:13
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: common/tolc_panel.php:16
+msgid "About Tolc"
+msgstr "Σχετικά με Tolc"
+
+#: common/tolc_panel.php:22
+#: common/tolc_panel.php:23
+msgid "Show/Hide Admin Panel"
+msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
+
+#: common/tolc_functions.php:11
+#: common/tolc_functions.php:12
+msgid "Login required"
+msgstr "Χρειάζεται σύνδεση"
+
+#: common/tolc_functions.php:25
+#: common/tolc_functions.php:51
+msgid "Login"
+msgstr "Σύνδεση"
+
+#: common/tolc_functions.php:31
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: common/tolc_functions.php:36
+msgid "Password"
+msgstr "Κωδικός"
+
+#: common/tolc_functions.php:41
+msgid "Language"
+msgstr "Γλώσσα"
+
+#: common/tolc_functions.php:52
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: common/tolc_functions.php:53
+msgid "Username is required"
+msgstr "Το όνομα χρήστη δεν δόθηκε"
+
+#: common/tolc_functions.php:54
+msgid "Password is required"
+msgstr "Ο κωδικός δεν δόθηκε"
+
+#: common/tolc_functions.php:60
+#: common/tolc_functions.php:61
+msgid "Already logged in"
+msgstr "Υπάρχει ήδη σύνδεση"
+
+#~ msgid "Welcome"
+#~ msgstr "Καλωσήλθατε"
