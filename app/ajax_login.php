@@ -20,7 +20,7 @@ $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options)
 $sql = 'SELECT * FROM www_users ' .
     'WHERE username=' . $conn->qstr($username) .
     ' AND password=' . $conn->qstr($password) .
-    ' AND lk_user_status_id=' . CONST_USER_STATUS_ACTIVE;
+    ' AND lk_user_status_id=' . CONST_USER_STATUS_ACTIVE_KEY;
 $rs = $conn->Execute($sql);
 if ($rs === false) {
     trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
