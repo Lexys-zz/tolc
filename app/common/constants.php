@@ -1,5 +1,23 @@
 <?php
 
+// lookups
+define('CONST_USER_STATUS_PENDING_KEY', 1);
+define('CONST_USER_STATUS_ACTIVE_KEY', 2);
+define('CONST_USER_STATUS_INACTIVE_KEY', 3);
+define('CONST_USER_STATUS_PENDING_VALUE', gettext('pending registration'));
+define('CONST_USER_STATUS_ACTIVE_VALUE', gettext('active user'));
+define('CONST_USER_STATUS_INACTIVE_VALUE', gettext('inactive user'));
+
+define('CONST_PUBLISH_STATUS_PENDING_KEY', 1);
+define('CONST_PUBLISH_STATUS_PUBLISHED_KEY', 2);
+define('CONST_PUBLISH_STATUS_DISCARDED_KEY', 3);
+define('CONST_PUBLISH_STATUS_REMOVED_KEY', 4);
+define('CONST_PUBLISH_STATUS_PENDING_VALUE', gettext('pending publication'));
+define('CONST_PUBLISH_STATUS_PUBLISHED_VALUE', gettext('published'));
+define('CONST_PUBLISH_STATUS_DISCARDED_VALUE', gettext('discarded'));
+define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
+
+// paths
 define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
 
 
@@ -39,7 +57,8 @@ define('EZFILEMANAGER_URL', JQUERY_TINYMCE_PATH . '/plugins/ezfilemanager/index.
 // adodb
 define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
 
+// php simple html dom
+define('SIMPLE_HTML_DOM_PATH', LIB_DIR . LIB_EXT_DIR . '/simplehtmldom_1_5');
 
-define('CONST_USER_STATUS_ACTIVE', 2);
 
 ?>
