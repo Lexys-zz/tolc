@@ -14,14 +14,13 @@ $(function () {
 
             $.each(j, function (index, value) {
                 if (j[index].group == 'html_title') {
-                    html_title = j[index].val;
+                    html_title = j[index].content;
+                    //target.attr("title", html_title);
                 }
-                if (j[index].group == 'active_divs') {
-
+                if (j[index].group == 'active_elems') {
+                    //$('#' + j[index].elem_id).html(j[index].content);
                 }
             });
-
-            target.attr("title", html_title);
         }
     });
 

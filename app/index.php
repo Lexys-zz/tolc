@@ -12,6 +12,7 @@ require_once 'common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
 require_once 'common/db_utils.php';
 require_once 'common/utils.php';
+require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // connect to database
 $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
@@ -59,7 +60,45 @@ $template_path = $rs->fields['template_path'];
 $template_file = $rs->fields['template_file'];
 
 define('TEMPLATE_URL', PROJECT_HOST . PROJECT_URL . $template_path);
-include PROJECT_DIR . $template_path . $template_file;
+//include PROJECT_DIR . $template_path . $template_file;
+
+ob_start();
+include(PROJECT_DIR . $template_path . $template_file);
+$res = ob_get_contents();
+ob_end_clean();
+
+
+// Create a DOM object
+$html = new simple_html_dom();
+
+// Load HTML from a HTML file
+$html->load($res);
+
+// get tag of elemnt id (supposed to be unique)
+//echo 'tag is: ' . $html->find('[id=test1]', 0)->tag;
+
+
+// set title
+$html->getElementByTagName('title')->innertext = 'test title';
+
+$html->find('[id=test1]', 0)->innertext = '<b>test1</b>';
+$html->find('[id=test2]', 0)->innertext = '<u>test2</u>';
+
+if(function_exists('tidy_parse_string')) {
+    $config = array('indent' => TRUE,
+        'output-xhtml' => TRUE,
+        'wrap' => 200);
+
+    $tidy = tidy_parse_string($html, $config, 'UTF8');
+
+    $tidy->cleanRepair();
+
+    echo $tidy;
+} else {
+    echo $html;
+}
+
+$html->clear();
 
 // free memory
 if ($rs)
