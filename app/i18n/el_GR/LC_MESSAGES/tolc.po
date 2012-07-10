@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 12:57+0200\n"
-"PO-Revision-Date: 2012-07-10 12:58+0200\n"
+"POT-Creation-Date: 2012-07-10 15:45+0200\n"
+"PO-Revision-Date: 2012-07-10 15:46+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,14 +17,20 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
+#: index.php:50
+#: ajax_retrieve_page.php:25
+msgid "New page"
+msgstr "Νέα σελίδα"
+
+#: index.php:50
+#: common/tolc_functions.php:12
+msgid "Login required"
+msgstr "Χρειάζεται σύνδεση"
+
 #: ajax_login.php:44
 #: ajax_login.php:47
 msgid "Login failed"
 msgstr "Η σύνδεση απέτυχε"
-
-#: ajax_retrieve_page.php:25
-msgid "New page"
-msgstr "Νέα σελίδα"
 
 #: common/tolc_panel.php:3
 msgid "Page properties"
@@ -55,42 +61,45 @@ msgstr "Σχετικά με Tolc"
 msgid "Show/Hide Admin Panel"
 msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
 
-#: common/tolc_functions.php:11
-#: common/tolc_functions.php:12
-msgid "Login required"
-msgstr "Χρειάζεται σύνδεση"
+#: common/tolc_functions.php:8
+msgid "Ok"
+msgstr "Εντάξει"
 
-#: common/tolc_functions.php:25
-#: common/tolc_functions.php:51
-#: common/tolc_functions.php:60
+#: common/tolc_functions.php:13
+msgid "Page does not exist. Login required to create this page"
+msgstr "Η σελίδα δεν βρέθηκε. Χρειάζεται σύνδεση για να δημιουργηθεί η νέα σελίδα"
+
+#: common/tolc_functions.php:26
+#: common/tolc_functions.php:52
+#: common/tolc_functions.php:61
 msgid "Login"
 msgstr "Σύνδεση"
 
-#: common/tolc_functions.php:31
+#: common/tolc_functions.php:32
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
-#: common/tolc_functions.php:36
+#: common/tolc_functions.php:37
 msgid "Password"
 msgstr "Κωδικός"
 
-#: common/tolc_functions.php:41
+#: common/tolc_functions.php:42
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: common/tolc_functions.php:52
+#: common/tolc_functions.php:53
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: common/tolc_functions.php:53
+#: common/tolc_functions.php:54
 msgid "Username is required"
 msgstr "Το όνομα χρήστη δεν δόθηκε"
 
-#: common/tolc_functions.php:54
+#: common/tolc_functions.php:55
 msgid "Password is required"
 msgstr "Ο κωδικός δεν δόθηκε"
 
-#: common/tolc_functions.php:61
+#: common/tolc_functions.php:62
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 

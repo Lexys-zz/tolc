@@ -1,4 +1,5 @@
 $(function () {
+    var btn_ok = $("#btn_ok").val();
 
     $("#tolc_btn_slide").click(function () {
         $("#tolc_panel").slideToggle("slow");
@@ -56,7 +57,15 @@ $(function () {
             show: "blind",
             hide: "explode",
             width: 300,
-            height: 200
+            height: 200,
+            buttons: [
+                {
+                    text: btn_ok,
+                    click: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
         });
     }
 

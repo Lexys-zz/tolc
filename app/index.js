@@ -1,28 +1,5 @@
 $(function () {
-
-    var target = $(this);
-    $.ajax({
-        type: 'POST',
-        url: $("#project_url").val() + "/app/ajax_retrieve_page.php",
-        data: {
-            url: $("#url").val()
-        },
-        success: function (data) {
-
-            var html_title = '';
-            var j = $.parseJSON(data);
-
-            $.each(j, function (index, value) {
-                if (j[index].group == 'html_title') {
-                    html_title = j[index].content;
-                    //target.attr("title", html_title);
-                }
-                if (j[index].group == 'active_elems') {
-                    //$('#' + j[index].elem_id).html(j[index].content);
-                }
-            });
-        }
-    });
+    var btn_ok = $("#btn_ok").val();
 
     if ($("#admin_mode").val() == '0' && $("#new_page").val() == '1') {
         $("#login_required_new_page").dialog({
@@ -30,11 +7,16 @@ $(function () {
             show: "blind",
             hide: "explode",
             width: 300,
-            height: 200
+            height: 200,
+            buttons: [
+                {
+                    text: btn_ok,
+                    click: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
         });
     }
 
-
-    //$(this).attr("title", html_title);
-    //$("#test").html("<h1>τεστ 123</h1>");
 });
