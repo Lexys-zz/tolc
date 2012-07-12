@@ -18,6 +18,13 @@ $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_
 
 // check for login request
 $login = isset($_SESSION['login']) ? true : false;
+// define mode (public mode or admin mode)
+if (!isset($_SESSION['isLoggedIn']))
+    $_SESSION['isLoggedIn'] = false;
+$admin_mode = $_SESSION['isLoggedIn'];
+
+// check
+
 if ($url == PREF_LOGIN_URL) {
     $_SESSION['login'] = true;
     $url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
@@ -28,10 +35,7 @@ if ($url == PREF_LOGIN_URL) {
     $_SESSION['url'] = $url;
 }
 
-// define mode (public mode or admin mode)
-if (!isset($_SESSION['isLoggedIn']))
-    $_SESSION['isLoggedIn'] = false;
-$admin_mode = $_SESSION['isLoggedIn'];
+
 
 // get template id and page title
 $sql = 'SELECT id, title, www_templates_id FROM www_pages WHERE url=' . $url_sql;
@@ -45,7 +49,7 @@ if ($rs->RecordCount() == 0) {
     // get default template id
     $www_templates_id = $domains_tmpl[$host];
     // get page title
-    $page_title = $admin_mode ? gettext('New page') : gettext('Login required') . '...';
+    $page_title = $admin_mode ? gettext('New page') : gettext('Page not found') . '...';
 } else {
     $www_pages_id = $rs->fields['id'];
     $new_page = false;
