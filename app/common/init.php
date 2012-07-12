@@ -21,10 +21,7 @@ define('CONST_PUBLISH_STATUS_PUBLISHED_VALUE', gettext('published'));
 define('CONST_PUBLISH_STATUS_DISCARDED_VALUE', gettext('discarded'));
 define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
 
-// paths
-define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
-
-// LIB
+// paths (lib)
 define('LIB_URL', PROJECT_URL . '/lib');
 define('LIB_DIR', PROJECT_DIR . '/lib');
 define('LIB_EXT_DIR', '/ext');
@@ -55,10 +52,7 @@ define('TINYMCE_URL', JQUERY_TINYMCE_PATH . '/tiny_mce.js');
 define('TINYMCE_POPUP_URL', JQUERY_TINYMCE_PATH . '/tiny_mce_popup.js');
 define('EZFILEMANAGER_URL', JQUERY_TINYMCE_PATH . '/plugins/ezfilemanager/index.php');
 
-// adodb
 define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
 
-// php simple html dom
 define('SIMPLE_HTML_DOM_PATH', LIB_DIR . LIB_EXT_DIR . '/simplehtmldom_1_5');
-
 ?>

@@ -14,7 +14,7 @@ $host = $_SERVER['SERVER_NAME'];
 $port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];
 $http_prot = empty($_SERVER['HTTPS']) ? 'http' : 'https';
 define('PROJECT_HOST', $http_prot . '://' . $host . $port);
-
+define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
 // -----------------------------------------------------------------------------
 // SITES DATABASE PER SITE
 // -----------------------------------------------------------------------------
