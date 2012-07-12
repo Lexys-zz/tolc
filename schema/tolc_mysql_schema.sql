@@ -26,8 +26,8 @@ CREATE TABLE `www_content` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `www_pages_id` int(11) NOT NULL,
   `www_template_active_elements_id` int(11) NOT NULL,
-  `date_start` varchar(12) NOT NULL,
-  `date_end` varchar(12) DEFAULT NULL,
+  `date_start` varchar(14) NOT NULL,
+  `date_end` varchar(14) DEFAULT NULL,
   `lk_publish_status_id` int(11) NOT NULL,
   `html` longtext,
   PRIMARY KEY (`id`),
@@ -73,7 +73,7 @@ CREATE TABLE `www_pages` (
   `title` varchar(254) NOT NULL,
   `www_templates_id` int(11) NOT NULL,
   `www_users_id` int(11) NOT NULL,
-  `date_created` varchar(12) NOT NULL,
+  `date_created` varchar(14) NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `display_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -140,7 +140,7 @@ CREATE TABLE `www_users` (
   `email` varchar(254) NOT NULL,
   `fullname` varchar(254) NOT NULL,
   `url` varchar(254) DEFAULT NULL,
-  `date_registered` varchar(12) NOT NULL,
+  `date_registered` varchar(14) NOT NULL,
   `lk_user_status_id` int(11) NOT NULL,
   `is_admin` tinyint(4) NOT NULL,
   `timezone` varchar(254) NOT NULL,
@@ -161,4 +161,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-12 16:05:20
+-- Dump completed on 2012-07-12 16:28:51
