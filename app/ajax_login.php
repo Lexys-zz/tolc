@@ -2,7 +2,7 @@
 session_start();
 session_regenerate_id(true);
 require_once 'common/settings.php';
-require_once 'common/constants.php';
+require_once 'common/init.php';
 require_once 'common/error_handler.php';
 require_once 'common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';

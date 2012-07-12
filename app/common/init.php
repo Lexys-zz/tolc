@@ -1,5 +1,9 @@
 <?php
 
+// set php default timezone (it is possible set to php.ini) --------------------
+date_default_timezone_set('UTC');
+
+// CONSTANTS -------------------------------------------------------------------
 // lookups
 define('CONST_USER_STATUS_PENDING_KEY', 1);
 define('CONST_USER_STATUS_ACTIVE_KEY', 2);
@@ -19,9 +23,6 @@ define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
 
 // paths
 define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
-
-
-define('CSS_DEFAULT_URL', PROJECT_URL . '/css/default.css?version=1');
 
 // LIB
 define('LIB_URL', PROJECT_URL . '/lib');
@@ -59,6 +60,5 @@ define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
 
 // php simple html dom
 define('SIMPLE_HTML_DOM_PATH', LIB_DIR . LIB_EXT_DIR . '/simplehtmldom_1_5');
-
 
 ?>
