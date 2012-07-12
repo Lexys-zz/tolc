@@ -1,7 +1,8 @@
 <?php
 
 // set php default timezone (it is possible set to php.ini) --------------------
-date_default_timezone_set('UTC');
+define('CONST_DEFAULT_TIMEZONE', 'UTC');
+date_default_timezone_set(CONST_DEFAULT_TIMEZONE);
 
 // CONSTANTS -------------------------------------------------------------------
 // lookups
