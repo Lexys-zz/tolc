@@ -36,7 +36,6 @@ if ($url == PREF_LOGIN_URL) {
 }
 
 
-
 // get template id and page title
 $sql = 'SELECT id, title, www_templates_id FROM www_pages WHERE url=' . $url_sql;
 $rs = $conn->Execute($sql);
@@ -96,13 +95,15 @@ if (!$new_page) {
     }
     $a_elements = $rs->GetRows();
 
+    $now =$conn->qstr(now());
     foreach ($a_elements as $element) {
         // get content
         $sql = 'SELECT html FROM www_content ' .
             'WHERE www_pages_id=' . $www_pages_id .
             ' AND www_template_active_elements_id=' . $element['id'] .
             ' AND lk_publish_status_id=' . CONST_PUBLISH_STATUS_PUBLISHED_KEY .
-            ' ';
+            ' AND date_start<=' . $now .
+            ' AND (date_end is null OR date_end>=' . $now . ')';
         $rs = $conn->Execute($sql);
         if ($rs === false) {
             trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
@@ -111,7 +112,7 @@ if (!$new_page) {
             // set element content
             $selector = '[id=' . $element['element_id'] . ']';
             $res = $html->find($selector, 0);
-            if($res)
+            if ($res)
                 $res->innertext = $rs->fields['html'];
         }
     }
