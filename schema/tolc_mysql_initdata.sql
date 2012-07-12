@@ -68,7 +68,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_users` WRITE;
 /*!40000 ALTER TABLE `www_users` DISABLE KEYS */;
-INSERT INTO `www_users` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','user@example.com','Default user',NULL,'20120101',2,1);
+INSERT INTO `www_users` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','user@example.com','Default user',NULL,'20120101',2,1,'UTC');
 /*!40000 ALTER TABLE `www_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-10 13:21:31
+-- Dump completed on 2012-07-12 16:05:09
