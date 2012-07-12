@@ -58,6 +58,14 @@ define('PREF_DEFAULT_LANG_ID', 19); // ENGLISH en_GB
 
 define('PREF_LOGIN_URL', '/login');
 
+define('PREF_USE_TIDY', true);
+define('PREF_LOGIN_URL', '/login');
+// http://tidy.sourceforge.net/docs/quickref.html
+define('PREF_TIDY_CONFIG', serialize(array('indent' => TRUE,
+    'output-xhtml' => TRUE,
+    'wrap' => 200)));
+define('PREF_TIDY_ENCODING', 'UTF8');
+
 define('PREF_DATE_SEPARATOR', '/');
 define('PREF_DECIMAL_SYMBOL', ',');
 define('PREF_GROUPING_SYMBOL', '.');

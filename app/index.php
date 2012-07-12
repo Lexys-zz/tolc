@@ -1,12 +1,8 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if (!isset($_SESSION['isLoggedIn']))
-    $_SESSION['isLoggedIn'] = false;
 require_once 'common/settings.php';
-if (!isset($_SESSION['www_languages_id']))
-    $_SESSION['www_languages_id'] = PREF_DEFAULT_LANG_ID;
-require_once 'common/constants.php';
+require_once 'common/init.php';
 require_once 'common/error_handler.php';
 require_once 'common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
@@ -33,6 +29,8 @@ if ($url == PREF_LOGIN_URL) {
 }
 
 // define mode (public mode or admin mode)
+if (!isset($_SESSION['isLoggedIn']))
+    $_SESSION['isLoggedIn'] = false;
 $admin_mode = $_SESSION['isLoggedIn'];
 
 // get template id and page title
@@ -98,7 +96,9 @@ if (!$new_page) {
         // get content
         $sql = 'SELECT html FROM www_content ' .
             'WHERE www_pages_id=' . $www_pages_id .
-            ' AND www_template_active_elements_id=' . $element['id'];
+            ' AND www_template_active_elements_id=' . $element['id'] .
+            ' AND lk_publish_status_id=' . CONST_PUBLISH_STATUS_PUBLISHED_KEY .
+            ' ';
         $rs = $conn->Execute($sql);
         if ($rs === false) {
             trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
@@ -114,11 +114,8 @@ if (!$new_page) {
 }
 
 // beautify and print page html
-if (function_exists('tidy_parse_string')) {
-    $config = array('indent' => TRUE,
-        'output-xhtml' => TRUE,
-        'wrap' => 200);
-    $tidy = tidy_parse_string($html, $config, 'UTF8');
+if (PREF_USE_TIDY) {
+    $tidy = tidy_parse_string($html, unserialize(PREF_TIDY_CONFIG), PREF_TIDY_ENCODING);
     $tidy->cleanRepair();
     echo $tidy;
 } else {
