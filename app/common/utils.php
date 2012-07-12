@@ -1,8 +1,24 @@
 <?php
 
+/**
+ * Timezones list with GMT offset
+ * http://stackoverflow.com/a/9328760
+ * @return array
+ */
+function tz_list() {
+    $zones_array = array();
+    $timestamp = time();
+    foreach (timezone_identifiers_list() as $key => $zone) {
+        date_default_timezone_set($zone);
+        $zones_array[$key]['zone'] = $zone;
+        $zones_array[$key]['diff_from_GMT'] = date('P', $timestamp);
+    }
+    return $zones_array;
+}
+
 
 /**
- * http://stackoverflow.com/questions/1048487/phps-json-encode-does-not-escape-all-json-control-characters
+ * http://stackoverflow.com/a/3615890
  * @param $value
  * @return mixed
  */
