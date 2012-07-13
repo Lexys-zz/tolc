@@ -1,0 +1,12 @@
+div.branding
+{
+background:#fff url(ez-header.jpg) no-repeat;
+height:50px;
+text-align:right;
+}
+div.branding p{
+    padding-top:20px !important;
+}
+div.branding a{
+    color:#4c81aa;
+}

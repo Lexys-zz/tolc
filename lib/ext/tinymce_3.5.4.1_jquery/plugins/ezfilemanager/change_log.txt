@@ -1,0 +1,108 @@
+Change Log
+=============
+v2.5 final 07-02-2011
+   Added simple authentication method
+   Added custom plugin for inserting links in text input area
+   Minor security bug fixes
+     
+v2.1.1d final 01-07-2010
+   Added Spanish translation (by Pablo Muñoz)
+   Added Swedish translation (by Jan Forsman)
+   Added Czech translation (by Karel Korous)
+
+v2.1.1c final 08-03-2010
+   Fixed delete file/folder javascript error
+   Added Portuguese translation (by Anderson)
+
+v2.1.1b final 14-02-2010
+   Added Norwegian translation (by Ole Harald)
+   
+v2.1.1 final 03-02-2010
+   Added option to enable/disable thumb creation
+   Added option to enable/disable copy/paste
+   Fixed image preview typo
+   Changed some definitions to more meaningful text
+   
+v2.1 final 02-02-2010
+   Changed ezFilemanager php functions to class
+   Changed ezFilemanager folder read function
+   Changed ezFilemanger config allowed file types
+   Fixed copy/paste not working with IE when spaces in folder/file
+   Fixed copy/paste/upload/rename not keeping file extension character case
+   Added ezFilemanager folder navigation function
+   Added better upload error handeling
+   Added option to disable image mouse-over preview
+   Added JW-Player to media files (www.longtailvideo.com)
+   Added toggle (hide/show) link to directory information
+   Added Dutch translation (by Peter Bakker)
+   Added German translation (by Herbert Weissenboek))
+   Removed breadcrumbs.inc.php
+   Removed upload_path/dir_path hidden form fields for better security
+
+v2.0.1a final 21-01-2010
+   Fixed Image Preview javascript not returning correct this.href
+   Fixed PHP get_file_mime function for unknown file types
+   Changed Insert Image/File link (Tiny_MCE) javascript
+
+v2.0.1 final 18-01-2010
+   Fixed DOCUMENT_ROOT ending slash problem
+   Fixed right click context menu delete function
+   Fixed file renaming not updating correctly in memory file to copy (if it exists)
+   Fixed file upload function not verifying upload directory
+   Fixed folder creation function not verifying directory in which the new folder will be created
+   Changed PHP htmlspecialchars_decode to javascript
+   Added option to allow/disallow spaces in file/folder names (config)
+   Added security/sanitation to file/folder deleting function
+   Added javascript checking for tiny_mce_popup.js correct URL
+   Removed file/folder renaming disabling delete checkbox
+   Compressed js files
+   
+v2.0 final 12-01-2010
+   Fixed CSS compatibilty with major browsers
+   Fixed ezFilebrowser showing hidden linux directories
+   Added right click download,copy,paste and delete context menu
+   Added file copy/paste between directories
+
+v2.0 Pre release 07-01-2010
+   Fixed CSS compatibilty with major browsers
+   Fixed bug files/folders renaming overwriting existing files
+   Fixed bug files/folders renaming not getting sanitized completely
+   Fixed bug files/folders renaming textarea width not setting to correct width
+   Fixed bug folders renaming not changing URL if GET type or tmce were in the link
+   Fixed bug filebrowsers default sorting by name ignoring Uppercase
+   Fixed bug thumb view not working after renaming
+   Fixed bug thumb creation not calculating correct dimensions
+   Fixed bug OS/platform dependand javascript errors
+   Fixed bug screen resizing/flickering on thumb view
+   Fixed bug in bytestostring() PHP functions
+   Fixed PHP warnings for depreciated functions and date()
+   Fixed language translation, now all texts are used within langs/en.inc.php
+   Added option (in config.inc.php) to add index.html (or any other file) to newly created folders
+   Added option (in config.inc.php) to hide user defined files, e.g. index.html
+   Added option (in config.inc.php) for header branding (enable/disable and customize see /css/branding folder)
+   Added option (in config.inc.php) to use Kb/KiB and MB/MiB (http://en.wikipedia.org/wiki/Kibibyte)
+   Added option (in config.inc.php) for Date format (http://php.net/manual/en/function.date.php)
+   Added browsing directory information (number of directories, number of files and size of current directory)
+   Added view file information (date created/modified, Permissions, size and if image; dimensions)
+   Added image thumb file creation in file information, the new image thumb is proportinally resized to the entered width
+   Added force mime download (simulating right click->save as download)
+   Added tooltips with minimal help information
+   Added "select all" tick-boxes
+   Added more visual informations to ezFilemanager GUI
+   Changed config for easier configuration
+   Changed Maximum upload size (in config.inc.php), now you can use either server(php.ini) default size or custom size
+   Changed ezFilemanager GUI to disable delete/rename/upload/thumb/new folder creation in non-writable folders
+   
+   
+v2.0a beta 07-12-2009
+   Fixed Tiny_mce overwriting ezfilemanager CSS
+   Fixed renaming
+   Fixed Browser compatibility
+   Fixed config for easier configuration
+   Added option to force file/directory names to lowercase or keep original 
+   Added option for multiuser (Implemention is up to you, or if you need help, contact me)
+
+v2.0 beta 17-11-2009 
+   All user inputs are santized both from the client site (javascript) and server (PHP)
+   Extensive use of jQuery
+   Inline file/directory renaming

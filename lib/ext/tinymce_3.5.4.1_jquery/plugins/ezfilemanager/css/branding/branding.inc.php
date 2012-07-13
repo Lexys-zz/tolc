@@ -1,0 +1,2 @@
+<?php if ( ! defined('SITE_URL')) exit('No direct script access allowed');?>
+<div class='branding'><p><a href='http://<?php echo TXT_EZ_URL?>' c title='<?php echo TXT_EZ_URL?>' target='_blank'><?php echo TXT_EZ_URL?></a></p></div>

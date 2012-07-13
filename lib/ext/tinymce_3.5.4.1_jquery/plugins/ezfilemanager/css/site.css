@@ -1,0 +1,470 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+	background: #fff;
+	font: 12px arial,verdana,helvetica, sans-serif;
+	color: #464544;
+	}
+a {
+	color: #000;
+	text-decoration:none;
+}
+a:hover{
+	color: #2942B2;
+}
+
+#container{
+
+	width:700px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* root element for tabs  */
+ul.tabs {
+	list-style:none;
+	margin:5px 0px 0px 0px !important;
+	padding:0;
+	height:30px;
+	border-bottom:1px solid #666;
+}
+
+/* single tab */
+ul.tabs li {
+	float:left;
+	text-indent:0;
+	padding:0;
+	margin:0 !important;
+	list-style-image:none !important;
+}
+
+/* link inside the tab. uses a background image */
+ul.tabs a {
+	background:url(images/ez-icons.gif) no-repeat -420px 0;
+	font-size:13px;
+	display:block;
+	height: 30px;
+	line-height:30px;
+	width: 134px;
+	text-align:center;
+	text-decoration:none;
+	color:#333;
+	padding:0px;
+	margin:0px;
+	position:relative;
+	top:1px;
+}
+
+ul.tabs a:active {
+	outline:none;
+}
+
+/* when mouse enters the tab move the background image */
+ul.tabs a:hover {
+	background-position: -420px -31px;
+	color:#fff;
+}
+
+/* active tab uses a class name "current". it's highlight is also done by moving the background image. */
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+	background-position: -420px -62px;
+	cursor:default !important;
+	color:#000 !important;
+}
+
+/* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
+
+
+/* width 1 */
+ul.tabs a.s 			{ background-position: -553px 0; width:81px; }
+ul.tabs a.s:hover 	{ background-position: -553px -31px; }
+ul.tabs a.s.current  { background-position: -553px -62px; }
+
+/* width 2 */
+ul.tabs a.l 			{ background-position: -248px -0px; width:174px; }
+ul.tabs a.l:hover 	{ background-position: -248px -31px; }
+ul.tabs a.l.current  { background-position: -248px -62px; }
+
+
+/* width 3 */
+ul.tabs a.xl 			{ background-position: 0 -0px; width:248px; }
+ul.tabs a.xl:hover 	{ background-position: 0 -31px; }
+ul.tabs a.xl.current { background-position: 0 -62px; }
+
+
+/* initially all panes are hidden */
+div.panes div.pane {
+	display:none;
+    margin:20px;
+
+}
+#filenav_tab,#upload_tab,#make_dir_tab{
+
+		height:450px;
+		width:500px;
+		background:#fff;
+		overflow:auto;
+		float:left;
+                padding-bottom:10px;
+}
+
+
+div.whatever{
+		border-left:1px solid #999;
+		border-right:1px solid #999;
+		border-bottom:1px solid #999;
+		height:500px;
+		background:#fff;
+		padding-left:5px;
+		overflow:hidden;
+}
+#panel{
+	float:left;
+	width:185px;
+	height:550px;
+border-left:1px solid #e3eaed;
+padding-left:5px;
+}
+#panel_status{
+	float:left;
+	width:10px;
+
+}
+#panel_active{
+clear:left;
+	float:left;
+	width:10px;
+	background: #44ad41 url(images/icon-selected.gif) no-repeat;
+}
+#panel_link{
+	float:left;
+	padding-left:5px;
+
+}
+div.clear_left{
+	clear:left;
+}
+div.clear_right{
+	clear:right;
+}
+div.clear_both{
+	clear:both;
+}
+
+img{
+	border:0px;
+}
+#breadcrumbs,#uploadto{
+	background:#ececec;
+        padding:5px;
+	
+
+}
+#breadcrumbs a{
+	color:#ff0000;
+	font-size:13px;
+}
+#breadcrumbs a:hover{
+	color:#000;
+	font-size:13px;
+}
+ .editable_textarea{
+        margin:0px;
+	color:#004a8f;
+	
+
+    }
+.editable_textarea_red{
+        margin:0px;
+	color:#ff0000;
+
+    }
+#ezbrowser input {
+  color: #000;
+  margin:0px;
+  width:auto !important;
+}
+
+div.icon{
+float:left;
+width:16px;
+padding:0px;
+margin:0px;
+}
+div.delete{
+width:0px;
+visibility:hidden;
+height:18px;
+}
+div.delete1{
+width:20px;
+height:18px;
+}
+
+a.folder{
+	padding:0px;
+	display:block;
+	width:20px;
+	background: url(images/ez-icons.gif) no-repeat -4px -100px;
+        height:13px;
+}
+#preview{
+	position:absolute;
+	border:1px solid #ccc;
+	background:#333;
+	padding:5px;
+	display:none;
+	color:#fff;
+	}
+
+a.popup{
+	padding:0px;
+	display:block;
+	width:16px;
+	background: url(images/ez-icons.gif) no-repeat -44px -100px;
+    height:13px;
+}
+.delcheckbox {
+border: none;
+margin:0px;
+}
+#toolbar,#dummy{
+	background:#e3eaed;
+        padding-left:2px;
+}
+#generalinfo,#info,#infomakedir{
+	background:#e3eaed;
+	padding:0px 5px;
+	font-weight:bold;
+}
+#info,#infomakedir{
+    margin-top:10px;
+}
+.delicon{
+	width:25px;
+	background: url(images/ez-icons.gif) no-repeat -62px -100px;
+        height:13px;
+	border: none;
+        margin:0px;
+        cursor:pointer;
+        padding:0px 6px 0px 6px;
+        vertical-align:top;
+}
+span.red{
+    color:#ff0000;
+    font-weight:bold;
+}
+span.blue{
+    color:#4c81aa;
+    font-weight:bold;
+}
+span.bold{
+    
+    font-weight:bold;
+}
+div.error{
+	background:#ff0000;
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+}
+#success{
+	background: url(images/icon-success.gif) no-repeat;
+	color:#000;
+	padding-left:20px;
+	font-weight:bold;
+}
+#error{
+	background: url(images/icon-error.gif) no-repeat;
+	color:#ff0000;
+	padding-left:20px;
+	font-weight:bold;
+}
+
+div.rename{
+    width:190px;
+    float:left;
+    margin-top:5px;
+}
+
+div.selectfile{
+    float:left;
+    margin-top:5px;
+}
+#newdir{
+    width:250px;
+    height:150px !important;
+    border:1px solid #000;
+    
+}
+.fieldtext, thumbfieldtext{
+	border: solid 1px #6e89dd;
+	height: 16px;
+	font-size: 11px;
+        color: #000000;
+        width: 180px;
+	}
+.thumbfieldtext{
+	width: 60px !important;
+	}
+.fieldtextfile{
+	border: solid 1px #6e89dd;
+	height: 20px;
+	font-size: 11px;
+        color: #000000;
+	width:250px;
+	}
+.ezbutton
+{
+background:#0089bd !important;
+border:1px solid #ccc;
+font-size:11px;
+cursor:pointer;
+color:#fff;
+
+}
+.buttonadd
+{
+background:#fff url(images/add.png) no-repeat;
+border:1px solid #ccc;
+font-size:11px;
+cursor:pointer;
+padding-left:20px;
+
+}
+.buttonremove
+{
+background:#fff;
+border:1px solid #ccc;
+font-size:11px;
+cursor:pointer;
+color:#FF0000;
+padding:0px 4px 0px 4px;
+visibility:hidden;
+
+}
+table.filebrowsertbl{
+  width:100%;
+  border:0px;
+  font-size: 12px;
+}
+
+table.filebrowsertbl td.dirname{
+    width:220px;
+    padding-left:5px;
+    font-size: 12px;
+    
+}
+table.filebrowsertbl td.del,td.tinymce_incert{
+    width:16px;
+    text-align:center;
+    
+}
+table.filebrowsertbl td.icons{
+    width:20px;
+    
+    
+}
+table.filebrowsertbl td.filesize{
+    width:60px;
+    padding-left:4px;
+    
+}
+table.filebrowsertbl td.filename{
+    width:225px;
+    font-size: 12px;
+   
+    
+}
+table.filebrowsertbl td.datetd{
+    width:auto;
+    padding-left:4px;
+    
+    
+}
+table.filebrowsertbl .row1 {
+    background-color: #edf3fe !important;
+
+}
+
+table.filebrowsertbl .row2 {
+    background-color: #fcf7e3 !important;
+}
+table.filebrowsertbl .rowhover {
+    background-color: #E0E0DB !important;
+}
+#filetype,#dir-stats, #stats-placeholder, #filefactory{
+    margin-bottom:5px;
+    border:1px solid #e3eaed;
+    padding:4px;
+    background: #e3eaed;
+    font-size:11px;
+}
+#filefactory{
+    font-weight:bold;
+}
+#allowed{
+    color:#000;
+    font-weight:bold;
+    margin-bottom:10px;
+    border:1px solid #e3eaed;
+    padding:4px;
+    background: #e3eaed;
+}
+.branding
+{
+background:#fff url(branding/ez-header.jpg) no-repeat;
+height:50px;
+text-align:right;
+}
+a.ezdownload  { background: url(images/download-s.png) no-repeat;padding-left:15px; }
+a.ezcopy  { background: url(images/copy-s.png) no-repeat;padding-left:15px; margin-left:15px;}
