@@ -119,6 +119,7 @@ CREATE TABLE `www_templates` (
   `template_name` varchar(254) NOT NULL,
   `template_path` varchar(254) NOT NULL,
   `template_file` varchar(254) NOT NULL,
+  `css_url` varchar(254) NOT NULL,
   `display_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `www_templates_ix1` (`template_name`),
@@ -161,4 +162,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-12 16:28:51
+-- Dump completed on 2012-07-13 20:01:24
