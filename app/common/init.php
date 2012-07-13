@@ -46,7 +46,7 @@ define('JQUERY_GET_QUERY_PARAM_URL', LIB_URL . LIB_EXT_DIR . '/jquery.getQueryPa
 
 define('JQUERY_SCROLLTO_URL', LIB_URL . LIB_EXT_DIR . '/jquery.scrollTo-1.4.2/jquery.scrollTo-min.js');
 
-define('JQUERY_TINYMCE_DIR', '/tiny_mce_jquery_v.3.4.4');
+define('JQUERY_TINYMCE_DIR', '/tinymce_3.5.4.1_jquery');
 define('JQUERY_TINYMCE_PATH', LIB_URL . LIB_EXT_DIR . JQUERY_TINYMCE_DIR);
 define('JQUERY_TINYMCE_URL', JQUERY_TINYMCE_PATH . '/jquery.tinymce.js');
 define('TINYMCE_URL', JQUERY_TINYMCE_PATH . '/tiny_mce.js');
