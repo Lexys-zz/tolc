@@ -15,6 +15,9 @@
 <script type="text/javascript" src="<?php print JQUERY_UI_URL ?>"></script>
 
 <?php if ($admin_mode) { ?>
+<script type="text/javascript" src="<?php print JQUERY_TINYMCE_URL ?>"></script>
+<script type="text/javascript" src="<?php print PROJECT_URL ?>/app/tinymce_ezfilemanager.js?version=1"></script>
+
 <script type="text/javascript" src="<?php print JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL ?>"></script>
 <script type="text/javascript" src="<?php print JQUERY_UI_LAYOUT_URL ?>"></script>
 <script type="text/javascript" src="<?php print JSTREE_URL ?>"></script>

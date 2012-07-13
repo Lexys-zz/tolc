@@ -86,6 +86,7 @@ if ($res)
     $res->innertext = $page_title;
 
 // set page content
+$a_active_elements = array();
 if (!$new_page) {
     // get template active elements ids
     $sql = 'SELECT id, element_id FROM www_template_active_elements WHERE www_templates_id=' . $www_templates_id . ' ORDER BY display_order';
@@ -95,8 +96,10 @@ if (!$new_page) {
     }
     $a_elements = $rs->GetRows();
 
-    $now =$conn->qstr(now());
+    $now = $conn->qstr(now());
     foreach ($a_elements as $element) {
+        // push to active elements array
+        array_push($a_active_elements, '#' . $element['element_id']);
         // get content
         $sql = 'SELECT html FROM www_content ' .
             'WHERE www_pages_id=' . $www_pages_id .
@@ -118,6 +121,13 @@ if (!$new_page) {
     }
 }
 
+// set value to active elements hidden input
+$active_elements = implode(', ', $a_active_elements);
+$res = $html->find('[id=active_elements]', 0);
+if ($res)
+    $res->value = $active_elements;
+
+
 // beautify and print page html
 if (PREF_USE_TIDY) {
     $tidy = tidy_parse_string($html, unserialize(PREF_TIDY_CONFIG), PREF_TIDY_ENCODING);
@@ -129,6 +139,7 @@ if (PREF_USE_TIDY) {
 
 // clear DOM object
 $html->clear();
+
 
 // free memory
 if ($rs)

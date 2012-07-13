@@ -1,5 +1,6 @@
 $(function () {
     var btn_ok = $("#btn_ok").val();
+    var active_elements = $("#active_elements").val();
 
     $("#tolc_btn_slide").click(function () {
         $("#tolc_panel").slideToggle("slow");
@@ -51,7 +52,7 @@ $(function () {
         });
     });
 
-    if ($("#admin_mode").val() == '1' && $("#login").val() == '1') {
+    if ($("#login").val() == '1') {
         $("#already_login").dialog({
             autoOpen: true,
             show: "blind",
@@ -68,5 +69,18 @@ $(function () {
             ]
         });
     }
+
+    $(active_elements).hover(function () {
+        if ($(this).data("bouncing") == false || $(this).data("bouncing") == undefined) {
+            $(this).effect("bounce", { direction: 'up', distance: 10, times: 1 });
+            $(this).data("bouncing", true);
+        }
+    }, function () {
+        $(this).data("bouncing", false);
+    });
+
+    $(active_elements).click(function () {
+        alert($(this).html());
+    });
 
 });
