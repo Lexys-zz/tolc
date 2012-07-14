@@ -25,9 +25,6 @@ $tolc_head_php_dist = PROJECT_DIR . '/app/common/tolc_head.dist.php';
 $tolc_panel_css = PROJECT_DIR . '/app/common/tolc_panel.css';
 $tolc_panel_css_dist = PROJECT_DIR . '/app/common/tolc_panel.dist.css';
 
-$tinymce_ezfm_config = LIB_DIR . LIB_EXT_DIR . JQUERY_TINYMCE_DIR . '/plugins/ezfilemanager/includes/config.php';
-$tinymce_ezfm_config_dist = LIB_DIR . LIB_EXT_DIR . JQUERY_TINYMCE_DIR . '/plugins/ezfilemanager/includes/config.inc.php';
-
 $cfgs = array();
 $cfgs[] = array($htaccess, $htaccess_dist);
 $cfgs[] = array($favicon, $favicon_dist);
@@ -37,7 +34,6 @@ $cfgs[] = array($db_utils_php, $db_utils_php_dist);
 $cfgs[] = array($tolc_login_css, $tolc_login_css_dist);
 $cfgs[] = array($tolc_head_php, $tolc_head_php_dist);
 $cfgs[] = array($tolc_panel_css, $tolc_panel_css_dist);
-$cfgs[] = array($tinymce_ezfm_config, $tinymce_ezfm_config_dist);
 
 foreach ($cfgs as $cfg) {
     $dest = $cfg[0];
