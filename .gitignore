@@ -13,8 +13,7 @@
 favicon.ico
 /templates/*
 /modules/*
-/images/*
-/files/*
+/uploads/*
 
 # APP LOGS ---------------------------------------------------------------------
 /log/*
