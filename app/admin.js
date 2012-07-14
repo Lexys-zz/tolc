@@ -1,6 +1,7 @@
 $(function () {
     var btn_ok = $("#btn_ok").val();
     var active_elements = $("#active_elements").val();
+    var content = 'test';
 
     $("#tolc_btn_slide").click(function () {
         $("#tolc_panel").slideToggle("slow");
@@ -25,6 +26,12 @@ $(function () {
         }
     });
 
+    $("#tp_filemanager").button({
+        icons: {
+            primary: 'ui-icon-folder-open'
+        }
+    });
+
     $("#tp_users").button({
         icons: {
             primary: 'ui-icon-person'
@@ -41,6 +48,12 @@ $(function () {
         icons: {
             primary: 'ui-icon-home'
         }
+    });
+
+    $("#tp_filemanager").click(function () {
+        var url = $("#project_url").val() + '/lib/ext/tinymce_3.5.4.1_jquery/plugins/ezfilemanager/index.php';
+        var win_name = 'ezfm';
+        CenterWindow(750, 625, 50, url, win_name);
     });
 
     $("#tp_logout").click(function () {
@@ -70,17 +83,22 @@ $(function () {
         });
     }
 
+
     $(active_elements).hover(function () {
         if ($(this).data("bouncing") == false || $(this).data("bouncing") == undefined) {
             $(this).effect("bounce", { direction: 'up', distance: 10, times: 1 });
             $(this).data("bouncing", true);
+            $(this).css('cursor','crosshair');
         }
     }, function () {
         $(this).data("bouncing", false);
+        $(this).css('cursor','auto');
     });
 
     $(active_elements).click(function () {
-        alert($(this).html());
+        var url = $("#project_url").val() + '/app/rte.php';
+        var win_name = 'rte';
+        CenterWindow(1200, 800, 50, url, win_name);
     });
 
 });

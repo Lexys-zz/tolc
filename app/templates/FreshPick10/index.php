@@ -6,8 +6,6 @@
 
 <title>Fresh Pick</title>
 
-<base href="<?php print TEMPLATE_URL  ?>">
-
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="author" content="Erwin Aligam - styleshout.com" />
 <meta name="description" content="Site Description Here" />

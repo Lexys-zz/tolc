@@ -59,15 +59,15 @@ if ($rs->RecordCount() == 0) {
 }
 
 // get template path
-$sql = 'SELECT template_path, template_file FROM www_templates WHERE id = ' . $www_templates_id;
+$sql = 'SELECT template_path, template_file, css_url FROM www_templates WHERE id = ' . $www_templates_id;
 $rs = $conn->Execute($sql);
 if ($rs === false) {
     trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 }
 $template_path = $rs->fields['template_path'];
 $template_file = $rs->fields['template_file'];
-
-define('TEMPLATE_URL', PROJECT_HOST . PROJECT_URL . $template_path);
+$css_url = $rs->fields['css_url'];
+$template_base_url = PROJECT_URL . $template_path;
 
 // store template html to variable
 ob_start();
@@ -79,6 +79,23 @@ ob_end_clean();
 $html = new simple_html_dom();
 // load template html
 $html->load($template_html);
+
+// convert template images src relevant to root (/)
+$template_images = $html->find('img');
+foreach ($template_images as $template_image) {
+    $img_src = $template_image->src;
+    $template_image->src = $template_base_url . $img_src;
+}
+
+// convert template css href relevant to root (/)
+$template_links = $html->find('link');
+foreach ($template_links as $template_link) {
+    $link_href = $template_link->href;
+    if ($link_href == $css_url) {
+        $template_link->href = $template_base_url . $link_href;
+        break;
+    }
+}
 
 // set page title
 $res = $html->getElementByTagName('title');
@@ -139,7 +156,6 @@ if (PREF_USE_TIDY) {
 
 // clear DOM object
 $html->clear();
-
 
 // free memory
 if ($rs)

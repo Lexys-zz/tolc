@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 
-    <base href="<?php print TEMPLATE_URL  ?>" />
-
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Your description goes here" />
 	<meta name="keywords" content="your,keywords,goes,here" />
