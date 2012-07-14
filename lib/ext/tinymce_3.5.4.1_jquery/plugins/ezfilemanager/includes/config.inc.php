@@ -50,9 +50,9 @@ error_reporting(E_ALL);//Change to error_reporting(0) for live sites
     define('ABSOLUT_PATH', str_replace($_SERVER['SCRIPT_NAME'], "/", $_SERVER['SCRIPT_FILENAME']));  
     }
 /* OPTIONAL SWITCHES */
-    define('IMAGE_FILES','jpg,jpeg,png,gif');//allowed image files extensions
+    define('IMAGE_FILES','png,jpg,jpeg,gif');//allowed image files extensions
     define('MEDIA_FILES','swf,flv,mp3,mp4,mov,avi,mpg,qt');//allowed meadia files extensions
-    define('OTHER_FILES','html,pdf,ppt,txt,doc,rtf,xml,xsl,dtd,zip,rar');//allowed other files extensions
+    define('OTHER_FILES','html,pdf,ppt,txt,doc,docx,odt,xls,xlsx,ods,rtf,xml,xsl,dtd,zip,7z,gz,rar');//allowed other files extensions
     define('DATE_FORMAT','M d Y H:i');//http://php.net/manual/en/function.date.php
     define('KEEP_COPY','120');//seconds, how long to keep copy in memory
     define('ENABLE_DELETE',true);//allow file/dir deleting  (true/false)
@@ -69,7 +69,7 @@ error_reporting(E_ALL);//Change to error_reporting(0) for live sites
     define('THUMB_NEW_FOLDER',true);//if true thumb will be created in folder THUMB_PREFIX-filename
     define('THUMB_PREFIX','thumb');//prefix of the thumb folder or file if THUMB_NEW_FOLDER is false
     define('MAX_SIM_UPLOAD','4');  //Max number of simultaneous uploads, 0 disables upload
-    define('CUSTOM_MAX_UPLOAD_SIZE','0');//0 to use server default or custom size in bytes 1048576=1M
+    define('CUSTOM_MAX_UPLOAD_SIZE','10485760');//0 to use server default or custom size in bytes 1048576=1M
     define('TRUNCATE_FILE','0');// Truncate large file names to xx chars, 0 to disable
     define('RELOAD_PAGE','2');//x Seconds, reload page after upload/directory creation
     define('DIR_INDEXING','index.html');//empty/filename, if "filename", "filename" will be created in new directories
