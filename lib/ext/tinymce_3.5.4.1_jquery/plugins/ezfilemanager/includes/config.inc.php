@@ -30,7 +30,7 @@
 /** CONFIGURE BELOW **/
 error_reporting(E_ALL);//Change to error_reporting(0) for live sites
     //@set_time_limit(20*60); // 20 minutes execution time
-    define('LOGIN_FORM',true);//Enable authentication (true/false)
+    define('LOGIN_FORM',false);//Enable authentication (true/false)
     define('ENABLE_FORM_TOKEN','1');//Enable form token (true/false
     define('KEY_1','guitars_hard_rock'); //ANY SECRET KEY, needed if ENABLE_FORM_TOKEN=TRUE
     define('KEY_2','smoke_on_the_water'); //ANY SECRET KEY, needed if ENABLE_FORM_TOKEN=TRUE
@@ -38,9 +38,9 @@ error_reporting(E_ALL);//Change to error_reporting(0) for live sites
     define('AUTHENTICATION_SESSION_NAME','user_id');//Session name to use
     define('USER','admin'); //Username
     define('PASSWORD','demo');//Password
-    define('LANG','en');//en,nl,de see langs folder
+    define('LANG',substr($_SESSION['locale'],0,2));//en,nl,de see langs folder
     define('USER_DIR','');//for multiuser directories, implementation is up to you, trailing slash required, leave empty for single user
-    define("UPLOAD_DIR","media/".USER_DIR);//upload directory relative to your document root directory, trailing slash required
+    define("UPLOAD_DIR",UPLOADS_URL);//upload directory relative to your document root directory, trailing slash required
     define("SITE_URL","http://".$_SERVER['HTTP_HOST']);
     /* If the below does not work for you because of server settings Set ABSOLUT_PATH manually*/
     if ($_SERVER['DOCUMENT_ROOT']){//Try to find ABSOLUT_PATH,

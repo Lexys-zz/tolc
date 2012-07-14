@@ -1,4 +1,13 @@
 <?php
+session_start();
+session_regenerate_id(true);
+if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
+    print 'Access denied...';
+    exit;
+}
+require_once '../../../../../app/common/settings.php';
+require_once '../../../../../app/common/error_handler.php';
+
 include("includes/config.inc.php");
 include("langs/".LANG.".inc.php");
 include("includes/ezf.class.php");
