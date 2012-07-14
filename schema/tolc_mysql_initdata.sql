@@ -58,7 +58,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_templates` WRITE;
 /*!40000 ALTER TABLE `www_templates` DISABLE KEYS */;
-INSERT INTO `www_templates` VALUES (1,'Default1 (Variant trio)','/app/templates/variant-trio/','index.php','/app/templates/variant-trio/variant-trio.css',NULL),(2,'Default2 (FreshPick10)','/app/templates/FreshPick10/','index.php','/app/templates/FreshPick10/css/FreshPick.css',NULL);
+INSERT INTO `www_templates` VALUES (1,'Default1 (Variant trio)','/app/templates/variant-trio/','index.php','variant-trio.css',NULL),(2,'Default2 (FreshPick10)','/app/templates/FreshPick10/','index.php','css/screen.css',NULL);
 /*!40000 ALTER TABLE `www_templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-13 20:07:51
+-- Dump completed on 2012-07-14 20:39:37
