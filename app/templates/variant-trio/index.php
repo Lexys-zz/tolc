@@ -7,7 +7,7 @@
 	<meta name="keywords" content="your,keywords,goes,here" />
 	<meta name="author" content="Your Name" />
 
-    <?php include PROJECT_DIR . '/app/common/tolc_head.php'; ?>
+    <?php include PROJECT_DIR . '/app/tolc_head.php'; ?>
 
     <link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
 
@@ -17,7 +17,7 @@
 <body>
 
 <?php
-if($admin_mode) include PROJECT_DIR . '/app/common/tolc_panel.php';
+if($admin_mode) include PROJECT_DIR . '/app/tolc_panel.php';
 ?>
 
 <div id="wrap">
@@ -89,7 +89,7 @@ if($admin_mode) include PROJECT_DIR . '/app/common/tolc_panel.php';
 
 </div>
 
-<?php include PROJECT_DIR . '/app/common/tolc_functions.php'; ?>
+<?php include PROJECT_DIR . '/app/tolc_functions.php'; ?>
 
 </body>
 </html>
