@@ -1,4 +1,5 @@
 $(function () {
+    var project_url = $("#project_url").val();
     var btn_do_login_value = $("#btn_do_login_value").val();
     var btn_cancel_login_value = $("#btn_cancel_login_value").val();
 
@@ -10,6 +11,9 @@ $(function () {
         height: 300,
         resizable: true,
         open: function () {
+            $(this).load(project_url + '/app/ajax_login_form.php', {}, function() {
+                $("#username").focus();
+            });
             $('.ui-dialog-buttonpane').find('button:contains("' + btn_do_login_value + '")').button({
                 icons: {
                     primary: 'ui-icon-check'
@@ -19,7 +23,7 @@ $(function () {
                 icons: {
                     primary: 'ui-icon-cancel'
                 }
-            })
+            });
         },
         buttons: [
             {
@@ -27,11 +31,11 @@ $(function () {
                 click: function () {
                     switch (validate_login_form()) {
                         case 1:
-                            $("#username").addClass( "ui-state-error" );
+                            $("#username").addClass("ui-state-error");
                             update_user_message($("#msg_username_required").val());
                             break;
                         case 2:
-                            $("#password").addClass( "ui-state-error" );
+                            $("#password").addClass("ui-state-error");
                             update_user_message($("#msg_password_required").val());
                             break;
                         default:
@@ -64,19 +68,20 @@ $(function () {
         ]
     });
 
-    $('#login_form').keypress(function(e) {
+    $('#login_form').keypress(function (e) {
         if (e.keyCode == $.ui.keyCode.ENTER) {
             $('.ui-button:contains("' + btn_do_login_value + '")').click()
         }
     });
 
-    $("#username").focus(function() {
-        $("#username").removeClass("ui-state-error" );
+
+    $(document).on("focus", "#username", function(event){
+        $("#username").removeClass("ui-state-error");
         $("#user_message").html('');
     });
 
-    $("#password").focus(function() {
-        $("#password").removeClass("ui-state-error" );
+    $(document).on("focus", "#password", function(event){
+        $("#password").removeClass("ui-state-error");
         $("#user_message").html('');
     });
 
