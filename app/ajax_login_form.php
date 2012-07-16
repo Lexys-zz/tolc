@@ -4,9 +4,10 @@
 
 // prevent direct access
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
-    print 'Access denied';
+    print 'Access denied - not an AJAX call';
     exit;
 }
+
 require_once 'common/settings.php';
 require_once 'common/error_handler.php';
 require_once 'common/init.php';
