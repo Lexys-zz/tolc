@@ -4,6 +4,9 @@
 define('CONST_DEFAULT_TIMEZONE', 'UTC');
 date_default_timezone_set(CONST_DEFAULT_TIMEZONE);
 
+// uploads dir
+define('UPLOADS_URL', PROJECT_URL . '/data/'); // must be writable from web server, trailing slash required
+
 // CONSTANTS -------------------------------------------------------------------
 // lookups
 define('CONST_USER_STATUS_PENDING_KEY', 1);

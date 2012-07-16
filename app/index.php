@@ -13,7 +13,7 @@ require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 // connect to database
 $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
 
-// get url
+// retrieve url
 $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen(PROJECT_URL));
 
 // check for login request

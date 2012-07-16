@@ -16,24 +16,12 @@ $error_handler_php_dist = PROJECT_DIR . '/app/common/error_handler.dist.php';
 $db_utils_php = PROJECT_DIR . '/app/common/db_utils.php';
 $db_utils_php_dist = PROJECT_DIR . '/app/common/db_utils.dist.php';
 
-$tolc_login_css = PROJECT_DIR . '/app/login.css';
-$tolc_login_css_dist = PROJECT_DIR . '/app/login.dist.css';
-
-$tolc_head_php = PROJECT_DIR . '/app/common/tolc_head.php';
-$tolc_head_php_dist = PROJECT_DIR . '/app/common/tolc_head.dist.php';
-
-$tolc_panel_css = PROJECT_DIR . '/app/common/tolc_panel.css';
-$tolc_panel_css_dist = PROJECT_DIR . '/app/common/tolc_panel.dist.css';
-
 $cfgs = array();
 $cfgs[] = array($htaccess, $htaccess_dist);
 $cfgs[] = array($favicon, $favicon_dist);
 $cfgs[] = array($settings_php, $settings_php_dist);
 $cfgs[] = array($error_handler_php, $error_handler_php_dist);
 $cfgs[] = array($db_utils_php, $db_utils_php_dist);
-$cfgs[] = array($tolc_login_css, $tolc_login_css_dist);
-$cfgs[] = array($tolc_head_php, $tolc_head_php_dist);
-$cfgs[] = array($tolc_panel_css, $tolc_panel_css_dist);
 
 foreach ($cfgs as $cfg) {
     $dest = $cfg[0];

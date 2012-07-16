@@ -10,7 +10,6 @@ define('DOMAIN_USED', true);
 define('PROJECT_DIR', DOMAIN_USED ? $_SERVER['DOCUMENT_ROOT'] : '/path/to/tolc'); 
 define('PROJECT_URL', DOMAIN_USED ? '' : '/url/to/tolc'); 
 define('BASE_URL', mb_substr(PROJECT_URL . '/', 1));
-define('UPLOADS_URL', PROJECT_URL . '/uploads/'); // must be writable from web server, trailing slash required
 
 $host = $_SERVER['SERVER_NAME'];
 $port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];

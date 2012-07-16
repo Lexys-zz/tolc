@@ -29,5 +29,5 @@
 <?php } ?>
 
 <?php if ($admin_mode) { ?>
-<script type="text/javascript" src="<?php print PROJECT_URL ?>/app/admin.js?version=1"></script>
+<script type="text/javascript" src="<?php print PROJECT_URL ?>/app/tolc_admin.js?version=1"></script>
 <?php } ?>

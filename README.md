@@ -1,4 +1,5 @@
-tolc
-====
+tolc - the simple cms
+=====================
 
-tolc - the easy cms
+Documentation (en): http://wiki.medisign.com/tolc
+Documentation (el): http://wiki.medisign.gr/tolc

@@ -1,23 +1,16 @@
 # APP SETTINGS -----------------------------------------------------------------
-/.htaccess
-/app/index.css
+.htaccess
 /app/common/settings.php
 /app/common/error_handler.php
 /app/common/db_utils.php
-/app/common/tolc_head.php
-/app/common/tolc_panel.css
-/app/login.css
-/lib/ext/tinymce_3.5.4.1_jquery/plugins/ezfilemanager/includes/config.php
 
 # APP DATA ---------------------------------------------------------------------
 favicon.ico
-/templates/*
-/modules/*
-/uploads/*
+/data/*
+!/data/README
 
 # APP LOGS ---------------------------------------------------------------------
 /log/*
-#/lib/ext/tiny_mce_jquery_v.3.4.4/plugins/filemanager/logs
 
 # APP CACHE --------------------------------------------------------------------
 
