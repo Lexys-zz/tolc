@@ -1,37 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Your description goes here" />
 	<meta name="keywords" content="your,keywords,goes,here" />
 	<meta name="author" content="Your Name" />
-
-    <?php include PROJECT_DIR . '/app/tolc_head.php'; ?>
-
-    <link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
-
-    <title>Variant Trio v1.0</title>
+	<link rel="stylesheet" type="text/css" href="variant-trio.css" title="Variant Trio" media="screen,projection" />
+	<title>Variant Trio v1.0</title>
 </head>
 
 <body>
-
-<?php
-if($admin_mode) include PROJECT_DIR . '/app/tolc_panel.php';
-?>
-
 <div id="wrap">
-	<h1><a href="/">Variant Trio</a></h1>
+	<h1><a href="index.html">Variant Trio</a></h1>
 	<p class="slogan">A two/three column template</p>
 		
 	<div id="topmenu">
 		<p>
 		<strong class="hide">Main menu:</strong>
-		<a class="active" href="/">Home</a><span class="hide"> | </span>
-		<a href="page2">Page 2</a><span class="hide"> | </span>
-		<a href="page3">Page 3</a><span class="hide"> | </span>
-		<a href="page4">Page 4</a><span class="hide"> | </span>
-		<a href="page5">Page 5</a>
+		<a class="active" href="index.html">Home</a><span class="hide"> | </span>
+		<a href="index.html">Page 2</a><span class="hide"> | </span>
+		<a href="index.html">Page 3</a><span class="hide"> | </span>
+		<a href="index.html">Page 4</a><span class="hide"> | </span>
+		<a href="index.html">Page 5</a>
 		</p>
 	</div>
 	
@@ -63,17 +53,17 @@ if($admin_mode) include PROJECT_DIR . '/app/tolc_panel.php';
 	</div>
 	
 	<div id="content">
-		<div class="full" id="test1">
+		<div class="full">
 		<h2>The Variant Trio template</h2>
 		<p>Inspired by the <a href="http://andreasviklund.com/templates/variant-duo/">Variant Duo</a> template, here is <a href="http://andreasviklund.com/templates/variant-trio/">Variant Trio</a>.  It gives you the option to choose between two or three columns with a sidebar menu. This is a completely free template, and it may be used without any limitations or obligations. If you decide to use this template to build a website or a blog/CMS theme, please leave the design credits in the footer.</p>
 		</div>
 
-		<div class="left" id="test2">
+		<div class="left">
 			<h3>Sample image</h3>
 			<p><img src="sample.jpg" width="355" height="175" alt="sample content image" /></p>
 		</div>
 
-		<div class="right" id="test3">
+		<div class="right">
 			<h3>Two or three columns</h3>
 			<p>To use two columns, put your main content inside a div with the class name "full". To use three columns, make one div with the class name "left" and another with the class name "right" and then place a hr with the class name "clear" after both divs.</p>
 			<p>More templates, as well as articles and tutorials on how to build websites using templates, can be found on <a href="http://andreasviklund.com/">andreasviklund.com</a>.</p>
@@ -88,8 +78,5 @@ if($admin_mode) include PROJECT_DIR . '/app/tolc_panel.php';
 	</div>
 
 </div>
-
-<?php include PROJECT_DIR . '/app/tolc_functions.php'; ?>
-
 </body>
 </html>
