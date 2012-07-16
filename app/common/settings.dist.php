@@ -20,20 +20,16 @@ define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
 // -----------------------------------------------------------------------------
 // DATABASE PER DOMAIN (or SERVER NAME or IP)
 // -----------------------------------------------------------------------------
-if (DOMAIN_USED) {
-    $domains_db['tolc.lo'] = 'dev_tolc';
-    $domains_db['www.tolc.lo'] = 'dev_tolc';
-    $domains_db['localhost'] = 'dev_tolc';
-}
+$domains_db['tolc.lo'] = 'dev_tolc';
+$domains_db['www.tolc.lo'] = 'dev_tolc';
+$domains_db['localhost'] = 'dev_tolc';
 
 // -----------------------------------------------------------------------------
 // DEFAULT TEMPLATE PER DOMAIN (or SERVER NAME or IP)
 // -----------------------------------------------------------------------------
-if (DOMAIN_USED) {
-    $domains_tmpl['tolc.lo'] = 1;
-    $domains_tmpl['www.tolc.lo'] = 1;
-    $domains_tmpl['localhost'] = 1;
-}
+$domains_tmpl['tolc.lo'] = 1;
+$domains_tmpl['www.tolc.lo'] = 1;
+$domains_tmpl['localhost'] = 1;
 
 // -----------------------------------------------------------------------------
 // DATABASE CONNECTION STRING
