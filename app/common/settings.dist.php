@@ -32,7 +32,7 @@ if (DOMAIN_USED) {
 if (DOMAIN_USED) {
     $domains_tmpl['tolc.lo'] = 1;
     $domains_tmpl['www.tolc.lo'] = 1;
-    $domains_tmpl['www.tolc.lo'] = 1;
+    $domains_tmpl['localhost'] = 1;
 }
 
 // -----------------------------------------------------------------------------
