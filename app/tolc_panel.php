@@ -9,11 +9,11 @@
     <a id="tp_filemanager" class="tolc_panel_btn"
        href="javascript:void(0);"><?php print gettext('Files') ?></a>
 
-    <?php if($_SESSION['is_admin']) {?>
+
     |
     <a id="tp_users" class="tolc_panel_btn"
        href="javascript:void(0);"><?php print gettext('Users') ?></a>
-    <?php } ?>
+
     |
     <a id="tp_logout" class="tolc_panel_btn"
        href="javascript:void(0);"><?php print gettext('Logout') ?></a>

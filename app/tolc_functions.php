@@ -51,5 +51,4 @@
        value="<?php print substr($_SESSION['locale'], 0, 2)?>">
 <input id="login_user" type="hidden"
        value="<?php print $_SESSION['username'] ?>">
-<input id="is_admin" type="hidden" value="<?php print $_SESSION['is_admin'] ?>">
 <?php } ?>

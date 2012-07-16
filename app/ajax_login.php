@@ -37,7 +37,6 @@ if ($rs->RecordCount() == 1) {
     // use case sensitive values
     if($rs->fields['username'] == $username && $rs->fields['password'] == $password) {
         $_SESSION['username'] = $username;
-        $_SESSION['is_admin'] = $rs->fields['is_admin'] == 1 ? true : false;
         $_SESSION['locale'] = $language . PREF_DEFAULT_LOCALE_ENCODING;
     } else {
         print gettext('Login failed') . '...';
