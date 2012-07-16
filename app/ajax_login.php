@@ -39,14 +39,6 @@ if ($rs->RecordCount() == 1) {
         $_SESSION['username'] = $username;
         $_SESSION['is_admin'] = $rs->fields['is_admin'] == 1 ? true : false;
         $_SESSION['locale'] = $language . PREF_DEFAULT_LOCALE_ENCODING;
-
-        // get languages id
-        $sql = 'SELECT id FROM www_languages WHERE locale=' . $conn->qstr($language);
-        $rs = $conn->Execute($sql);
-        if ($rs === false) {
-            trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-        }
-        $_SESSION['www_languages_id'] = $rs->fields['id'];
     } else {
         print gettext('Login failed') . '...';
     }
