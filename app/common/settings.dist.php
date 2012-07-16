@@ -2,34 +2,37 @@
 // -----------------------------------------------------------------------------
 // URI - USE OF DOMAIN
 // -----------------------------------------------------------------------------
-define('DOMAIN_USED', true); 
+define('DOMAIN_USED', true);
 
 // -----------------------------------------------------------------------------
 // URI - PATH MAPPING
 // -----------------------------------------------------------------------------
-define('PROJECT_DIR', DOMAIN_USED ? $_SERVER['DOCUMENT_ROOT'] : '/path/to/tolc'); 
-define('PROJECT_URL', DOMAIN_USED ? '' : '/url/to/tolc'); 
-define('BASE_URL', mb_substr(PROJECT_URL . '/', 1));
+define('PROJECT_DIR', DOMAIN_USED ? $_SERVER['DOCUMENT_ROOT'] : '/path/to/tolc');
+define('PROJECT_URL', DOMAIN_USED ? '' : '/url/to/tolc');
+define('BASE_URL', PROJECT_URL . '/');
 
 $host = $_SERVER['SERVER_NAME'];
 $port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];
 $http_prot = empty($_SERVER['HTTPS']) ? 'http' : 'https';
 define('PROJECT_HOST', $http_prot . '://' . $host . $port);
 define('PROJECT_FULL_URL', PROJECT_HOST . PROJECT_URL);
+
 // -----------------------------------------------------------------------------
-// SITES DATABASE PER SITE
+// DATABASE PER DOMAIN (or SERVER NAME or IP)
 // -----------------------------------------------------------------------------
 if (DOMAIN_USED) {
-    $domains_db['tolc.lo'] = 'dev_tolc'; 
-    $domains_db['www.tolc.lo'] = 'dev_tolc'; 
+    $domains_db['tolc.lo'] = 'dev_tolc';
+    $domains_db['www.tolc.lo'] = 'dev_tolc';
+    $domains_db['localhost'] = 'dev_tolc';
 }
 
 // -----------------------------------------------------------------------------
-// DEFAULT TEMPLATES PER DOMAIN
+// DEFAULT TEMPLATE PER DOMAIN (or SERVER NAME or IP)
 // -----------------------------------------------------------------------------
 if (DOMAIN_USED) {
-    $domains_tmpl['tolc.lo'] = 1; 
-    $domains_tmpl['www.tolc.lo'] = 1; 
+    $domains_tmpl['tolc.lo'] = 1;
+    $domains_tmpl['www.tolc.lo'] = 1;
+    $domains_tmpl['www.tolc.lo'] = 1;
 }
 
 // -----------------------------------------------------------------------------
@@ -39,7 +42,7 @@ $DBType = 'mysqlt';
 $DBServer = 'localhost';
 $DBUser = 'username'; 
 $DBPass = rawurlencode('password'); 
-$DBName = DOMAIN_USED ? $domains_db[$host] : 'dev_tolc'; 
+$DBName = $domains_db[$host];
 
 $dsn_options='?persist=0&fetchmode=2';
 $dsn = "$DBType://$DBUser:$DBPass@$DBServer/$DBName$dsn_options";
@@ -72,9 +75,17 @@ define('PREF_TIDY_CONFIG', serialize(array('indent' => TRUE,
 define('PREF_TIDY_ENCODING', 'UTF8');
 
 // regional settings
+define('PREF_TIMEZONE', 'UTC'); // visitor default timezone
+
 define('PREF_DATE_SEPARATOR', '/');
-define('PREF_DECIMAL_SYMBOL', ',');
-define('PREF_GROUPING_SYMBOL', '.');
+define('PREF_DATE_FORMAT_DATETIME_FULL', 'd' . PREF_DATE_SEPARATOR . 'm' . PREF_DATE_SEPARATOR . 'Y' . ' ' . 'H:i:s');
+define('PREF_DATE_FORMAT_DATETIME', 'd' . PREF_DATE_SEPARATOR . 'm' . PREF_DATE_SEPARATOR . 'Y' . ' ' . 'H:i');
+define('PREF_DATE_FORMAT_DATE', 'd' . PREF_DATE_SEPARATOR . 'm' . PREF_DATE_SEPARATOR . 'Y');
+define('PREF_DATE_FORMAT_TIMESTAMP_FULL', 'YmdHis');
+define('PREF_DATE_FORMAT_TIMESTAMP', 'YmdHi');
+
+define('PREF_DECIMAL_MARK', ',');
+define('PREF_THOUSANDS_SEPARATOR', '.');
 
 // other
 define('PREF_AUTOCOMPLETE_ROWS', 10);
