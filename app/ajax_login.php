@@ -39,6 +39,7 @@ if ($rs->RecordCount() == 1) {
     if($rs->fields['username'] == $username && $rs->fields['password'] == $password) {
         $_SESSION['username'] = $username;
         $_SESSION['locale'] = $language . PREF_DEFAULT_LOCALE_ENCODING;
+        $_SESSION['timezone'] = $rs->fields['timezone'];
     } else {
         print gettext('Login failed') . '...';
     }
