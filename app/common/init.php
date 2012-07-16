@@ -1,4 +1,9 @@
 <?php
+// check valid origin
+if(!in_array($_SERVER['SERVER_NAME'], $valid_origins)) {
+    print 'Access denied - Invalid origin';
+    exit;
+}
 
 // set php default timezone (it is possible set to php.ini) --------------------
 define('CONST_DEFAULT_TIMEZONE', 'UTC');

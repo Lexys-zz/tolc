@@ -47,6 +47,11 @@ $dsn = "$DBType://$DBUser:$DBPass@$DBServer/$DBName$dsn_options";
 // -----------------------------------------------------------------------------
 // GLOBAL PREFERENCES
 // -----------------------------------------------------------------------------
+// valid origins
+$valid_origins = array('tolc.lo',
+    'www.tolc.lo',
+    'localhost');
+
 // error reporting
 error_reporting(E_ALL ^ E_NOTICE);
 
