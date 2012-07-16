@@ -36,23 +36,15 @@ define('LIB_DIR', PROJECT_DIR . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
 define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.7.2/jquery-1.7.2.min.js');
-
 define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.20.custom/js/jquery-ui-1.8.20.custom.min.js');
 define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.20.custom/css/ui-lightness/jquery-ui-1.8.20.custom.css');
 define('JQUERY_UI_i18n_DIR', LIB_URL . LIB_EXT_DIR . '/jquery-ui-localize');
 define('JQUERY_UI_DATETIMEPICKER_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-0.9.8/jquery-ui-timepicker-addon.js');
 define('JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-extensions/jquery.ui.autocomplete.html.js');
-
 define('JQUERY_UI_LAYOUT_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/jquery.layout.js');
 define('JQUERY_UI_LAYOUT_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/layout-default.css');
-
-define('JSTREE_URL', LIB_URL . LIB_EXT_DIR . '/jstree.v.pre1.0_fix1/jquery.jstree.js');
-define('JQUERY_CLIENT_URL', LIB_URL . LIB_EXT_DIR . '/jquery.client/jquery.client.js');
 define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-0.9.8/jquery-ui-timepicker-addon.css');
-
-define('JQUERY_GET_QUERY_PARAM_URL', LIB_URL . LIB_EXT_DIR . '/jquery.getQueryParam.1.0.0/jquery.getQueryParam.1.0.0.min.js');
-
-define('JQUERY_SCROLLTO_URL', LIB_URL . LIB_EXT_DIR . '/jquery.scrollTo-1.4.2/jquery.scrollTo-min.js');
+define('JSTREE_URL', LIB_URL . LIB_EXT_DIR . '/jstree.v.pre1.0_fix1/jquery.jstree.js');
 
 define('JQUERY_TINYMCE_DIR', '/tinymce_3.5.4.1_jquery');
 define('JQUERY_TINYMCE_PATH', LIB_URL . LIB_EXT_DIR . JQUERY_TINYMCE_DIR);
