@@ -8,7 +8,7 @@ $(function () {
         show: "blind",
         hide: "explode",
         width: 600,
-        height: 300,
+        height: 350,
         resizable: true,
         open: function () {
             $(this).load(project_url + '/app/ajax_login_form.php', {}, function() {
@@ -45,7 +45,8 @@ $(function () {
                                 data: {
                                     username: $("#username").val(),
                                     password: $("#password").val(),
-                                    language: $("#language").val()
+                                    language: $("#language").val(),
+                                    timezone: $("#timezone").val()
                                 },
                                 success: function (data) {
                                     if (data == '') {

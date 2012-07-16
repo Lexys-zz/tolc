@@ -57,3 +57,14 @@ if ($conn)
         <?php } ?>
     </select>
 </div>
+
+<div id="row_timezone" class="field_container">
+    <label id="lbl_timezone" for="timezone"
+           class="required"><?php print gettext('Timezone') ?></label>
+    <select id="timezone">
+        <?php foreach (timezone_identifiers_list() as $timezone_identifier) { ?>
+        <option
+            value="<?php print $timezone_identifier ?>"><?php print $timezone_identifier ?></option>
+        <?php } ?>
+    </select>
+</div>

@@ -25,7 +25,7 @@
 <script type="text/javascript" src="<?php print PROJECT_URL ?>/app/index.js?version=4"></script>
 
 <?php if (!$admin_mode && $login) { ?>
-<script type="text/javascript" src="<?php print PROJECT_URL ?>/app/login.js?version=3"></script>
+<script type="text/javascript" src="<?php print PROJECT_URL ?>/app/login.js?version=4"></script>
 <?php } ?>
 
 <?php if ($admin_mode) { ?>

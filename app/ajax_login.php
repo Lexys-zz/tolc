@@ -19,6 +19,7 @@ require_once 'common/db_utils.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 $language = $_POST['language'];
+$timezone = $_POST['timezone'];
 
 // connect to database
 $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
@@ -37,7 +38,6 @@ if ($rs->RecordCount() == 1) {
     if($rs->fields['username'] == $username && $rs->fields['password'] == $password) {
         $_SESSION['username'] = $username;
         $_SESSION['is_admin'] = $rs->fields['is_admin'] == 1 ? true : false;
-        $_SESSION['isLoggedIn'] = true;
         $_SESSION['locale'] = $language . PREF_DEFAULT_LOCALE_ENCODING;
 
         // get languages id

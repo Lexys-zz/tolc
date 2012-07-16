@@ -1,7 +1,8 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
+// check for logged in user
+if(!isset($_SESSION['username'])) {
     print 'Access denied...';
     exit;
 }

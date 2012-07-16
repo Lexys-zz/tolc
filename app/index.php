@@ -19,9 +19,7 @@ $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_
 // check for login request
 $login = isset($_SESSION['login']) ? true : false;
 // define mode (public mode or admin mode)
-if (!isset($_SESSION['isLoggedIn']))
-    $_SESSION['isLoggedIn'] = false;
-$admin_mode = $_SESSION['isLoggedIn'];
+$admin_mode = isset($_SESSION['username']);
 
 // check
 

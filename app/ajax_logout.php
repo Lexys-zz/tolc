@@ -10,5 +10,4 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
 
 unset($_SESSION['username']);
 unset($_SESSION['is_admin']);
-$_SESSION['isLoggedIn'] = false;
 ?>

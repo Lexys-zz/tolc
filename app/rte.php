@@ -1,10 +1,6 @@
 <?php
 session_start();
 session_regenerate_id(true);
-if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
-    print gettext('Session has expired...');
-    exit;
-}
 require_once 'common/settings.php';
 require_once 'common/error_handler.php';
 require_once 'common/init.php';
@@ -13,6 +9,12 @@ require_once ADODB_PATH . '/adodb.inc.php';
 require_once 'common/db_utils.php';
 require_once 'common/utils.php';
 //require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
+
+// check for logged in user
+if(!isset($_SESSION['username'])) {
+    print gettext('Access denied') . '...';
+    exit;
+}
 
 ?>
 
