@@ -21,7 +21,6 @@ require_once 'common/db_utils.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 $language = $_POST['language'];
-$timezone = $_POST['timezone'];
 
 // connect to database
 $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
