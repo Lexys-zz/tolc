@@ -10,6 +10,11 @@ require_once 'common/db_utils.php';
 require_once 'common/utils.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
+// set default visitor timezone
+if(!isset($_SESSION['timezone'])) {
+    $_SESSION['timezone'] = PREF_TIMEZONE;
+}
+
 // connect to database
 $conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
 
