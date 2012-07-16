@@ -4,7 +4,7 @@
 
 // prevent direct access
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
-    print 'Access denied - not an AJAX call';
+    print 'Access denied - not an AJAX request...';
     exit;
 }
 

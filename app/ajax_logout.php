@@ -4,7 +4,7 @@ session_regenerate_id(true);
 
 // prevent direct access
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
-    print 'Access denied';
+    print 'Access denied - not an AJAX request...';
     exit;
 }
 
