@@ -10,8 +10,11 @@ require_once 'common/db_utils.php';
 require_once 'common/utils.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
+// allow inclusion of tolc_head.php tolc_panel.php tolc_functions.php
+$tolc_include = true;
+
 // set default visitor timezone
-if(!isset($_SESSION['timezone'])) {
+if (!isset($_SESSION['timezone'])) {
     $_SESSION['timezone'] = PREF_TIMEZONE;
 }
 
@@ -72,25 +75,35 @@ $template_file = $rs->fields['template_file'];
 $css_url = $rs->fields['css_url'];
 $template_base_url = PROJECT_URL . $template_path;
 
+
 // store template html to variable
 ob_start();
 include(PROJECT_DIR . $template_path . $template_file);
 $template_html = ob_get_contents();
 ob_end_clean();
 
+
 // create a DOM object
 $html = new simple_html_dom();
+
 // load template html
 $html->load($template_html);
 
-// convert template images src relevant to root (/)
-$template_images = $html->find('img');
+// convert template images src relevant to website root
+$template_images = $html->find('img[src]');
 foreach ($template_images as $template_image) {
     $img_src = $template_image->src;
     $template_image->src = $template_base_url . $img_src;
 }
 
-// convert template css href relevant to root (/)
+// convert template imput src relevant to website root
+$template_inputs = $html->find('input[src]');
+foreach ($template_inputs as $template_input) {
+    $input_src = $template_input->src;
+    $template_input->src = $template_base_url . $input_src;
+}
+
+// convert template css href relevant to website root
 $template_links = $html->find('link');
 foreach ($template_links as $template_link) {
     $link_href = $template_link->href;
@@ -104,6 +117,7 @@ foreach ($template_links as $template_link) {
 $res = $html->getElementByTagName('title');
 if ($res)
     $res->innertext = $page_title;
+
 
 // set page content
 $a_active_elements = array();
@@ -135,17 +149,60 @@ if (!$new_page) {
             // set element content
             $selector = '[id=' . $element['element_id'] . ']';
             $res = $html->find($selector, 0);
-            if ($res)
+            if ($res) {
                 $res->innertext = $rs->fields['html'];
+            }
         }
     }
 }
 
+/*$template_html = $html->save();
+$html->clear();
+
+// create a DOM object
+$html = new simple_html_dom();
+
+// load template html
+$html->load($template_html);*/
+
 // set value to active elements hidden input
 $active_elements = implode(', ', $a_active_elements);
 $res = $html->find('[id=active_elements]', 0);
-if ($res)
+if ($res) {
     $res->value = $active_elements;
+}
+
+// store tolc head html to variable
+ob_start();
+include(PROJECT_DIR . '/app/tolc_head.php');
+$tolc_head_html = ob_get_contents();
+ob_end_clean();
+
+// store tolc panel html to variable
+ob_start();
+include(PROJECT_DIR . '/app/tolc_panel.php');
+$tolc_panel_html = ob_get_contents();
+ob_end_clean();
+
+// store tolc functions html to variable
+ob_start();
+include(PROJECT_DIR . '/app/tolc_functions.php');
+$tolc_functions_html = ob_get_contents();
+ob_end_clean();
+
+// page head
+$template_head = $html->getElementByTagName('head');
+if ($template_head) {
+    $template_head_html = $template_head->innertext;
+    $template_head->innertext = $tolc_head_html . $template_head_html;
+}
+
+// page body
+$template_body = $html->getElementByTagName('body');
+if ($template_body) {
+    $template_body_html = $template_body->innertext;
+    $template_body->innertext = $tolc_panel_html . $template_body_html . $tolc_functions_html;
+}
 
 
 // beautify and print page html
