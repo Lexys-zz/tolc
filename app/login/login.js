@@ -11,7 +11,7 @@ $(function () {
         height: 300,
         resizable: true,
         open: function () {
-            $(this).load(project_url + '/app/ajax_login_form.php', {}, function() {
+            $(this).load(project_url + '/app/login/ajax_login_form.php', {}, function() {
                 $("#username").focus();
             });
             $('.ui-dialog-buttonpane').find('button:contains("' + btn_do_login_value + '")').button({
@@ -41,7 +41,7 @@ $(function () {
                         default:
                             $.ajax({
                                 type: 'POST',
-                                url: $("#project_url").val() + "/app/ajax_login.php",
+                                url: $("#project_url").val() + "/app/login/ajax_login.php",
                                 data: {
                                     username: $("#username").val(),
                                     password: $("#password").val(),
