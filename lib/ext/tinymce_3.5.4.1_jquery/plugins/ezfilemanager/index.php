@@ -8,6 +8,7 @@ if(!isset($_SESSION['username'])) {
 }
 require_once '../../../../../app/common/settings.php';
 require_once '../../../../../app/common/error_handler.php';
+require_once '../../../../../app/common/init.php';
 
 include("includes/config.inc.php");
 include("langs/".LANG.".inc.php");
