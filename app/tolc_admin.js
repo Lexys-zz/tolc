@@ -51,14 +51,14 @@ $(function () {
     });
 
     $("#tp_filemanager").click(function () {
-        var url = $("#project_url").val() + '/lib/ext/tinymce_3.5.4.1_jquery/plugins/ezfilemanager/index.php';
+        var url = $("#ezfilemanager_url").val();
         var win_name = 'ezfm';
         CenterWindow(750, 625, 50, url, win_name);
     });
 
     $("#tp_logout").click(function () {
         $.ajax({
-            url: $("#project_url").val() + "/app/ajax_logout.php",
+            url: $("#project_url").val() + "/app/admin/logout/ajax_logout.php",
             success: function (data) {
                 location.reload();
             }
