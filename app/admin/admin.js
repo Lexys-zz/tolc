@@ -84,19 +84,15 @@ $(function () {
     }
 
 
-    $(active_elements).hover(function () {
-        if ($(this).data("bouncing") == false || $(this).data("bouncing") == undefined) {
-            $(this).effect("bounce", { direction: 'up', distance: 10, times: 1 });
-            $(this).data("bouncing", true);
-            $(this).css('cursor','crosshair');
-        }
-    }, function () {
-        $(this).data("bouncing", false);
-        $(this).css('cursor','auto');
-    });
+    $(active_elements).hover(function() {
+            $(this).addClass('over');
+        },
+        function() {
+            $(this).removeClass('over');
+        });
 
     $(active_elements).click(function () {
-        var url = $("#project_url").val() + '/app/rte.php';
+        var url = $("#project_url").val() + '/app/admin/rte/rte.php';
         var win_name = 'rte';
         CenterWindow(1200, 800, 50, url, win_name);
     });

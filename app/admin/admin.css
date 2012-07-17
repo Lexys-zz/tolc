@@ -34,3 +34,11 @@
 .tolc_panel_btn {
     font-size: 11px;
 }
+
+.over {
+    border: 1px solid #ff0000 !important;
+    cursor: crosshair !important;
+    opacity: 0.5 !important;
+}
+
+​

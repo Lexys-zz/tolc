@@ -1,13 +1,13 @@
 <?php
 session_start();
 session_regenerate_id(true);
-require_once 'common/settings.php';
-require_once 'common/error_handler.php';
-require_once 'common/init.php';
-require_once 'common/gettext.php';
+require_once '../../common/settings.php';
+require_once PROJECT_DIR . '/app/common/error_handler.php';
+require_once PROJECT_DIR . '/app/common/init.php';
+require_once PROJECT_DIR . '/app/common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
-require_once 'common/db_utils.php';
-require_once 'common/utils.php';
+require_once PROJECT_DIR . '/app/common/db_utils.php';
+require_once PROJECT_DIR . '/app/common/utils.php';
 //require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // check for logged in user
@@ -24,7 +24,7 @@ if(!isset($_SESSION['username'])) {
     <script type="text/javascript" src="<?php print JQUERY_URL ?>"></script>
     <script type="text/javascript" src="<?php print JQUERY_UI_URL ?>"></script>
     <script type="text/javascript" src="<?php print JQUERY_TINYMCE_URL ?>"></script>
-    <script type="text/javascript" src="<?php print PROJECT_URL ?>/app/rte.js?version=1"></script>
+    <script type="text/javascript" src="<?php print PROJECT_URL ?>/app/admin/rte/rte.js?version=1"></script>
 </head>
 
 <body>
