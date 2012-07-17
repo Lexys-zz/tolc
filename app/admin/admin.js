@@ -84,17 +84,42 @@ $(function () {
     }
 
 
-    $(active_elements).hover(function() {
+    $(active_elements).hover(function () {
             $(this).addClass('over');
         },
-        function() {
+        function () {
             $(this).removeClass('over');
         });
 
     $(active_elements).click(function () {
-        var url = $("#project_url").val() + '/app/admin/rte/rte.php';
-        var win_name = 'rte';
-        CenterWindow(1200, 800, 50, url, win_name);
+
+    });
+
+    $(active_elements).qtip({
+        content: {
+            text: '<a href="javascript:void(0)" onclick="rte()">Click me</a>',
+            title: {
+                text: 'Edit',
+                button: false
+            }
+        },
+        position: {
+            my: 'center', // Use the corner...
+            at: 'center' // ...and opposite corner
+        },
+        style: {
+            classes: 'ui-tooltip-shadow ui-tooltip-bootstrap'
+        },
+        hide: {
+            fixed: true,
+            delay: 100
+        }
     });
 
 });
+
+function rte() {
+    var url = $("#project_url").val() + '/app/admin/rte/rte.php';
+    var win_name = 'rte';
+    CenterWindow(1200, 800, 50, url, win_name);
+}
