@@ -91,10 +91,6 @@ $(function () {
             $(this).removeClass('over');
         });
 
-    $(active_elements).click(function () {
-
-    });
-
     $(active_elements).qtip({
         content: {
             text: '<a href="javascript:void(0)" onclick="rte()">Click me</a>',
