@@ -1,7 +1,8 @@
 $(function () {
-    var btn_ok = $("#btn_ok").val();
+
+    var project_url = $("#project_url").val();
+    var ezfilemanager_url = $("#ezfilemanager_url").val();
     var active_elements = $("#active_elements").val();
-    var content = 'test';
 
     $("#tolc_btn_slide").click(function () {
         $("#tolc_panel").slideToggle("slow");
@@ -51,38 +52,19 @@ $(function () {
     });
 
     $("#tp_filemanager").click(function () {
-        var url = $("#ezfilemanager_url").val();
+        var url = ezfilemanager_url;
         var win_name = 'ezfm';
-        CenterWindow(750, 625, 50, url, win_name);
+        CenterWindow(750, 625, 50, url, win_name, '');
     });
 
     $("#tp_logout").click(function () {
         $.ajax({
-            url: $("#project_url").val() + "/app/admin/logout/ajax_logout.php",
+            url: project_url + "/app/admin/logout/ajax_logout.php",
             success: function (data) {
                 location.reload();
             }
         });
     });
-
-    if ($("#login").val() == '1') {
-        $("#already_login").dialog({
-            autoOpen: true,
-            show: "blind",
-            hide: "explode",
-            width: 300,
-            height: 200,
-            buttons: [
-                {
-                    text: btn_ok,
-                    click: function () {
-                        $(this).dialog("close");
-                    }
-                }
-            ]
-        });
-    }
-
 
     $(active_elements).hover(function () {
             $(this).addClass('over');
@@ -100,8 +82,8 @@ $(function () {
             }
         },
         position: {
-            my: 'center', // Use the corner...
-            at: 'center' // ...and opposite corner
+            my: 'center',
+            at: 'center'
         },
         style: {
             classes: 'ui-tooltip-shadow ui-tooltip-bootstrap'
@@ -117,5 +99,5 @@ $(function () {
 function rte() {
     var url = $("#project_url").val() + '/app/admin/rte/rte.php';
     var win_name = 'rte';
-    CenterWindow(1200, 800, 50, url, win_name);
+    CenterWindow(1200, 800, 50, url, win_name, '');
 }

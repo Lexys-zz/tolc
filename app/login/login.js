@@ -41,7 +41,7 @@ $(function () {
                         default:
                             $.ajax({
                                 type: 'POST',
-                                url: $("#project_url").val() + "/app/login/ajax_login.php",
+                                url: project_url + "/app/login/ajax_login.php",
                                 data: {
                                     username: $("#username").val(),
                                     password: $("#password").val(),

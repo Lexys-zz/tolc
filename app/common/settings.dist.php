@@ -60,7 +60,9 @@ define('PREF_DEFAULT_LOCALE_ENCODING', '.UTF-8');
 define('PREF_DEFAULT_LOCALE', PREF_DEFAULT_LOCALE_CODE . PREF_DEFAULT_LOCALE_ENCODING);
 
 // special urls
-define('PREF_LOGIN_URL', '/login');
+// reserved urls
+define('PREF_RESERVED_URL_LOGIN', '/login');
+define('PREF_RESERVED_URL_TIMEZONE', '/timezone');
 
 // tidy
 define('PREF_USE_TIDY', true);

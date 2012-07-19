@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-10 15:45+0200\n"
-"PO-Revision-Date: 2012-07-10 15:46+0200\n"
+"POT-Creation-Date: 2012-07-19 21:46+0200\n"
+"PO-Revision-Date: 2012-07-19 21:47+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,119 +17,147 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:50
-#: ajax_retrieve_page.php:25
+#: index.php:49
+#: inc_tolc_functions/inc_new_page.php:3
+#: inc_tolc_functions/inc_new_page.php:4
 msgid "New page"
 msgstr "Νέα σελίδα"
 
-#: index.php:50
-#: common/tolc_functions.php:12
-msgid "Login required"
-msgstr "Χρειάζεται σύνδεση"
+#: index.php:49
+#: inc_tolc_functions/inc_login_required_new_page.php:5
+#: inc_tolc_functions/inc_login_required_new_page.php:6
+msgid "Page not found"
+msgstr "Η σελίδα δεν βρέθηκε"
 
-#: ajax_login.php:44
-#: ajax_login.php:47
-msgid "Login failed"
-msgstr "Η σύνδεση απέτυχε"
-
-#: common/tolc_panel.php:3
+#: tolc_panel.php:22
 msgid "Page properties"
 msgstr "Διόρθωση"
 
-#: common/tolc_panel.php:5
+#: tolc_panel.php:24
 msgid "Sitemap"
 msgstr "Χάρτης"
 
-#: common/tolc_panel.php:7
+#: tolc_panel.php:26
 msgid "Templates"
 msgstr "Πρότυπα"
 
-#: common/tolc_panel.php:10
+#: tolc_panel.php:28
+msgid "Files"
+msgstr "Αρχεία"
+
+#: tolc_panel.php:33
 msgid "Users"
 msgstr "Χρήστες"
 
-#: common/tolc_panel.php:13
+#: tolc_panel.php:37
 msgid "Logout"
 msgstr "Αποσύνδεση"
 
-#: common/tolc_panel.php:16
+#: tolc_panel.php:40
 msgid "About Tolc"
 msgstr "Σχετικά με Tolc"
 
-#: common/tolc_panel.php:22
-#: common/tolc_panel.php:23
+#: tolc_panel.php:46
+#: tolc_panel.php:47
 msgid "Show/Hide Admin Panel"
 msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
 
-#: common/tolc_functions.php:8
+#: admin/logout/ajax_logout.php:19
+#: admin/rte/rte.php:15
+msgid "Access denied"
+msgstr "Η πρόσβαση δεν επιτρέπεται"
+
+#: admin/rte/rte.php:32
+msgid "Edit"
+msgstr "Διόρθωση"
+
+#: inc_tolc_functions/inc_login_required_new_page.php:2
+#: inc_tolc_functions/inc_already_logged_in.php:2
 msgid "Ok"
 msgstr "Εντάξει"
 
-#: common/tolc_functions.php:13
-msgid "Page does not exist. Login required to create this page"
-msgstr "Η σελίδα δεν βρέθηκε. Χρειάζεται σύνδεση για να δημιουργηθεί η νέα σελίδα"
+#: inc_tolc_functions/inc_login_required_new_page.php:6
+msgid "Login required to create this page"
+msgstr "Χρειάζεται σύνδεση για να δημιουργηθεί η νέα σελίδα"
 
-#: common/tolc_functions.php:26
-#: common/tolc_functions.php:52
-#: common/tolc_functions.php:61
-msgid "Login"
-msgstr "Σύνδεση"
+#: inc_tolc_functions/inc_timezone.php:2
+msgid "Timezone"
+msgstr "Ζώνη ώρας"
 
-#: common/tolc_functions.php:32
-msgid "Username"
-msgstr "Όνομα χρήστη"
+#: inc_tolc_functions/inc_timezone.php:5
+msgid "Set"
+msgstr "Εφαρμογή"
 
-#: common/tolc_functions.php:37
-msgid "Password"
-msgstr "Κωδικός"
-
-#: common/tolc_functions.php:42
-msgid "Language"
-msgstr "Γλώσσα"
-
-#: common/tolc_functions.php:53
+#: inc_tolc_functions/inc_timezone.php:7
+#: inc_tolc_functions/inc_login.php:7
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: common/tolc_functions.php:54
+#: inc_tolc_functions/inc_login.php:2
+#: inc_tolc_functions/inc_login.php:5
+#: inc_tolc_functions/inc_already_logged_in.php:5
+msgid "Login"
+msgstr "Σύνδεση"
+
+#: inc_tolc_functions/inc_login.php:9
 msgid "Username is required"
 msgstr "Το όνομα χρήστη δεν δόθηκε"
 
-#: common/tolc_functions.php:55
+#: inc_tolc_functions/inc_login.php:11
 msgid "Password is required"
 msgstr "Ο κωδικός δεν δόθηκε"
 
-#: common/tolc_functions.php:62
+#: inc_tolc_functions/inc_already_logged_in.php:6
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/constants.php:7
+#: common/init.php:23
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/constants.php:8
+#: common/init.php:24
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/constants.php:9
+#: common/init.php:25
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/constants.php:15
+#: common/init.php:31
 msgid "pending publication"
 msgstr "σε αναμονή για δημοσίευση"
 
-#: common/constants.php:16
+#: common/init.php:32
 msgid "published"
 msgstr "δημοσιευμένο"
 
-#: common/constants.php:17
+#: common/init.php:33
 msgid "discarded"
 msgstr "απορρίφθηκε"
 
-#: common/constants.php:18
+#: common/init.php:34
 msgid "removed"
 msgstr "απομακρύνθηκε"
+
+#: login/ajax_login_form.php:43
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: login/ajax_login_form.php:49
+msgid "Password"
+msgstr "Κωδικός"
+
+#: login/ajax_login_form.php:55
+msgid "Language"
+msgstr "Γλώσσα"
+
+#: login/ajax_login.php:44
+#: login/ajax_login.php:47
+msgid "Login failed"
+msgstr "Η σύνδεση απέτυχε"
+
+#~ msgid "Login required"
+#~ msgstr "Χρειάζεται σύνδεση"
 
 #~ msgid "Welcome"
 #~ msgstr "Καλωσήλθατε"
