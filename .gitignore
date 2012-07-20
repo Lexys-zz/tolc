@@ -6,6 +6,7 @@
 favicon.ico
 /data/*
 !/data/README
+!/data/default
 
 # APP LOGS ---------------------------------------------------------------------
 /log/*
