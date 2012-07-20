@@ -1,6 +1,8 @@
 # APP SETTINGS -----------------------------------------------------------------
 .htaccess
 /app/common/settings.php
+/app/conf/settings.php
+/app/conf/settings.bak.php
 
 # APP DATA ---------------------------------------------------------------------
 favicon.ico
