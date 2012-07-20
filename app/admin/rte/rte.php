@@ -6,7 +6,7 @@ require_once PROJECT_DIR . '/app/common/error_handler.php';
 require_once PROJECT_DIR . '/app/common/init.php';
 require_once PROJECT_DIR . '/app/common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
-require_once PROJECT_DIR . '/app/common/db_utils.php';
+require_once PROJECT_DIR . '/app/common/utils_db.php';
 require_once PROJECT_DIR . '/app/common/utils.php';
 //require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
