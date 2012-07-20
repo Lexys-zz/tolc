@@ -2,7 +2,6 @@
 .htaccess
 /app/common/settings.php
 /app/common/error_handler.php
-/app/common/db_utils.php
 
 # APP DATA ---------------------------------------------------------------------
 favicon.ico

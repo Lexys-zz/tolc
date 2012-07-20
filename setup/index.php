@@ -13,15 +13,12 @@ $settings_php_dist = PROJECT_DIR . '/app/common/settings.dist.php';
 $error_handler_php = PROJECT_DIR . '/app/common/error_handler.php';
 $error_handler_php_dist = PROJECT_DIR . '/app/common/error_handler.dist.php';
 
-$db_utils_php = PROJECT_DIR . '/app/common/db_utils.php';
-$db_utils_php_dist = PROJECT_DIR . '/app/common/db_utils.dist.php';
 
 $cfgs = array();
 $cfgs[] = array($htaccess, $htaccess_dist);
 $cfgs[] = array($favicon, $favicon_dist);
 $cfgs[] = array($settings_php, $settings_php_dist);
 $cfgs[] = array($error_handler_php, $error_handler_php_dist);
-$cfgs[] = array($db_utils_php, $db_utils_php_dist);
 
 foreach ($cfgs as $cfg) {
     $dest = $cfg[0];

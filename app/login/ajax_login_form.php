@@ -18,7 +18,7 @@ require_once ADODB_PATH . '/adodb.inc.php';
 require_once PROJECT_DIR . '/app/common/db_utils.php';
 
 // connect to database
-$conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
+$conn = get_db_conn($dsn);
 
 $sql = 'SELECT locale, lang_intl, lang_local FROM www_languages WHERE admin_interface=1 ORDER BY lang_intl';
 $rs = $conn->Execute($sql);

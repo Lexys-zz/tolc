@@ -23,7 +23,7 @@ $password = md5($_POST['password']);
 $language = $_POST['language'];
 
 // connect to database
-$conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
+$conn = get_db_conn($dsn);
 
 // check valid user
 $sql = 'SELECT * FROM www_users ' .

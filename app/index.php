@@ -19,7 +19,7 @@ if(!isset($_SESSION['timezone'])) {
 }
 
 // connect to database
-$conn = get_db_conn($DBType, $DBUser, $DBPass, $DBServer, $DBName, $dsn_options);
+$conn = get_db_conn($dsn);
 
 // retrieve url
 $url = DOMAIN_USED ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen(PROJECT_URL));
