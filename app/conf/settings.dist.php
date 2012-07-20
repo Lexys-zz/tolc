@@ -7,8 +7,8 @@ $tolc_conf['domain_used'] = true;
 /**
  * URI - PATH MAPPING
  */
-$tolc_conf['project_dir'] = $tolc_conf['domain_used'] ? $_SERVER['DOCUMENT_ROOT'] : '/srv/http/dev/tolc';
-$tolc_conf['project_url'] = $tolc_conf['domain_used'] ? '' : '/dev/tolc';
+$tolc_conf['project_dir'] = $tolc_conf['domain_used'] ? $_SERVER['DOCUMENT_ROOT'] : '/path/to/tolc';
+$tolc_conf['project_url'] = $tolc_conf['domain_used'] ? '' : '/url/to/tolc';
 $tolc_conf['base_url'] = $tolc_conf['project_url'] . '/';
 
 $tolc_conf['host'] = $_SERVER['SERVER_NAME'];
@@ -31,9 +31,9 @@ $tolc_conf['domains_tmpl'] = array('tolc.lo' => 1,'www.tolc.lo' => 1,'localhost'
  * DATABASE CONNECTION STRING
  */
 $tolc_conf['dbtype'] = 'mysqlt';
-$tolc_conf['dbserver'] = 'localhost';
-$tolc_conf['dbuser'] = 'mos';
-$tolc_conf['dbpass'] = rawurlencode('suzjimny');
+$tolc_conf['dbserver'] = 'SERVER-NAME-OR-IP-HERE';
+$tolc_conf['dbuser'] = 'USER-HERE';
+$tolc_conf['dbpass'] = rawurlencode('PASSWORD_HERE');
 $tolc_conf['dbname'] = $tolc_conf['domains_db'][$tolc_conf['host']];
 
 $tolc_conf['dsn_options'] = '?persist=0&fetchmode=2';
@@ -44,10 +44,10 @@ $tolc_conf['dsn'] = $tolc_conf['dbtype'] . '://' . $tolc_conf['dbuser'] . ':' . 
  * GLOBAL PREFERENCES
  */
 /* valid origins */
-$tolc_conf['valid_origins'] = array('tolc.lo','www.tolc.lo','localhost','athena');
+$tolc_conf['valid_origins'] = array('tolc.lo','www.tolc.lo','localhost');
 
 /* error reporting */
-$tolc_conf['error_reporting'] = 'E_ALL'; //error_reporting(E_ALL);
+$tolc_conf['error_reporting'] = 'E_ALL';
 
 /* locale */
 $tolc_conf['pref_default_locale_code'] = 'en_GB';
@@ -65,7 +65,7 @@ $tolc_conf['pref_tidy_config'] =  array('indent' => TRUE,'output-xhtml' => TRUE,
 $tolc_conf['pref_tidy_encoding'] = 'UTF8';
 
 /* regional settings */
-$tolc_conf['pref_timezone'] = 'Europe/Athens'; // visitor default timezone
+$tolc_conf['pref_timezone'] = 'UTC'; // visitor default timezone
 
 $tolc_conf['pref_date_separator'] = '/';
 $tolc_conf['pref_date_format_datetime_full'] = 'd' . $tolc_conf['pref_date_separator'] . 'm' . $tolc_conf['pref_date_separator'] . 'Y' . ' ' . 'H:i:s';
