@@ -3,5 +3,5 @@
 
 <div id="login_required_new_page"
 	 title="<?php print gettext('Page not found'); ?>">
-	<?php print gettext('Page not found') . '.' . gettext('Login required to create this page') . '...' ?>
+	<?php print gettext('Page not found') . '.' . ' ' . gettext('Login required to create this page') . '...' ?>
 </div>

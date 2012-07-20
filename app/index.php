@@ -79,7 +79,7 @@ $html = new simple_html_dom();
 // load template html
 $html->load($template_html);
 
-// convert template head link href relevant to website root
+// convert template head <link> href relevant to website root and collect <link> tags
 $favicon_html = '';
 $template_link_html = '';
 $template_links = $html->find('link');
@@ -94,7 +94,7 @@ foreach($template_links as $template_link) {
 	}
 }
 
-// convert template head script src relevant to website root
+// convert template head <script> src relevant to website root and collect <script> tags
 $template_scripts_html = '';
 $template_scripts = $html->find('script');
 foreach($template_scripts as $template_script) {
@@ -103,21 +103,21 @@ foreach($template_scripts as $template_script) {
 	$template_scripts_html .= $template_script->outertext;
 }
 
-// collect template meta tags
+// collect template <meta> tags
 $template_meta_html = '';
 $template_meta_tags = $html->find('meta');
 foreach($template_meta_tags as $template_meta_tag) {
 	$template_meta_html .= $template_meta_tag->outertext;
 }
 
-// convert template images src relevant to website root
+// convert template <img> src relevant to website root
 $template_images = $html->find('img[src]');
 foreach($template_images as $template_image) {
 	$img_src = $template_image->src;
 	$template_image->src = $template_base_url . $img_src;
 }
 
-// convert template imput src relevant to website root
+// convert template <input> src relevant to website root
 $template_inputs = $html->find('input[src]');
 foreach($template_inputs as $template_input) {
 	$input_src = $template_input->src;
@@ -164,9 +164,10 @@ if($www_pages_id > 0) {
 // set value to active elements hidden input
 $active_elements = implode(', ', $a_active_elements);
 
-// page title html
+// compose page title html
 $page_title_html = '<title>' . $page_title . '</title>';
 
+// compose favicon html (in case template has no favicon)
 if(mb_strlen($favicon_html) == 0) {
 	// store tolc head favicon html to variable
 	ob_start();
@@ -235,7 +236,7 @@ if(PREF_USE_TIDY) {
 // clear DOM object
 $html->clear();
 
-// free memory
+// free memory from database objects
 if($rs)
 	$rs->Close();
 //database disconnect

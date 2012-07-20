@@ -5,7 +5,7 @@ $(function () {
         autoOpen: true,
         show: "blind",
         hide: "explode",
-        width: 300,
+        width: 500,
         height: 200,
         buttons: [
             {

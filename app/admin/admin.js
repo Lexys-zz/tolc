@@ -75,7 +75,7 @@ $(function () {
 
     $(active_elements).qtip({
         content: {
-            text: '<a href="javascript:void(0)" onclick="rte()">Click me</a>',
+            text: '<a href="javascript:void(0)" onclick="rte()">Click here</a>',
             title: {
                 text: 'Edit',
                 button: false
