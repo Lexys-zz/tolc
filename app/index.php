@@ -6,7 +6,7 @@ require_once 'common/error_handler.php';
 require_once 'common/init.php';
 require_once 'common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
-require_once 'common/db_utils.php';
+require_once 'common/utils_db.php';
 require_once 'common/utils.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
