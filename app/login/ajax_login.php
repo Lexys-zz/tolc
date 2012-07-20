@@ -10,12 +10,12 @@ if (!$isAjax) {
     exit;
 }
 
-require_once '../common/settings.php';
-require_once PROJECT_DIR . '/app/common/error_handler.php';
-require_once PROJECT_DIR . '/app/common/init.php';
-require_once PROJECT_DIR . '/app/common/gettext.php';
+require_once '../conf/settings.php';
+require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
+require_once $tolc_conf['project_dir'] . '/app/common/init.php';
+require_once $tolc_conf['project_dir'] . '/app/common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
-require_once PROJECT_DIR . '/app/common/utils_db.php';
+require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 
 // get params
 $username = $_POST['username'];
@@ -23,7 +23,7 @@ $password = md5($_POST['password']);
 $language = $_POST['language'];
 
 // connect to database
-$conn = get_db_conn($dsn);
+$conn = get_db_conn($tolc_conf['dsn']);
 
 // check valid user
 $sql = 'SELECT * FROM www_users ' .
@@ -38,7 +38,7 @@ if ($rs->RecordCount() == 1) {
     // use case sensitive values
     if($rs->fields['username'] == $username && $rs->fields['password'] == $password) {
         $_SESSION['username'] = $username;
-        $_SESSION['locale'] = $language . PREF_DEFAULT_LOCALE_ENCODING;
+        $_SESSION['locale'] = $language . $tolc_conf['pref_default_locale_encoding'];
         $_SESSION['timezone'] = $rs->fields['timezone'];
     } else {
         print gettext('Login failed') . '...';

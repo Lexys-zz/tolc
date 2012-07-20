@@ -14,15 +14,15 @@ if(!isset($_SESSION['username'])) {
 
 	if(isset($_SESSION['url_reserved'])) {
 		switch($_SESSION['url_reserved']) {
-			case PREF_RESERVED_URL_TIMEZONE:
+			case $tolc_conf['pref_reserved_url_timezone']:
 				?>
 
 				<?php
 				break;
-			case PREF_RESERVED_URL_LOGIN:
+			case $tolc_conf['pref_reserved_url_login']:
 				?>
 				<script type="text/javascript"
-						src="<?php print PROJECT_URL ?>/app/login/login.js?version=4"></script>
+						src="<?php print $tolc_conf['project_url'] ?>/app/login/login.js?version=4"></script>
 				<?php
 				break;
 		}
@@ -30,7 +30,7 @@ if(!isset($_SESSION['username'])) {
 		if($www_pages_id == 0) {
 			?>
 		<script type="text/javascript"
-				src="<?php print PROJECT_URL ?>/app/login_required_new_page.js?version=4"></script>
+				src="<?php print $tolc_conf['project_url'] ?>/app/login_required_new_page.js?version=4"></script>
 		<?php
 		}
 	}
@@ -46,17 +46,17 @@ if(!isset($_SESSION['username'])) {
 <script type="text/javascript" src="<?php print QTIP2_URL ?>"></script>
 
 <script type="text/javascript"
-		src="<?php print PROJECT_URL ?>/app/admin/admin.js?version=1"></script>
+		src="<?php print $tolc_conf['project_url'] ?>/app/admin/admin.js?version=1"></script>
 <?php
 	if(isset($_SESSION['url_reserved'])) {
 		switch($_SESSION['url_reserved']) {
-			case PREF_RESERVED_URL_TIMEZONE:
+			case $tolc_conf['pref_reserved_url_timezone']:
 
 				break;
-			case PREF_RESERVED_URL_LOGIN:
+			case $tolc_conf['pref_reserved_url_login']:
 				?>
 				<script type="text/javascript"
-						src="<?php print PROJECT_URL ?>/app/admin/already_logged_in.js?version=4"></script>
+						src="<?php print $tolc_conf['project_url'] ?>/app/admin/already_logged_in.js?version=4"></script>
 				<?php
 				break;
 		}
@@ -72,4 +72,4 @@ if(!isset($_SESSION['username'])) {
 ?>
 
 <script type="text/javascript"
-		src="<?php print PROJECT_URL ?>/app/common/utils.js?version=1"></script>
+		src="<?php print $tolc_conf['project_url'] ?>/app/common/utils.js?version=1"></script>

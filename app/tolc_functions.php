@@ -5,17 +5,17 @@ if(!$tolc_include) {
 	exit;
 }
 ?>
-<input type="hidden" id="project_url" value="<?php print PROJECT_URL ?>">
+<input type="hidden" id="project_url" value="<?php print $tolc_conf['project_url'] ?>">
 
 <?php
 if(!isset($_SESSION['username'])) {
 
 	if(isset($_SESSION['url_reserved'])) {
 		switch($_SESSION['url_reserved']) {
-			case PREF_RESERVED_URL_TIMEZONE:
+			case $tolc_conf['pref_reserved_url_timezone']:
 				include 'inc_tolc_functions/inc_timezone.php';
 				break;
-			case PREF_RESERVED_URL_LOGIN:
+			case $tolc_conf['pref_reserved_url_login']:
 				include 'inc_tolc_functions/inc_login.php';
 				break;
 		}
@@ -30,10 +30,10 @@ if(!isset($_SESSION['username'])) {
 
 	if(isset($_SESSION['url_reserved'])) {
 		switch($_SESSION['url_reserved']) {
-			case PREF_RESERVED_URL_TIMEZONE:
+			case $tolc_conf['pref_reserved_url_timezone']:
 				include 'inc_tolc_functions/inc_timezone.php';
 				break;
-			case PREF_RESERVED_URL_LOGIN:
+			case $tolc_conf['pref_reserved_url_login']:
 				include 'inc_tolc_functions/inc_already_logged_in.php';
 				break;
 		}

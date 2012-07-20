@@ -10,15 +10,15 @@ if (!$isAjax) {
     exit;
 }
 
-require_once '../common/settings.php';
-require_once PROJECT_DIR . '/app/common/error_handler.php';
-require_once PROJECT_DIR . '/app/common/init.php';
-require_once PROJECT_DIR . '/app/common/gettext.php';
+require_once '../conf/settings.php';
+require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
+require_once $tolc_conf['project_dir'] . '/app/common/init.php';
+require_once $tolc_conf['project_dir'] . '/app/common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
-require_once PROJECT_DIR . '/app/common/utils_db.php';
+require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 
 // connect to database
-$conn = get_db_conn($dsn);
+$conn = get_db_conn($tolc_conf['dsn']);
 
 $sql = 'SELECT locale, lang_intl, lang_local FROM www_languages WHERE admin_interface=1 ORDER BY lang_intl';
 $rs = $conn->Execute($sql);

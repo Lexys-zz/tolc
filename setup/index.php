@@ -1,14 +1,11 @@
 <?php
 echo 'setup...';
 exit;
-$htaccess = PROJECT_DIR . '.htaccess';
-$htaccess_dist = PROJECT_DIR . '.htaccess_dist';
+$htaccess = $tolc_conf['project_dir'] . '.htaccess';
+$htaccess_dist = $tolc_conf['project_dir'] . '.htaccess_dist';
 
-$favicon = PROJECT_DIR . 'favicon.ico';
-$favicon_dist = PROJECT_DIR . 'favicon_dist.ico';
-
-$settings_php = PROJECT_DIR . '/app/common/settings.php';
-$settings_php_dist = PROJECT_DIR . '/app/common/settings.dist.php';
+$favicon = $tolc_conf['project_dir'] . 'favicon.ico';
+$favicon_dist = $tolc_conf['project_dir'] . 'favicon_dist.ico';
 
 $cfgs = array();
 $cfgs[] = array($htaccess, $htaccess_dist);

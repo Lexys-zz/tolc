@@ -1,5 +1,8 @@
 <?php
 
+// error reporting
+error_reporting($tolc_conf['error_reporting']);
+
 // set error handler
 set_error_handler('error_handler');
 
@@ -27,7 +30,7 @@ function error_handler($err_no, $err_str, $err_file, $err_line) {
         case E_USER_WARNING:
             $msg = $err_str;
             set_last_message(false, $msg);
-            header('Location: ' . PROJECT_FULL_URL . '/index.php');
+            header('Location: ' . $tolc_conf['project_full_url'] . '/index.php');
             exit;
             break;
         case E_NOTICE:
@@ -52,6 +55,6 @@ function log_error($msg, $show_onscreen = true) {
         print $msg;
 
     // put in file
-    @error_log(date('Y-m-d H:i:s') . ': ' . $msg . "\n", 3, PROJECT_DIR . '/log/error.log');
+    @error_log(date('Y-m-d H:i:s') . ': ' . $msg . "\n", 3, $tolc_conf['project_dir'] . '/log/error.log');
 }
 ?>

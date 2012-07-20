@@ -10,9 +10,9 @@ if (!$isAjax) {
     exit;
 }
 
-require_once '../../common/settings.php';
-require_once '../../common/error_handler.php';
-require_once '../../common/init.php';
+require_once '../../conf/settings.php';
+require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
+require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 
 // check for logged in user
 if (!isset($_SESSION['username'])) {

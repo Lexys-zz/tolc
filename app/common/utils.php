@@ -18,7 +18,7 @@ function date_string_format($date_string, $format_string, $timezone_string) {
  * @param string $str_timezone
  * @return string
  */
-function now($format_string = PREF_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function now($format_string = CONST_PREF_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_DEFAULT_TIMEZONE) {
     return date_string_format('', $format_string, $str_timezone);
 }
 
@@ -29,7 +29,7 @@ function now($format_string = PREF_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = C
  * @param string $str_timezone
  * @return string
  */
-function date_decode($ts, $format = PREF_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function date_decode($ts, $format = CONST_PREF_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
     $tz = new DateTimeZone($str_timezone);
     $date = new DateTime($ts);
     $date->setTimeZone($tz);

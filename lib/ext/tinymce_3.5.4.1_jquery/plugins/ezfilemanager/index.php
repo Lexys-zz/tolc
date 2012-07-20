@@ -6,9 +6,9 @@ if(!isset($_SESSION['username'])) {
     print 'Access denied...';
     exit;
 }
-require_once '../../../../../app/common/settings.php';
-require_once '../../../../../app/common/error_handler.php';
-require_once '../../../../../app/common/init.php';
+require_once '../../../../../app/conf/settings.php';
+require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
+require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 
 include("includes/config.inc.php");
 include("langs/".LANG.".inc.php");

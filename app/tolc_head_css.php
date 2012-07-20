@@ -12,15 +12,15 @@ if(!isset($_SESSION['username'])) {
 
 	if(isset($_SESSION['url_reserved'])) {
 		switch($_SESSION['url_reserved']) {
-			case PREF_RESERVED_URL_TIMEZONE:
+			case $tolc_conf['pref_reserved_url_timezone']:
 				?>
 
 				<?php
 				break;
-			case PREF_RESERVED_URL_LOGIN:
+			case $tolc_conf['pref_reserved_url_login']:
 				?>
 				<link
-					href="<?php print PROJECT_URL ?>/app/login/login.css?version=6"
+					href="<?php print $tolc_conf['project_url'] ?>/app/login/login.css?version=6"
 					rel="stylesheet" type="text/css"/>
 				<?php
 				break;
@@ -36,15 +36,15 @@ if(!isset($_SESSION['username'])) {
 <link href="<?php print JQUERY_UI_LAYOUT_CSS_URL ?>" rel="stylesheet"
 	  type="text/css"/>
 <link href="<?php print QTIP2_CSS_URL ?>" rel="stylesheet" type="text/css"/>
-<link href="<?php print PROJECT_URL ?>/app/admin/admin.css" rel="stylesheet"
+<link href="<?php print $tolc_conf['project_url'] ?>/app/admin/admin.css" rel="stylesheet"
 	  type="text/css"/>
 <?php
 	if(isset($_SESSION['url_reserved'])) {
 		switch($_SESSION['url_reserved']) {
-			case PREF_RESERVED_URL_TIMEZONE:
+			case $tolc_conf['pref_reserved_url_timezone']:
 
 				break;
-			case PREF_RESERVED_URL_LOGIN:
+			case $tolc_conf['pref_reserved_url_login']:
 
 				break;
 		}

@@ -1,6 +1,6 @@
 <?php
 // check valid origin
-if(!in_array($_SERVER['SERVER_NAME'], $valid_origins)) {
+if(!in_array($_SERVER['SERVER_NAME'], $tolc_conf['valid_origins'])) {
     print 'Access denied - Invalid origin';
     exit;
 }
@@ -9,11 +9,14 @@ if(!in_array($_SERVER['SERVER_NAME'], $valid_origins)) {
 define('CONST_DEFAULT_TIMEZONE', 'UTC');
 date_default_timezone_set(CONST_DEFAULT_TIMEZONE);
 
+define('CONST_PREF_DATE_FORMAT_TIMESTAMP_FULL', $tolc_conf['pref_date_format_timestamp_full']);
+define('CONST_PREF_DATE_FORMAT_DATETIME', $tolc_conf['pref_date_format_datetime']);
+
 // uploads dir
-define('UPLOADS_URL', PROJECT_URL . '/data/'); // must be writable from web server, trailing slash required
+define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // must be writable from web server, trailing slash required
 
 // reserved urls
-$a_reserved_urls = array(PREF_RESERVED_URL_LOGIN, PREF_RESERVED_URL_TIMEZONE);
+$a_reserved_urls = array($tolc_conf['pref_reserved_url_login'], $tolc_conf['pref_reserved_url_timezone']);
 
 // CONSTANTS -------------------------------------------------------------------
 // lookups
@@ -34,8 +37,8 @@ define('CONST_PUBLISH_STATUS_DISCARDED_VALUE', gettext('discarded'));
 define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
 
 // paths (lib)
-define('LIB_URL', PROJECT_URL . '/lib');
-define('LIB_DIR', PROJECT_DIR . '/lib');
+define('LIB_URL', $tolc_conf['project_url'] . '/lib');
+define('LIB_DIR', $tolc_conf['project_dir'] . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
 define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.7.2/jquery-1.7.2.min.js');
