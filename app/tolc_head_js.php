@@ -30,7 +30,7 @@ if(!isset($_SESSION['username'])) {
 		if($www_pages_id == 0) {
 			?>
 		<script type="text/javascript"
-				src="<?php print $tolc_conf['project_url'] ?>/app/login_required_new_page.js?version=4"></script>
+				src="<?php print $tolc_conf['project_url'] ?>/app/login/login_required_new_page.js?version=4"></script>
 		<?php
 		}
 	}
