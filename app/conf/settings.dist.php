@@ -22,7 +22,8 @@ $tolc_conf['domains_db'] = array('www.domain.tld' => 'tolc','localhost' => 'tolc
 $tolc_conf['domains_tmpl'] = array('www.domain.tld' => 1,'localhost' => 1);
 
 /**
- * DATABASE CONNECTION STRING (http://phplens.com/lens/adodb/docs-adodb.htm#drivers)
+ * DATABASE CONNECTION STRING
+ * (http://phplens.com/lens/adodb/docs-adodb.htm#drivers)
  */
 $tolc_conf['dbdriver'] = 'mysqlt'; // mysql, mysqlt, postgres, firebird
 $tolc_conf['dbserver'] = 'SERVER-NAME-OR-IP-HERE';
@@ -43,31 +44,19 @@ $tolc_conf['pref_error_reporting'] = 'E_ALL ^ E_NOTICE';
 /* locale */
 $tolc_conf['pref_default_locale_code'] = 'en_GB';
 $tolc_conf['pref_default_locale_encoding'] = '.UTF-8';
-$tolc_conf['pref_default_locale'] = $tolc_conf['pref_default_locale_code'] . $tolc_conf['pref_default_locale_encoding'];
-
 
 /* reserved urls */
 $tolc_conf['pref_reserved_url_login'] = '/login';
 $tolc_conf['pref_reserved_url_timezone'] = '/timezone';
 
-/* tidy http://tidy.sourceforge.net/docs/quickref.html */
+/* tidy settings (http://tidy.sourceforge.net/docs/quickref.html) */
 $tolc_conf['pref_use_tidy'] = true;
 $tolc_conf['pref_tidy_config'] =  array('indent' => TRUE,'output-xhtml' => TRUE,'wrap' => 200);
 $tolc_conf['pref_tidy_encoding'] = 'UTF8';
 
-/* regional settings */
-$tolc_conf['pref_timezone'] = 'UTC'; // visitor default timezone
-
-$tolc_conf['pref_date_separator'] = '/';
-$tolc_conf['pref_date_format_datetime_full'] = 'd' . $tolc_conf['pref_date_separator'] . 'm' . $tolc_conf['pref_date_separator'] . 'Y' . ' ' . 'H:i:s';
-$tolc_conf['pref_date_format_datetime'] = 'd' . $tolc_conf['pref_date_separator'] . 'm' . $tolc_conf['pref_date_separator'] . 'Y' . ' ' . 'H:i';
-$tolc_conf['pref_date_format_date'] = 'd' . $tolc_conf['pref_date_separator'] . 'm' . $tolc_conf['pref_date_separator'] . 'Y';
-$tolc_conf['pref_date_format_timestamp_full'] = 'YmdHis';
-$tolc_conf['pref_date_format_timestamp'] = 'YmdHi';
-
-$tolc_conf['pref_decimal_mark'] = ',';
-$tolc_conf['pref_thousands_separator'] = '.';
-
-/* other */
-$tolc_conf['pref_autocomplete_rows'] = 10;
+/* visitor regional settings (default values) */
+$tolc_conf['pref_timezone'] = 'UTC';
+$tolc_conf['pref_date_format'] = 'dmY'; // http://php.net/manual/en/datetime.formats.date.php
+$tolc_conf['pref_decimal_mark'] = '.';
+$tolc_conf['pref_thousands_separator'] = ',';
 ?>

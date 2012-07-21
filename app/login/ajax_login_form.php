@@ -11,9 +11,7 @@ if (!$isAjax) {
 }
 
 require_once '../conf/settings.php';
-require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
-require_once $tolc_conf['project_dir'] . '/app/common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 

@@ -2,9 +2,7 @@
 session_start();
 session_regenerate_id(true);
 require_once 'conf/settings.php';
-require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
-require_once $tolc_conf['project_dir'] . '/app/common/gettext.php';
 require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
@@ -12,11 +10,6 @@ require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // allow inclusion of tolc_head_*.php tolc_panel.php tolc_functions.php
 $tolc_include = true;
-
-// set default visitor timezone
-if(!isset($_SESSION['timezone'])) {
-	$_SESSION['timezone'] = $tolc_conf['pref_timezone'];
-}
 
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
@@ -225,7 +218,7 @@ if($template_body) {
 }
 
 // beautify and print page html
-if($tolc_conf['pref_use_tidy']) {
+if($tolc_conf['pref_use_tidy'] && function_exists('tidy_parse_string')) {
 	$tidy = tidy_parse_string($html, $tolc_conf['pref_tidy_config'], $tolc_conf['pref_tidy_encoding']);
 	$tidy->cleanRepair();
 	echo $tidy;

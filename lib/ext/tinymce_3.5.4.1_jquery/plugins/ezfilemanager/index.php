@@ -7,7 +7,6 @@ if(!isset($_SESSION['username'])) {
     exit;
 }
 require_once '../../../../../app/conf/settings.php';
-require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 
 include("includes/config.inc.php");

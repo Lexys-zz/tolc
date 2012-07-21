@@ -18,7 +18,7 @@ function date_string_format($date_string, $format_string, $timezone_string) {
  * @param string $str_timezone
  * @return string
  */
-function now($format_string = CONST_PREF_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_DEFAULT_TIMEZONE) {
     return date_string_format('', $format_string, $str_timezone);
 }
 
@@ -29,7 +29,7 @@ function now($format_string = CONST_PREF_DATE_FORMAT_TIMESTAMP_FULL, $str_timezo
  * @param string $str_timezone
  * @return string
  */
-function date_decode($ts, $format = CONST_PREF_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
     $tz = new DateTimeZone($str_timezone);
     $date = new DateTime($ts);
     $date->setTimeZone($tz);
@@ -51,24 +51,5 @@ function tz_list() {
     }
     return $zones_array;
 }
-
-
-/**
- * http://stackoverflow.com/a/3615890
- * @param $value
- * @return mixed
- */
-function escapeJsonString($value) { # list from www.json.org: (\b backspace, \f formfeed)
-
-    if (function_exists('json_encode')) {
-        return json_encode($value);
-    } else {
-        $escapers = array("\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c");
-        $replacements = array("\\\\", "\\/", "\\\"", "\\n", "\\r", "\\t", "\\f", "\\b");
-        $result = '"' . str_replace($escapers, $replacements, $value) . '"';
-        return $result;
-    }
-}
-
 
 ?>

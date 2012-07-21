@@ -11,7 +11,6 @@ if (!$isAjax) {
 }
 
 require_once '../../conf/settings.php';
-require_once $tolc_conf['project_dir'] . '/app/common/error_handler.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 
 // check for logged in user
