@@ -27,7 +27,11 @@ if(!isset($_SESSION['username'])) {
 		}
 	} else {
 		if($www_pages_id == 0) {
-
+			?>
+		<link
+			href="<?php print $tolc_conf['project_url'] ?>/app/login/login_required_new_page.css?version=1"
+			rel="stylesheet" type="text/css"/>
+		<?php
 		}
 	}
 
