@@ -8,8 +8,8 @@ RewriteEngine On
 # OPTIONAL: a domain is used, e.g. http://www.domain.tld/request
 #RewriteBase /
 
-# OPTIONAL: server name or IP is used, e.g. http://servername/path/to/tolc/request
-#RewriteBase /dev/tolc
+# OPTIONAL: server name or IP is used, e.g. http://servername/url/to/tolc/request
+#RewriteBase /url/to/tolc
 
 # non existed URLs (files or directories): rewrite to 'app/index.php'
 # first line excludes common files. Could be written as RewriteCond %{REQUEST_URI} !\.(.*)$  [NC]
