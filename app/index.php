@@ -19,16 +19,16 @@ if(!isset($_SESSION['timezone'])) {
 }
 
 // connect to database
-$conn = get_db_conn($tolc_conf['dsn']);
+$conn = get_db_conn($tolc_conf['dbdriver']);
 
 // retrieve url
-$url = $tolc_conf['domain_used'] ? urldecode($_SERVER['REQUEST_URI']) : mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['project_url']));
+$url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['project_url']));
 
 // check for reserved url
 if(in_array($url, $a_reserved_urls)) {
 	$_SESSION['url_reserved'] = $url;
 	$url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
-	header('Location: ' . $tolc_conf['project_full_url'] . $url_to_go);
+	header('Location: ' . CONST_PROJECT_FULL_URL . $url_to_go);
 } else {
 	$url_sql = $conn->qstr($url);
 	$_SESSION['url'] = $url;
@@ -44,7 +44,7 @@ if($rs->RecordCount() == 0) {
 	// set page id
 	$www_pages_id = 0;
 	// set default template id
-	$www_templates_id = $tolc_conf['domains_tmpl'][$tolc_conf['host']];
+	$www_templates_id = $tolc_conf['domains_tmpl'][$_SERVER['SERVER_NAME']];
 	// set page title
 	$page_title = $admin_mode ? gettext('New page') : gettext('Page not found') . '...';
 } else {

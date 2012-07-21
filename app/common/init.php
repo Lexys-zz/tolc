@@ -1,9 +1,28 @@
 <?php
-// check valid origin
-if(!in_array($_SERVER['SERVER_NAME'], $tolc_conf['valid_origins'])) {
+/**
+ * check valid origin
+ */
+if(!in_array($_SERVER['SERVER_NAME'], $tolc_conf['pref_valid_origins'])) {
     print 'Access denied - Invalid origin';
     exit;
 }
+
+// constants based on settings
+define('CONST_BASE_URL', $tolc_conf['project_url'] . '/'); // used by tinymce
+
+$host = $_SERVER['SERVER_NAME'];
+$port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];
+$http_prot = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+define('CONST_PROJECT_HOST', $http_prot . '://' . $host . $port);
+define('CONST_PROJECT_FULL_URL', CONST_PROJECT_HOST . $tolc_conf['project_url']);
+
+
+/**
+ * error handling
+ */
+
+
+
 
 // set php default timezone (it is possible set to php.ini) --------------------
 define('CONST_DEFAULT_TIMEZONE', 'UTC');
@@ -12,7 +31,7 @@ date_default_timezone_set(CONST_DEFAULT_TIMEZONE);
 define('CONST_PREF_DATE_FORMAT_TIMESTAMP_FULL', $tolc_conf['pref_date_format_timestamp_full']);
 define('CONST_PREF_DATE_FORMAT_DATETIME', $tolc_conf['pref_date_format_datetime']);
 
-// uploads dir
+// uploads dir (used from ezfilemanager)
 define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // must be writable from web server, trailing slash required
 
 // reserved urls

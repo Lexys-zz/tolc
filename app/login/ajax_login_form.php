@@ -18,7 +18,7 @@ require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 
 // connect to database
-$conn = get_db_conn($tolc_conf['dsn']);
+$conn = get_db_conn($tolc_conf['dbdriver']);
 
 $sql = 'SELECT locale, lang_intl, lang_local FROM www_languages WHERE admin_interface=1 ORDER BY lang_intl';
 $rs = $conn->Execute($sql);

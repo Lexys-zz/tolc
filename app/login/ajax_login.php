@@ -23,7 +23,7 @@ $password = md5($_POST['password']);
 $language = $_POST['language'];
 
 // connect to database
-$conn = get_db_conn($tolc_conf['dsn']);
+$conn = get_db_conn($tolc_conf['dbdriver']);
 
 // check valid user
 $sql = 'SELECT * FROM www_users ' .
