@@ -14,7 +14,9 @@ $(function () {
                     $(this).dialog("close");
                 }
             }
-        ]
+        ],
+        open: function () {
+            $('.ui-dialog-buttonpane').find('button:contains("' + btn_ok + '")').focus();
+        }
     });
-
 });
