@@ -14,7 +14,9 @@ if(!isset($_SESSION['username'])) {
 		switch(mb_strtolower($_SESSION['url_reserved'])) {
 			case mb_strtolower($tolc_conf['pref_reserved_urls']['regional']):
 				?>
-
+				<link
+					href="<?php print $tolc_conf['project_url'] ?>/app/regional/regional.css?version=1"
+					rel="stylesheet" type="text/css"/>
 				<?php
 				break;
 			case mb_strtolower($tolc_conf['pref_reserved_urls']['login']):
@@ -46,7 +48,11 @@ if(!isset($_SESSION['username'])) {
 	if(isset($_SESSION['url_reserved'])) {
 		switch(mb_strtolower($_SESSION['url_reserved'])) {
 			case mb_strtolower($tolc_conf['pref_reserved_urls']['regional']):
-
+				?>
+				<link
+					href="<?php print $tolc_conf['project_url'] ?>/app/regional/regional.css?version=1"
+					rel="stylesheet" type="text/css"/>
+				<?php
 				break;
 			case mb_strtolower($tolc_conf['pref_reserved_urls']['login']):
 

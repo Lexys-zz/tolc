@@ -1,5 +1,5 @@
 <?php
-if (strlen(session_id()) < 1) {
+if(strlen(session_id()) < 1) {
 	session_start();
 	session_regenerate_id(true);
 }
@@ -8,8 +8,8 @@ if (strlen(session_id()) < 1) {
  * check valid origin
  */
 if(!in_array($_SERVER['SERVER_NAME'], $tolc_conf['pref_valid_origins'])) {
-    print 'Access denied - Invalid origin';
-    exit;
+	print 'Access denied - Invalid origin';
+	exit;
 }
 
 /**
@@ -17,7 +17,7 @@ if(!in_array($_SERVER['SERVER_NAME'], $tolc_conf['pref_valid_origins'])) {
  */
 if(function_exists('gettext')) {
 	define('CONST_DEFAULT_LOCALE', $tolc_conf['pref_default_locale_code'] . $tolc_conf['pref_default_locale_encoding']);
-	if (!isset($_SESSION['locale'])) {
+	if(!isset($_SESSION['locale'])) {
 		$_SESSION['locale'] = CONST_DEFAULT_LOCALE;
 	}
 
@@ -63,10 +63,24 @@ define('CONST_DATE_FORMAT_TIMESTAMP', 'YmdHi');
 define('CONST_DATE_FORMAT_DATETIME_FULL', $tolc_conf['pref_date_format'] . ' ' . 'H:i:s');
 define('CONST_DATE_FORMAT_DATETIME', $tolc_conf['pref_date_format'] . ' ' . 'H:i');
 
+$a_date_format = array(
+	'm/d/Y',
+	'm/d/y',
+	'd/m/Y',
+	'd/m/y',
+	'm-d-Y',
+	'm-d-y',
+	'd-m-Y',
+	'd-m-y',
+	'D, M j, Y',
+    'M j ' . "'" .'y'
+);
+
 /* set default visitor timezone */
 if(!isset($_SESSION['timezone'])) {
 	$_SESSION['timezone'] = $tolc_conf['pref_timezone'];
 }
+
 
 /**
  * uploads dir (used from ezfilemanager)
@@ -135,13 +149,15 @@ define('SIMPLE_HTML_DOM_PATH', LIB_DIR . LIB_EXT_DIR . '/simplehtmldom_1_5');
  */
 function error_handler($err_no, $err_str, $err_file, $err_line) {
 	// if error_reporting is set to 0, exit. This is also the case when using @
-	if (ini_get('error_reporting') == '0') return;
+	if(ini_get('error_reporting') == '0')
+		return;
 	// handle error
-	switch ($err_no) {
+	switch($err_no) {
 		case E_WARNING:
 			$msg = '[ErrNo=' . $err_no . ' (WARNING), File=' . $err_file . ', Line=' . $err_line . '] ' . $err_str;
 			log_error($msg, (!defined('INSTALLING'))); // e.g. warnings are hidden while installing
-			if (!defined('INSTALLING')) exit;
+			if(!defined('INSTALLING'))
+				exit;
 			break;
 		case E_USER_ERROR:
 			$msg = '[ErrNo=' . $err_no . ' (USER_ERROR), File=' . $err_file . ', Line=' . $err_line . '] ' . $err_str;
@@ -175,7 +191,7 @@ function error_handler($err_no, $err_str, $err_file, $err_line) {
 function log_error($msg, $show_onscreen = true) {
 	global $tolc_conf;
 	// put in screen
-	if ($show_onscreen)
+	if($show_onscreen)
 		print $msg;
 
 	// put in file

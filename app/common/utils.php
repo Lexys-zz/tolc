@@ -52,4 +52,21 @@ function tz_list() {
     return $zones_array;
 }
 
+/**
+ * @param $a_df
+ * @param $tz
+ * @return array
+ */
+function df_list($a_df, $tz = CONST_DEFAULT_TIMEZONE) {
+	$df_array = array();
+	$tz = new DateTimeZone($tz);
+	$date = new DateTime('');
+	$date->setTimeZone($tz);
+	foreach ($a_df as $df) {
+		$dt = $date->format($df);
+		$df_array[$df] = $dt;
+	}
+	return $df_array;
+}
+
 ?>
