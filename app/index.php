@@ -24,7 +24,7 @@ if($url == '/app/index.php' || $url == '/app/') {
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
 // check for reserved url (CASE INSENSITIVE)
-if(in_array(mb_strtolower($url), array_map('mb_strtolower', $a_reserved_urls))) {
+if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_reserved_urls']))) {
 	$_SESSION['url_reserved'] = $url;
 	$url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
 	header('Location: ' . CONST_PROJECT_FULL_URL . $url_to_go);

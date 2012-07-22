@@ -8,18 +8,24 @@
 /**
  * URI - PATH MAPPING
  */
-$tolc_conf['project_dir'] =  $_SERVER['DOCUMENT_ROOT'] . '/path/to/tolc';
-$tolc_conf['project_url'] =  '/relative_url/to/tolc';
+$tolc_conf['project_dir'] = $_SERVER['DOCUMENT_ROOT'] . '/path/to/tolc';
+$tolc_conf['project_url'] = '/relative_url/to/tolc';
 
 /**
  * DATABASE (or SCHEMA) PER DOMAIN (or SERVER NAME or IP)
  */
-$tolc_conf['domains_db'] = array('www.domain.tld' => 'tolc','localhost' => 'tolc');
+$tolc_conf['domains_db'] = array(
+	'www.domain.tld' => 'tolc',
+	'localhost' => 'tolc'
+);
 
 /**
  * DEFAULT TEMPLATE ID PER DOMAIN (or SERVER NAME or IP)
  */
-$tolc_conf['domains_tmpl'] = array('www.domain.tld' => 1,'localhost' => 1);
+$tolc_conf['domains_tmpl'] = array(
+	'www.domain.tld' => 1,
+	'localhost' => 1
+);
 
 /**
  * DATABASE CONNECTION STRING
@@ -36,7 +42,9 @@ $tolc_conf['dsn_custom'] = ''; // sqlite, oci8 (oracle), access, ado_mssql
  * GLOBAL PREFERENCES
  */
 /* valid origins */
-$tolc_conf['pref_valid_origins'] = array('www.domain.tld','localhost');
+$tolc_conf['pref_valid_origins'] = array(
+	'www.domain.tld',
+	'localhost');
 
 /* error reporting (http://php.net/manual/en/function.error-reporting.php) */
 $tolc_conf['pref_error_reporting'] = 'E_ALL ^ E_NOTICE';
@@ -46,12 +54,17 @@ $tolc_conf['pref_default_locale_code'] = 'en_GB';
 $tolc_conf['pref_default_locale_encoding'] = '.UTF-8';
 
 /* reserved urls */
-$tolc_conf['pref_reserved_url_login'] = '/login';
-$tolc_conf['pref_reserved_url_timezone'] = '/timezone';
+$tolc_conf['pref_reserved_urls'] = array(
+	'login' => '/login',
+	'regional' => '/regional'
+);
 
 /* tidy settings (http://tidy.sourceforge.net/docs/quickref.html) */
 $tolc_conf['pref_use_tidy'] = true;
-$tolc_conf['pref_tidy_config'] =  array('indent' => TRUE,'output-xhtml' => TRUE,'wrap' => 200);
+$tolc_conf['pref_tidy_config'] = array(
+	'indent' => TRUE,
+	'output-xhtml' => TRUE,
+	'wrap' => 200);
 $tolc_conf['pref_tidy_encoding'] = 'UTF8';
 
 /* visitor regional settings (default values) */

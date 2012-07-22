@@ -75,11 +75,6 @@ if(!isset($_SESSION['timezone'])) {
 define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/');
 
 /**
- * reserved urls
- */
-$a_reserved_urls =  array($tolc_conf['pref_reserved_url_login'], $tolc_conf['pref_reserved_url_timezone']);
-
-/**
  * lookups
  */
 define('CONST_USER_STATUS_PENDING_KEY', 1);
