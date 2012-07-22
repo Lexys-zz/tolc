@@ -11,13 +11,13 @@ if(!$tolc_include) {
 if(!isset($_SESSION['username'])) {
 
 	if(isset($_SESSION['url_reserved'])) {
-		switch($_SESSION['url_reserved']) {
-			case $tolc_conf['pref_reserved_url_timezone']:
+		switch(mb_strtolower($_SESSION['url_reserved'])) {
+			case mb_strtolower($tolc_conf['pref_reserved_url_timezone']):
 				?>
 
 				<?php
 				break;
-			case $tolc_conf['pref_reserved_url_login']:
+			case mb_strtolower($tolc_conf['pref_reserved_url_login']):
 				?>
 				<link
 					href="<?php print $tolc_conf['project_url'] ?>/app/login/login.css?version=6"
@@ -44,11 +44,11 @@ if(!isset($_SESSION['username'])) {
 	  type="text/css"/>
 <?php
 	if(isset($_SESSION['url_reserved'])) {
-		switch($_SESSION['url_reserved']) {
-			case $tolc_conf['pref_reserved_url_timezone']:
+		switch(mb_strtolower($_SESSION['url_reserved'])) {
+			case mb_strtolower($tolc_conf['pref_reserved_url_timezone']):
 
 				break;
-			case $tolc_conf['pref_reserved_url_login']:
+			case mb_strtolower($tolc_conf['pref_reserved_url_login']):
 
 				break;
 		}

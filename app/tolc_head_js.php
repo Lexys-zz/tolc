@@ -13,13 +13,13 @@ if(!$tolc_include) {
 if(!isset($_SESSION['username'])) {
 
 	if(isset($_SESSION['url_reserved'])) {
-		switch($_SESSION['url_reserved']) {
-			case $tolc_conf['pref_reserved_url_timezone']:
+		switch(mb_strtolower($_SESSION['url_reserved'])) {
+			case mb_strtolower($tolc_conf['pref_reserved_url_timezone']):
 				?>
 
 				<?php
 				break;
-			case $tolc_conf['pref_reserved_url_login']:
+			case mb_strtolower($tolc_conf['pref_reserved_url_login']):
 				?>
 				<script type="text/javascript"
 						src="<?php print $tolc_conf['project_url'] ?>/app/login/login.js?version=4"></script>
@@ -49,11 +49,11 @@ if(!isset($_SESSION['username'])) {
 		src="<?php print $tolc_conf['project_url'] ?>/app/admin/admin.js?version=1"></script>
 <?php
 	if(isset($_SESSION['url_reserved'])) {
-		switch($_SESSION['url_reserved']) {
-			case $tolc_conf['pref_reserved_url_timezone']:
+		switch(mb_strtolower($_SESSION['url_reserved'])) {
+			case mb_strtolower($tolc_conf['pref_reserved_url_timezone']):
 
 				break;
-			case $tolc_conf['pref_reserved_url_login']:
+			case mb_strtolower($tolc_conf['pref_reserved_url_login']):
 				?>
 				<script type="text/javascript"
 						src="<?php print $tolc_conf['project_url'] ?>/app/admin/already_logged_in.js?version=4"></script>
