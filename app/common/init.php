@@ -81,6 +81,10 @@ if(!isset($_SESSION['timezone'])) {
 	$_SESSION['timezone'] = $tolc_conf['pref_timezone'];
 }
 
+/* set default visitor dateformat */
+if(!isset($_SESSION['dateformat'])) {
+	$_SESSION['dateformat'] = $tolc_conf['pref_date_format'];
+}
 
 /**
  * uploads dir (used from ezfilemanager)
