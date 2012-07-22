@@ -36,7 +36,7 @@ $tolc_conf['dsn_custom'] = ''; // sqlite, oci8 (oracle), access, ado_mssql
  * GLOBAL PREFERENCES
  */
 /* valid origins */
-$tolc_conf['valid_origins'] = array('www.domain.tld','localhost');
+$tolc_conf['pref_valid_origins'] = array('www.domain.tld','localhost');
 
 /* error reporting (http://php.net/manual/en/function.error-reporting.php) */
 $tolc_conf['pref_error_reporting'] = 'E_ALL ^ E_NOTICE';
@@ -56,7 +56,7 @@ $tolc_conf['pref_tidy_encoding'] = 'UTF8';
 
 /* visitor regional settings (default values) */
 $tolc_conf['pref_timezone'] = 'UTC';
-$tolc_conf['pref_date_format'] = 'dmY'; // http://php.net/manual/en/datetime.formats.date.php
+$tolc_conf['pref_date_format'] = 'm/d/Y'; // http://php.net/manual/en/datetime.formats.date.php
 $tolc_conf['pref_decimal_mark'] = '.';
 $tolc_conf['pref_thousands_separator'] = ',';
 ?>
