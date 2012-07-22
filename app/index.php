@@ -29,12 +29,12 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $a_reserved_urls))) 
 	$url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
 	header('Location: ' . CONST_PROJECT_FULL_URL . $url_to_go);
 } else {
-	$url_sql = $conn->qstr($url);
+	$url_sql = $conn->qstr(mb_strtolower($url));
 	$_SESSION['url'] = $url;
 }
 
-// get template id and page title
-$sql = 'SELECT id, title, www_templates_id FROM www_pages WHERE url=' . $url_sql;
+// get template id and page title (CASE INSENSITIVE URL search)
+$sql = 'SELECT id, title, www_templates_id FROM www_pages WHERE LOWER(url)=' . $url_sql;
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
