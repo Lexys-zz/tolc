@@ -1,6 +1,10 @@
 <?php
 session_start();
 session_regenerate_id(true);
+
+// allow inclusion of tolc_head_*.php tolc_panel.php tolc_functions.php
+$tolc_include = true;
+
 require_once 'conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once ADODB_PATH . '/adodb.inc.php';
@@ -8,14 +12,16 @@ require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
-// allow inclusion of tolc_head_*.php tolc_panel.php tolc_functions.php
-$tolc_include = true;
+// retrieve url
+$url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['project_url']));
+
+// check for direct access of '/app/index.php'
+if($url == '/app/index.php' || $url == '/app/') {
+	header('Location: ' . CONST_PROJECT_FULL_URL);
+}
 
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
-
-// retrieve url
-$url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['project_url']));
 
 // check for reserved url
 if(in_array($url, $a_reserved_urls)) {
