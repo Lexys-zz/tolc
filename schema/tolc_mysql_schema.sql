@@ -144,7 +144,6 @@ CREATE TABLE `www_users` (
   `date_registered` varchar(14) NOT NULL,
   `lk_user_status_id` int(11) NOT NULL,
   `is_admin` tinyint(4) NOT NULL,
-  `timezone` varchar(254) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `www_users_ix1` (`username`),
   KEY `www_users_ix2` (`fullname`),
@@ -162,4 +161,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-13 20:01:24
+-- Dump completed on 2012-07-22 21:18:58
