@@ -37,6 +37,31 @@ function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = 
 }
 
 /**
+ * @param $co
+ * @param $naCo
+ * @param $wCzym
+ * @return string
+ * Multi-byte CASE INSENSITIVE str_replace
+ * http://www.php.net/manual/en/function.mb-ereg-replace.php#55659
+ */
+function mb_str_ireplace($co, $naCo, $wCzym)
+{
+	$wCzymM = mb_strtolower($wCzym);
+	$coM    = mb_strtolower($co);
+	$offset = 0;
+
+	while(!is_bool($poz = mb_strpos($wCzymM, $coM, $offset)))
+	{
+		$offset = $poz + mb_strlen($naCo);
+		$wCzym = mb_substr($wCzym, 0, $poz). $naCo .mb_substr($wCzym, $poz+mb_strlen($co));
+		$wCzymM = mb_strtolower($wCzym);
+	}
+
+	return $wCzym;
+}
+
+
+/**
  * Timezones list with GMT offset
  * http://stackoverflow.com/a/9328760
  * @return array
