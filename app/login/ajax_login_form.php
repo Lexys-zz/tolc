@@ -1,6 +1,6 @@
 <?php
-//session_start();
-//session_regenerate_id(true);
+session_start();
+session_regenerate_id(true);
 
 // prevent direct access
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
@@ -31,6 +31,9 @@ if ($rs)
 //database disconnect
 if ($conn)
     $conn->Close();
+
+$a_tmp = explode('.', $_SESSION['locale']);
+$current_locale_code = $a_tmp[0];
 ?>
 
 <div id="user_message">
@@ -53,7 +56,7 @@ if ($conn)
            class="required"><?php print gettext('Language') ?></label>
     <select id="language">
         <?php foreach ($a_lang as $lang) { ?>
-        <option
+        <option <?php print $lang['locale'] == $current_locale_code ? ' selected' : '' ?>
             value="<?php print $lang['locale'] ?>"><?php print $lang['lang_intl'] . ' - ' . $lang['lang_local'] . ' - ' . $lang['locale'] ?></option>
         <?php } ?>
     </select>
