@@ -10,6 +10,12 @@ if (!$isAjax) {
     exit;
 }
 
+// check for logged in user
+if(!isset($_SESSION['username'])) {
+	print gettext('Access denied') . '...';
+	exit;
+}
+
 require_once '../../conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once ADODB_PATH . '/adodb.inc.php';
@@ -62,7 +68,9 @@ if ($conn)
 </div>
 
 <div id="row_parent_id" class="field_container">
-	<label id="lbl_parent_id" for="parent_id"
+	<label id="lbl_parent_title" for="parent_title"
 		   class="required"><?php print gettext('Belongs to') ?></label>
-	<input id="parent_id" type="text">
+	<input id="parent_title" type="text">
+	<br><br><br>
+	<input id="parent_id" type="hidden">
 </div>

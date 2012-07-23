@@ -45,7 +45,7 @@
     margin: auto;
 }
 
-#page_url, #page_title, #www_templates_id {
+#page_url, #page_title, #www_templates_id, #parent_title {
     width: 60%;
 }
 

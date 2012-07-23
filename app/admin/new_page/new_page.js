@@ -8,11 +8,33 @@ $(function () {
         show: "blind",
         hide: "explode",
         width: 700,
-        height: 600,
+        height: 400,
         resizable: true,
         open: function () {
             $(this).load(project_url + '/app/admin/new_page/ajax_new_page_form.php', {}, function () {
                 $("#page_url").focus();
+                $("#parent_title").autocomplete({
+                    source: project_url + '/app/admin/new_page/ajax_autocomplete_parent_title.php',
+                    minLength: 2,
+                    html: true,
+                    select: function (event, ui) {
+                        $("#parent_id").val(ui.item.id);
+                    },
+                    // mustMatch implementation
+                    change: function (event, ui) {
+                        if (ui.item == null) {
+                            $(this).val('');
+                            $('#parent_id').val('');
+                        }
+                    }
+                });
+
+                // mustMatch (no value) implementation
+                $("#parent_title").focusout(function() {
+                    if ($("#parent_title").val() == '') {
+                        $('#parent_id').val('');
+                    }
+                });
             });
             $('.ui-dialog-buttonpane').find('button:contains("' + btn_do_new_page_value + '")').button({
                 icons: {
@@ -71,6 +93,8 @@ $(function () {
             }
         ]
     });
+
+
 
     $('#new_page_form').keypress(function (e) {
         if (e.keyCode == $.ui.keyCode.ENTER) {
