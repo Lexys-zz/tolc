@@ -13,14 +13,28 @@ if(!in_array($_SERVER['SERVER_NAME'], $tolc_conf['pref_valid_origins'])) {
 }
 
 /**
+ * error handling
+ */
+error_reporting($tolc_conf['pref_error_reporting']);
+set_error_handler('error_handler');
+
+/**
+ * constants based on settings
+ */
+$host = $_SERVER['SERVER_NAME'];
+$port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];
+$http_prot = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+define('CONST_PROJECT_HOST', $http_prot . '://' . $host . $port);
+define('CONST_PROJECT_FULL_URL', CONST_PROJECT_HOST . $tolc_conf['project_url']);
+
+/**
  * localization (gettext)
  */
+/* initialize $_SESSION['locale'] */
+if(!isset($_SESSION['locale'])) {
+	$_SESSION['locale'] = $tolc_conf['pref_default_locale_code'] . $tolc_conf['pref_default_locale_encoding'];
+}
 if(function_exists('gettext')) {
-	define('CONST_DEFAULT_LOCALE', $tolc_conf['pref_default_locale_code'] . $tolc_conf['pref_default_locale_encoding']);
-	if(!isset($_SESSION['locale'])) {
-		$_SESSION['locale'] = CONST_DEFAULT_LOCALE;
-	}
-
 	$locale = $_SESSION['locale'];
 	putenv("LC_ALL=$locale");
 	setlocale(LC_ALL, $locale);
@@ -29,24 +43,6 @@ if(function_exists('gettext')) {
 } else {
 	require_once $tolc_conf['project_dir'] . '/app/common/gettext_missing.php';
 }
-
-/**
- * constants based on settings
- */
-define('CONST_BASE_URL', $tolc_conf['project_url'] . '/'); // used by tinymce
-
-$host = $_SERVER['SERVER_NAME'];
-$port = $_SERVER['SERVER_PORT'] == '80' ? '' : ':' . $_SERVER['SERVER_PORT'];
-$http_prot = empty($_SERVER['HTTPS']) ? 'http' : 'https';
-define('CONST_PROJECT_HOST', $http_prot . '://' . $host . $port);
-define('CONST_PROJECT_FULL_URL', CONST_PROJECT_HOST . $tolc_conf['project_url']);
-
-/**
- * error handling
- */
-error_reporting($tolc_conf['pref_error_reporting']);
-set_error_handler('error_handler');
-
 
 /**
  * DATES HANDLING
@@ -76,21 +72,23 @@ $a_date_format = array(
     'M j ' . "'" .'y'
 );
 
-/* set default visitor timezone */
-if(!isset($_SESSION['timezone'])) {
-	$_SESSION['timezone'] = $tolc_conf['pref_timezone'];
-}
-
-/* set default visitor dateformat */
+/* initialize $_SESSION['dateformat'] (default visitor dateformat) */
 if(!isset($_SESSION['dateformat'])) {
 	$_SESSION['dateformat'] = $tolc_conf['pref_date_format'];
 }
 
+/* initialize $_SESSION['timezone'] (default visitor timezone) */
+if(!isset($_SESSION['timezone'])) {
+	$_SESSION['timezone'] = $tolc_conf['pref_timezone'];
+}
+
 /**
- * uploads dir (used from ezfilemanager)
- * must be writable from web server, trailing slash required
+ * constants TINYMCE
+ * UPLOADS_URL must be writable from web server, trailing slash required
  */
-define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/');
+define('CONST_BASE_URL', $tolc_conf['project_url'] . '/'); // used by tinymce
+define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // used from ezfilemanager
+
 
 /**
  * lookups
