@@ -66,7 +66,10 @@ if(!isset($_SESSION['username'])) {
 		}
 	} else {
 		if($www_pages_id == 0) {
-
+			?>
+		<script type="text/javascript"
+				src="<?php print $tolc_conf['project_url'] ?>/app/admin/new_page/new_page.js?version=1"></script>
+		<?php
 		}
 	}
 	?>
