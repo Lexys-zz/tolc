@@ -64,6 +64,10 @@ $(function () {
                             $("#www_templates_id").focus();
                             update_user_message($("#msg_template_required").val());
                             break;
+                        case 4:
+                            $("#parent_title").focus();
+                            update_user_message($("#msg_parent_required").val());
+                            break;
                         default:
                             $.ajax({
                                 type: 'POST',
@@ -114,6 +118,9 @@ function validate_new_page_form() {
     }
     if ($("#www_templates_id").val() == 0) {
         return 3;
+    }
+    if ($("#parent_id").val() == '') {
+        return 4;
     }
     return 0;
 }
