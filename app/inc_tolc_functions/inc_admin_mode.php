@@ -12,5 +12,4 @@
 <input type="hidden" id="btn_ok" value="<?php print gettext('Ok') ?>">
 
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
-	About...
 </div>

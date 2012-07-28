@@ -40,3 +40,16 @@
     cursor: crosshair !important;
     opacity: 0.5 !important;
 }
+
+#tolc_copyright {
+    margin-top: 20px;
+}
+
+#tolc_license {
+    font-size: 12px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    text-align: left;
+}
