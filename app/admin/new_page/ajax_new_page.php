@@ -40,6 +40,30 @@ if($rs === false) {
 	$www_users_id = $rs->fields['id'];
 }
 
+// check for unique URL
+$sql = 'SELECT id from www_pages WHERE LOWER(url)=' . $conn->qstr(mb_strtolower($page_url));
+$rs = $conn->Execute($sql);
+if($rs === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+} else {
+	if($rs->RecordCount() !=0) {
+		print gettext('URL already exists' . '...');
+		exit;
+	}
+}
+
+// check for unique page title
+$sql = 'SELECT id from www_pages WHERE LOWER(title)=' . $conn->qstr(mb_strtolower($page_title));
+$rs = $conn->Execute($sql);
+if($rs === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+} else {
+	if($rs->RecordCount() !=0) {
+		print gettext('Page title already exists' . '...');
+		exit;
+	}
+}
+
 // insert new page
 $sql = 'INSERT INTO www_pages ' .
 	'(url,title,www_templates_id,www_users_id,date_created,parent_id) ' .
