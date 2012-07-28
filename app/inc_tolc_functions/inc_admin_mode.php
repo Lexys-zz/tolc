@@ -9,3 +9,8 @@
 <input type="hidden" id="base_url" value="<?php print CONST_BASE_URL ?>">
 <input type="hidden" id="active_elements"
 	   value="<?php print $active_elements ?>">
+<input type="hidden" id="btn_ok" value="<?php print gettext('Ok') ?>">
+
+<div id="about_tolc_form" title="<?php print gettext('About')?>">
+	About...
+</div>

@@ -3,6 +3,7 @@ $(function () {
     var project_url = $("#project_url").val();
     var ezfilemanager_url = $("#ezfilemanager_url").val();
     var active_elements = $("#active_elements").val();
+    var btn_ok_value = $("#btn_ok").val();
 
     $("#tolc_btn_slide").click(function () {
         $("#tolc_panel").slideToggle("slow");
@@ -50,6 +51,38 @@ $(function () {
             primary: 'ui-icon-home'
         }
     });
+
+
+    $("#about_tolc_form").dialog({
+        autoOpen: false,
+        show: "blind",
+        hide: "explode",
+        width: 700,
+        height: 400,
+        resizable: true,
+        open: function () {
+            $(this).load(project_url + '/app/admin/about/ajax_about_form.php');
+            $('.ui-dialog-buttonpane').find('button:contains("' + btn_ok_value + '")').button({
+                icons: {
+                    primary: 'ui-icon-check'
+                }
+            });
+        },
+        buttons: [
+            {
+                text: btn_ok_value,
+                click: function () {
+                    $(this).dialog("close");
+                }
+            }
+        ]
+    });
+
+    $("#tp_about").click(function () {
+        $( "#about_tolc_form" ).dialog( "open" );
+        return false;
+    });
+
 
     $("#tp_filemanager").click(function () {
         var url = ezfilemanager_url;
