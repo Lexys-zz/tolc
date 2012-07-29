@@ -24,7 +24,7 @@ $version = file_get_contents($tolc_conf['project_dir'] . '/VERSION');
 ?>
 
 <div id="tolc_logo">
-	<img src="<?php print $tolc_conf['project_url']  ?>/app/admin/about/tolc_logo.png" alt="Tolc - the simple CMS" title="Tolc - the simple CMS">
+	<img src="<?php print $tolc_conf['project_url']  ?>/app/images/tolc_logo.png" alt="Tolc - the simple CMS" title="Tolc - the simple CMS">
 </div>
 
 <div id="tolc_moto">
