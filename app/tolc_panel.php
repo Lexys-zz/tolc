@@ -17,7 +17,6 @@ if(!$tolc_include) {
 	$is_admin = $rs->fields['is_admin'] == 1 ? true : false;
 	?>
 <div id="tolc_panel">
-	<a id="login_user"><?php print $_SESSION['username']?></a>
 	<a id="tp_edit_page" class="tolc_panel_btn"
 	   href="javascript:void(0);"><?php print gettext('Page properties') ?></a>
 	<a id="tp_sitemap" class="tolc_panel_btn"
@@ -33,11 +32,13 @@ if(!$tolc_include) {
 	   href="javascript:void(0);"><?php print gettext('Users') ?></a>
 	<?php } ?>
 	|
-	<a id="tp_logout" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Logout') ?></a>
-	|
 	<a id="tp_about" class="tolc_panel_btn"
 	   href="javascript:void(0);"><?php print gettext('About Tolc') ?></a>
+	|
+	<a id="tp_logout" class="tolc_panel_btn"
+	   href="javascript:void(0);"><?php print gettext('Logout') ?></a>
+	<a id="login_user" href="javascript:void(0);"
+	   title="<?php print gettext('Change user profile')?>"><?php print $_SESSION['username']?></a>
 </div>
 
 <div id="tolc_slide">

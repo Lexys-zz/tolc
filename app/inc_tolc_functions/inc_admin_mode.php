@@ -10,6 +10,14 @@
 <input type="hidden" id="active_elements"
 	   value="<?php print $active_elements ?>">
 <input type="hidden" id="btn_ok" value="<?php print gettext('Ok') ?>">
+<input type="hidden" id="btn_save" value="<?php print gettext('Save') ?>">
+<input type="hidden" id="btn_cancel" value="<?php print gettext('Cancel') ?>">
+
+<input type="hidden" id="rsc_password_mask" value="<?php print gettext('Mask') ?>">
+<input type="hidden" id="rsc_password_unmask" value="<?php print gettext('Unmask') ?>">
 
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
+</div>
+
+<div id="user_form" title="<?php print gettext('User profile')?>">
 </div>
