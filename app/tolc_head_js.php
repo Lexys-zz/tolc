@@ -46,6 +46,7 @@ if(!isset($_SESSION['username'])) {
 <script type="text/javascript" src="<?php print JSTREE_URL ?>"></script>
 <script type="text/javascript" src="<?php print QTIP2_URL ?>"></script>
 <script type="text/javascript" src="<?php print PWDMETER_URL ?>"></script>
+<script type="text/javascript" src="<?php print PASSWORDSTRENGTH_URL ?>"></script>
 
 <script type="text/javascript"
 		src="<?php print $tolc_conf['project_url'] ?>/app/admin/admin.js?version=1"></script>
