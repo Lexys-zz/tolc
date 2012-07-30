@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-23 13:01+0200\n"
-"PO-Revision-Date: 2012-07-23 13:01+0200\n"
+"POT-Creation-Date: 2012-07-30 19:13+0200\n"
+"PO-Revision-Date: 2012-07-30 19:19+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -18,8 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: index.php:48
-#: inc_tolc_functions/inc_new_page.php:3
-#: inc_tolc_functions/inc_new_page.php:4
+#: inc_tolc_functions/inc_new_page.php:9
 msgid "New page"
 msgstr "Νέα σελίδα"
 
@@ -29,56 +28,170 @@ msgstr "Νέα σελίδα"
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
-#: tolc_panel.php:22
+#: tolc_panel.php:21
 msgid "Page properties"
 msgstr "Διόρθωση"
 
-#: tolc_panel.php:24
+#: tolc_panel.php:23
 msgid "Sitemap"
 msgstr "Χάρτης"
 
-#: tolc_panel.php:26
+#: tolc_panel.php:25
 msgid "Templates"
 msgstr "Πρότυπα"
 
-#: tolc_panel.php:28
+#: tolc_panel.php:27
 msgid "Files"
 msgstr "Αρχεία"
 
-#: tolc_panel.php:33
+#: tolc_panel.php:32
 msgid "Users"
 msgstr "Χρήστες"
 
-#: tolc_panel.php:37
-msgid "Logout"
-msgstr "Αποσύνδεση"
-
-#: tolc_panel.php:40
+#: tolc_panel.php:36
 msgid "About Tolc"
 msgstr "Σχετικά με Tolc"
 
-#: tolc_panel.php:46
+#: tolc_panel.php:39
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: tolc_panel.php:41
+msgid "Change user profile"
+msgstr "Αλλαγή στοιχείων χρήστη"
+
 #: tolc_panel.php:47
+#: tolc_panel.php:48
 msgid "Show/Hide Admin Panel"
 msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
 
 #: admin/logout/ajax_logout.php:18
+#: admin/about/ajax_about_form.php:15
+#: admin/new_page/ajax_autocomplete_parent_title.php:15
+#: admin/new_page/ajax_new_page.php:15
+#: admin/new_page/ajax_new_page_form.php:15
 #: admin/rte/rte.php:13
 msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
+
+#: admin/new_page/ajax_new_page.php:50
+msgid "URL already exists"
+msgstr "Το URL υπάρχει ήδη"
+
+#: admin/new_page/ajax_new_page.php:62
+msgid "Page title already exists"
+msgstr "Ο τίτλος σελίδας υπάρχει ήδη"
+
+#: admin/new_page/ajax_new_page_form.php:48
+msgid "New page URL"
+msgstr "URL νέας σελίδας"
+
+#: admin/new_page/ajax_new_page_form.php:54
+msgid "Page title"
+msgstr "Τίτλος σελίδας"
+
+#: admin/new_page/ajax_new_page_form.php:60
+msgid "Template"
+msgstr "Πρότυπο"
+
+#: admin/new_page/ajax_new_page_form.php:62
+msgid "Please, select"
+msgstr "Παρακαλώ, επιλέξτε"
+
+#: admin/new_page/ajax_new_page_form.php:72
+msgid "Belongs to"
+msgstr "Ανήκει σε"
+
+#: admin/user/ajax_user_form.php:44
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: admin/user/ajax_user_form.php:53
+msgid "Old password"
+msgstr "Παλιός κωδικός"
+
+#: admin/user/ajax_user_form.php:59
+msgid "New password"
+msgstr "Νέος κωδικός"
+
+#: admin/user/ajax_user_form.php:62
+msgid "Generate"
+msgstr "Δημιουργία"
+
+#: admin/user/ajax_user_form.php:66
+#: inc_tolc_functions/inc_admin_mode.php:17
+msgid "Unmask"
+msgstr "Εμφάνιση"
+
+#: admin/user/ajax_user_form.php:76
+msgid "Repeat"
+msgstr "Επανάληψη"
+
+#: admin/user/ajax_user_form.php:83
+msgid "Full name"
+msgstr "Πλήρες όνομα"
+
+#: admin/user/ajax_user_form.php:90
+msgid "Email"
+msgstr "Email"
+
+#: admin/user/ajax_user_form.php:97
+msgid "URL"
+msgstr "URL"
 
 #: admin/rte/rte.php:30
 msgid "Edit"
 msgstr "Διόρθωση"
 
+#: inc_tolc_functions/inc_admin_mode.php:12
 #: inc_tolc_functions/inc_login_required_new_page.php:2
-#: inc_tolc_functions/inc_already_logged_in.php:2
 msgid "Ok"
 msgstr "Εντάξει"
+
+#: inc_tolc_functions/inc_admin_mode.php:13
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: inc_tolc_functions/inc_admin_mode.php:14
+#: inc_tolc_functions/inc_new_page.php:3
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: inc_tolc_functions/inc_admin_mode.php:16
+msgid "Mask"
+msgstr "Απόκρυψη"
+
+#: inc_tolc_functions/inc_admin_mode.php:21
+msgid "About"
+msgstr "Σχετικά με Tolc"
+
+#: inc_tolc_functions/inc_admin_mode.php:24
+msgid "User profile"
+msgstr "Στοιχεία χρήστη"
 
 #: inc_tolc_functions/inc_login_required_new_page.php:6
 msgid "Login required to create this page"
 msgstr "Χρειάζεται σύνδεση για να δημιουργηθεί η νέα σελίδα"
+
+#: inc_tolc_functions/inc_new_page.php:2
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: inc_tolc_functions/inc_new_page.php:4
+msgid "Page URL is required"
+msgstr "Το URL της σελίδας είναι απαραίτητο"
+
+#: inc_tolc_functions/inc_new_page.php:5
+msgid "Page title is required"
+msgstr "Ο τίτλος της σελίδας είναι απαραίτητος"
+
+#: inc_tolc_functions/inc_new_page.php:6
+msgid "Page template is required"
+msgstr "Το πρότυπο της σελίδας είναι απαραίτητο"
+
+#: inc_tolc_functions/inc_new_page.php:7
+msgid "Please, select the title of the parent page"
+msgstr "Παρακαλώ, επιλέξτε τον τίτλο της σελίδας που ανήκει"
 
 #: inc_tolc_functions/inc_regional.php:2
 msgid "Regional settings"
@@ -87,11 +200,6 @@ msgstr "Τοπικές ρυθμίσεις"
 #: inc_tolc_functions/inc_regional.php:5
 msgid "Apply"
 msgstr "Εφαρμογή"
-
-#: inc_tolc_functions/inc_regional.php:7
-#: inc_tolc_functions/inc_login.php:7
-msgid "Cancel"
-msgstr "Ακύρωση"
 
 #: inc_tolc_functions/inc_login.php:2
 #: inc_tolc_functions/inc_login.php:5
@@ -139,15 +247,11 @@ msgstr "απορρίφθηκε"
 msgid "removed"
 msgstr "απομακρύνθηκε"
 
-#: login/ajax_login_form.php:41
-msgid "Username"
-msgstr "Όνομα χρήστη"
-
-#: login/ajax_login_form.php:47
+#: login/ajax_login_form.php:50
 msgid "Password"
 msgstr "Κωδικός"
 
-#: login/ajax_login_form.php:53
+#: login/ajax_login_form.php:56
 msgid "Language"
 msgstr "Γλώσσα"
 
