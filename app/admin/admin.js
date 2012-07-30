@@ -8,8 +8,8 @@ $(function () {
     var btn_cancel_value = $("#btn_cancel").val();
     var rsc_password_minchars = $("#rsc_password_minchars").val();
     var rsc_password_charset = $("#rsc_password_charset").val();
-    var rsc_password_masc = $("#rsc_password_masc").val();
-    var rsc_password_unmasc = $("#rsc_password_unmasc").val();
+    var rsc_password_mask = $("#rsc_password_mask").val();
+    var rsc_password_unmask = $("#rsc_password_unmask").val();
 
     /* slide ---------------------------------------------------------------- */
     $("#tolc_btn_slide").click(function () {
@@ -85,11 +85,11 @@ $(function () {
 
                 $("#mask_password_toggle").toggle(
                     function () {
-                        $(this).text(rsc_password_masc);
+                        $(this).text(rsc_password_mask);
                         $('#old_password, #new_password, #repeat_new_password').prop('type', 'text');
                     },
                     function () {
-                        $(this).text(rsc_password_unmasc);
+                        $(this).text(rsc_password_unmask);
                         $('#old_password, #new_password, #repeat_new_password').prop('type', 'password');
                     }
                 );

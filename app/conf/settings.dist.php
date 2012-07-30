@@ -74,7 +74,7 @@ $tolc_conf['pref_decimal_mark'] = '.';
 $tolc_conf['pref_thousands_separator'] = ',';
 
 /* user profile */
-$tolc_conf['pref_passwd_minchars'] = 6;
-$tolc_conf['pref_passwd_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#_+^";
+$tolc_conf['pref_password_minchars'] = 6;
+$tolc_conf['pref_password_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#_+^~";
 $tolc_conf['pref_username_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.";
 ?>
