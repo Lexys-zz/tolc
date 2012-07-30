@@ -45,7 +45,6 @@ if(!isset($_SESSION['username'])) {
 		src="<?php print JQUERY_UI_LAYOUT_URL ?>"></script>
 <script type="text/javascript" src="<?php print JSTREE_URL ?>"></script>
 <script type="text/javascript" src="<?php print QTIP2_URL ?>"></script>
-<script type="text/javascript" src="<?php print PWDMETER_URL ?>"></script>
 <script type="text/javascript" src="<?php print PASSWORDSTRENGTH_URL ?>"></script>
 
 <script type="text/javascript"

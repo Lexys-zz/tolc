@@ -128,8 +128,6 @@ define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-t
 define('JSTREE_URL', LIB_URL . LIB_EXT_DIR . '/jstree.v.pre1.0_fix1/jquery.jstree.js');
 define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd2893a36b401342396829/jquery.qtip.min.js');
 define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd2893a36b401342396829/jquery.qtip.css');
-define('PWDMETER_URL', LIB_URL . LIB_EXT_DIR . '/pwdMeter_1.0.1/jquery.pwdMeter.js');
-define('PWDMETER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/pwdMeter_1.0.1/style.css');
 define('PASSWORDSTRENGTH_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.js');
 define('PASSWORDSTRENGTH_CSS_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.css');
 
