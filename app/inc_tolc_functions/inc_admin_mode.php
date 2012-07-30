@@ -15,7 +15,9 @@
 
 <input type="hidden" id="rsc_password_mask" value="<?php print gettext('Mask') ?>">
 <input type="hidden" id="rsc_password_unmask" value="<?php print gettext('Unmask') ?>">
-
+<input type="hidden" id="rsc_password_charset" value="<?php print $tolc_conf['pref_passwd_charset'] ?>">
+<input type="hidden" id="rsc_password_minchars" value="<?php print $tolc_conf['pref_passwd_minchars'] ?>">
+	
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
 </div>
 

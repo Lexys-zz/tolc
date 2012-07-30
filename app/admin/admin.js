@@ -6,6 +6,10 @@ $(function () {
     var btn_ok_value = $("#btn_ok").val();
     var btn_save_value = $("#btn_save").val();
     var btn_cancel_value = $("#btn_cancel").val();
+    var rsc_password_minchars = $("#rsc_password_minchars").val();
+    var rsc_password_charset = $("#rsc_password_charset").val();
+    var rsc_password_masc = $("#rsc_password_masc").val();
+    var rsc_password_unmasc = $("#rsc_password_unmasc").val();
 
     /* slide ---------------------------------------------------------------- */
     $("#tolc_btn_slide").click(function () {
@@ -70,23 +74,22 @@ $(function () {
 
                 $('#new_password').passwordStrength({
                     username: $("#username").val(),
-                    minchars: 2
+                    minchars: rsc_password_minchars
                 });
 
                 $('#generate_password').click(function () {
-                    var random_password = randomPassword();
+                    var random_password = randomPassword(rsc_password_charset);
                     $("#new_password").val(random_password).triggerHandler('keyup');
                     $("#repeat_new_password").val(random_password);
-                    //return false;
                 });
 
                 $("#mask_password_toggle").toggle(
                     function () {
-                        $(this).text('Mask');
+                        $(this).text(rsc_password_masc);
                         $('#old_password, #new_password, #repeat_new_password').prop('type', 'text');
                     },
                     function () {
-                        $(this).text('Unmask');
+                        $(this).text(rsc_password_unmasc);
                         $('#old_password, #new_password, #repeat_new_password').prop('type', 'password');
                     }
                 );
@@ -97,7 +100,6 @@ $(function () {
                             username: $("#username").val(),
                             minchars: 2
                         }).triggerHandler('keyup');
-                        //return false;
                     }
                 });
             });
