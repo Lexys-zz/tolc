@@ -47,7 +47,7 @@ if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 } else {
 	if($rs->RecordCount() !=0) {
-		print gettext('URL already exists' . '...');
+		print gettext('URL already exists') . '...';
 		exit;
 	}
 }
@@ -59,7 +59,7 @@ if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 } else {
 	if($rs->RecordCount() !=0) {
-		print gettext('Page title already exists' . '...');
+		print gettext('Page title already exists') . '...';
 		exit;
 	}
 }
