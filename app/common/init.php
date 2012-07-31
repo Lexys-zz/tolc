@@ -28,6 +28,11 @@ define('CONST_PROJECT_HOST', $http_prot . '://' . $host . $port);
 define('CONST_PROJECT_FULL_URL', CONST_PROJECT_HOST . $tolc_conf['project_url']);
 
 /**
+ * help
+ */
+define('CONST_HELP_TAG', '<img src="' . $tolc_conf['project_url'] . '/app/images/help.png">');
+
+/**
  * localization (gettext)
  */
 /* initialize $_SESSION['locale'] */

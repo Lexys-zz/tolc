@@ -1,0 +1,27 @@
+h1.help {
+    font-size: 140%;
+}
+
+h2.help {
+    font-size: 120%;
+}
+
+h3.help {
+    font-size: 110%;
+}
+
+p.help {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #0A246A;
+}
+
+a.help {
+    color: green;
+}
+
+a.help:hover, a.help:focus, a.help:active {
+    text-decoration: underline;
+}
+
+

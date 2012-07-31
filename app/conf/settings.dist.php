@@ -75,6 +75,7 @@ $tolc_conf['pref_thousands_separator'] = ',';
 
 /* user profile */
 $tolc_conf['pref_password_minchars'] = 6;
+// use of non english characters or other special characters have not tested (NOT RECOMMENDED)
 $tolc_conf['pref_password_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#_+^~";
 $tolc_conf['pref_username_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.";
 ?>

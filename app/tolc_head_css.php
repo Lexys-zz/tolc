@@ -45,6 +45,8 @@ if(!isset($_SESSION['username'])) {
 <link href="<?php print PASSWORDSTRENGTH_CSS_URL ?>" rel="stylesheet" type="text/css"/>
 <link href="<?php print $tolc_conf['project_url'] ?>/app/admin/admin.css" rel="stylesheet"
 	  type="text/css"/>
+<link href="<?php print $tolc_conf['project_url'] ?>/app/help/help.css" rel="stylesheet" type="text/css"/>
+
 <?php
 	if(isset($_SESSION['url_reserved'])) {
 		switch(mb_strtolower($_SESSION['url_reserved'])) {
