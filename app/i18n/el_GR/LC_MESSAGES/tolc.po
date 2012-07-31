@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-30 19:13+0200\n"
-"PO-Revision-Date: 2012-07-30 19:19+0200\n"
+"POT-Creation-Date: 2012-07-31 13:25+0200\n"
+"PO-Revision-Date: 2012-07-31 13:26+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -124,8 +124,8 @@ msgid "Unmask"
 msgstr "Εμφάνιση"
 
 #: admin/user/ajax_user_form.php:76
-msgid "Repeat"
-msgstr "Επανάληψη"
+msgid "Verification"
+msgstr "Επαλήθευση"
 
 #: admin/user/ajax_user_form.php:83
 msgid "Full name"
@@ -161,11 +161,11 @@ msgstr "Ακύρωση"
 msgid "Mask"
 msgstr "Απόκρυψη"
 
-#: inc_tolc_functions/inc_admin_mode.php:21
+#: inc_tolc_functions/inc_admin_mode.php:22
 msgid "About"
 msgstr "Σχετικά με Tolc"
 
-#: inc_tolc_functions/inc_admin_mode.php:24
+#: inc_tolc_functions/inc_admin_mode.php:25
 msgid "User profile"
 msgstr "Στοιχεία χρήστη"
 
@@ -267,6 +267,9 @@ msgstr "Ζώνη ώρας"
 #: regional/ajax_regional_form.php:35
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
+
+#~ msgid "Repeat"
+#~ msgstr "Επανάληψη"
 
 #~ msgid "Set"
 #~ msgstr "Εφαρμογή"
