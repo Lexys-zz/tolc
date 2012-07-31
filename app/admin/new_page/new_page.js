@@ -110,16 +110,16 @@ $(function () {
 
 
 function validate_new_page_form() {
-    if ($("#page_url").val() == '') {
+    if ($("#page_url").val().length == 0) {
         return 1;
     }
-    if ($("#page_title").val() == '') {
+    if ($("#page_title").val().length == 0) {
         return 2;
     }
-    if ($("#www_templates_id").val() == 0) {
+    if ($("#www_templates_id").val().length == 0) {
         return 3;
     }
-    if ($("#parent_id").val() == '') {
+    if ($("#parent_id").val().length == 0) {
         return 4;
     }
     return 0;
@@ -129,7 +129,7 @@ function update_user_message(t) {
     $("#user_message").text(t)
     $("#user_message").addClass("ui-state-highlight");
     setTimeout(function () {
-        $("#user_message").removeClass("ui-state-highlight", 1500);
-        //$("#user_message").text('');
+        $("#user_message").removeClass("ui-state-highlight");
+        $("#user_message").text('');
     }, 1500);
 }

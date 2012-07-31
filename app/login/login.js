@@ -102,6 +102,7 @@ function update_user_message(t) {
     $("#user_message").text(t)
     $("#user_message").addClass("ui-state-highlight");
     setTimeout(function () {
-        $("#user_message").removeClass("ui-state-highlight", 1500);
-    }, 500);
+        $("#user_message").removeClass("ui-state-highlight");
+        $("#user_message").text('');
+    }, 1500);
 }
