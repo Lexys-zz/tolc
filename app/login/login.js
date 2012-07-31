@@ -31,11 +31,11 @@ $(function () {
                 click: function () {
                     switch (validate_login_form()) {
                         case 1:
-                            $("#username").addClass("ui-state-error");
+                            $("#username").focus();
                             update_user_message($("#msg_username_required").val());
                             break;
                         case 2:
-                            $("#password").addClass("ui-state-error");
+                            $("#password").focus();
                             update_user_message($("#msg_password_required").val());
                             break;
                         default:
@@ -74,25 +74,14 @@ $(function () {
         }
     });
 
-
-    $(document).on("focus", "#username", function(event){
-        $("#username").removeClass("ui-state-error");
-        $("#user_message").html('');
-    });
-
-    $(document).on("focus", "#password", function(event){
-        $("#password").removeClass("ui-state-error");
-        $("#user_message").html('');
-    });
-
 });
 
 
 function validate_login_form() {
-    if ($("#username").val() == '') {
+    if ($("#username").val().length == 0) {
         return 1;
     }
-    if ($("#password").val() == '') {
+    if ($("#password").val().length == 0) {
         return 2;
     }
     return 0;
