@@ -6,6 +6,7 @@ $(function () {
     var btn_ok_value = $("#btn_ok").val();
     var btn_save_value = $("#btn_save").val();
     var btn_cancel_value = $("#btn_cancel").val();
+    var rsc_username_charset = $("#rsc_username_charset").val();
     var rsc_password_minchars = $("#rsc_password_minchars").val();
     var rsc_password_charset = $("#rsc_password_charset").val();
     var rsc_password_mask = $("#rsc_password_mask").val();
@@ -66,15 +67,26 @@ $(function () {
         show: "blind",
         hide: "explode",
         width: 700,
-        height: 500,
+        height: 520,
         resizable: true,
         open: function () {
             $(this).load(project_url + '/app/admin/user/ajax_user_form.php', {}, function () {
-                $("#username").focus();
+
+                var regex_username_filter = new RegExp('[^' + escapeRegexJS(rsc_username_charset) + ']', 'g');
+                var regex_password_filter = new RegExp('[^' + escapeRegexJS(rsc_password_charset) + ']', 'g');
+
+                //The focus event does not bubble in Internet Explorer
+                $('#username').focus();
+
+                // disable right click in username and password fields (as right click -> paste cannot easily detected to all browsers)
+                $("#username, #old_password, #new_password, #repeat_new_password").contextmenu(function () {
+                    return false;
+                });
 
                 $('#new_password').passwordStrength({
                     username: $("#username").val(),
-                    minchars: rsc_password_minchars
+                    minchars: rsc_password_minchars,
+                    regexp: regex_password_filter
                 });
 
                 $('#generate_password').click(function () {
@@ -94,14 +106,69 @@ $(function () {
                     }
                 );
 
-                $('#username').keyup(function() {
-                    if($("#new_password").val() != '') {
+                $('#username').keyup(function () {
+
+                    $(this).val($(this).val().replace(regex_username_filter, ''));
+
+                    if ($("#new_password").val() != '') {
                         $('#new_password').passwordStrength({
                             username: $("#username").val(),
-                            minchars: 2
+                            minchars: 2,
+                            regexp: regex_password_filter
                         }).triggerHandler('keyup');
                     }
                 });
+
+                $('#old_password, #repeat_new_password').keyup(function () {
+                    $(this).val($(this).val().replace(regex_password_filter, ''));
+                });
+
+                $("#help_toggle").toggle(
+                    function () {
+                        $(this).text($("#rsc_help_toggle").val() + ' [-]');
+                        $('.help_call').css('display', 'inline-block');
+                    },
+                    function () {
+                        $(this).text($("#rsc_help_toggle").val() + ' [+]');
+                        $('.help_call').css('display', 'none');
+                    }
+                );
+                // help tips
+                $('a[id*=help-]').each(function () {
+                    $(this).qtip(
+                        {
+                            content: {
+                                text: '<img src="' + project_url + '/app/images/throbber.gif" alt="Loading..." />',
+                                ajax: {
+                                    url: project_url + '/app/help/help.php?id=' + $(this).attr('id')
+                                },
+                                title: {
+                                    text: $(this).attr('rel'),
+                                    button: true
+                                }
+                            },
+                            position: {
+                                at: 'bottom center', // Position the tooltip above the link
+                                my: 'top center',
+                                viewport: $(window), // Keep the tooltip on-screen at all times
+                                effect: false // Disable positioning animation
+                            },
+                            show: {
+                                event: 'click',
+                                solo: true // Only show one tooltip at a time
+                            },
+                            hide: 'unfocus',
+                            style: {
+                                classes: 'ui-tooltip-wiki ui-tooltip-light ui-tooltip-shadow'
+                            }
+                        })
+                })
+
+                    // Make sure it doesn't follow the link when we click it
+                    .click(function (event) {
+                        event.preventDefault();
+                    });
+
             });
             $('.ui-dialog-buttonpane').find('button:contains("' + btn_save_value + '")').button({
                 icons: {
@@ -120,12 +187,28 @@ $(function () {
                 click: function () {
                     switch (validate_user_form()) {
                         case 1:
-                            $("#username").addClass("ui-state-error");
+                            $("#username").focus();
                             update_user_message($("#msg_username_required").val());
                             break;
                         case 2:
-                            $("#password").addClass("ui-state-error");
-                            update_user_message($("#msg_password_required").val());
+                            $("#old_password").focus();
+                            update_user_message($("#msg_old_password_required").val());
+                            break;
+                        case 3:
+                            $("#new_password").focus();
+                            update_user_message($("#msg_new_password_required").val());
+                            break;
+                        case 4:
+                            $("#repeat_new_password").focus();
+                            update_user_message($("#msg_password_verification_required").val());
+                            break;
+                        case 5:
+                            $("#fullname").focus();
+                            update_user_message($("#msg_user_fullname_required").val());
+                            break;
+                        case 6:
+                            $("#email").focus();
+                            update_user_message($("#msg_user_email_required").val());
                             break;
                         default:
                             $.ajax({
@@ -133,12 +216,17 @@ $(function () {
                                 url: project_url + "/app/admin/user/ajax_user.php",
                                 data: {
                                     username: $("#username").val(),
-                                    password: $("#password").val(),
-                                    language: $("#language").val()
+                                    old_password: $("#old_password").val(),
+                                    new_password: $("#new_password").val(),
+                                    repeat_new_password: $("#repeat_new_password").val(),
+                                    fullname: $("#fullname").val(),
+                                    email: $("#email").val(),
+                                    url: $("#url").val()
                                 },
                                 success: function (data) {
                                     if (data == '') {
-                                        location.reload();
+                                        $("#login_user").text($("#username").val());
+                                        $("#user_form").dialog("close");
                                     } else {
                                         update_user_message(data);
                                     }
@@ -158,12 +246,10 @@ $(function () {
     });
 
 
-
     $("#login_user").click(function () {
         $("#user_form").dialog("open");
         return false;
     });
-
 
 
     /* about form ----------------------------------------------------------- */
@@ -252,13 +338,41 @@ function rte() {
 }
 
 function validate_user_form() {
+    var pl1 = $("#old_password").val().length;
+    var pl2 = $("#new_password").val().length;
+    var pl3 = $("#repeat_new_password").val().length;
+    var pl = pl1 + pl2 + pl3;
 
+    if ($("#username").val().length == 0) {
+        return 1;
+    }
+
+    if (pl > 0) {
+        if (pl1 == 0) {
+            return 2;
+        }
+        if (pl2 == 0) {
+            return 3;
+        }
+        if (pl3 == 0) {
+            return 4;
+        }
+    }
+
+    if ($("#fullname").val().length == 0) {
+        return 5;
+    }
+    if ($("#email").val().length == 0) {
+        return 6;
+    }
+    return 0;
 }
 
 function update_user_message(t) {
     $("#user_message").text(t)
     $("#user_message").addClass("ui-state-highlight");
     setTimeout(function () {
-        $("#user_message").removeClass("ui-state-highlight", 1500);
-    }, 500);
+        $("#user_message").removeClass("ui-state-highlight");
+        $("#user_message").text('');
+    }, 1500);
 }

@@ -23,3 +23,19 @@ function CenterWindow(windowWidth, windowHeight, windowOuterHeight, url, wname, 
     win.focus();
     return win;
 }
+
+/**
+ * Escapes special characters for Javascript regex
+ * http://simonwillison.net/2006/Jan/20/escape/#p-6
+ *
+ * Alternative syntax:
+ * return text.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+ * return text.replace(/([.*+?^$|(){}\[\]])/mg, "\\$1");
+ *
+ * @param text
+ * @return {*}
+ */
+function escapeRegexJS(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+

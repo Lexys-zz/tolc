@@ -36,6 +36,10 @@ if($conn)
 	$conn->Close();
 ?>
 
+<div id="help_toggle_div">
+	<a id="help_toggle" href=""><?php print gettext('help') . ' [+]' ?></a>
+</div>
+
 <div id="user_message">
 </div>
 
@@ -44,6 +48,8 @@ if($conn)
 		   for="username"><?php print gettext('Username') ?></label>
 	<input id="username" type="text" autocomplete="off"
 		   value="<?php print $username ?>">
+	<a id="help-user_profile-username" class="help_call" rel="Username"
+	   href="javascript:void(0);"><?php print CONST_HELP_TAG ?></a>
 </div>
 
 <hr>
@@ -58,8 +64,11 @@ if($conn)
 	<label id="lbl_new_password"
 		   for="new_password"><?php print gettext('New password') ?></label>
 	<input id="new_password" type="password" autocomplete="off">
+	<a id="help-user_profile-password" class="help_call" rel="Password"
+	   href="javascript:void(0);"><?php print CONST_HELP_TAG ?></a>
 	<span id="password_tools_generate" class="password_tools">
-		<a id="generate_password" href="javascript:void(0);"><?php print gettext('Generate')?></a>
+		<a id="generate_password"
+		   href="javascript:void(0);"><?php print gettext('Generate')?></a>
 	</span>
 	<span id="password_tools_mask" class="password_tools">
 	<a id="mask_password_toggle"
@@ -73,7 +82,7 @@ if($conn)
 
 <div id="row_repeat_new_password" class="field_container">
 	<label id="lbl_repeat_new_password"
-		   for="repeat_new_password"><?php print gettext('Repeat') ?></label>
+		   for="repeat_new_password"><?php print gettext('Verification') ?></label>
 	<input id="repeat_new_password" type="password" autocomplete="off">
 </div>
 
