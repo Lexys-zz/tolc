@@ -48,7 +48,7 @@ if($conn)
 		   for="username"><?php print gettext('Username') ?></label>
 	<input id="username" type="text" autocomplete="off"
 		   value="<?php print $username ?>">
-	<a id="help-user_profile-username" class="help_call" rel="Username"
+	<a id="help-user_profile-username" class="help_call" rel="<?php print gettext('Username') ?>"
 	   href="javascript:void(0);"><?php print CONST_HELP_TAG ?></a>
 </div>
 
@@ -64,7 +64,7 @@ if($conn)
 	<label id="lbl_new_password"
 		   for="new_password"><?php print gettext('New password') ?></label>
 	<input id="new_password" type="password" autocomplete="off">
-	<a id="help-user_profile-password" class="help_call" rel="Password"
+	<a id="help-user_profile-password" class="help_call" rel="<?php print gettext('Password') ?>"
 	   href="javascript:void(0);"><?php print CONST_HELP_TAG ?></a>
 	<span id="password_tools_generate" class="password_tools">
 		<a id="generate_password"
