@@ -258,7 +258,7 @@ $(function () {
         show: "blind",
         hide: "explode",
         width: 700,
-        height: 400,
+        height: 600,
         resizable: true,
         open: function () {
             $(this).load(project_url + '/app/admin/about/ajax_about_form.php');
