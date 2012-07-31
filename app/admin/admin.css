@@ -154,3 +154,5 @@
     padding-right: 10px;
     font-size: 10px;
 }
+
+.ui-tooltip { max-width:700px; }

@@ -159,7 +159,7 @@ $(function () {
                             },
                             hide: 'unfocus',
                             style: {
-                                classes: 'ui-tooltip-wiki ui-tooltip-light ui-tooltip-shadow'
+                                classes: 'ui-tooltip-bootstrap'
                             }
                         })
                 })
