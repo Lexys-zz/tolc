@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-31 19:47+0200\n"
-"PO-Revision-Date: 2012-07-31 19:47+0200\n"
+"PO-Revision-Date: 2012-07-31 19:52+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -288,11 +288,11 @@ msgstr "Η σύνδεση απέτυχε"
 
 #: help/help.php:33
 msgid "Username can use any combination of the following characters"
-msgstr "Το username μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
+msgstr "Το όνομα χρήστη (username) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
 
 #: help/help.php:42
 msgid "Password can use any combination of the following characters"
-msgstr "Το password μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
+msgstr "Ο κωδικός χρήστη (password) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
 
 #: regional/ajax_regional_form.php:24
 msgid "Timezone"
