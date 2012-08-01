@@ -74,8 +74,21 @@ $tolc_conf['pref_decimal_mark'] = '.';
 $tolc_conf['pref_thousands_separator'] = ',';
 
 /* user profile */
+$tolc_conf['pref_username_minchars'] = 4;
+$tolc_conf['pref_username_maxchars'] = 20; // max 254
 $tolc_conf['pref_password_minchars'] = 6;
+$tolc_conf['pref_password_maxchars'] = 14; // max 254
+$tolc_conf['pref_password_strength'] = 60;
 // use of non english characters or other special characters have not tested (NOT RECOMMENDED)
 $tolc_conf['pref_password_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#_+^~";
 $tolc_conf['pref_username_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.";
+$tolc_conf['pref_reserved_usernames'] = array(
+	0 => 'admin',
+	1 => 'administrator',
+	2 => 'postmaster',
+	3 => 'sysadmin',
+	4 => 'webadmin',
+	5 => 'tolc',
+	6 => 'tolcadmin'
+);
 ?>

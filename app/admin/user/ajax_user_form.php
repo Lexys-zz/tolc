@@ -47,8 +47,10 @@ if($conn)
 	<label id="lbl_username" class="required"
 		   for="username"><?php print gettext('Username') ?></label>
 	<input id="username" type="text" autocomplete="off"
-		   value="<?php print $username ?>">
-	<a id="help-user_profile-username" class="help_call" rel="<?php print gettext('Username') ?>"
+		   value="<?php print $username ?>"
+		   maxlength="<?php print $tolc_conf['pref_username_maxchars'] ?>">
+	<a id="help-user_profile-username" class="help_call"
+	   rel="<?php print gettext('Username') ?>"
 	   href="javascript:void(0);"><?php print CONST_HELP_TAG ?></a>
 </div>
 
@@ -57,15 +59,21 @@ if($conn)
 <div id="row_old_password" class="field_container">
 	<label id="lbl_old_password"
 		   for="old_password"><?php print gettext('Old password') ?></label>
-	<input id="old_password" type="password" autocomplete="off">
+	<input id="old_password" type="password" autocomplete="off"
+		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
 </div>
 
 <div id="row_new_password" class="field_container">
 	<label id="lbl_new_password"
 		   for="new_password"><?php print gettext('New password') ?></label>
-	<input id="new_password" type="password" autocomplete="off">
-	<a id="help-user_profile-password" class="help_call" rel="<?php print gettext('Password') ?>"
+	<input id="new_password" type="password" autocomplete="off"
+		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
+	<a id="help-user_profile-password" class="help_call"
+	   rel="<?php print gettext('Password') ?>"
 	   href="javascript:void(0);"><?php print CONST_HELP_TAG ?></a>
+	<span id="password_strength_indicator" class="password_strength"
+		  title="<?php print gettext('Password strength')?>">
+	</span>
 	<span id="password_tools_generate" class="password_tools">
 		<a id="generate_password"
 		   href="javascript:void(0);"><?php print gettext('Generate')?></a>
@@ -83,7 +91,8 @@ if($conn)
 <div id="row_repeat_new_password" class="field_container">
 	<label id="lbl_repeat_new_password"
 		   for="repeat_new_password"><?php print gettext('Verification') ?></label>
-	<input id="repeat_new_password" type="password" autocomplete="off">
+	<input id="repeat_new_password" type="password" autocomplete="off"
+		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
 </div>
 
 <hr>
@@ -91,19 +100,19 @@ if($conn)
 	<label id="lbl_fullname" class="required"
 		   for="fullname"><?php print gettext('Full name') ?></label>
 	<input id="fullname" type="text" autocomplete="off"
-		   value="<?php print $fullname ?>">
+		   value="<?php print $fullname ?>" maxlength="254">
 </div>
 
 <div id="row_email" class="field_container">
 	<label id="lbl_email" class="required"
 		   for="email"><?php print gettext('Email') ?></label>
 	<input id="email" type="text" autocomplete="off"
-		   value="<?php print $email ?>">
+		   value="<?php print $email ?>" maxlength="254">
 </div>
 
 <div id="row_url" class="field_container">
 	<label id="lbl_url"
 		   for="url"><?php print gettext('URL') ?></label>
 	<input id="url" type="text" autocomplete="off"
-		   value="<?php print $url ?>">
+		   value="<?php print $url ?>" maxlength="254">
 </div>

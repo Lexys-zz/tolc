@@ -1,14 +1,18 @@
 $(function () {
 
     var project_url = $("#project_url").val();
+    var ajax_loading = $("#ajax_loading").val();
+
     var ezfilemanager_url = $("#ezfilemanager_url").val();
     var active_elements = $("#active_elements").val();
     var btn_ok_value = $("#btn_ok").val();
     var btn_save_value = $("#btn_save").val();
     var btn_cancel_value = $("#btn_cancel").val();
+    var rsc_help_toggle = $("#rsc_help_toggle").val();
+
     var rsc_username_charset = $("#rsc_username_charset").val();
-    var rsc_password_minchars = $("#rsc_password_minchars").val();
     var rsc_password_charset = $("#rsc_password_charset").val();
+    var rsc_password_minchars = $("#rsc_password_minchars").val();
     var rsc_password_mask = $("#rsc_password_mask").val();
     var rsc_password_unmask = $("#rsc_password_unmask").val();
 
@@ -66,7 +70,7 @@ $(function () {
         autoOpen: false,
         show: "blind",
         hide: "explode",
-        width: 700,
+        width: 740,
         height: 520,
         resizable: true,
         open: function () {
@@ -86,7 +90,8 @@ $(function () {
                 $('#new_password').passwordStrength({
                     username: $("#username").val(),
                     minchars: rsc_password_minchars,
-                    regexp: regex_password_filter
+                    regexp: regex_password_filter,
+                    strength_indicator: 'password_strength_indicator'
                 });
 
                 $('#generate_password').click(function () {
@@ -113,8 +118,9 @@ $(function () {
                     if ($("#new_password").val() != '') {
                         $('#new_password').passwordStrength({
                             username: $("#username").val(),
-                            minchars: 2,
-                            regexp: regex_password_filter
+                            minchars: rsc_password_minchars,
+                            regexp: regex_password_filter,
+                            strength_indicator: 'password_strength_indicator'
                         }).triggerHandler('keyup');
                     }
                 });
@@ -125,11 +131,11 @@ $(function () {
 
                 $("#help_toggle").toggle(
                     function () {
-                        $(this).text($("#rsc_help_toggle").val() + ' [-]');
+                        $(this).text(rsc_help_toggle + ' [-]');
                         $('.help_call').css('display', 'inline-block');
                     },
                     function () {
-                        $(this).text($("#rsc_help_toggle").val() + ' [+]');
+                        $(this).text(rsc_help_toggle + ' [+]');
                         $('.help_call').css('display', 'none');
                     }
                 );
@@ -138,7 +144,7 @@ $(function () {
                     $(this).qtip(
                         {
                             content: {
-                                text: '<img src="' + project_url + '/app/images/throbber.gif" alt="Loading..." />',
+                                text: '<img src="' + project_url + '/app/images/throbber.gif" alt="' + ajax_loading + '..." />',
                                 ajax: {
                                     url: project_url + '/app/help/help.php?id=' + $(this).attr('id')
                                 },
@@ -221,7 +227,8 @@ $(function () {
                                     repeat_new_password: $("#repeat_new_password").val(),
                                     fullname: $("#fullname").val(),
                                     email: $("#email").val(),
-                                    url: $("#url").val()
+                                    url: $("#url").val(),
+                                    password_strength: parseInt($("#password_strength_indicator").text())
                                 },
                                 success: function (data) {
                                     if (data == '') {

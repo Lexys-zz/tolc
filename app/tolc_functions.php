@@ -6,6 +6,7 @@ if(!$tolc_include) {
 }
 ?>
 <input type="hidden" id="project_url" value="<?php print $tolc_conf['project_url'] ?>">
+<input type="hidden" id="ajax_loading" value="<?php print gettext('Loading') ?>">
 
 <?php
 if(!isset($_SESSION['username'])) {

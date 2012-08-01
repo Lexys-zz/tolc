@@ -106,12 +106,6 @@
     padding-top: 10px;
 }
 
-.field_container {
-    width: 90%;
-    height: 40px;
-    clear: both;
-    margin: auto;
-}
 
 #username, #old_password, #new_password, #repeat_new_password {
     width: 30%;
@@ -129,7 +123,22 @@
     text-align: left;
 }
 
+.password_strength {
+    display: inline-block;
+    width: 30px;
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: left;
+    color: red;
+}
 /* misc --------------------------------------------------------------------- */
+.field_container {
+    width: 95%;
+    height: 40px;
+    clear: both;
+    margin: auto;
+}
+
 .over {
     border: 1px solid #ff0000 !important;
     cursor: crosshair !important;
