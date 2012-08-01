@@ -57,7 +57,7 @@ if(in_array(mb_strtolower($username), array_map('mb_strtolower', $tolc_conf['pre
 
 // password checks (if password changed)
 if($old_password) {
-    // check password length
+	// check password length
 	$n = strlen($new_password);
 	if($n < $tolc_conf['pref_password_minchars']) {
 		print gettext('Password characters are less than') . ' ' . $tolc_conf['pref_password_minchars'] . '...';
@@ -68,19 +68,19 @@ if($old_password) {
 		exit;
 	}
 
-    // check password strength
+	// check password strength
 	if($password_strength < $tolc_conf['pref_password_strength']) {
 		print gettext('Password strength is less than') . ' ' . $tolc_conf['pref_password_strength'] . '%' . '...';
 		exit;
 	}
 
-    // check password verification
+	// check password verification
 	if($new_password !== $repeat_new_password) {
 		print gettext('New password does not match with its verification') . '...';
 		exit;
 	}
 
-    //check valid password characters
+	//check valid password characters
 	$regex_password = '/[^' . preg_quote($tolc_conf['pref_password_charset']) . ']/';
 	if(preg_match($regex_password, $old_password)) {
 		print gettext('Old password contains invalid characters') . '...';
@@ -121,6 +121,7 @@ if($rs === false) {
 	$www_users_id = $rs->fields['id'];
 	$current_password = $rs->fields['password'];
 	$current_email = $rs->fields['email'];
+	$current_must_change_passwd = $rs->fields['must_change_passwd'];
 }
 
 // check for unique username | CASE IN-SENSITIVE
@@ -177,16 +178,19 @@ $sql .= $username_changed ? 'username=' . $conn->qstr($username) . ',' : '';
 $sql .= ($old_password && (md5($new_password) !== $current_password)) ? 'password=' . $conn->qstr(md5($new_password)) . ',' : '';
 $sql .= 'email=' . $conn->qstr($email) . ',';
 $sql .= 'fullname=' . $conn->qstr($fullname) . ',';
-$sql .= $url ? 'url=' . $conn->qstr($url) . ', ' : 'url=null'. ', ';
-$sql .= 'must_change_passwd=0'. ' ';
+$sql .= $url ? 'url=' . $conn->qstr($url) . ' ' : 'url=null' . ' ';
+$sql .= $current_must_change_passwd == 1 ? ', must_change_passwd=0' . ' ' : '';
 $sql .= 'WHERE id=' . $www_users_id;
 
 if($conn->Execute($sql) === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 }
 
-// finally update $_SESSION['username']
+// finally update $_SESSION[]
 if($username_changed) {
 	$_SESSION['username'] = $username;
+}
+if($current_must_change_passwd == 1) {
+	$_SESSION['must_change_passwd'] = false;
 }
 ?>

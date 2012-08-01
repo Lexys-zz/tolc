@@ -67,7 +67,7 @@ $(function () {
 
     /* user form ------------------------------------------------------------ */
     $("#user_form").dialog({
-        autoOpen:  $("#must_change_passwd").val() == '1' ? true : false,
+        autoOpen: $("#must_change_passwd").val() == '1' ? true : false,
         show: "blind",
         hide: "explode",
         width: 740,
@@ -252,8 +252,8 @@ $(function () {
                 }
             }
         ],
-        beforeClose: function(event, ui) {
-            if($("#must_change_passwd").val() == '1') {
+        beforeClose: function (event, ui) {
+            if ($("#must_change_passwd").val() == '1') {
                 return false; // cancel close event (in modal mode if password has not changed)
             }
         }

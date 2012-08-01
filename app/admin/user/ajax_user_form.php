@@ -65,8 +65,9 @@ if($conn)
 </div>
 
 <div id="row_new_password" class="field_container">
-	<label id="lbl_new_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
-		   for="new_password"><?php print gettext('New password') ?></label>
+	<label
+		id="lbl_new_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
+		for="new_password"><?php print gettext('New password') ?></label>
 	<input id="new_password" type="password" autocomplete="off"
 		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
 	<a id="help-user_profile-password" class="help_call"
@@ -90,8 +91,9 @@ if($conn)
 
 
 <div id="row_repeat_new_password" class="field_container">
-	<label id="lbl_repeat_new_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
-		   for="repeat_new_password"><?php print gettext('Verification') ?></label>
+	<label
+		id="lbl_repeat_new_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
+		for="repeat_new_password"><?php print gettext('Verification') ?></label>
 	<input id="repeat_new_password" type="password" autocomplete="off"
 		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
 </div>
