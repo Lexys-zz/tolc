@@ -57,14 +57,15 @@ if($conn)
 <hr>
 
 <div id="row_old_password" class="field_container">
-	<label id="lbl_old_password"
-		   for="old_password"><?php print gettext('Old password') ?></label>
+	<label
+		id="lbl_old_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
+		for="old_password"><?php print gettext('Old password') ?></label>
 	<input id="old_password" type="password" autocomplete="off"
 		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
 </div>
 
 <div id="row_new_password" class="field_container">
-	<label id="lbl_new_password"
+	<label id="lbl_new_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
 		   for="new_password"><?php print gettext('New password') ?></label>
 	<input id="new_password" type="password" autocomplete="off"
 		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">
@@ -89,7 +90,7 @@ if($conn)
 
 
 <div id="row_repeat_new_password" class="field_container">
-	<label id="lbl_repeat_new_password"
+	<label id="lbl_repeat_new_password" <?php print $_SESSION['must_change_passwd'] ? ' class="required" ' : '' ?>
 		   for="repeat_new_password"><?php print gettext('Verification') ?></label>
 	<input id="repeat_new_password" type="password" autocomplete="off"
 		   maxlength="<?php print $tolc_conf['pref_password_maxchars'] ?>">

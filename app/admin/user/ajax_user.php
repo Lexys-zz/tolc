@@ -177,7 +177,8 @@ $sql .= $username_changed ? 'username=' . $conn->qstr($username) . ',' : '';
 $sql .= ($old_password && (md5($new_password) !== $current_password)) ? 'password=' . $conn->qstr(md5($new_password)) . ',' : '';
 $sql .= 'email=' . $conn->qstr($email) . ',';
 $sql .= 'fullname=' . $conn->qstr($fullname) . ',';
-$sql .= $url ? 'url=' . $conn->qstr($url) . ' ' : 'url=null ';
+$sql .= $url ? 'url=' . $conn->qstr($url) . ', ' : 'url=null'. ', ';
+$sql .= 'must_change_passwd=0'. ' ';
 $sql .= 'WHERE id=' . $www_users_id;
 
 if($conn->Execute($sql) === false) {

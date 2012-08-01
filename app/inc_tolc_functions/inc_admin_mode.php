@@ -1,4 +1,5 @@
 <!-- Admin mode ------------------------------------------------------------ -->
+<input id="must_change_passwd" type="hidden" value="<?php print $_SESSION['must_change_passwd'] ? '1' : '0' ?>">
 <input id="tinymce_url" type="hidden" value="<?php print TINYMCE_URL ?>">
 <input id="content_css_url" type="hidden"
 	   value="<?php print $tolc_conf['project_url'] . $template_path . $css_url ?>">
@@ -30,5 +31,5 @@
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
 </div>
 
-<div id="user_form" title="<?php print gettext('User profile')?>">
+<div id="user_form" title="<?php print $_SESSION['must_change_passwd'] ? gettext('Change password') : gettext('User profile') ?>">
 </div>

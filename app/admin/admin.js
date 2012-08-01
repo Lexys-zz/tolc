@@ -67,12 +67,13 @@ $(function () {
 
     /* user form ------------------------------------------------------------ */
     $("#user_form").dialog({
-        autoOpen: false,
+        autoOpen:  $("#must_change_passwd").val() == '1' ? true : false,
         show: "blind",
         hide: "explode",
         width: 740,
         height: 520,
         resizable: true,
+        modal: $("#must_change_passwd").val() == '1' ? true : false,
         open: function () {
             $(this).load(project_url + '/app/admin/user/ajax_user_form.php', {}, function () {
 
@@ -233,6 +234,7 @@ $(function () {
                                 success: function (data) {
                                     if (data == '') {
                                         $("#login_user").text($("#username").val());
+                                        $("#must_change_passwd").val('0');
                                         $("#user_form").dialog("close");
                                     } else {
                                         update_user_message(data);
@@ -249,7 +251,12 @@ $(function () {
                     $(this).dialog("close");
                 }
             }
-        ]
+        ],
+        beforeClose: function(event, ui) {
+            if($("#must_change_passwd").val() == '1') {
+                return false; // cancel close event (in modal mode if password has not changed)
+            }
+        }
     });
 
 
@@ -354,7 +361,7 @@ function validate_user_form() {
         return 1;
     }
 
-    if (pl > 0) {
+    if (pl > 0 || $("#must_change_passwd").val() == '1') {
         if (pl1 == 0) {
             return 2;
         }

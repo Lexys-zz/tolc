@@ -20,4 +20,5 @@ if (!isset($_SESSION['username'])) {
 }
 
 unset($_SESSION['username']);
+unset($_SESSION['must_change_passwd']);
 ?>
