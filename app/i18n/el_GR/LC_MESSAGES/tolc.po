@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-31 19:47+0200\n"
-"PO-Revision-Date: 2012-07-31 19:52+0200\n"
+"POT-Creation-Date: 2012-08-01 21:46+0200\n"
+"PO-Revision-Date: 2012-08-01 21:46+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -64,6 +64,10 @@ msgstr "Αλλαγή στοιχείων χρήστη"
 msgid "Show/Hide Admin Panel"
 msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
 
+#: tolc_functions.php:9
+msgid "Loading"
+msgstr "Παρακαλώ, περιμένετε"
+
 #: admin/logout/ajax_logout.php:18
 #: admin/about/ajax_about_form.php:15
 #: admin/new_page/ajax_autocomplete_parent_title.php:15
@@ -75,12 +79,10 @@ msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
 #: admin/new_page/ajax_new_page.php:50
-#: admin/user/ajax_user.php:55
 msgid "URL already exists"
 msgstr "Το URL υπάρχει ήδη"
 
 #: admin/new_page/ajax_new_page.php:62
-#: admin/user/ajax_user.php:67
 msgid "Page title already exists"
 msgstr "Ο τίτλος σελίδας υπάρχει ήδη"
 
@@ -104,45 +106,118 @@ msgstr "Παρακαλώ, επιλέξτε"
 msgid "Belongs to"
 msgstr "Ανήκει σε"
 
+#: admin/user/ajax_user.php:37
+msgid "Username characters are less than"
+msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι λιγότεροι από "
+
+#: admin/user/ajax_user.php:41
+msgid "Username characters are more than"
+msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι περισσότεροι από "
+
+#: admin/user/ajax_user.php:48
+msgid "Username contains invalid characters"
+msgstr "Το username περιέχει μη αποδεκτούς χαρακτήρες"
+
+#: admin/user/ajax_user.php:54
+msgid "Selected username is reserved and cannot be used"
+msgstr "Το όνομα χρήστη (username) δεν είναι αποδεκτό"
+
+#: admin/user/ajax_user.php:63
+msgid "Password characters are less than"
+msgstr "Οι χαρακτήρες του κωδικού (password) είναι λιγότεροι από "
+
+#: admin/user/ajax_user.php:67
+msgid "Password characters are more than"
+msgstr "Οι χαρακτήρες του κωδικού (password) είναι περισσότεροι από "
+
+#: admin/user/ajax_user.php:73
+msgid "Password strength is less than"
+msgstr "Το επίπεδο ασφαλείας του κωδικού (password) είναι μικρότερο από"
+
+#: admin/user/ajax_user.php:79
+msgid "New password does not match with its verification"
+msgstr "Το password δεν ταιριάζει με την επαλήθευση"
+
+#: admin/user/ajax_user.php:86
+msgid "Old password contains invalid characters"
+msgstr "Ο παλαιός κωδικός (password) περιέχει μη αποδεκτούς χαρακτήρες"
+
+#: admin/user/ajax_user.php:90
+msgid "New password contains invalid characters"
+msgstr "Ο νέος κωδικός (password) περιέχει μη αποδεκτούς χαρακτήρες"
+
+#: admin/user/ajax_user.php:94
+msgid "Password verification contains invalid characters"
+msgstr "Η επαλήθευση του password περιέχει μη αποδεκτούς χαρακτήρες"
+
+#: admin/user/ajax_user.php:101
+msgid "Invalid email"
+msgstr "Το email δεν δόθηκε σωστά"
+
+#: admin/user/ajax_user.php:107
+msgid "Invalid URL"
+msgstr "Το URL δεν δόθηκε σωστά"
+
+#: admin/user/ajax_user.php:139
+msgid "Given username is currently in use"
+msgstr "Το όνομα χρήστη (username) χρησιμοποιείται ήδη"
+
+#: admin/user/ajax_user.php:150
+msgid "Old password is not correct"
+msgstr "Ο προηγούμενος κωδικός δεν δόθηκε σωστά"
+
+#: admin/user/ajax_user.php:166
+msgid "Given email is currently in use"
+msgstr "Το email χρησιμοποιείται ήδη"
+
 #: admin/user/ajax_user_form.php:40
-#: inc_tolc_functions/inc_admin_mode.php:12
+#: inc_tolc_functions/inc_admin_mode.php:15
 msgid "help"
 msgstr "οδηγίες"
 
 #: admin/user/ajax_user_form.php:48
+#: admin/user/ajax_user_form.php:53
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
-#: admin/user/ajax_user_form.php:59
+#: admin/user/ajax_user_form.php:62
 msgid "Old password"
 msgstr "Παλιός κωδικός"
 
-#: admin/user/ajax_user_form.php:65
+#: admin/user/ajax_user_form.php:70
 msgid "New password"
 msgstr "Νέος κωδικός"
 
-#: admin/user/ajax_user_form.php:71
+#: admin/user/ajax_user_form.php:74
+msgid "Password"
+msgstr "Κωδικός"
+
+#: admin/user/ajax_user_form.php:77
+msgid "Password strength"
+msgstr "Επίπεδο ασφαλείας κωδικού"
+
+#: admin/user/ajax_user_form.php:81
 msgid "Generate"
 msgstr "Δημιουργία"
 
-#: admin/user/ajax_user_form.php:75
-#: inc_tolc_functions/inc_admin_mode.php:18
+#: admin/user/ajax_user_form.php:85
+#: inc_tolc_functions/inc_admin_mode.php:23
 msgid "Unmask"
 msgstr "Εμφάνιση"
 
-#: admin/user/ajax_user_form.php:85
+#: admin/user/ajax_user_form.php:96
 msgid "Verification"
 msgstr "Επαλήθευση"
 
-#: admin/user/ajax_user_form.php:92
+#: admin/user/ajax_user_form.php:104
 msgid "Full name"
 msgstr "Πλήρες όνομα"
 
-#: admin/user/ajax_user_form.php:99
+#: admin/user/ajax_user_form.php:111
 msgid "Email"
 msgstr "Email"
 
-#: admin/user/ajax_user_form.php:106
+#: admin/user/ajax_user_form.php:118
 msgid "URL"
 msgstr "URL"
 
@@ -150,52 +225,56 @@ msgstr "URL"
 msgid "Edit"
 msgstr "Διόρθωση"
 
-#: inc_tolc_functions/inc_admin_mode.php:13
+#: inc_tolc_functions/inc_admin_mode.php:16
 #: inc_tolc_functions/inc_login_required_new_page.php:2
 msgid "Ok"
 msgstr "Εντάξει"
 
-#: inc_tolc_functions/inc_admin_mode.php:14
+#: inc_tolc_functions/inc_admin_mode.php:17
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: inc_tolc_functions/inc_admin_mode.php:15
+#: inc_tolc_functions/inc_admin_mode.php:18
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: inc_tolc_functions/inc_admin_mode.php:17
+#: inc_tolc_functions/inc_admin_mode.php:21
 msgid "Mask"
 msgstr "Απόκρυψη"
 
-#: inc_tolc_functions/inc_admin_mode.php:23
+#: inc_tolc_functions/inc_admin_mode.php:32
 msgid "Username is required"
 msgstr "Το όνομα χρήστη δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:24
+#: inc_tolc_functions/inc_admin_mode.php:34
 msgid "Old password is required"
 msgstr "Ο προηγούμενος κωδικός δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:25
+#: inc_tolc_functions/inc_admin_mode.php:36
 msgid "New password is required"
 msgstr "Ο νέος κωδικός δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:26
+#: inc_tolc_functions/inc_admin_mode.php:38
 msgid "Please, repeat the new password"
 msgstr "Παρακαλώ, δώστε πάλι το νέο κωδικό"
 
-#: inc_tolc_functions/inc_admin_mode.php:27
+#: inc_tolc_functions/inc_admin_mode.php:40
 msgid "User fullname is required"
 msgstr "Το πλήρες όνομα του χρήστη δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:28
+#: inc_tolc_functions/inc_admin_mode.php:42
 msgid "User email is required"
 msgstr "Το email του χρήστη δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:30
+#: inc_tolc_functions/inc_admin_mode.php:44
 msgid "About"
 msgstr "Σχετικά με Tolc"
 
-#: inc_tolc_functions/inc_admin_mode.php:33
+#: inc_tolc_functions/inc_admin_mode.php:48
+msgid "Change password"
+msgstr "Αλλαγή κωδικού (password)"
+
+#: inc_tolc_functions/inc_admin_mode.php:48
 msgid "User profile"
 msgstr "Στοιχεία χρήστη"
 
@@ -273,16 +352,12 @@ msgstr "απορρίφθηκε"
 msgid "removed"
 msgstr "απομακρύνθηκε"
 
-#: login/ajax_login_form.php:50
-msgid "Password"
-msgstr "Κωδικός"
-
 #: login/ajax_login_form.php:56
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: login/ajax_login.php:41
-#: login/ajax_login.php:44
+#: login/ajax_login.php:42
+#: login/ajax_login.php:45
 msgid "Login failed"
 msgstr "Η σύνδεση απέτυχε"
 
