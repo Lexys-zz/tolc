@@ -7,6 +7,7 @@ $(function () {
     var rte_content = $("#rte_content", window.opener.document).val();
     var base_url = $("#base_url", window.opener.document).val();
 
+/* timnymce ------------------------------------------------------------------*/
     $("#rte").tinymce({
         // Location of TinyMCE script
         script_url: tinymce_url,
@@ -16,7 +17,7 @@ $(function () {
         plugins: "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,ezfilemanager",
         language: lang,
         entity_encoding: "raw",
-        relative_urls: true,
+        relative_urls: true, // default
         document_base_url: base_url,
 
         // Theme options
@@ -49,6 +50,18 @@ $(function () {
 
             return false;
         }
+    });
+
+/* tools ---------------------------------------------------------------------*/
+
+    $("#btn_save").button({
+        icons: {
+            primary: 'ui-icon-check'
+        }
+    });
+
+    $("#btn_save").click(function () {
+        console.debug(tinyMCE.activeEditor.getContent());
     });
 
 });

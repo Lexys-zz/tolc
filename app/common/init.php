@@ -74,7 +74,7 @@ $a_date_format = array(
 	'd-m-Y',
 	'd-m-y',
 	'D, M j, Y',
-    'M j ' . "'" .'y'
+	'M j ' . "'" . 'y'
 );
 
 /* initialize $_SESSION['dateformat'] (default visitor dateformat) */
@@ -113,6 +113,16 @@ define('CONST_PUBLISH_STATUS_PENDING_VALUE', gettext('pending publication'));
 define('CONST_PUBLISH_STATUS_PUBLISHED_VALUE', gettext('published'));
 define('CONST_PUBLISH_STATUS_DISCARDED_VALUE', gettext('discarded'));
 define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
+
+$a_publish_status_keys = array(CONST_PUBLISH_STATUS_PENDING_KEY,
+	CONST_PUBLISH_STATUS_PUBLISHED_KEY,
+	CONST_PUBLISH_STATUS_DISCARDED_KEY,
+	CONST_PUBLISH_STATUS_REMOVED_KEY
+);
+$a_publish_status_values = array(CONST_PUBLISH_STATUS_PENDING_VALUE,
+	CONST_PUBLISH_STATUS_PUBLISHED_VALUE,
+	CONST_PUBLISH_STATUS_DISCARDED_VALUE,
+	CONST_PUBLISH_STATUS_REMOVED_VALUE);
 
 /**
  * paths (lib)

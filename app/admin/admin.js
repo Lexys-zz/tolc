@@ -10,6 +10,8 @@ $(function () {
 
     var ezfilemanager_url = $("#ezfilemanager_url").val();
     var active_elements = $("#active_elements").val();
+    var rsc_edit = $("#rsc_edit").val();
+    var rsc_whole_page = $("#rsc_whole_page").val();
 
     var rsc_username_charset = $("#rsc_username_charset").val();
     var rsc_password_charset = $("#rsc_password_charset").val();
@@ -87,10 +89,10 @@ $(function () {
                 $('#username').focus();
 
                 /*
-                disable right click in username and password fields as
-                  - right click -> paste do not trigger keyup and
-                  - right click -> paste cannot easily detected to all browsers
-                */
+                 disable right click in username and password fields as
+                 - right click -> paste do not trigger keyup and
+                 - right click -> paste cannot easily detected to all browsers
+                 */
                 $("#username, #new_password, #repeat_new_password").contextmenu(function () {
                     return false;
                 });
@@ -330,31 +332,41 @@ $(function () {
             $(this).removeClass('over');
         });
 
-    $(active_elements).qtip({
-        content: {
-            text: '<a href="javascript:void(0)" onclick="rte()">Click here</a>',
-            title: {
-                text: 'Edit',
-                button: false
+    $(active_elements).each(function () {
+        var id = $(this).attr("id");
+        var tip_text = '<ul><li><a href="javascript:void(0);" onclick="rte(' + "'" + id + "'" + ')">' + '#' + id + '</a>' +
+            '<li><a href="javascript:void(0);" onclick="rte()">' + rsc_whole_page + '</a></ul>';
+        $(this).qtip({
+            content: {
+                text: tip_text,
+                title: {
+                    text: rsc_edit,
+                    button: false
+                }
+            },
+            position: {
+                my: 'center',
+                at: 'center'
+            },
+            style: {
+                classes: 'ui-tooltip-shadow ui-tooltip-bootstrap'
+            },
+            hide: {
+                fixed: true,
+                delay: 100
             }
-        },
-        position: {
-            my: 'center',
-            at: 'center'
-        },
-        style: {
-            classes: 'ui-tooltip-shadow ui-tooltip-bootstrap'
-        },
-        hide: {
-            fixed: true,
-            delay: 100
-        }
+        });
     });
 
 });
 
-function rte() {
-    var url = $("#project_url").val() + '/app/admin/rte/rte.php';
+function rte(element_id) {
+    if (typeof element_id != 'undefined') {
+        var url = $("#project_url").val() + '/app/admin/rte/rte.php?element_id=' + element_id;
+    } else {
+        var url = $("#project_url").val() + '/app/admin/rte/rte.php';
+    }
+
     var win_name = 'rte';
     CenterWindow(1200, 800, 50, url, win_name, '');
 }

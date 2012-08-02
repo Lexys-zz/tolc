@@ -18,6 +18,8 @@
 <input type="hidden" id="btn_ok" value="<?php print gettext('Ok') ?>">
 <input type="hidden" id="btn_save" value="<?php print gettext('Save') ?>">
 <input type="hidden" id="btn_cancel" value="<?php print gettext('Cancel') ?>">
+<input type="hidden" id="rsc_edit" value="<?php print gettext('Edit') ?>">
+<input type="hidden" id="rsc_whole_page" value="<?php print gettext('whole page') ?>">
 
 <input type="hidden" id="rsc_password_charset"
 	   value="<?php print $tolc_conf['pref_password_charset'] ?>">
