@@ -31,30 +31,6 @@ $email = $_POST['email'];
 $url = $_POST['url'];
 $password_strength = $_POST['password_strength'];
 
-// check username length
-$n = strlen($username);
-if($n < $tolc_conf['pref_username_minchars']) {
-	print gettext('Username characters are less than') . ' ' . $tolc_conf['pref_username_minchars'] . '...';
-	exit;
-}
-if($n > $tolc_conf['pref_username_maxchars']) {
-	print gettext('Username characters are more than') . ' ' . $tolc_conf['pref_username_maxchars'] . '...';
-	exit;
-}
-
-// check valid username characters
-$regex_username = '/[^' . preg_quote($tolc_conf['pref_username_charset']) . ']/';
-if(preg_match($regex_username, $username)) {
-	print gettext('Username contains invalid characters') . '...';
-	exit;
-}
-
-// check for reserved usernames | CASE IN-SENSITIVE
-if(in_array(mb_strtolower($username), array_map('mb_strtolower', $tolc_conf['pref_reserved_usernames']))) {
-	print gettext('Selected username is reserved and cannot be used') . '...';
-	exit;
-}
-
 // password checks (if password changed)
 if($old_password) {
 	// check password length
@@ -82,10 +58,6 @@ if($old_password) {
 
 	//check valid password characters
 	$regex_password = '/[^' . preg_quote($tolc_conf['pref_password_charset']) . ']/';
-	if(preg_match($regex_password, $old_password)) {
-		print gettext('Old password contains invalid characters') . '...';
-		exit;
-	}
 	if(preg_match($regex_password, $new_password)) {
 		print gettext('New password contains invalid characters') . '...';
 		exit;
@@ -124,9 +96,35 @@ if($rs === false) {
 	$current_must_change_passwd = $rs->fields['must_change_passwd'];
 }
 
-// check for unique username | CASE IN-SENSITIVE
+// username checks (in case username has changed)
 $username_changed = ($username !== $current_username);
 if($username_changed) {
+
+	// check username length
+	$n = strlen($username);
+	if($n < $tolc_conf['pref_username_minchars']) {
+		print gettext('Username characters are less than') . ' ' . $tolc_conf['pref_username_minchars'] . '...';
+		exit;
+	}
+	if($n > $tolc_conf['pref_username_maxchars']) {
+		print gettext('Username characters are more than') . ' ' . $tolc_conf['pref_username_maxchars'] . '...';
+		exit;
+	}
+
+	// check valid username characters
+	$regex_username = '/[^' . preg_quote($tolc_conf['pref_username_charset']) . ']/';
+	if(preg_match($regex_username, $username)) {
+		print gettext('Username contains invalid characters') . '...';
+		exit;
+	}
+
+	// check for reserved usernames | CASE IN-SENSITIVE
+	if(in_array(mb_strtolower($username), array_map('mb_strtolower', $tolc_conf['pref_reserved_usernames']))) {
+		print gettext('Selected username is reserved and cannot be used') . '...';
+		exit;
+	}
+
+	// check for unique username | CASE IN-SENSITIVE
 	$sql = 'SELECT id from www_users WHERE LOWER(username)=' . $conn->qstr(mb_strtolower($username));
 	$rs = $conn->Execute($sql);
 	if($rs === false) {
