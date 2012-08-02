@@ -1,4 +1,4 @@
-To find the release number of Tolc code, see file RELEASE on project root.
+To find the release number of Tolc code, see file RELEASE on project root (or About Tolc).
 
 Each release directory contains
   1. an SQL file with full schema (e.g. for mysql: tolc_mysql_schema.sql)
