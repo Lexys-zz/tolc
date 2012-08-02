@@ -6,29 +6,6 @@ $(function () {
     var lang = $("#lang", window.opener.document).val();
     var rte_content = $("#rte_content", window.opener.document).val();
     var base_url = $("#base_url", window.opener.document).val();
-/*
-    var btn_ok = $("#btn_ok").val();
-    var active_elements = $("#active_elements").val();
-    var content = 'test';
-
-
-    $("#tp_edit_page").button({
-        icons: {
-            primary: 'ui-icon-pencil'
-        }
-    });
-
-    $("#tp_logout").click(function () {
-        $.ajax({
-            url: $("#project_url").val() + "/app/ajax_logout.php",
-            success: function (data) {
-                location.reload();
-            }
-        });
-    });
-
-*/
-    $("#rte").html(rte_content);
 
     $("#rte").tinymce({
         // Location of TinyMCE script
