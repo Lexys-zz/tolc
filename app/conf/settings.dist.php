@@ -78,6 +78,7 @@ $tolc_conf['pref_username_minchars'] = 4;
 $tolc_conf['pref_username_maxchars'] = 20; // max 254
 $tolc_conf['pref_password_minchars'] = 6;
 $tolc_conf['pref_password_maxchars'] = 14; // max 254
+$tolc_conf['pref_suggested_password_length'] = 12;
 $tolc_conf['pref_password_strength'] = 60;
 // use of non english characters or other special characters have not tested (NOT RECOMMENDED)
 $tolc_conf['pref_password_charset'] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#_+^~";

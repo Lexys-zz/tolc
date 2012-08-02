@@ -3,16 +3,19 @@ $(function () {
     var project_url = $("#project_url").val();
     var ajax_loading = $("#ajax_loading").val();
 
-    var ezfilemanager_url = $("#ezfilemanager_url").val();
-    var active_elements = $("#active_elements").val();
+    var rsc_help_toggle = $("#rsc_help_toggle").val();
     var btn_ok_value = $("#btn_ok").val();
     var btn_save_value = $("#btn_save").val();
     var btn_cancel_value = $("#btn_cancel").val();
-    var rsc_help_toggle = $("#rsc_help_toggle").val();
+
+    var ezfilemanager_url = $("#ezfilemanager_url").val();
+    var active_elements = $("#active_elements").val();
 
     var rsc_username_charset = $("#rsc_username_charset").val();
     var rsc_password_charset = $("#rsc_password_charset").val();
+    var rsc_password_maxchars = $("#rsc_password_maxchars").val();
     var rsc_password_minchars = $("#rsc_password_minchars").val();
+    var rsc_suggested_password_length = $("#rsc_suggested_password_length").val();
     var rsc_password_mask = $("#rsc_password_mask").val();
     var rsc_password_unmask = $("#rsc_password_unmask").val();
 
@@ -96,7 +99,8 @@ $(function () {
                 });
 
                 $('#generate_password').click(function () {
-                    var random_password = randomPassword(rsc_password_charset);
+                    var pwd_size = Math.min(rsc_suggested_password_length, rsc_password_maxchars);
+                    var random_password = randomPassword(rsc_password_charset, pwd_size);
                     $("#new_password").val(random_password).triggerHandler('keyup');
                     $("#repeat_new_password").val(random_password);
                 });

@@ -1,6 +1,7 @@
 <!-- Admin mode ------------------------------------------------------------ -->
 <input id="must_change_passwd" type="hidden"
 	   value="<?php print $_SESSION['must_change_passwd'] ? '1' : '0' ?>">
+
 <input id="tinymce_url" type="hidden" value="<?php print TINYMCE_URL ?>">
 <input id="content_css_url" type="hidden"
 	   value="<?php print $tolc_conf['project_url'] . $template_path . $css_url ?>">
@@ -11,23 +12,28 @@
 <input type="hidden" id="base_url" value="<?php print CONST_BASE_URL ?>">
 <input type="hidden" id="active_elements"
 	   value="<?php print $active_elements ?>">
+
 <input type="hidden" id="rsc_help_toggle"
 	   value="<?php print gettext('help') ?>">
 <input type="hidden" id="btn_ok" value="<?php print gettext('Ok') ?>">
 <input type="hidden" id="btn_save" value="<?php print gettext('Save') ?>">
 <input type="hidden" id="btn_cancel" value="<?php print gettext('Cancel') ?>">
 
+<input type="hidden" id="rsc_password_charset"
+	   value="<?php print $tolc_conf['pref_password_charset'] ?>">
+<input type="hidden" id="rsc_username_charset"
+	   value="<?php print $tolc_conf['pref_username_charset'] ?>">
+<input type="hidden" id="rsc_password_minchars"
+	   value="<?php print $tolc_conf['pref_password_minchars'] ?>">
+<input type="hidden" id="rsc_password_maxchars"
+	   value="<?php print $tolc_conf['pref_password_maxchars'] ?>">
+<input type="hidden" id="rsc_suggested_password_length"
+	   value="<?php print $tolc_conf['pref_suggested_password_length'] ?>">
+
 <input type="hidden" id="rsc_password_mask"
 	   value="<?php print gettext('Mask') ?>">
 <input type="hidden" id="rsc_password_unmask"
 	   value="<?php print gettext('Unmask') ?>">
-<input type="hidden" id="rsc_password_charset"
-	   value="<?php print $tolc_conf['pref_password_charset'] ?>">
-<input type="hidden" id="rsc_password_minchars"
-	   value="<?php print $tolc_conf['pref_password_minchars'] ?>">
-<input type="hidden" id="rsc_username_charset"
-	   value="<?php print $tolc_conf['pref_username_charset'] ?>">
-
 <input type="hidden" id="msg_username_required"
 	   value="<?php print gettext('Username is required') . '...' ?>">
 <input type="hidden" id="msg_old_password_required"
