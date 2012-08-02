@@ -19,6 +19,7 @@ if(!isset($_SESSION['username'])) {
 require_once '../../conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 
+$release = ltrim(file_get_contents($tolc_conf['project_dir'] . '/RELEASE'), "0");
 $version = file_get_contents($tolc_conf['project_dir'] . '/VERSION');
 
 ?>
@@ -32,7 +33,7 @@ $version = file_get_contents($tolc_conf['project_dir'] . '/VERSION');
 </div>
 
 <div id="tolc_version">
-	<?php print $version ?>
+	<?php print "RELEASE: $release ($version)" ?>
 </div>
 
 <div id="tolc_copyright">

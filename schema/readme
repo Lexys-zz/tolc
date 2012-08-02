@@ -1,0 +1,11 @@
+To find the release number of Tolc code, see file RELEASE on project root.
+
+Each release directory contains
+  1. an SQL file with full schema (e.g. for mysql: tolc_mysql_schema.sql)
+  2. an SQL file with initial data (e.g. for mysql: tolc_mysql_initdata.sql)
+  3. an SQL file with schema updates versus previous release (e.g. for mysql: tolc_mysql_schema_updates.sql)
+  4. an SQL file with initial data updates versus previous release (e.g. for mysql: tolc_mysql_initdata_updates.sql)
+
+As obvious, files 3 and 4 are existing after first release.
+
+
