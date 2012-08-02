@@ -7,5 +7,3 @@ Each release directory contains
   4. an SQL file with initial data updates versus previous release (e.g. for mysql: tolc_mysql_initdata_updates.sql)
 
 As obvious, files 3 and 4 are existing after first release.
-
-
