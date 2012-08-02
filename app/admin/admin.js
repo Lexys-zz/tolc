@@ -86,8 +86,12 @@ $(function () {
                 //The focus event does not bubble in Internet Explorer
                 $('#username').focus();
 
-                // disable right click in username and password fields (as right click -> paste cannot easily detected to all browsers)
-                $("#username, #old_password, #new_password, #repeat_new_password").contextmenu(function () {
+                /*
+                disable right click in username and password fields as
+                  - right click -> paste do not trigger keyup and
+                  - right click -> paste cannot easily detected to all browsers
+                */
+                $("#username, #new_password, #repeat_new_password").contextmenu(function () {
                     return false;
                 });
 
@@ -130,7 +134,7 @@ $(function () {
                     }
                 });
 
-                $('#old_password, #repeat_new_password').keyup(function () {
+                $('#repeat_new_password').keyup(function () {
                     $(this).val($(this).val().replace(regex_password_filter, ''));
                 });
 
