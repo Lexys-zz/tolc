@@ -4,10 +4,10 @@ session_regenerate_id(true);
 
 // prevent direct access
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
-    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-if (!$isAjax) {
-    print 'Access denied - not an AJAX request...';
-    exit;
+	strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+if(!$isAjax) {
+	print 'Access denied - not an AJAX request...';
+	exit;
 }
 
 // check for logged in user
@@ -30,16 +30,17 @@ $term = trim($_GET['term']);
 $result = '';
 
 $pos = mb_strpos($term, "%");
-if ($pos === false) {
+if($pos === false) {
 
 	$parts = explode(' ', $term);
 	$p = count($parts);
 
-	$sql = 'SELECT id, title FROM www_pages WHERE ';
+	$sql = 'SELECT id, title, url FROM www_pages WHERE ';
 
-	for ($i = 0; $i < $p; $i++) {
-		$sql .= ' LOWER(title) LIKE ' . $conn->qstr('%' . mb_strtolower($parts[$i]) . '%');
-		if($i < $p -1) {
+	for($i = 0; $i < $p; $i++) {
+		$sql .= ' (LOWER(title) LIKE ' . $conn->qstr('%' . mb_strtolower($parts[$i]) . '%') .
+			' OR LOWER(url) LIKE ' . $conn->qstr('%' . mb_strtolower($parts[$i]) . '%') . ')';
+		if($i < $p - 1) {
 			$sql .= ' AND';
 		}
 	}
@@ -54,14 +55,13 @@ if ($pos === false) {
 		$total_results = $rs->RecordCount();
 	}
 
-	if ($total_results > 0) {
+	if($total_results > 0) {
 		$json = '[';
-		foreach ($res as $row) {
+		foreach($res as $row) {
 
-			$value = $row['title'];
-
+			$value = $row['title'] . ' (' . CONST_PROJECT_FULL_URL . $row['url'] . ')';
 			$label = $value;
-			for ($i = 0; $i < $p; $i++) {
+			for($i = 0; $i < $p; $i++) {
 				// highlight search results
 				$label = mb_str_ireplace($parts[$i], '<u><strong>' . $parts[$i] . '</strong></u>', $label);
 			}

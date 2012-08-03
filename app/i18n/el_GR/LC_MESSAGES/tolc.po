@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 18:13+0200\n"
-"PO-Revision-Date: 2012-08-02 18:14+0200\n"
+"POT-Creation-Date: 2012-08-03 18:38+0200\n"
+"PO-Revision-Date: 2012-08-03 18:39+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,11 +17,11 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:48
+#: index.php:49
 msgid "New page"
 msgstr "Νέα σελίδα"
 
-#: index.php:48
+#: index.php:49
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
@@ -78,11 +78,11 @@ msgstr "Παρακαλώ, περιμένετε"
 msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
-#: admin/new_page/ajax_new_page.php:50
+#: admin/new_page/ajax_new_page.php:53
 msgid "URL already exists"
 msgstr "Το URL υπάρχει ήδη"
 
-#: admin/new_page/ajax_new_page.php:62
+#: admin/new_page/ajax_new_page.php:65
 msgid "Page title already exists"
 msgstr "Ο τίτλος σελίδας υπάρχει ήδη"
 
@@ -99,7 +99,7 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: admin/new_page/ajax_new_page_form.php:62
-#: admin/rte/rte.php:171
+#: admin/rte/rte.php:56
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -224,15 +224,15 @@ msgstr "Επεξεργασία"
 msgid "whole page"
 msgstr "ολόκληρη η σελίδα"
 
-#: admin/rte/rte.php:165
+#: admin/rte/rte.php:50
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: admin/rte/rte.php:166
+#: admin/rte/rte.php:51
 msgid "From"
 msgstr ""
 
-#: admin/rte/rte.php:168
+#: admin/rte/rte.php:53
 msgid "Until"
 msgstr ""
 
@@ -311,8 +311,9 @@ msgid "Page template is required"
 msgstr "Το πρότυπο της σελίδας είναι απαραίτητο"
 
 #: inc_tolc_functions/inc_new_page.php:7
-msgid "Please, select the title of the parent page"
-msgstr "Παρακαλώ, επιλέξτε τον τίτλο της σελίδας που ανήκει"
+#, fuzzy
+msgid "Please, select the parent page (title or URL)"
+msgstr "Παρακαλώ, επιλέξτε τη σελίδα που ανήκει (δίνοντας τίτλο ή URL)"
 
 #: inc_tolc_functions/inc_regional.php:2
 msgid "Regional settings"

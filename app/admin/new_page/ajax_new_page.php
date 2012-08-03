@@ -56,7 +56,7 @@ if($rs === false) {
 }
 
 // check for unique page title
-$sql = 'SELECT id from www_pages WHERE LOWER(title)=' . $conn->qstr(mb_strtolower($page_title));
+/*$sql = 'SELECT id from www_pages WHERE LOWER(title)=' . $conn->qstr(mb_strtolower($page_title));
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
@@ -65,7 +65,7 @@ if($rs === false) {
 		print gettext('Page title already exists') . '...';
 		exit;
 	}
-}
+}*/
 
 // proceed to insert
 $conn->BeginTrans();
