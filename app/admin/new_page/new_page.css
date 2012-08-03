@@ -52,3 +52,7 @@
     color: #9c1821 !important;
     font-weight: bold !important;
 }
+
+.ui-autocomplete li {
+    text-align: left;
+}
