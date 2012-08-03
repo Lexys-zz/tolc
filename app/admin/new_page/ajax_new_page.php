@@ -4,10 +4,10 @@ session_regenerate_id(true);
 
 // prevent direct access
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
-    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
-if (!$isAjax) {
-    print 'Access denied - not an AJAX request...';
-    exit;
+	strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+if(!$isAjax) {
+	print 'Access denied - not an AJAX request...';
+	exit;
 }
 
 // check for logged in user
@@ -31,8 +31,11 @@ $parent_id = $_POST['parent_id'];
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
+// get current time (in UTC)
+$now = $conn->qstr(now());
+
 // get current user id
-$sql='SELECT id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
+$sql = 'SELECT id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
@@ -46,7 +49,7 @@ $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 } else {
-	if($rs->RecordCount() !=0) {
+	if($rs->RecordCount() != 0) {
 		print gettext('URL already exists') . '...';
 		exit;
 	}
@@ -58,27 +61,48 @@ $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 } else {
-	if($rs->RecordCount() !=0) {
+	if($rs->RecordCount() != 0) {
 		print gettext('Page title already exists') . '...';
 		exit;
 	}
 }
 
+// proceed to insert
+$conn->BeginTrans();
+
 // insert new page
 $sql = 'INSERT INTO www_pages ' .
-	'(url,title,www_templates_id,www_users_id,date_created,parent_id) ' .
+	'(url,title,www_users_id,date_created,parent_id) ' .
 	'VALUES (' .
 	$conn->qstr($page_url) . ',' .
 	$conn->qstr($page_title) . ',' .
-	$www_templates_id . ',' .
 	$www_users_id . ',' .
-	$conn->qstr(now()) . ',' .
+	$now . ',' .
 	$parent_id .
 	')';
 if($conn->Execute($sql) === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+	$err = $conn->ErrorMsg();
+	$conn->RollbackTrans();
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
 } else {
-	$_SESSION['url'] = $page_url;
+	$www_pages_id = $conn->Insert_ID();
 }
 
+// insert new template for new inserted page
+$sql = 'INSERT INTO www_page_templates ' .
+	'(www_pages_id,www_templates_id,date_start) ' .
+	'VALUES (' .
+	$www_pages_id . ',' .
+	$www_templates_id . ',' .
+	$now .
+	')';
+if($conn->Execute($sql) === false) {
+	$err = $conn->ErrorMsg();
+	$conn->RollbackTrans();
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
+}
+
+$conn->CommitTrans();
+
+$_SESSION['url'] = $page_url;
 ?>

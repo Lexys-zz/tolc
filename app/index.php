@@ -23,6 +23,9 @@ if($url == '/app/index.php' || $url == '/app/') {
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
+// get current time (in UTC)
+$now = $conn->qstr(now());
+
 // check for reserved url (CASE INSENSITIVE)
 if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_reserved_urls']))) {
 	$_SESSION['url_reserved'] = $url;
@@ -33,8 +36,8 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_res
 	$_SESSION['url'] = $url;
 }
 
-// get template id and page title (CASE INSENSITIVE URL search)
-$sql = 'SELECT id, title, www_templates_id FROM www_pages WHERE LOWER(url)=' . $url_sql;
+// get page id and page title (CASE INSENSITIVE URL search)
+$sql = 'SELECT id, title FROM www_pages WHERE LOWER(url)=' . $url_sql;
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
@@ -42,17 +45,30 @@ if($rs === false) {
 if($rs->RecordCount() == 0) {
 	// set page id
 	$www_pages_id = 0;
-	// set default template id
-	$www_templates_id = $tolc_conf['domains_tmpl'][$_SERVER['SERVER_NAME']];
 	// set page title
 	$page_title = $admin_mode ? gettext('New page') : gettext('Page not found') . '...';
 } else {
 	// retrieve page id
 	$www_pages_id = $rs->fields['id'];
-	// retrieve template id for this url
-	$www_templates_id = $rs->fields['www_templates_id'];
 	// retrieve page title
 	$page_title = $rs->fields['title'];
+}
+
+// get template id
+if($www_pages_id == 0) {
+	// set default template id
+	$www_templates_id = $tolc_conf['domains_tmpl'][$_SERVER['SERVER_NAME']];
+} else {
+	$sql = 'SELECT www_templates_id FROM www_page_templates ' .
+		'WHERE www_pages_id=' . $www_pages_id .
+		' AND date_start<=' . $now .
+		' ORDER BY date_start DESC';
+	$rs = $conn->SelectLimit($sql,1,0);
+	if($rs === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+	} else {
+		$www_templates_id = $rs->fields['www_templates_id'];
+	}
 }
 
 // get template path
@@ -134,7 +150,6 @@ if($www_pages_id > 0) {
 	}
 	$a_elements = $rs->GetRows();
 
-	$now = $conn->qstr(now());
 	foreach($a_elements as $element) {
 		// push to active elements array
 		array_push($a_active_elements, '#' . $element['element_id']);
@@ -143,9 +158,9 @@ if($www_pages_id > 0) {
 			'WHERE www_pages_id=' . $www_pages_id .
 			' AND www_template_active_elements_id=' . $element['id'] .
 			' AND lk_publish_status_id=' . CONST_PUBLISH_STATUS_PUBLISHED_KEY .
-			' AND date_start<=' . $now .
-			' AND (date_end is null OR date_end>=' . $now . ')';
-		$rs = $conn->Execute($sql);
+			' AND date_published<=' . $now .
+			' ORDER BY date_published DESC';
+		$rs = $conn->SelectLimit($sql,1,0);
 		if($rs === false) {
 			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 		}
