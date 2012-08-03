@@ -1,5 +1,5 @@
 $(function () {
-
+    var project_url = $("#project_url", window.opener.document).val();
     var tinymce_url = $("#tinymce_url", window.opener.document).val();
     var ezfilemanager_url = $("#ezfilemanager_url", window.opener.document).val();
     var content_css_url = $("#content_css_url", window.opener.document).val();
@@ -7,7 +7,7 @@ $(function () {
     var rte_content = $("#rte_content", window.opener.document).val();
     var base_url = $("#base_url", window.opener.document).val();
 
-/* timnymce ------------------------------------------------------------------*/
+    /* timnymce ------------------------------------------------------------------*/
     $("#rte").tinymce({
         // Location of TinyMCE script
         script_url: tinymce_url,
@@ -52,8 +52,21 @@ $(function () {
         }
     });
 
-/* tools ---------------------------------------------------------------------*/
 
+    // load content to tinymce
+    $.ajax({
+        type: 'POST',
+        url: project_url + "/app/admin/rte/ajax_load_content.php",
+        data: {
+            date_published: ''
+        },
+        success: function (data) {
+            $('#rte').html(data);
+        }
+    });
+
+
+    /* tools -----------------------------------------------------------------*/
     $("#btn_save").button({
         icons: {
             primary: 'ui-icon-check'
