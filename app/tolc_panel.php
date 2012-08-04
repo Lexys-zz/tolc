@@ -8,13 +8,13 @@ if(!$tolc_include) {
 <?php if(isset($_SESSION['username'])) { ?>
 <!-- tolc panel (included by tolc) ----------------------------------------- -->
 <?php
-	// retrieve is_admin
-	$sql = 'SELECT is_admin FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
+	// retrieve user role
+	$sql = 'SELECT lk_roles_id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
 	$rs = $conn->Execute($sql);
 	if($rs === false) {
 		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 	}
-	$is_admin = $rs->fields['is_admin'] == 1 ? true : false;
+	$lk_roles_id = $rs->fields['lk_roles_id'];
 	?>
 <div id="tolc_panel">
 	<a id="tp_edit_page" class="tolc_panel_btn"
@@ -26,7 +26,7 @@ if(!$tolc_include) {
 	<a id="tp_filemanager" class="tolc_panel_btn"
 	   href="javascript:void(0);"><?php print gettext('Files') ?></a>
 
-	<?php if($is_admin) { ?>
+	<?php if($lk_roles_id == CONST_ROLE_ADMIN_KEY) { ?>
 	|
 	<a id="tp_users" class="tolc_panel_btn"
 	   href="javascript:void(0);"><?php print gettext('Users') ?></a>

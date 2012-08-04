@@ -35,6 +35,15 @@ INSERT INTO `www_languages` VALUES (1,'af_ZA','Afrikaans','Afrikaans',NULL,NULL,
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `www_page_templates`
+--
+
+LOCK TABLES `www_page_templates` WRITE;
+/*!40000 ALTER TABLE `www_page_templates` DISABLE KEYS */;
+/*!40000 ALTER TABLE `www_page_templates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `www_pages`
 --
 
@@ -68,7 +77,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_users` WRITE;
 /*!40000 ALTER TABLE `www_users` DISABLE KEYS */;
-INSERT INTO `www_users` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','user@example.com','Default user',NULL,'20120101',2,1,'UTC');
+INSERT INTO `www_users` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','user@example.com','Default user',NULL,'20120101',2,1,1);
 /*!40000 ALTER TABLE `www_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-14 20:39:37
+-- Dump completed on 2012-08-04 14:14:50

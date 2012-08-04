@@ -76,8 +76,8 @@ CREATE TABLE `www_page_templates` (
   KEY `www_page_templates_ix1` (`www_pages_id`),
   KEY `www_page_templates_ix2` (`www_templates_id`),
   KEY `www_page_templates_ix3` (`date_start`),
-  CONSTRAINT `www_page_templates_fk2` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`),
-  CONSTRAINT `www_page_templates_fk1` FOREIGN KEY (`www_pages_id`) REFERENCES `www_pages` (`id`)
+  CONSTRAINT `www_page_templates_fk1` FOREIGN KEY (`www_pages_id`) REFERENCES `www_pages` (`id`),
+  CONSTRAINT `www_page_templates_fk2` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -102,8 +102,8 @@ CREATE TABLE `www_pages` (
   KEY `www_pages_ix3` (`date_created`),
   KEY `www_pages_ix4` (`parent_id`),
   KEY `www_pages_ix5` (`display_order`),
-  CONSTRAINT `www_pages_fk2` FOREIGN KEY (`parent_id`) REFERENCES `www_pages` (`id`),
-  CONSTRAINT `www_pages_fk1` FOREIGN KEY (`www_users_id`) REFERENCES `www_users` (`id`)
+  CONSTRAINT `www_pages_fk1` FOREIGN KEY (`www_users_id`) REFERENCES `www_users` (`id`),
+  CONSTRAINT `www_pages_fk2` FOREIGN KEY (`parent_id`) REFERENCES `www_pages` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -163,13 +163,14 @@ CREATE TABLE `www_users` (
   `url` varchar(254) DEFAULT NULL,
   `date_registered` varchar(14) NOT NULL,
   `lk_user_status_id` int(11) NOT NULL,
-  `is_admin` tinyint(4) NOT NULL,
   `must_change_passwd` tinyint(4) NOT NULL DEFAULT '1',
+  `lk_roles_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `www_users_ix1` (`username`),
   KEY `www_users_ix2` (`fullname`),
   KEY `www_users_ix3` (`date_registered`),
-  KEY `www_users_ix4` (`lk_user_status_id`)
+  KEY `www_users_ix4` (`lk_user_status_id`),
+  KEY `www_users_ix5` (`lk_roles_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -182,4 +183,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-03 13:04:24
+-- Dump completed on 2012-08-04 14:14:17
