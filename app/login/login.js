@@ -11,7 +11,7 @@ $(function () {
         height: 300,
         resizable: true,
         open: function () {
-            $(this).load(project_url + '/app/login/ajax_login_form.php', {}, function() {
+            $(this).load(project_url + '/app/login/ajax_login_form.php', {}, function () {
                 $("#username").focus();
             });
             $('.ui-dialog-buttonpane').find('button:contains("' + btn_do_login_value + '")').button({
@@ -87,11 +87,9 @@ function validate_login_form() {
     return 0;
 }
 
-function update_user_message(t) {
-    $("#user_message").text(t)
-    $("#user_message").addClass("ui-state-highlight");
-    setTimeout(function () {
-        $("#user_message").removeClass("ui-state-highlight");
-        $("#user_message").text('');
-    }, 1500);
+function update_user_message(msg) {
+    $("#user_message").jui_alert({
+       message: msg
+    });
 }
+

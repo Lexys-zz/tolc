@@ -402,11 +402,8 @@ function validate_user_form() {
     return 0;
 }
 
-function update_user_message(t) {
-    $("#user_message").text(t)
-    $("#user_message").addClass("ui-state-highlight");
-    setTimeout(function () {
-        $("#user_message").removeClass("ui-state-highlight");
-        $("#user_message").text('');
-    }, 1500);
+function update_user_message(msg) {
+    $("#user_message").jui_alert({
+        message: msg
+    });
 }
