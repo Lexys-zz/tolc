@@ -98,6 +98,7 @@ define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // used from ezfile
 /**
  * lookups
  */
+/* user status */
 define('CONST_USER_STATUS_PENDING_KEY', 1);
 define('CONST_USER_STATUS_ACTIVE_KEY', 2);
 define('CONST_USER_STATUS_INACTIVE_KEY', 3);
@@ -105,26 +106,7 @@ define('CONST_USER_STATUS_PENDING_VALUE', gettext('pending registration'));
 define('CONST_USER_STATUS_ACTIVE_VALUE', gettext('active user'));
 define('CONST_USER_STATUS_INACTIVE_VALUE', gettext('inactive user'));
 
-define('CONST_PUBLISH_STATUS_PENDING_KEY', 1);
-define('CONST_PUBLISH_STATUS_PUBLISHED_KEY', 2);
-define('CONST_PUBLISH_STATUS_DISCARDED_KEY', 3);
-define('CONST_PUBLISH_STATUS_REMOVED_KEY', 4);
-define('CONST_PUBLISH_STATUS_PENDING_VALUE', gettext('pending publication'));
-define('CONST_PUBLISH_STATUS_PUBLISHED_VALUE', gettext('published'));
-define('CONST_PUBLISH_STATUS_DISCARDED_VALUE', gettext('discarded'));
-define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
-
-$a_publish_status_keys = array(CONST_PUBLISH_STATUS_PENDING_KEY,
-	CONST_PUBLISH_STATUS_PUBLISHED_KEY,
-	CONST_PUBLISH_STATUS_DISCARDED_KEY,
-	CONST_PUBLISH_STATUS_REMOVED_KEY
-);
-$a_publish_status_values = array(CONST_PUBLISH_STATUS_PENDING_VALUE,
-	CONST_PUBLISH_STATUS_PUBLISHED_VALUE,
-	CONST_PUBLISH_STATUS_DISCARDED_VALUE,
-	CONST_PUBLISH_STATUS_REMOVED_VALUE);
-
-
+/* user roles */
 define('CONST_ROLE_ADMIN_KEY', 1);
 define('CONST_ROLE_EDITOR_IN_CHIEF_KEY', 2);
 define('CONST_ROLE_EDITOR_KEY', 3);
@@ -142,7 +124,30 @@ $a_role_keys = array(CONST_ROLE_ADMIN_KEY,
 $a_role_values = array(CONST_ROLE_ADMIN_VALUE,
 	CONST_ROLE_EDITOR_IN_CHIEF_VALUE,
 	CONST_ROLE_EDITOR_VALUE,
-	CONST_ROLE_COMMON_USER_VALUE);
+	CONST_ROLE_COMMON_USER_VALUE
+);
+
+/* content status */
+define('CONST_PUBLISH_STATUS_PENDING_KEY', 1);
+define('CONST_PUBLISH_STATUS_PUBLISHED_KEY', 2);
+define('CONST_PUBLISH_STATUS_DISCARDED_KEY', 3);
+define('CONST_PUBLISH_STATUS_REMOVED_KEY', 4);
+
+define('CONST_PUBLISH_STATUS_PENDING_VALUE', gettext('pending publication'));
+define('CONST_PUBLISH_STATUS_PUBLISHED_VALUE', gettext('published'));
+define('CONST_PUBLISH_STATUS_DISCARDED_VALUE', gettext('discarded'));
+define('CONST_PUBLISH_STATUS_REMOVED_VALUE', gettext('removed'));
+
+$a_publish_status_keys = array(CONST_PUBLISH_STATUS_PENDING_KEY,
+	CONST_PUBLISH_STATUS_PUBLISHED_KEY,
+	CONST_PUBLISH_STATUS_DISCARDED_KEY,
+	CONST_PUBLISH_STATUS_REMOVED_KEY
+);
+$a_publish_status_values = array(CONST_PUBLISH_STATUS_PENDING_VALUE,
+	CONST_PUBLISH_STATUS_PUBLISHED_VALUE,
+	CONST_PUBLISH_STATUS_DISCARDED_VALUE,
+	CONST_PUBLISH_STATUS_REMOVED_VALUE
+);
 
 
 /**
@@ -166,6 +171,7 @@ define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd2893a3
 define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd2893a36b401342396829/jquery.qtip.css');
 define('PASSWORDSTRENGTH_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.js');
 define('PASSWORDSTRENGTH_CSS_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.css');
+define('JUI_ALERT_URL', LIB_URL . '/jui_alert_1.0/jquery.jui_alert.js');
 
 define('JQUERY_TINYMCE_DIR', '/tinymce_3.5.4.1_jquery');
 define('JQUERY_TINYMCE_PATH', LIB_URL . LIB_EXT_DIR . JQUERY_TINYMCE_DIR);

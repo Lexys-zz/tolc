@@ -8,6 +8,9 @@ if(!$tolc_include) {
 
 <script type="text/javascript" src="<?php print JQUERY_URL ?>"></script>
 <script type="text/javascript" src="<?php print JQUERY_UI_URL ?>"></script>
+<script type="text/javascript" src="<?php print JUI_ALERT_URL ?>"></script>
+
+<script type="text/javascript" src="<?php print LIB_URL . LIB_EXT_DIR ?>/bootstrap_2.0.4/js/bootstrap.min.js"></script>
 
 <?php
 if(!isset($_SESSION['username'])) {
@@ -23,7 +26,7 @@ if(!isset($_SESSION['username'])) {
 			case mb_strtolower($tolc_conf['pref_reserved_urls']['login']):
 				?>
 				<script type="text/javascript"
-						src="<?php print $tolc_conf['project_url'] ?>/app/login/login.js?version=4"></script>
+						src="<?php print $tolc_conf['project_url'] ?>/app/login/login.js?version=5"></script>
 				<?php
 				break;
 		}
