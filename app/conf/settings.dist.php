@@ -92,4 +92,7 @@ $tolc_conf['pref_reserved_usernames'] = array(
 	5 => 'tolc',
 	6 => 'tolcadmin'
 );
+
+/* jquery ui CSS theme */
+$tolc_conf['pref_jqueryui_theme'] = 'ui-lightness'; // ui-lightness, smoothness, south-street, humanity, redmond
 ?>
