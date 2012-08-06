@@ -10,8 +10,6 @@ if(!$tolc_include) {
 <script type="text/javascript" src="<?php print JQUERY_UI_URL ?>"></script>
 <script type="text/javascript" src="<?php print JUI_ALERT_URL ?>"></script>
 
-<script type="text/javascript" src="<?php print LIB_URL . LIB_EXT_DIR ?>/bootstrap_2.0.4/js/bootstrap.min.js"></script>
-
 <?php
 if(!isset($_SESSION['username'])) {
 

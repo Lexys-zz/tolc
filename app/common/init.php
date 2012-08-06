@@ -158,8 +158,8 @@ define('LIB_DIR', $tolc_conf['project_dir'] . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
 define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.7.2/jquery-1.7.2.min.js');
-define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.20.custom/js/jquery-ui-1.8.20.custom.min.js');
-define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.20.custom/css/ui-lightness/jquery-ui-1.8.20.custom.css');
+define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js');
+define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.22.custom/css/' . $tolc_conf['pref_jqueryui_theme'] . '/jquery-ui-1.8.22.custom.css');
 define('JQUERY_UI_i18n_DIR', LIB_URL . LIB_EXT_DIR . '/jquery-ui-localize');
 define('JQUERY_UI_DATETIMEPICKER_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-0.9.8/jquery-ui-timepicker-addon.js');
 define('JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-extensions/jquery.ui.autocomplete.html.js');
