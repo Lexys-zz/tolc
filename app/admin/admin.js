@@ -76,7 +76,7 @@ $(function () {
         show: "blind",
         hide: "explode",
         width: 740,
-        height: 520,
+        height: 550,
         resizable: true,
         modal: $("#must_change_passwd").val() == '1' ? true : false,
         open: function () {
