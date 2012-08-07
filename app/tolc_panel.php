@@ -45,20 +45,28 @@ $user_email = $rs->fields['email'];
 <div id="tolc_cms">
 	<h1><?php print gettext('Content management') ?></h1>
 	<ul>
+		<li><a id="tp_new_page"
+			   href="javascript:void(0);"><?php print gettext('Add new page') ?></a>
+		</li>
+
 		<li><a id="tp_edit_page"
-			   href="javascript:void(0);"><?php print gettext('Page properties') ?></a>
+			   href="javascript:void(0);"><?php print gettext('Edit page properties') ?></a> (<?php print gettext('URL') ?>, <?php print gettext('title') ?>, <?php print gettext('etc') ?>)
+		</li>
+
+		<li><a id="tp_pages"
+			   href="javascript:void(0);"><?php print gettext('Web site management') ?></a>
 		</li>
 
 		<li><a id="tp_sitemap"
-			   href="javascript:void(0);"><?php print gettext('Sitemap') ?></a>
+			   href="javascript:void(0);"><?php print gettext('Sitemap') ?></a> (<?php print gettext('web site structure') ?>)
 		</li>
 
 		<li><a id="tp_templates"
-			   href="javascript:void(0);"><?php print gettext('Templates') ?></a>
+			   href="javascript:void(0);"><?php print gettext('Manage web site templates') ?></a>
 		</li>
 
 		<li><a id="tp_filemanager"
-			   href="javascript:void(0);"><?php print gettext('Files') ?></a>
+			   href="javascript:void(0);"><?php print gettext('Upload files') ?></a> (<?php print gettext('images') ?>, <?php print gettext('media files') ?>, <?php print gettext('etc') ?>)
 		</li>
 	</ul>
 </div>
