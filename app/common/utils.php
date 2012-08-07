@@ -24,6 +24,7 @@ function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = 
 
 /**
  * Converts a 14-digit timestamp to date string
+ *
  * @param $ts
  * @param string $format
  * @param string $str_timezone
@@ -37,12 +38,13 @@ function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = 
 }
 
 /**
+ * * Multi-byte CASE INSENSITIVE str_replace
+ *
  * @param $co
  * @param $naCo
  * @param $wCzym
  * @return string
- * Multi-byte CASE INSENSITIVE str_replace
- * http://www.php.net/manual/en/function.mb-ereg-replace.php#55659
+ * @source http://www.php.net/manual/en/function.mb-ereg-replace.php#55659
  */
 function mb_str_ireplace($co, $naCo, $wCzym) {
 	$wCzymM = mb_strtolower($wCzym);
@@ -58,11 +60,11 @@ function mb_str_ireplace($co, $naCo, $wCzym) {
 	return $wCzym;
 }
 
-
 /**
  * Timezones list with GMT offset
- * http://stackoverflow.com/a/9328760
+ *
  * @return array
+ * @source http://stackoverflow.com/a/9328760
  */
 function tz_list() {
 	$zones_array = array();
@@ -76,6 +78,8 @@ function tz_list() {
 }
 
 /**
+ * Create dateformat array
+ *
  * @param $a_df
  * @param $tz
  * @return array
@@ -139,5 +143,4 @@ function get_gravatar_profile($email) {
 		}
 	}
 }
-
 ?>
