@@ -203,12 +203,6 @@ include($tolc_conf['project_dir'] . '/app/tolc_head_js.php');
 $tolc_head_js_html = ob_get_contents();
 ob_end_clean();
 
-// store tolc panel html to variable
-ob_start();
-include($tolc_conf['project_dir'] . '/app/tolc_panel.php');
-$tolc_panel_html = ob_get_contents();
-ob_end_clean();
-
 // store tolc functions html to variable
 ob_start();
 include($tolc_conf['project_dir'] . '/app/tolc_functions.php');
@@ -232,8 +226,7 @@ if($template_head) {
 $template_body = $html->getElementByTagName('body');
 if($template_body) {
 	$template_body_html = $template_body->innertext;
-	$body = $tolc_panel_html . PHP_EOL .
-		$template_body_html . PHP_EOL .
+	$body = $template_body_html . PHP_EOL .
 		$tolc_functions_html;
 	$template_body->innertext = $body;
 }

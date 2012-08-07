@@ -1,39 +1,117 @@
 /* panel -------------------------------------------------------------------- */
-#tolc_panel {
-    background: #fdf5ce;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    clear: both;
-    display: none;
+a.trigger {
+    position: absolute;
+    background: #88bbd4 url(../images/plus.png) 6% 55% no-repeat;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: -1px;
+    font-family: verdana, helvetica, arial, sans-serif;
+    color: #fff;
+    padding: 4px 12px 6px 24px;
+    font-weight: bold;
+
+    z-index: 2;
+
+    left: 0;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    width: 50px;
+    margin-left: 0px !important;
 }
 
-#tolc_slide {
+a.trigger:hover {
+    background-color: #59B;
+}
+
+a.active.trigger {
+    background: #666 url(../images/minus.png) 6% 55% no-repeat;
+}
+
+.panel {
+    color: #CCC;
+    position: absolute;
+    display: none;
+    background: #000000;
+    width: 250px;
+    height: auto;
+
+    z-index: 1;
+
+    left: 0;
+    padding: 20px 30px 20px 100px;
+    border-top-right-radius: 15px;
+    -moz-border-radius-topright: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    margin-left: 0px !important;
+}
+
+#tolc_user, #tolc_cms, #tolc_users, #tolc_about {
+    clear: both;
+    padding-bottom: 0px;
+}
+
+#panel h1 {
+    font-family: "Trebuchet MS", Georgia, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: left;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+#gravatar {
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+/* based on http://spyrestudios.com/demos/sliding-panel-left/ */
+#panel p {
+    font-family: "Trebuchet MS", Georgia, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    margin: 0 0 15px 15px;
+    padding: 0;
+    color: #cccccc;
+}
+
+#panel a, #panel a:visited {
     margin: 0;
     padding: 0;
-    border-top: solid 3px #0A246A;
-    clear: both;
-}
-
-#tolc_btn_slide {
-    text-align: center;
-    width: 300px;
-    height: 20px;
-    padding: 0;
-    margin: 0 auto;
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #000000;
+    color: #9FC54E;
     text-decoration: none;
-    background: #eb8f00;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    opacity: 0.5;
-    filter: Alpha(opacity = 50); /* IE8 and earlier */
+    border-bottom: 1px solid #9FC54E;
 }
 
-.tolc_panel_btn {
-    font-size: 11px;
+#panel a:hover, #panel a:visited:hover {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px solid #ffffff;
+}
+
+#panel ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#panel ul li{
+    font-family: "Trebuchet MS", Georgia, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 0 15px;
+    list-style-type: none;
 }
 
 /* about tolc --------------------------------------------------------------- */
@@ -51,13 +129,6 @@
 }
 
 /* user form ---------------------------------------------------------------- */
-#login_user {
-    font-size: 14px;
-    font-weight: bold;
-    margin-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 #user_form input, select {
     margin: 5px 0;
     padding: 5px;
@@ -96,7 +167,6 @@
     padding-top: 10px;
 }
 
-
 #username, #old_password, #new_password, #repeat_new_password {
     width: 30%;
 }
@@ -121,6 +191,7 @@
     text-align: left;
     color: red;
 }
+
 /* misc --------------------------------------------------------------------- */
 .field_container {
     width: 95%;
@@ -140,6 +211,7 @@
     font-weight: bold !important;
 }
 
+/* help tips */
 .help_call {
     display: none;
     margin-left: 10px;

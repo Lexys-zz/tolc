@@ -21,53 +21,12 @@ $(function () {
     var rsc_password_mask = $("#rsc_password_mask").val();
     var rsc_password_unmask = $("#rsc_password_unmask").val();
 
-    /* slide ---------------------------------------------------------------- */
-    $("#tolc_btn_slide").click(function () {
-        $("#tolc_panel").slideToggle("slow");
-        return false;
-    });
-
-    /* buttons -------------------------------------------------------------- */
-    $("#tp_edit_page").button({
-        icons: {
-            primary: 'ui-icon-pencil'
-        }
-    });
-
-    $("#tp_sitemap").button({
-        icons: {
-            primary: 'ui-icon-pin-w'
-        }
-    });
-
-    $("#tp_templates").button({
-        icons: {
-            primary: 'ui-icon-wrench'
-        }
-    });
-
-    $("#tp_filemanager").button({
-        icons: {
-            primary: 'ui-icon-folder-open'
-        }
-    });
-
-    $("#tp_users").button({
-        icons: {
-            primary: 'ui-icon-person'
-        }
-    });
-
-    $("#tp_about").button({
-        icons: {
-            primary: 'ui-icon-home'
-        }
-    });
-
-    $("#tp_logout").button({
-        icons: {
-            primary: 'ui-icon-power'
-        }
+    /* tolc panel ----------------------------------------------------------- */
+    $('#panel').slidePanel({
+        position: 'fixed',
+        triggerTopPos: '20px',
+        panelTopPos: '10px',
+        closeOnLinkClick: true
     });
 
     /* user form ------------------------------------------------------------ */
@@ -270,7 +229,7 @@ $(function () {
     });
 
 
-    $("#login_user").click(function () {
+    $("#tp_login_user").click(function () {
         $("#user_form").dialog("open");
         return false;
     });
@@ -360,6 +319,7 @@ $(function () {
 
 });
 
+/* functions ---------------------------------------------------------------- */
 function rte(element_id) {
     if (typeof element_id != 'undefined') {
         var url = $("#project_url").val() + '/app/admin/rte/rte.php?element_id=' + element_id;

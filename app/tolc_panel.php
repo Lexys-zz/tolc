@@ -4,48 +4,87 @@ if(!$tolc_include) {
 	echo 'Access denied!';
 	exit;
 }
-?>
-<?php if(isset($_SESSION['username'])) { ?>
-<!-- tolc panel (included by tolc) ----------------------------------------- -->
-<?php
-	// retrieve user role
-	$sql = 'SELECT lk_roles_id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
-	$rs = $conn->Execute($sql);
-	if($rs === false) {
-		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-	}
-	$lk_roles_id = $rs->fields['lk_roles_id'];
-	?>
-<div id="tolc_panel">
-	<a id="tp_edit_page" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Page properties') ?></a>
-	<a id="tp_sitemap" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Sitemap') ?></a>
-	<a id="tp_templates" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Templates') ?></a>
-	<a id="tp_filemanager" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Files') ?></a>
 
-	<?php if($lk_roles_id == CONST_ROLE_ADMIN_KEY) { ?>
-	|
-	<a id="tp_users" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Users') ?></a>
-	<?php } ?>
-	|
-	<a id="tp_about" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('About Tolc') ?></a>
-	|
-	<a id="tp_logout" class="tolc_panel_btn"
-	   href="javascript:void(0);"><?php print gettext('Logout') ?></a>
-	<a id="login_user" href="javascript:void(0);"
-	   title="<?php print gettext('Change user profile')?>"><?php print $_SESSION['username']?></a>
+if(!isset($_SESSION['username'])) {
+	print 'Access denied...';
+	exit;
+}
+
+// retrieve user role
+$sql = 'SELECT email, lk_roles_id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
+$rs = $conn->Execute($sql);
+if($rs === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+}
+$lk_roles_id = $rs->fields['lk_roles_id'];
+$user_email = $rs->fields['email'];
+?>
+
+<div id="tolc_user" xmlns="http://www.w3.org/1999/html">
+	<h1><?php print gettext('Welcome') ?>, <span
+		id="login_user"><?php print $_SESSION['username']?></span>!</h1>
+
+	<p><a id="gravatar_profile"
+		  href="<?php print get_gravatar_profile($user_email)?>"
+		  target="_blank"><img id="gravatar"
+							   src="<?php print get_gravatar($user_email) ?>"
+							   alt="Gravatar" title="Gravatar (<?php print $user_email ?>)"></a>
+		<?php print gettext('You can') ?> <a id="tp_login_user"
+											 href="javascript:void(0);"><?php print gettext('change your profile')?></a>
+		<?php print gettext('or') ?>
+		<a id="regional"
+		   href="<?php print $tolc_conf['pref_reserved_urls']['regional'] ?>"><?php print gettext('regional settings')?></a>.
+
+		<?php print gettext('Disconnect') ?> <a id="tp_logout"
+												href="javascript:void(0);"><?php print gettext('here') ?></a>.
+	</p>
+
 </div>
 
-<div id="tolc_slide">
-	<a id="tolc_btn_slide"
-	   href="javascript:void(0);"
-	   title="<?php print gettext('Show/Hide Admin Panel') ?>">
-		<?php print gettext('Show/Hide Admin Panel') ?>
-	</a>
+
+<div id="tolc_cms">
+	<h1><?php print gettext('Content management') ?></h1>
+	<ul>
+		<li><a id="tp_edit_page"
+			   href="javascript:void(0);"><?php print gettext('Page properties') ?></a>
+		</li>
+
+		<li><a id="tp_sitemap"
+			   href="javascript:void(0);"><?php print gettext('Sitemap') ?></a>
+		</li>
+
+		<li><a id="tp_templates"
+			   href="javascript:void(0);"><?php print gettext('Templates') ?></a>
+		</li>
+
+		<li><a id="tp_filemanager"
+			   href="javascript:void(0);"><?php print gettext('Files') ?></a>
+		</li>
+	</ul>
+</div>
+
+<?php if($lk_roles_id == CONST_ROLE_ADMIN_KEY) { ?>
+<div id="tolc_users">
+	<h1><?php print gettext('Users management') ?></h1>
+
+	<p><a id="tp_new_user"
+		  href="javascript:void(0);"><?php print gettext('Add a new user') ?></a> <?php print gettext('or') ?> <?php print gettext('manage') ?>
+		<a id="tp_users"
+		   href="javascript:void(0);"><?php print gettext('existing users') ?></a>.
+	</p>
 </div>
 <?php } ?>
+
+
+<div id="tolc_about">
+	<h1><?php print gettext('About Tolc') ?></h1>
+
+	<p><?php print gettext('Find out') ?> <a id="tp_about"
+											 href="javascript:void(0);"><?php print gettext('here') ?></a>.
+	</p>
+
+</div>
+
+
+
+

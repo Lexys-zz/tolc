@@ -49,6 +49,11 @@
 <input type="hidden" id="msg_user_email_required"
 	   value="<?php print gettext('User email is required') . '...' ?>">
 
+<a href="#" id="trigger" class="trigger">tolc</a>
+<div id="panel" class="panel">
+	<?php include $tolc_conf['project_dir'] . '/app/tolc_panel.php' ?>
+</div>
+
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
 </div>
 

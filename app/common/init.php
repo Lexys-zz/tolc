@@ -172,6 +172,7 @@ define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd28
 define('PASSWORDSTRENGTH_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.js');
 define('PASSWORDSTRENGTH_CSS_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.css');
 define('JUI_ALERT_URL', LIB_URL . '/jui_alert_1.0/jquery.jui_alert.js');
+define('JQ_EASY_SLIDE_PANEL_URL', LIB_URL . LIB_EXT_DIR . '/jqEasySlidePanel_1.0/jquery.slidePanel.js');
 
 define('JQUERY_TINYMCE_DIR', '/tinymce_3.5.6_jquery');
 define('JQUERY_TINYMCE_PATH', LIB_URL . LIB_EXT_DIR . JQUERY_TINYMCE_DIR);

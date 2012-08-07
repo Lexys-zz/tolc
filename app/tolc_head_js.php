@@ -41,12 +41,15 @@ if(!isset($_SESSION['username'])) {
 	?>
 
 <script type="text/javascript"
+		src="<?php print JQ_EASY_SLIDE_PANEL_URL ?>"></script>
+<script type="text/javascript"
 		src="<?php print JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL ?>"></script>
 <script type="text/javascript"
 		src="<?php print JQUERY_UI_LAYOUT_URL ?>"></script>
 <script type="text/javascript" src="<?php print JSTREE_URL ?>"></script>
 <script type="text/javascript" src="<?php print QTIP2_URL ?>"></script>
-<script type="text/javascript" src="<?php print PASSWORDSTRENGTH_URL ?>"></script>
+<script type="text/javascript"
+		src="<?php print PASSWORDSTRENGTH_URL ?>"></script>
 
 <script type="text/javascript"
 		src="<?php print $tolc_conf['project_url'] ?>/app/admin/admin.js?version=1"></script>
