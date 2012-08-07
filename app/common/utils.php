@@ -125,22 +125,28 @@ function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts 
  * Get Gravatar profile url
  *
  * @param $email
+ * @param bool $decode_url
  * @return string
  * @source https://en.gravatar.com/site/implement/profiles/php/
  */
-function get_gravatar_profile($email) {
+function get_gravatar_profile($email, $decode_url = false) {
 	$url_encoded = 'http://www.gravatar.com/' . md5(strtolower(trim($email)));
-	$url = $url_encoded . '.php';
-	$str = file_get_contents($url);
-	if($str === false) {
+	if(!$decode_url) {
 		return $url_encoded;
 	} else {
-		$profile = unserialize($str);
-		if(is_array($profile) && isset($profile['entry'])) {
-			return $profile['entry'][0]['profileUrl'];
-		} else {
+		$url = $url_encoded . '.php';
+		$str = file_get_contents($url);
+		if($str === false) {
 			return $url_encoded;
+		} else {
+			$profile = unserialize($str);
+			if(is_array($profile) && isset($profile['entry'])) {
+				return $profile['entry'][0]['profileUrl'];
+			} else {
+				return $url_encoded;
+			}
 		}
 	}
+
 }
 ?>
