@@ -7,10 +7,10 @@
  * @return string
  */
 function date_string_format($date_string, $format_string, $timezone_string) {
-    $tz = new DateTimeZone($timezone_string);
-    $date = new DateTime($date_string);
-    $date->setTimeZone($tz);
-    return $date->format($format_string);
+	$tz = new DateTimeZone($timezone_string);
+	$date = new DateTime($date_string);
+	$date->setTimeZone($tz);
+	return $date->format($format_string);
 }
 
 /**
@@ -19,7 +19,7 @@ function date_string_format($date_string, $format_string, $timezone_string) {
  * @return string
  */
 function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_DEFAULT_TIMEZONE) {
-    return date_string_format('', $format_string, $str_timezone);
+	return date_string_format('', $format_string, $str_timezone);
 }
 
 /**
@@ -30,10 +30,10 @@ function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = 
  * @return string
  */
 function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
-    $tz = new DateTimeZone($str_timezone);
-    $date = new DateTime($ts);
-    $date->setTimeZone($tz);
-    return $date->format($format);
+	$tz = new DateTimeZone($str_timezone);
+	$date = new DateTime($ts);
+	$date->setTimeZone($tz);
+	return $date->format($format);
 }
 
 /**
@@ -44,16 +44,14 @@ function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = 
  * Multi-byte CASE INSENSITIVE str_replace
  * http://www.php.net/manual/en/function.mb-ereg-replace.php#55659
  */
-function mb_str_ireplace($co, $naCo, $wCzym)
-{
+function mb_str_ireplace($co, $naCo, $wCzym) {
 	$wCzymM = mb_strtolower($wCzym);
-	$coM    = mb_strtolower($co);
+	$coM = mb_strtolower($co);
 	$offset = 0;
 
-	while(!is_bool($poz = mb_strpos($wCzymM, $coM, $offset)))
-	{
+	while(!is_bool($poz = mb_strpos($wCzymM, $coM, $offset))) {
 		$offset = $poz + mb_strlen($naCo);
-		$wCzym = mb_substr($wCzym, 0, $poz). $naCo .mb_substr($wCzym, $poz+mb_strlen($co));
+		$wCzym = mb_substr($wCzym, 0, $poz) . $naCo . mb_substr($wCzym, $poz + mb_strlen($co));
 		$wCzymM = mb_strtolower($wCzym);
 	}
 
@@ -67,14 +65,14 @@ function mb_str_ireplace($co, $naCo, $wCzym)
  * @return array
  */
 function tz_list() {
-    $zones_array = array();
-    $timestamp = time();
-    foreach (timezone_identifiers_list() as $key => $zone) {
-        date_default_timezone_set($zone);
-        $zones_array[$key]['zone'] = $zone;
-        $zones_array[$key]['diff_from_GMT'] = date('P', $timestamp);
-    }
-    return $zones_array;
+	$zones_array = array();
+	$timestamp = time();
+	foreach(timezone_identifiers_list() as $key => $zone) {
+		date_default_timezone_set($zone);
+		$zones_array[$key]['zone'] = $zone;
+		$zones_array[$key]['diff_from_GMT'] = date('P', $timestamp);
+	}
+	return $zones_array;
 }
 
 /**
@@ -87,7 +85,7 @@ function df_list($a_df, $tz = CONST_DEFAULT_TIMEZONE) {
 	$tz = new DateTimeZone($tz);
 	$date = new DateTime('');
 	$date->setTimeZone($tz);
-	foreach ($a_df as $df) {
+	foreach($a_df as $df) {
 		$dt = $date->format($df);
 		$df_array[$df] = $dt;
 	}
@@ -106,13 +104,13 @@ function df_list($a_df, $tz = CONST_DEFAULT_TIMEZONE) {
  * @return String containing either just a URL or a complete image tag
  * @source http://gravatar.com/site/implement/images/php/
  */
-function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
+function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array()) {
 	$url = 'http://www.gravatar.com/avatar/';
-	$url .= md5( strtolower( trim( $email ) ) );
+	$url .= md5(strtolower(trim($email)));
 	$url .= "?s=$s&d=$d&r=$r";
-	if ( $img ) {
+	if($img) {
 		$url = '<img src="' . $url . '"';
-		foreach ( $atts as $key => $val )
+		foreach($atts as $key => $val)
 			$url .= ' ' . $key . '="' . $val . '"';
 		$url .= ' />';
 	}
@@ -120,13 +118,26 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
 }
 
 /**
+ * Get Gravatar profile url
+ *
  * @param $email
  * @return string
+ * @source https://en.gravatar.com/site/implement/profiles/php/
  */
-function get_gravatar_profile( $email ) {
-	$url = 'http://www.gravatar.com/';
-	$url .= md5( strtolower( trim( $email ) ) );
-	return $url;
+function get_gravatar_profile($email) {
+	$url_encoded = 'http://www.gravatar.com/' . md5(strtolower(trim($email)));
+	$url = $url_encoded . '.php';
+	$str = file_get_contents($url);
+	if($str === false) {
+		return $url_encoded;
+	} else {
+		$profile = unserialize($str);
+		if(is_array($profile) && isset($profile['entry'])) {
+			return $profile['entry'][0]['profileUrl'];
+		} else {
+			return $url_encoded;
+		}
+	}
 }
 
 ?>
