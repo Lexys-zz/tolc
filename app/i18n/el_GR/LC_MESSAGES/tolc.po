@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 18:38+0200\n"
-"PO-Revision-Date: 2012-08-03 18:39+0200\n"
+"POT-Creation-Date: 2012-08-08 18:53+0200\n"
+"PO-Revision-Date: 2012-08-08 19:05+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -25,42 +25,109 @@ msgstr "Νέα σελίδα"
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
-#: tolc_panel.php:21
-msgid "Page properties"
-msgstr "Διόρθωση"
+#: tolc_panel.php:29
+msgid "Welcome"
+msgstr "Καλωσήλθατε"
 
-#: tolc_panel.php:23
+#: tolc_panel.php:38
+msgid "You can"
+msgstr "Μπορείτε να"
+
+#: tolc_panel.php:39
+msgid "change your profile"
+msgstr "τροποποιήσετε τα στοιχεία σας"
+
+#: tolc_panel.php:40
+#: tolc_panel.php:86
+msgid "or"
+msgstr "ή"
+
+#: tolc_panel.php:42
+msgid "regional settings"
+msgstr "τις τοπικές ρυθμίσεις"
+
+#: tolc_panel.php:46
+msgid "Disconnect"
+msgstr "Αποσύνδεση"
+
+#: tolc_panel.php:47
+#: tolc_panel.php:98
+msgid "here"
+msgstr "εδώ"
+
+#: tolc_panel.php:54
+msgid "Content management"
+msgstr "Διαχείριση περιεχομένου"
+
+#: tolc_panel.php:57
+msgid "Edit page properties"
+msgstr "Ιδιότητες σελίδας"
+
+#: tolc_panel.php:58
+#: admin/user/ajax_user_form.php:118
+msgid "URL"
+msgstr "URL"
+
+#: tolc_panel.php:58
+msgid "title"
+msgstr "τίτλος"
+
+#: tolc_panel.php:58
+#: tolc_panel.php:76
+msgid "etc"
+msgstr "κλπ"
+
+#: tolc_panel.php:62
+msgid "Web site management"
+msgstr "Διαχείριση ιστοχώρου"
+
+#: tolc_panel.php:66
 msgid "Sitemap"
 msgstr "Χάρτης"
 
-#: tolc_panel.php:25
-msgid "Templates"
-msgstr "Πρότυπα"
+#: tolc_panel.php:67
+msgid "web site structure"
+msgstr "δομή ιστοχώρου"
 
-#: tolc_panel.php:27
-msgid "Files"
-msgstr "Αρχεία"
+#: tolc_panel.php:71
+msgid "Manage web site templates"
+msgstr "Διαχείριση προτύπων (templates)"
 
-#: tolc_panel.php:32
-msgid "Users"
-msgstr "Χρήστες"
+#: tolc_panel.php:75
+msgid "Upload files"
+msgstr "Ανεβάστε αρχεία"
 
-#: tolc_panel.php:36
+#: tolc_panel.php:76
+msgid "images"
+msgstr "εικόνες"
+
+#: tolc_panel.php:76
+msgid "media files"
+msgstr "media files"
+
+#: tolc_panel.php:83
+msgid "Users management"
+msgstr "Διαχείριση χρηστών"
+
+#: tolc_panel.php:86
+msgid "Add a new user"
+msgstr "Προσθήκη νέου χρήστη"
+
+#: tolc_panel.php:86
+msgid "manage"
+msgstr "διαχείριση"
+
+#: tolc_panel.php:88
+msgid "existing users"
+msgstr "εγγεγραμμένων χρηστών"
+
+#: tolc_panel.php:95
 msgid "About Tolc"
 msgstr "Σχετικά με Tolc"
 
-#: tolc_panel.php:39
-msgid "Logout"
-msgstr "Αποσύνδεση"
-
-#: tolc_panel.php:41
-msgid "Change user profile"
-msgstr "Αλλαγή στοιχείων χρήστη"
-
-#: tolc_panel.php:47
-#: tolc_panel.php:48
-msgid "Show/Hide Admin Panel"
-msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
+#: tolc_panel.php:97
+msgid "Find out"
+msgstr "Βρείτε περισσότερα"
 
 #: tolc_functions.php:9
 msgid "Loading"
@@ -82,10 +149,6 @@ msgstr "Η πρόσβαση δεν επιτρέπεται"
 msgid "URL already exists"
 msgstr "Το URL υπάρχει ήδη"
 
-#: admin/new_page/ajax_new_page.php:65
-msgid "Page title already exists"
-msgstr "Ο τίτλος σελίδας υπάρχει ήδη"
-
 #: admin/new_page/ajax_new_page_form.php:48
 msgid "New page URL"
 msgstr "URL νέας σελίδας"
@@ -99,7 +162,7 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: admin/new_page/ajax_new_page_form.php:62
-#: admin/rte/rte.php:56
+#: admin/rte/rte.php:57
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -212,10 +275,6 @@ msgstr "Πλήρες όνομα"
 msgid "Email"
 msgstr "Email"
 
-#: admin/user/ajax_user_form.php:118
-msgid "URL"
-msgstr "URL"
-
 #: admin/rte/rte.php:19
 msgid "Edit"
 msgstr "Επεξεργασία"
@@ -224,17 +283,17 @@ msgstr "Επεξεργασία"
 msgid "whole page"
 msgstr "ολόκληρη η σελίδα"
 
-#: admin/rte/rte.php:50
+#: admin/rte/rte.php:51
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: admin/rte/rte.php:51
+#: admin/rte/rte.php:52
 msgid "From"
-msgstr ""
+msgstr "Από"
 
-#: admin/rte/rte.php:53
+#: admin/rte/rte.php:54
 msgid "Until"
-msgstr ""
+msgstr "Μέχρι"
 
 #: inc_tolc_functions/inc_admin_mode.php:18
 #: inc_tolc_functions/inc_login_required_new_page.php:2
@@ -311,7 +370,6 @@ msgid "Page template is required"
 msgstr "Το πρότυπο της σελίδας είναι απαραίτητο"
 
 #: inc_tolc_functions/inc_new_page.php:7
-#, fuzzy
 msgid "Please, select the parent page (title or URL)"
 msgstr "Παρακαλώ, επιλέξτε τη σελίδα που ανήκει (δίνοντας τίτλο ή URL)"
 
@@ -337,31 +395,47 @@ msgstr "Ο κωδικός δεν δόθηκε"
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/init.php:104
+#: common/init.php:105
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/init.php:105
+#: common/init.php:106
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/init.php:106
+#: common/init.php:107
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/init.php:112
+#: common/init.php:114
+msgid "admin"
+msgstr "διαχειριστής"
+
+#: common/init.php:115
+msgid "editor in chief"
+msgstr "αρχισυντάκτης"
+
+#: common/init.php:116
+msgid "editor"
+msgstr "συντάκτης"
+
+#: common/init.php:117
+msgid "common user"
+msgstr "κοινός χρήστης"
+
+#: common/init.php:136
 msgid "pending publication"
 msgstr "σε αναμονή για δημοσίευση"
 
-#: common/init.php:113
+#: common/init.php:137
 msgid "published"
 msgstr "δημοσιευμένο"
 
-#: common/init.php:114
+#: common/init.php:138
 msgid "discarded"
 msgstr "απορρίφθηκε"
 
-#: common/init.php:115
+#: common/init.php:139
 msgid "removed"
 msgstr "απομακρύνθηκε"
 
@@ -390,17 +464,29 @@ msgstr "Ζώνη ώρας"
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
 
+#~ msgid "Templates"
+#~ msgstr "Πρότυπα"
+
+#~ msgid "Files"
+#~ msgstr "Αρχεία"
+
+#~ msgid "Users"
+#~ msgstr "Χρήστες"
+
+#~ msgid "Logout"
+#~ msgstr "Αποσύνδεση"
+
+#~ msgid "Show/Hide Admin Panel"
+#~ msgstr "Εμφάνιση/απόκρυψη διαχείρισης"
+
+#~ msgid "Page title already exists"
+#~ msgstr "Ο τίτλος σελίδας υπάρχει ήδη"
+
 #~ msgid "Old password contains invalid characters"
 #~ msgstr "Ο παλαιός κωδικός (password) περιέχει μη αποδεκτούς χαρακτήρες"
 
 #~ msgid "Repeat"
 #~ msgstr "Επανάληψη"
 
-#~ msgid "Set"
-#~ msgstr "Εφαρμογή"
-
 #~ msgid "Login required"
 #~ msgstr "Χρειάζεται σύνδεση"
-
-#~ msgid "Welcome"
-#~ msgstr "Καλωσήλθατε"
