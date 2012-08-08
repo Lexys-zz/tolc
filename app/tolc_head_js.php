@@ -44,9 +44,9 @@ if(!isset($_SESSION['username'])) {
 		src="<?php print JQ_EASY_SLIDE_PANEL_URL ?>"></script>
 <script type="text/javascript"
 		src="<?php print JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL ?>"></script>
-<script type="text/javascript"
-		src="<?php print JQUERY_UI_LAYOUT_URL ?>"></script>
-<script type="text/javascript" src="<?php print JSTREE_URL ?>"></script>
+<!--<script type="text/javascript"
+		src="<?php /*print JQUERY_UI_LAYOUT_URL */?>"></script>
+<script type="text/javascript" src="<?php /*print JSTREE_URL */?>"></script>-->
 <script type="text/javascript" src="<?php print QTIP2_URL ?>"></script>
 <script type="text/javascript"
 		src="<?php print PASSWORDSTRENGTH_URL ?>"></script>
