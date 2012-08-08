@@ -40,7 +40,9 @@ $user_email = $rs->fields['email'];
 			<?php print gettext('or') ?>
 			<a id="regional"
 			   href="<?php print $tolc_conf['pref_reserved_urls']['regional'] ?>"><?php print gettext('regional settings')?></a>.
+		</p>
 
+		<p>
 			<?php print gettext('Disconnect') ?> <a id="tp_logout"
 													href="javascript:void(0);"><?php print gettext('here') ?></a>.
 		</p>
@@ -51,14 +53,9 @@ $user_email = $rs->fields['email'];
 	<div id="tolc_cms">
 		<h1><?php print gettext('Content management') ?></h1>
 		<ul>
-			<li><a id="tp_new_page"
-				   href="javascript:void(0);"><?php print gettext('Add new page') ?></a>
-			</li>
-
 			<li><a id="tp_edit_page"
 				   href="javascript:void(0);"><?php print gettext('Edit page properties') ?></a>
-				(<?php print gettext('URL') ?>, <?php print gettext('title') ?>
-				, <?php print gettext('etc') ?>)
+				<?php print ' (' . gettext('URL') . ', ' . gettext('title') . ' ' . gettext('etc') . ')' ?>
 			</li>
 
 			<li><a id="tp_pages"
@@ -76,9 +73,7 @@ $user_email = $rs->fields['email'];
 
 			<li><a id="tp_filemanager"
 				   href="javascript:void(0);"><?php print gettext('Upload files') ?></a>
-				(<?php print gettext('images') ?>
-				, <?php print gettext('media files') ?>
-				, <?php print gettext('etc') ?>)
+				<?php print '(' . gettext('images') . ', ' . gettext('media files') . ' ' . gettext('etc') . ')' ?>
 			</li>
 		</ul>
 	</div>
