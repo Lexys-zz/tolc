@@ -29,6 +29,7 @@ $publish_status_len = count($a_publish_status_keys);
 <html>
 <head>
 	<title><?php print $rte_title ?></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link href="<?php print JQUERY_UI_CSS_URL ?>" rel="stylesheet"
 		  type="text/css"/>
 	<link
