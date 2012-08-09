@@ -102,15 +102,26 @@ define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // used from ezfile
 define('CONST_USER_STATUS_PENDING_KEY', 1);
 define('CONST_USER_STATUS_ACTIVE_KEY', 2);
 define('CONST_USER_STATUS_INACTIVE_KEY', 3);
+
 define('CONST_USER_STATUS_PENDING_VALUE', gettext('pending registration'));
 define('CONST_USER_STATUS_ACTIVE_VALUE', gettext('active user'));
 define('CONST_USER_STATUS_INACTIVE_VALUE', gettext('inactive user'));
+
+$a_user_status_keys = array(CONST_USER_STATUS_PENDING_KEY,
+	CONST_USER_STATUS_ACTIVE_KEY,
+	CONST_USER_STATUS_INACTIVE_KEY
+);
+$a_user_status_values = array(CONST_USER_STATUS_PENDING_VALUE,
+	CONST_USER_STATUS_ACTIVE_VALUE,
+	CONST_USER_STATUS_INACTIVE_VALUE
+);
 
 /* user roles */
 define('CONST_ROLE_ADMIN_KEY', 1);
 define('CONST_ROLE_EDITOR_IN_CHIEF_KEY', 2);
 define('CONST_ROLE_EDITOR_KEY', 3);
 define('CONST_ROLE_COMMON_USER_KEY', 4);
+
 define('CONST_ROLE_ADMIN_VALUE', gettext('admin'));
 define('CONST_ROLE_EDITOR_IN_CHIEF_VALUE', gettext('editor in chief'));
 define('CONST_ROLE_EDITOR_VALUE', gettext('editor'));
