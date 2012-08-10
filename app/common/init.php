@@ -169,6 +169,7 @@ define('LIB_DIR', $tolc_conf['project_dir'] . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
 define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.7.2/jquery-1.7.2.min.js');
+//define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.0/jquery-1.8.0.min.js');
 define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js');
 define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.22.custom/css/' . $tolc_conf['pref_jqueryui_theme'] . '/jquery-ui-1.8.22.custom.css');
 define('JQUERY_UI_i18n_DIR', LIB_URL . LIB_EXT_DIR . '/jquery-ui-localize');
@@ -178,8 +179,8 @@ define('JQUERY_UI_LAYOUT_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.
 define('JQUERY_UI_LAYOUT_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/layout-default.css');
 define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-0.9.8/jquery-ui-timepicker-addon.css');
 define('JSTREE_URL', LIB_URL . LIB_EXT_DIR . '/jstree.v.pre1.0_fix1/jquery.jstree.js');
-define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd2893a36b401342396829/jquery.qtip.min.js');
-define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/qtip2-b76ec373fd16b17ff683bd2893a36b401342396829/jquery.qtip.css');
+define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-1593be0/jquery.qtip.min.js');
+define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-1593be0/jquery.qtip.css');
 define('PASSWORDSTRENGTH_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.js');
 define('PASSWORDSTRENGTH_CSS_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.css');
 define('JUI_ALERT_URL', LIB_URL . '/jui_alert_1.0/jquery.jui_alert.js');
