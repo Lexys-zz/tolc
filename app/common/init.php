@@ -180,8 +180,8 @@ define('JQUERY_UI_LAYOUT_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.
 define('JQUERY_UI_LAYOUT_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/layout-default.css');
 define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-0.9.8/jquery-ui-timepicker-addon.css');
 define('JSTREE_URL', LIB_URL . LIB_EXT_DIR . '/jstree.v.pre1.0_fix1/jquery.jstree.js');
-define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-1593be0/jquery.qtip.min.js');
-define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-1593be0/jquery.qtip.css');
+define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-bbb88cf/jquery.qtip.min.js');
+define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-bbb88cf/jquery.qtip.css');
 define('PASSWORDSTRENGTH_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.js');
 define('PASSWORDSTRENGTH_CSS_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/passwordstrength.css');
 define('JUI_ALERT_URL', LIB_URL . '/jui_alert_1.0/jquery.jui_alert.js');
