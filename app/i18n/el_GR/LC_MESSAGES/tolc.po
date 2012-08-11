@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-08 18:53+0200\n"
-"PO-Revision-Date: 2012-08-08 19:05+0200\n"
+"POT-Creation-Date: 2012-08-11 22:20+0200\n"
+"PO-Revision-Date: 2012-08-11 22:20+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,11 +17,16 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:49
+#: index.php:51
 msgid "New page"
 msgstr "Νέα σελίδα"
 
-#: index.php:49
+#: index.php:51
+msgid "Page does not exist"
+msgstr "Η σελίδα δεν υπάρχει"
+
+#: index.php:61
+#: index.php:78
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
@@ -297,6 +302,7 @@ msgstr "Μέχρι"
 
 #: inc_tolc_functions/inc_admin_mode.php:18
 #: inc_tolc_functions/inc_login_required_new_page.php:2
+#: inc_tolc_functions/inc_page_not_found.php:1
 #: inc_tolc_functions/inc_already_logged_in.php:2
 msgid "Ok"
 msgstr "Εντάξει"
@@ -349,7 +355,7 @@ msgstr "Αλλαγή κωδικού (password)"
 msgid "User profile"
 msgstr "Στοιχεία χρήστη"
 
-#: inc_tolc_functions/inc_login_required_new_page.php:6
+#: inc_tolc_functions/inc_login_required_new_page.php:8
 msgid "Login required to create this page"
 msgstr "Χρειάζεται σύνδεση για να δημιουργηθεί η νέα σελίδα"
 
@@ -395,49 +401,53 @@ msgstr "Ο κωδικός δεν δόθηκε"
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/init.php:105
+#: common/init.php:106
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/init.php:106
+#: common/init.php:107
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/init.php:107
+#: common/init.php:108
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/init.php:114
+#: common/init.php:125
 msgid "admin"
 msgstr "διαχειριστής"
 
-#: common/init.php:115
+#: common/init.php:126
 msgid "editor in chief"
 msgstr "αρχισυντάκτης"
 
-#: common/init.php:116
+#: common/init.php:127
 msgid "editor"
 msgstr "συντάκτης"
 
-#: common/init.php:117
+#: common/init.php:128
 msgid "common user"
 msgstr "κοινός χρήστης"
 
-#: common/init.php:136
-msgid "pending publication"
-msgstr "σε αναμονή για δημοσίευση"
+#: common/init.php:148
+msgid "draft"
+msgstr "πρόχειρο"
 
-#: common/init.php:137
-msgid "published"
-msgstr "δημοσιευμένο"
+#: common/init.php:149
+msgid "pending review"
+msgstr "προς αξιολόγηση"
 
-#: common/init.php:138
-msgid "discarded"
-msgstr "απορρίφθηκε"
+#: common/init.php:150
+msgid "under review"
+msgstr "υπό αξιολόγηση"
 
-#: common/init.php:139
-msgid "removed"
-msgstr "απομακρύνθηκε"
+#: common/init.php:151
+msgid "approved"
+msgstr "εγκεκριμένο"
+
+#: common/init.php:152
+msgid "rejected"
+msgstr "απορριφθέν"
 
 #: login/ajax_login_form.php:56
 msgid "Language"
@@ -463,6 +473,15 @@ msgstr "Ζώνη ώρας"
 #: regional/ajax_regional_form.php:35
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
+
+#~ msgid "pending publication"
+#~ msgstr "σε αναμονή για δημοσίευση"
+
+#~ msgid "published"
+#~ msgstr "δημοσιευμένο"
+
+#~ msgid "discarded"
+#~ msgstr "απορρίφθηκε"
 
 #~ msgid "Templates"
 #~ msgstr "Πρότυπα"

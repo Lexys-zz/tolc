@@ -24,6 +24,10 @@ if(!isset($_SESSION['username'])) {
 	} else {
 		if($www_pages_id == 0) {
 			include 'inc_tolc_functions/inc_login_required_new_page.php';
+		} else {
+			if($page_has_been_removed || $www_page_versions_id == 0) {
+				include 'inc_tolc_functions/inc_page_not_found.php';
+			}
 		}
 	}
 

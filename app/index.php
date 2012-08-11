@@ -37,21 +37,51 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_res
 }
 
 // get page id and page title (CASE INSENSITIVE URL search)
-$sql = 'SELECT id, title FROM www_pages WHERE LOWER(url)=' . $url_sql;
+$sql = 'SELECT id, title, is_removed FROM www_pages WHERE LOWER(url)=' . $url_sql;
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 }
+$page_has_been_removed = $rs->fields['is_removed'] == 1 ? true : false;
+
 if($rs->RecordCount() == 0) {
 	// set page id
 	$www_pages_id = 0;
 	// set page title
-	$page_title = $admin_mode ? gettext('New page') : gettext('Page not found') . '...';
+	$page_title = $admin_mode ? gettext('New page') : gettext('Page does not exist') . '...';
 } else {
 	// retrieve page id
 	$www_pages_id = $rs->fields['id'];
-	// retrieve page title
-	$page_title = $rs->fields['title'];
+
+	// check for published version
+    if($page_has_been_removed) {
+		// set page version
+		$www_page_versions_id = 0;
+		// set page title
+		$page_title = gettext('Page not found') . '...';
+	} else {
+		// get page version
+		$sql = 'SELECT id FROM www_page_versions ' .
+			'WHERE www_pages_id=' . $www_pages_id .
+			' AND lk_content_status_id=' . CONST_CONTENT_STATUS_APPROVED_KEY .
+			' AND date_publish_start<=' . $now .
+			' AND (date_publish_end IS NULL OR date_publish_end>' . $now . ')' .
+			' ORDER BY date_publish_start DESC';
+		$rs1 = $conn->SelectLimit($sql, 1, 0);
+		if($rs1 === false) {
+			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+		}
+		if($rs1->RecordCount() == 0) {
+			// set page version
+			$www_page_versions_id = 0;
+			// set page title
+			$page_title = gettext('Page not found') . '...';
+		} else {
+			$www_page_versions_id = $rs1->fields['id'];
+			// retrieve page title
+			$page_title = $rs->fields['title'];
+		}
+	}
 }
 
 // get template id
@@ -63,7 +93,7 @@ if($www_pages_id == 0) {
 		'WHERE www_pages_id=' . $www_pages_id .
 		' AND date_start<=' . $now .
 		' ORDER BY date_start DESC';
-	$rs = $conn->SelectLimit($sql,1,0);
+	$rs = $conn->SelectLimit($sql, 1, 0);
 	if($rs === false) {
 		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 	} else {
@@ -141,7 +171,7 @@ foreach($template_inputs as $template_input) {
 
 // set page content
 $a_active_elements = array();
-if($www_pages_id > 0) {
+if($www_page_versions_id > 0) {
 	// get template active elements ids
 	$sql = 'SELECT id, element_id FROM www_template_active_elements WHERE www_templates_id=' . $www_templates_id . ' ORDER BY display_order';
 	$rs = $conn->Execute($sql);
@@ -155,12 +185,9 @@ if($www_pages_id > 0) {
 		array_push($a_active_elements, '#' . $element['element_id']);
 		// get content
 		$sql = 'SELECT html FROM www_content ' .
-			'WHERE www_pages_id=' . $www_pages_id .
-			' AND www_template_active_elements_id=' . $element['id'] .
-			' AND lk_publish_status_id=' . CONST_PUBLISH_STATUS_PUBLISHED_KEY .
-			' AND date_published<=' . $now .
-			' ORDER BY date_published DESC';
-		$rs = $conn->SelectLimit($sql,1,0);
+			'WHERE www_page_versions_id=' . $www_page_versions_id .
+			' AND www_template_active_elements_id=' . $element['id'];
+		$rs = $conn->Execute($sql);
 		if($rs === false) {
 			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 		}

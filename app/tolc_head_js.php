@@ -34,6 +34,13 @@ if(!isset($_SESSION['username'])) {
 		<script type="text/javascript"
 				src="<?php print $tolc_conf['project_url'] ?>/app/login/login_required_new_page.js?version=4"></script>
 		<?php
+		} else {
+			if($page_has_been_removed || $www_page_versions_id == 0) {
+				?>
+			<script type="text/javascript"
+					src="<?php print $tolc_conf['project_url'] ?>/app/page_not_found/page_not_found.js?version=1"></script>
+			<?php
+			}
 		}
 	}
 
