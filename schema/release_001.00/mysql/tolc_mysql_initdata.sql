@@ -44,6 +44,15 @@ LOCK TABLES `www_page_templates` WRITE;
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `www_page_versions`
+--
+
+LOCK TABLES `www_page_versions` WRITE;
+/*!40000 ALTER TABLE `www_page_versions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `www_page_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `www_pages`
 --
 
@@ -90,4 +99,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-04 14:14:50
+-- Dump completed on 2012-08-11 18:15:39
