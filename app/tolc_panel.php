@@ -9,21 +9,11 @@ if(!isset($_SESSION['username'])) {
 	print 'Access denied...';
 	exit;
 }
-
-// retrieve user role
-$sql = 'SELECT email, lk_roles_id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
-$rs = $conn->Execute($sql);
-if($rs === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-}
-$lk_roles_id = $rs->fields['lk_roles_id'];
-$user_email = $rs->fields['email'];
 ?>
 
 <a href="javascript:void(0);" id="trigger" class="trigger">tolc</a>
 
 <div id="panel" class="panel">
-
 
 	<div id="tolc_user">
 		<h1><?php print gettext('Welcome') ?>, <span
@@ -48,7 +38,6 @@ $user_email = $rs->fields['email'];
 		</p>
 
 	</div>
-
 
 	<div id="tolc_cms">
 		<h1><?php print gettext('Content management') ?></h1>
@@ -90,7 +79,6 @@ $user_email = $rs->fields['email'];
 	</div>
 	<?php } ?>
 
-
 	<div id="tolc_about">
 		<h1><?php print gettext('About Tolc') ?></h1>
 
@@ -99,7 +87,6 @@ $user_email = $rs->fields['email'];
 		</p>
 
 	</div>
-
 
 </div>
 

@@ -23,7 +23,11 @@ if(!isset($_SESSION['username'])) {
 		unset($_SESSION['url_reserved']);
 	} else {
 		if($www_pages_id == 0) {
-			include 'inc_tolc_functions/inc_login_required_new_page.php';
+			if(!$invalid_url) {
+				include 'inc_tolc_functions/inc_login_required_new_page.php';
+			} else {
+				include 'inc_tolc_functions/inc_invalid_url.php';
+			}
 		} else {
 			if($page_has_been_removed || $www_page_versions_id == 0) {
 				include 'inc_tolc_functions/inc_page_not_found.php';
@@ -45,7 +49,11 @@ if(!isset($_SESSION['username'])) {
 		unset($_SESSION['url_reserved']);
 	} else {
 		if($www_pages_id == 0) {
-			include 'inc_tolc_functions/inc_new_page.php';
+			if(!$invalid_url) {
+				include 'inc_tolc_functions/inc_new_page.php';
+			} else {
+				include 'inc_tolc_functions/inc_invalid_url.php';
+			}
 		}
 	}
 

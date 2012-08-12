@@ -30,10 +30,17 @@ if(!isset($_SESSION['username'])) {
 		}
 	} else {
 		if($www_pages_id == 0) {
-			?>
-		<script type="text/javascript"
-				src="<?php print $tolc_conf['project_url'] ?>/app/login/login_required_new_page.js?version=4"></script>
-		<?php
+			if(!$invalid_url) {
+				?>
+			<script type="text/javascript"
+					src="<?php print $tolc_conf['project_url'] ?>/app/login/login_required_new_page.js?version=4"></script>
+			<?php
+			} else {
+				?>
+			<script type="text/javascript"
+					src="<?php print $tolc_conf['project_url'] ?>/app/invalid_url/invalid_url.js?version=1"></script>
+			<?php
+			}
 		} else {
 			if($page_has_been_removed || $www_page_versions_id == 0) {
 				?>
@@ -78,10 +85,17 @@ if(!isset($_SESSION['username'])) {
 		}
 	} else {
 		if($www_pages_id == 0) {
-			?>
-		<script type="text/javascript"
-				src="<?php print $tolc_conf['project_url'] ?>/app/admin/new_page/new_page.js?version=1"></script>
-		<?php
+			if(!$invalid_url) {
+				?>
+			<script type="text/javascript"
+					src="<?php print $tolc_conf['project_url'] ?>/app/admin/new_page/new_page.js?version=1"></script>
+			<?php
+			} else {
+				?>
+			<script type="text/javascript"
+					src="<?php print $tolc_conf['project_url'] ?>/app/invalid_url/invalid_url.js?version=1"></script>
+			<?php
+			}
 		}
 	}
 	?>

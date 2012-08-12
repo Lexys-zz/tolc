@@ -15,6 +15,15 @@ require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 // retrieve url
 $url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['project_url']));
 
+// check for valid URL
+$url = preg_replace('/\s+/', ' ', $url); //replace multiple spaces with one
+$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
+if($invalid_url) {
+	$www_pages_id = 0;
+	$www_page_versions_id = 0;
+	$page_title = gettext('Invalid URL');
+}
+
 // check for direct access of '/app/index.php'
 if($url == '/app/index.php' || $url == '/app/') {
 	header('Location: ' . CONST_PROJECT_FULL_URL);
@@ -22,6 +31,22 @@ if($url == '/app/index.php' || $url == '/app/') {
 
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
+
+// retrieve user role
+if(isset($_SESSION['username'])) {
+	$sql = 'SELECT id, email, lk_roles_id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
+	$rs = $conn->Execute($sql);
+	if($rs === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+	}
+	$user_id = $rs->fields['id'];
+	$lk_roles_id = $rs->fields['lk_roles_id'];
+	$user_email = $rs->fields['email'];
+} else {
+	$user_id = null;
+	$lk_roles_id = null;
+	$user_email = null;
+}
 
 // get current time (in UTC)
 $now = $conn->qstr(now());
@@ -36,50 +61,60 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_res
 	$_SESSION['url'] = $url;
 }
 
+if(!$invalid_url) {
 // get page id and page title (CASE INSENSITIVE URL search)
-$sql = 'SELECT id, title, is_removed FROM www_pages WHERE LOWER(url)=' . $url_sql;
-$rs = $conn->Execute($sql);
-if($rs === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-}
-$page_has_been_removed = $rs->fields['is_removed'] == 1 ? true : false;
+	if(!$tolc_conf['pref_use_prepared_statements']) {
+		$sql = 'SELECT id, title, is_removed FROM www_pages WHERE LOWER(url)=' . $url_sql;
+		$rs = $conn->Execute($sql);
 
-if($rs->RecordCount() == 0) {
-	// set page id
-	$www_pages_id = 0;
-	// set page title
-	$page_title = $admin_mode ? gettext('New page') : gettext('Page does not exist') . '...';
-} else {
-	// retrieve page id
-	$www_pages_id = $rs->fields['id'];
-
-	// check for published version
-    if($page_has_been_removed) {
-		// set page version
-		$www_page_versions_id = 0;
-		// set page title
-		$page_title = gettext('Page not found') . '...';
 	} else {
-		// get page version
-		$sql = 'SELECT id FROM www_page_versions ' .
-			'WHERE www_pages_id=' . $www_pages_id .
-			' AND lk_content_status_id=' . CONST_CONTENT_STATUS_APPROVED_KEY .
-			' AND date_publish_start<=' . $now .
-			' AND (date_publish_end IS NULL OR date_publish_end>' . $now . ')' .
-			' ORDER BY date_publish_start DESC';
-		$rs1 = $conn->SelectLimit($sql, 1, 0);
-		if($rs1 === false) {
-			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-		}
-		if($rs1->RecordCount() == 0) {
+		$sql = 'SELECT id, title, is_removed FROM www_pages WHERE LOWER(url)=?';
+		$pst = $conn->Prepare($sql);
+		$rs = $conn->Execute($pst, array(mb_strtolower($url)));
+	}
+
+	if($rs === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+	}
+	$page_has_been_removed = $rs->fields['is_removed'] == 1 ? true : false;
+
+	if($rs->RecordCount() == 0) {
+		// set page id
+		$www_pages_id = 0;
+		// set page title
+		$page_title = isset($_SESSION['username']) ? gettext('New page') : gettext('Page does not exist') . '...';
+	} else {
+		// retrieve page id
+		$www_pages_id = $rs->fields['id'];
+
+		// check for published version
+		if($page_has_been_removed) {
 			// set page version
 			$www_page_versions_id = 0;
 			// set page title
-			$page_title = gettext('Page not found') . '...';
+			$page_title = isset($_SESSION['username']) ? $rs->fields['title'] : gettext('Page not found') . '...';
 		} else {
-			$www_page_versions_id = $rs1->fields['id'];
-			// retrieve page title
-			$page_title = $rs->fields['title'];
+			// get page version
+			$sql = 'SELECT id, author_id FROM www_page_versions ' .
+				'WHERE www_pages_id=' . $www_pages_id .
+				' AND lk_content_status_id=' . CONST_CONTENT_STATUS_APPROVED_KEY .
+				' AND date_publish_start<=' . $now .
+				' AND (date_publish_end IS NULL OR date_publish_end>' . $now . ')' .
+				' ORDER BY date_publish_start DESC';
+			$rs1 = $conn->SelectLimit($sql, 1, 0);
+			if($rs1 === false) {
+				trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+			}
+			if($rs1->RecordCount() == 0) {
+				// set page version
+				$www_page_versions_id = 0;
+				// set page title
+				$page_title = isset($_SESSION['username']) ? $rs->fields['title'] : gettext('Page not found') . '...';
+			} else {
+				$www_page_versions_id = $rs1->fields['id'];
+				// retrieve page title
+				$page_title = $rs->fields['title'];
+			}
 		}
 	}
 }

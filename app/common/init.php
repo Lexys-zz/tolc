@@ -94,6 +94,15 @@ if(!isset($_SESSION['timezone'])) {
 define('CONST_BASE_URL', $tolc_conf['project_url'] . '/'); // used by tinymce
 define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // used from ezfilemanager
 
+/**
+ * sanitize URL regex
+ *
+ * \040 space
+ * \w letters digits and underscore
+ * u force UTF8
+ *
+ */
+define('CONST_REGEX_SANITIZE_URL', '/[^\040\w\/.-]/u');
 
 /**
  * lookups

@@ -43,6 +43,17 @@ if($rs === false) {
 	$www_users_id = $rs->fields['id'];
 }
 
+// check for valid URL
+if(preg_match('/\040\040/', $page_url)) {
+	print gettext('Only one space allowed between words') . '...';
+	exit;
+}
+
+if(preg_match(CONST_REGEX_SANITIZE_URL, $page_url)) {
+	print gettext('Invalid URL') . '.' . ' ' . gettext('Valid URL may contain letters, digits, space and the characters') . ' '. '.-_/';
+	exit;
+}
+
 // check for unique URL
 $sql = 'SELECT id from www_pages WHERE LOWER(url)=' . $conn->qstr(mb_strtolower($page_url));
 $rs = $conn->Execute($sql);
@@ -55,29 +66,15 @@ if($rs === false) {
 	}
 }
 
-// check for unique page title
-/*$sql = 'SELECT id from www_pages WHERE LOWER(title)=' . $conn->qstr(mb_strtolower($page_title));
-$rs = $conn->Execute($sql);
-if($rs === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-} else {
-	if($rs->RecordCount() != 0) {
-		print gettext('Page title already exists') . '...';
-		exit;
-	}
-}*/
-
 // proceed to insert
 $conn->BeginTrans();
 
 // insert new page
 $sql = 'INSERT INTO www_pages ' .
-	'(url,title,www_users_id,date_created,parent_id) ' .
+	'(url,title,parent_id) ' .
 	'VALUES (' .
 	$conn->qstr($page_url) . ',' .
 	$conn->qstr($page_title) . ',' .
-	$www_users_id . ',' .
-	$now . ',' .
 	$parent_id .
 	')';
 if($conn->Execute($sql) === false) {
@@ -95,6 +92,21 @@ $sql = 'INSERT INTO www_page_templates ' .
 	$www_pages_id . ',' .
 	$www_templates_id . ',' .
 	$now .
+	')';
+if($conn->Execute($sql) === false) {
+	$err = $conn->ErrorMsg();
+	$conn->RollbackTrans();
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
+}
+
+// insert first version for new inserted page
+$sql = 'INSERT INTO www_page_versions ' .
+	'(www_pages_id,lk_content_status_id,date_inserted,author_id) ' .
+	'VALUES (' .
+	$www_pages_id . ',' .
+	CONST_CONTENT_STATUS_DRAFT_KEY . ',' .
+	$now . ',' .
+	$www_users_id .
 	')';
 if($conn->Execute($sql) === false) {
 	$err = $conn->ErrorMsg();
