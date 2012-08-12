@@ -59,6 +59,9 @@ $tolc_conf['pref_reserved_urls'] = array(
 	'regional' => '/regional'
 );
 
+/* this will substitute template active elements default content (if it has value) */
+$tolc_conf['pref_tpl_content_subst'] = 'insert content here';
+
 /* tidy settings (http://tidy.sourceforge.net/docs/quickref.html) */
 $tolc_conf['pref_use_tidy'] = true;
 $tolc_conf['pref_tidy_config'] = array(
@@ -95,4 +98,14 @@ $tolc_conf['pref_reserved_usernames'] = array(
 
 /* jquery ui CSS theme */
 $tolc_conf['pref_jqueryui_theme'] = 'ui-lightness'; // ui-lightness, smoothness, south-street, humanity, redmond
+
+/**
+ * Using of prepared statements can prevent SQL injection attacks (even if user input is thoroughly sanitized).
+ * But, MySQL php extension dows not support prepared statements (only PDO and mysqli).
+ * So, this settings is for testing purposes and for future use of PostgreSQL or other RDBMS
+ *
+ * http://stackoverflow.com/questions/4319162/how-do-i-check-for-emulated-prepared-statements-in-adodb
+ * http://stackoverflow.com/questions/2140218/prepared-statement-with-php-and-mysql-without-using-mysqli
+ */
+$tolc_conf['pref_use_prepared_statements'] = false;
 ?>
