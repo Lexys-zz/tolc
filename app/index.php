@@ -159,8 +159,14 @@ $html = new simple_html_dom();
 // load template html
 $html->load($template_html);
 
+
+/**
+ * set default favicon (just for Chrome)
+ * http://code.google.com/p/chromium/issues/detail?id=39402
+ * Chrome requests favicons on every request on pages that don't have a favicon (SO SCRIPT RUNS TWICE)
+ */
+$favicon_html = '<link rel="shortcut icon" href="' . $tolc_conf['project_url'] . '/favicon.ico" />';
 // convert template head <link> href relevant to website root and collect <link> tags
-$favicon_html = '';
 $template_link_html = '';
 $template_links = $html->find('link');
 foreach($template_links as $template_link) {
