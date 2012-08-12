@@ -11,6 +11,7 @@ function get_db_conn($driver) {
 	switch($driver) {
 		case 'mysql':
 		case 'mysqlt':
+		case 'mysqli':
 		case 'postgres':
 		case 'firebird':
 			$dsn = $driver . '://' . $tolc_conf['dbuser'] . ':' . rawurlencode($tolc_conf['dbpass']) .
