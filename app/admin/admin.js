@@ -293,8 +293,7 @@ $(function () {
 
     $(active_elements).each(function () {
         var id = $(this).attr("id");
-        var tip_text = '<ul><li><a href="javascript:void(0);" onclick="rte(' + "'" + id + "'" + ')">' + '#' + id + '</a>' +
-            '<li><a href="javascript:void(0);" onclick="rte()">' + rsc_whole_page + '</a></ul>';
+        var tip_text = '<a href="javascript:void(0);" onclick="rte(' + "'" + id + "'" + ')">' + '#' + id + '</a>';
         $(this).qtip({
             content: {
                 text: tip_text,
@@ -320,13 +319,8 @@ $(function () {
 });
 
 /* functions ---------------------------------------------------------------- */
-function rte(element_id) {
-    if (typeof element_id != 'undefined') {
-        var url = $("#project_url").val() + '/app/admin/rte/rte.php?element_id=' + element_id;
-    } else {
-        var url = $("#project_url").val() + '/app/admin/rte/rte.php';
-    }
-
+function rte() {
+    var url = $("#project_url").val() + '/app/admin/rte/rte.php';
     var win_name = 'rte';
     CenterWindow(1200, 800, 50, url, win_name, '');
 }
