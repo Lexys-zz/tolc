@@ -31,7 +31,7 @@ $tolc_conf['domains_tmpl'] = array(
  * DATABASE CONNECTION STRING
  * (http://phplens.com/lens/adodb/docs-adodb.htm#drivers)
  */
-$tolc_conf['dbdriver'] = 'mysqlt'; // mysql, mysqlt, postgres, firebird
+$tolc_conf['dbdriver'] = 'mysqlt'; // mysql, mysqlt, mysqli, postgres, firebird
 $tolc_conf['dbserver'] = 'SERVER-NAME-OR-IP-HERE';
 $tolc_conf['dbuser'] = 'USER-HERE';
 $tolc_conf['dbpass'] = 'PASSWORD-HERE';
