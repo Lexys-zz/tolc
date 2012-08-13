@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-11 22:20+0200\n"
-"PO-Revision-Date: 2012-08-11 22:20+0200\n"
+"POT-Creation-Date: 2012-08-13 22:22+0200\n"
+"PO-Revision-Date: 2012-08-13 22:22+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,120 +17,126 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:51
+#: index.php:62
 msgid "New page"
 msgstr "Νέα σελίδα"
 
-#: index.php:51
+#: index.php:62
 msgid "Page does not exist"
 msgstr "Η σελίδα δεν υπάρχει"
 
-#: index.php:61
-#: index.php:78
+#: index.php:66
+#: index.php:71
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
-#: tolc_panel.php:29
+#: index.php:78
+#: admin/new_page/ajax_new_page.php:53
+#: admin/user/ajax_user.php:79
+msgid "Invalid URL"
+msgstr "Το URL δεν δόθηκε σωστά"
+
+#: tolc_panel.php:19
 msgid "Welcome"
 msgstr "Καλωσήλθατε"
 
-#: tolc_panel.php:38
+#: tolc_panel.php:28
 msgid "You can"
 msgstr "Μπορείτε να"
 
-#: tolc_panel.php:39
+#: tolc_panel.php:29
 msgid "change your profile"
 msgstr "τροποποιήσετε τα στοιχεία σας"
 
-#: tolc_panel.php:40
-#: tolc_panel.php:86
+#: tolc_panel.php:30
+#: tolc_panel.php:75
 msgid "or"
 msgstr "ή"
 
-#: tolc_panel.php:42
+#: tolc_panel.php:32
 msgid "regional settings"
 msgstr "τις τοπικές ρυθμίσεις"
 
-#: tolc_panel.php:46
+#: tolc_panel.php:36
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: tolc_panel.php:47
-#: tolc_panel.php:98
+#: tolc_panel.php:37
+#: tolc_panel.php:86
 msgid "here"
 msgstr "εδώ"
 
-#: tolc_panel.php:54
+#: tolc_panel.php:43
 msgid "Content management"
 msgstr "Διαχείριση περιεχομένου"
 
-#: tolc_panel.php:57
+#: tolc_panel.php:46
 msgid "Edit page properties"
 msgstr "Ιδιότητες σελίδας"
 
-#: tolc_panel.php:58
+#: tolc_panel.php:47
 #: admin/user/ajax_user_form.php:118
 msgid "URL"
 msgstr "URL"
 
-#: tolc_panel.php:58
+#: tolc_panel.php:47
 msgid "title"
 msgstr "τίτλος"
 
-#: tolc_panel.php:58
-#: tolc_panel.php:76
+#: tolc_panel.php:47
+#: tolc_panel.php:65
 msgid "etc"
 msgstr "κλπ"
 
-#: tolc_panel.php:62
+#: tolc_panel.php:51
 msgid "Web site management"
 msgstr "Διαχείριση ιστοχώρου"
 
-#: tolc_panel.php:66
+#: tolc_panel.php:55
 msgid "Sitemap"
 msgstr "Χάρτης"
 
-#: tolc_panel.php:67
+#: tolc_panel.php:56
 msgid "web site structure"
 msgstr "δομή ιστοχώρου"
 
-#: tolc_panel.php:71
+#: tolc_panel.php:60
 msgid "Manage web site templates"
 msgstr "Διαχείριση προτύπων (templates)"
 
-#: tolc_panel.php:75
+#: tolc_panel.php:64
 msgid "Upload files"
 msgstr "Ανεβάστε αρχεία"
 
-#: tolc_panel.php:76
+#: tolc_panel.php:65
 msgid "images"
 msgstr "εικόνες"
 
-#: tolc_panel.php:76
+#: tolc_panel.php:65
 msgid "media files"
 msgstr "media files"
 
-#: tolc_panel.php:83
+#: tolc_panel.php:72
 msgid "Users management"
 msgstr "Διαχείριση χρηστών"
 
-#: tolc_panel.php:86
+#: tolc_panel.php:75
 msgid "Add a new user"
 msgstr "Προσθήκη νέου χρήστη"
 
-#: tolc_panel.php:86
+#: tolc_panel.php:75
 msgid "manage"
 msgstr "διαχείριση"
 
-#: tolc_panel.php:88
+#: tolc_panel.php:77
 msgid "existing users"
 msgstr "εγγεγραμμένων χρηστών"
 
-#: tolc_panel.php:95
+#: tolc_panel.php:83
 msgid "About Tolc"
 msgstr "Σχετικά με Tolc"
 
-#: tolc_panel.php:97
+#: tolc_panel.php:85
 msgid "Find out"
 msgstr "Βρείτε περισσότερα"
 
@@ -150,7 +156,15 @@ msgstr "Παρακαλώ, περιμένετε"
 msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
+#: admin/new_page/ajax_new_page.php:48
+msgid "Only one space allowed between words"
+msgstr "Μόνο ένα κενό επιτρέπεται μεταξύ λέξεων"
+
 #: admin/new_page/ajax_new_page.php:53
+msgid "Valid URL may contain letters, digits, space and the characters"
+msgstr "Το URL μπορεί να περιέχει γράμματα, αριθμούς, κενό και τους χαρακτήρες"
+
+#: admin/new_page/ajax_new_page.php:64
 msgid "URL already exists"
 msgstr "Το URL υπάρχει ήδη"
 
@@ -202,10 +216,6 @@ msgstr "Η επαλήθευση του password περιέχει μη αποδε
 #: admin/user/ajax_user.php:73
 msgid "Invalid email"
 msgstr "Το email δεν δόθηκε σωστά"
-
-#: admin/user/ajax_user.php:79
-msgid "Invalid URL"
-msgstr "Το URL δεν δόθηκε σωστά"
 
 #: admin/user/ajax_user.php:106
 msgid "Username characters are less than"
@@ -303,6 +313,7 @@ msgstr "Μέχρι"
 #: inc_tolc_functions/inc_admin_mode.php:18
 #: inc_tolc_functions/inc_login_required_new_page.php:2
 #: inc_tolc_functions/inc_page_not_found.php:1
+#: inc_tolc_functions/inc_invalid_url.php:1
 #: inc_tolc_functions/inc_already_logged_in.php:2
 msgid "Ok"
 msgstr "Εντάξει"
@@ -401,51 +412,51 @@ msgstr "Ο κωδικός δεν δόθηκε"
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/init.php:106
+#: common/init.php:115
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/init.php:107
+#: common/init.php:116
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/init.php:108
+#: common/init.php:117
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/init.php:125
+#: common/init.php:134
 msgid "admin"
 msgstr "διαχειριστής"
 
-#: common/init.php:126
+#: common/init.php:135
 msgid "editor in chief"
 msgstr "αρχισυντάκτης"
 
-#: common/init.php:127
+#: common/init.php:136
 msgid "editor"
 msgstr "συντάκτης"
 
-#: common/init.php:128
+#: common/init.php:137
 msgid "common user"
 msgstr "κοινός χρήστης"
 
-#: common/init.php:148
+#: common/init.php:157
 msgid "draft"
 msgstr "πρόχειρο"
 
-#: common/init.php:149
+#: common/init.php:158
 msgid "pending review"
 msgstr "προς αξιολόγηση"
 
-#: common/init.php:150
+#: common/init.php:159
 msgid "under review"
 msgstr "υπό αξιολόγηση"
 
-#: common/init.php:151
+#: common/init.php:160
 msgid "approved"
 msgstr "εγκεκριμένο"
 
-#: common/init.php:152
+#: common/init.php:161
 msgid "rejected"
 msgstr "απορριφθέν"
 
