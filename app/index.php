@@ -200,8 +200,8 @@ $tolc_functions_html = ob_get_contents();
 ob_end_clean();
 
 
-$ftest='/srv/http/dev/tolc/log/test.log';
-file_put_contents($ftest, '--->functions' . PHP_EOL . $tolc_functions_html . PHP_EOL . PHP_EOL, FILE_APPEND);
+/*$ftest='/srv/http/dev/tolc/log/test.log';
+file_put_contents($ftest, '--->functions' . PHP_EOL . $tolc_functions_html . PHP_EOL . PHP_EOL, FILE_APPEND);*/
 
 // page head
 $template_head = $html->getElementByTagName('head');
