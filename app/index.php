@@ -24,6 +24,7 @@ $invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
 // check for direct access of '/app/index.php'
 if($url == '/app/index.php' || $url == '/app/') {
 	header('Location: ' . CONST_PROJECT_FULL_URL);
+	exit;
 }
 
 // connect to database
@@ -45,6 +46,7 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_res
 	$_SESSION['url_reserved'] = $url;
 	$url_to_go = isset($_SESSION['url']) ? $_SESSION['url'] : '';
 	header('Location: ' . CONST_PROJECT_FULL_URL . $url_to_go);
+	exit;
 } else {
 	$_SESSION['url'] = $url;
 }
@@ -196,6 +198,10 @@ ob_start();
 include($tolc_conf['project_dir'] . '/app/tolc_functions.php');
 $tolc_functions_html = ob_get_contents();
 ob_end_clean();
+
+
+$ftest='/srv/http/dev/tolc/log/test.log';
+file_put_contents($ftest, '--->functions' . PHP_EOL . $tolc_functions_html . PHP_EOL . PHP_EOL, FILE_APPEND);
 
 // page head
 $template_head = $html->getElementByTagName('head');
