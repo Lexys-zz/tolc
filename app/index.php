@@ -20,6 +20,7 @@ $url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['proje
 $url = trim($url);
 $url = preg_replace('/\s+/', ' ', $url); //replace multiple spaces with one
 $url = mb_substr($url, 0, $tolc_conf['pref_url_max_length']); // truncate to max length
+$url = mb_substr($url, 0, CONST_URL_DB_MAXLENGTH); // truncate to max length in database
 $invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
 
 // check for direct access of '/app/index.php'
