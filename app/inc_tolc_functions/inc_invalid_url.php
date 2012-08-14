@@ -1,3 +1,4 @@
+<!-- Invalid URL ----------------------------------------------------------- -->
 <input type="hidden" id="btn_ok" value="<?php print gettext('Ok') ?>">
 
 <div id="invalid_url"

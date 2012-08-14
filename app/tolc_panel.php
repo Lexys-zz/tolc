@@ -4,12 +4,9 @@ if(!$tolc_include) {
 	echo 'Access denied!';
 	exit;
 }
-
-if(!isset($_SESSION['username'])) {
-	print 'Access denied...';
-	exit;
-}
 ?>
+
+<?php if(isset($_SESSION['username'])) { ?>
 
 <a href="javascript:void(0);" id="trigger" class="trigger">tolc</a>
 
@@ -90,5 +87,4 @@ if(!isset($_SESSION['username'])) {
 
 </div>
 
-
-
+<?php } ?>

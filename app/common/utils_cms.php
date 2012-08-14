@@ -150,6 +150,84 @@ function get_page_template($conn, $page_id, $dt) {
 }
 
 /**
+ * @param $html
+ * @param $template_base_url
+ * @return mixed
+ */
+function set_template_src_attribute($html, $template_base_url) {
+
+	// convert template <img> src relevant to website root
+	$template_images = $html->find('img[src]');
+	foreach($template_images as $template_image) {
+		$img_src = $template_image->src;
+		$template_image->src = $template_base_url . $img_src;
+	}
+
+// convert template <input> src relevant to website root
+	$template_inputs = $html->find('input[src]');
+	foreach($template_inputs as $template_input) {
+		$input_src = $template_input->src;
+		$template_input->src = $template_base_url . $input_src;
+	}
+
+	return $html;
+}
+
+/**
+ * Parse template head
+ *
+ * @param $html
+ * @param $template_base_url
+ * @return array
+ */
+function parse_template_head($html, $template_base_url) {
+
+	global $tolc_conf;
+
+	// convert template head <link> href relevant to website root and collect <link> tags
+	$template_favicon_html = '';
+	$template_link_html = '';
+	$template_links = $html->find('link');
+	foreach($template_links as $template_link) {
+		$link_rel = $template_link->rel;
+		$link_href = $template_link->href;
+		$link_href_modified = $template_base_url . $link_href;
+		$template_link_tag = $template_link->outertext;
+		$template_link_tag = implode($link_href_modified, mb_split($link_href, $template_link_tag));
+		if($link_rel == 'shortcut icon') {
+			$template_favicon_html = $template_link_tag;
+		} else {
+			$template_link_html .= $template_link_tag;
+		}
+	}
+
+	// convert template head <script> src relevant to website root and collect <script> tags
+	$template_scripts_html = '';
+	$template_scripts = $html->find('script');
+	foreach($template_scripts as $template_script) {
+		$script_src = $template_script->src;
+		$script_src_modified = $template_base_url . $script_src;
+		$template_script_tag = $template_script->outertext;
+		$template_script_tag = implode($script_src_modified, mb_split($script_src, $template_script_tag));
+		$template_scripts_html .= $template_script_tag;
+	}
+
+	// collect template <meta> tags
+	$template_meta_html = '';
+	$template_meta_tags = $html->find('meta');
+	foreach($template_meta_tags as $template_meta_tag) {
+		$template_meta_html .= $template_meta_tag->outertext;
+	}
+
+	return array(
+		'template_favicon_html' => $template_favicon_html,
+		'template_link_html' => $template_link_html,
+		'template_scripts_html' => $template_scripts_html,
+		'template_meta_html' => $template_meta_html
+	);
+}
+
+/**
  * Get active elements for given template
  *
  * @param $conn
@@ -211,6 +289,5 @@ function set_page_version_content($conn, $page_version_id, $template_id, $html) 
 
 	return $html;
 }
-
 
 ?>

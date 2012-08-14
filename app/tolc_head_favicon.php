@@ -6,4 +6,4 @@ if(!$tolc_include) {
 }
 ?>
 <link rel="shortcut icon"
-	  href="<?php print $tolc_conf['project_url'] . $template_path ?>favicon.ico"/>
+	  href="<?php print $tolc_conf['project_url'] ?>/favicon.ico"/>

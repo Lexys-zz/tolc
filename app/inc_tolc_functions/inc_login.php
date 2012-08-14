@@ -1,4 +1,4 @@
-<!-- Login form ------------------------------------------------------------ -->
+<!-- Login ----------------------------------------------------------------- -->
 <div id="login_form" title="<?php print gettext('Login')?>">
 </div>
 <input type="hidden" id="btn_do_login_value"
