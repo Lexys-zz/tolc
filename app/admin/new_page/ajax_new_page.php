@@ -43,6 +43,12 @@ if($rs === false) {
 	$www_users_id = $rs->fields['id'];
 }
 
+// check URL max lenght
+if(mb_strlen($page_url) > $tolc_conf['pref_url_max_length']) {
+	print gettext('Max length of URL is') . ' ' . $tolc_conf['pref_url_max_length'] . '...';
+	exit;
+}
+
 // check for valid URL
 if(preg_match('/\040\040/', $page_url)) {
 	print gettext('Only one space allowed between words') . '...';

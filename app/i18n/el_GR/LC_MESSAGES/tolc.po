@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-13 22:22+0200\n"
-"PO-Revision-Date: 2012-08-13 22:22+0200\n"
+"POT-Creation-Date: 2012-08-14 13:00+0200\n"
+"PO-Revision-Date: 2012-08-14 13:00+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -17,21 +17,21 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:62
+#: index.php:65
 msgid "New page"
 msgstr "Νέα σελίδα"
 
-#: index.php:62
+#: index.php:65
 msgid "Page does not exist"
 msgstr "Η σελίδα δεν υπάρχει"
 
-#: index.php:66
-#: index.php:71
+#: index.php:69
+#: index.php:74
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
-#: index.php:78
-#: admin/new_page/ajax_new_page.php:53
+#: index.php:81
+#: admin/new_page/ajax_new_page.php:59
 #: admin/user/ajax_user.php:79
 msgid "Invalid URL"
 msgstr "Το URL δεν δόθηκε σωστά"
@@ -157,14 +157,18 @@ msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
 #: admin/new_page/ajax_new_page.php:48
+msgid "Max length of URL is"
+msgstr "Ο μέγιστος αριθμός χαρακτήρων του URL είναι"
+
+#: admin/new_page/ajax_new_page.php:54
 msgid "Only one space allowed between words"
 msgstr "Μόνο ένα κενό επιτρέπεται μεταξύ λέξεων"
 
-#: admin/new_page/ajax_new_page.php:53
+#: admin/new_page/ajax_new_page.php:59
 msgid "Valid URL may contain letters, digits, space and the characters"
 msgstr "Το URL μπορεί να περιέχει γράμματα, αριθμούς, κενό και τους χαρακτήρες"
 
-#: admin/new_page/ajax_new_page.php:64
+#: admin/new_page/ajax_new_page.php:70
 msgid "URL already exists"
 msgstr "Το URL υπάρχει ήδη"
 
