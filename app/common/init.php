@@ -102,7 +102,7 @@ define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // used from ezfile
  * u force UTF8
  *
  */
-define('CONST_REGEX_SANITIZE_URL', '/[^\040\w\/.-]/u');
+define('CONST_REGEX_SANITIZE_URL', '/[^\040\w\/\.\-\:]/u');
 define('CONST_URL_DB_MAXLENGTH', 254);
 
 /**
