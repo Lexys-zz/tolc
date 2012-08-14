@@ -6,13 +6,13 @@ session_regenerate_id(true);
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
     strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 if (!$isAjax) {
-    print 'Access denied - not an AJAX request...';
+    print 'Access denied - not an AJAX request...' . ' (' . __FILE__ . ')';
     exit;
 }
 
 // check for logged in user
 if(!isset($_SESSION['username'])) {
-	print gettext('Access denied') . '...';
+	print 'Access denied' . ' (' . __FILE__ . ')';
 	exit;
 }
 

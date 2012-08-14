@@ -10,7 +10,7 @@ require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // check for logged in user
 if(!isset($_SESSION['username'])) {
-	print gettext('Access denied') . '...';
+	print 'Access denied' . ' (' . __FILE__ . ')';
 	exit;
 }
 

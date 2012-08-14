@@ -106,6 +106,11 @@ define('CONST_REGEX_SANITIZE_URL', '/[^\040\w\/.-]/u');
 define('CONST_URL_DB_MAXLENGTH', 254);
 
 /**
+ * Various
+ */
+define('CONST_ACCESS_DENIED', gettext('Access denied'));
+
+/**
  * lookups
  */
 /* user status */

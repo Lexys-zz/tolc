@@ -1,7 +1,7 @@
 <?php
 // prevent direct access
 if(!$tolc_include) {
-	echo 'Access denied!';
+	echo CONST_ACCESS_DENIED . ' (' . __FILE__ . ')';
 	exit;
 }
 ?>
