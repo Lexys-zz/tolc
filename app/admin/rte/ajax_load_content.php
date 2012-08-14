@@ -1,60 +1,48 @@
 <?php
 session_start();
 session_regenerate_id(true);
+
 require_once '../../conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
+require_once $tolc_conf['project_dir'] . '/app/common/utils_cms.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // check for logged in user
 if(!isset($_SESSION['username'])) {
-	print 'Access denied' . ' (' . __FILE__ . ')';
+	print CONST_ACCESS_DENIED . ' (' . __FILE__ . ')';
 	exit;
 }
 
+// get vars
+$www_page_versions_id = 1;
 
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
+// get current user
+$a_user = get_user($conn, $_SESSION['username']);
+$www_users_id = $a_user['user_id'];
+$lk_roles_id = $a_user['lk_roles_id'];
+$user_email = $a_user['user_email'];
+
 // get current time (in UTC)
-$now = $conn->qstr(now());
+$dt = now();
 
-$url_sql = $conn->qstr(mb_strtolower($_SESSION['url']));
+// get page
+$a_page = get_page($conn, $_SESSION['url']);
+$www_pages_id = $a_page['page_id'];
+$page_title = $a_page['page_title'];
+$page_has_been_removed = $a_page['page_has_been_removed'];
 
-// get page id and page title (CASE INSENSITIVE URL search)
-$sql = 'SELECT id, title FROM www_pages WHERE LOWER(url)=' . $url_sql;
-$rs = $conn->Execute($sql);
-if($rs === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-}
-// retrieve page id
-$www_pages_id = $rs->fields['id'];
-// retrieve page title
-$page_title = $rs->fields['title'];
-
-// get template id
-$sql = 'SELECT www_templates_id FROM www_page_templates ' .
-	'WHERE www_pages_id=' . $www_pages_id .
-	' AND date_start<=' . $now .
-	' ORDER BY date_start DESC';
-$rs = $conn->SelectLimit($sql, 1, 0);
-if($rs === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-} else {
-	$www_templates_id = $rs->fields['www_templates_id'];
-}
-
-// get template path
-$sql = 'SELECT template_path, template_file, css_url FROM www_templates WHERE id = ' . $www_templates_id;
-$rs = $conn->Execute($sql);
-if($rs === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-}
-$template_path = $rs->fields['template_path'];
-$template_file = $rs->fields['template_file'];
-$css_url = $rs->fields['css_url'];
+// get template
+$a_template = get_page_template($conn, $www_pages_id, $dt);
+$www_templates_id = $a_template['template_id'];
+$template_path = $a_template['template_path'];
+$template_file = $a_template['template_file'];
+$css_url = $a_template['css_url'];
 $template_base_url = $tolc_conf['project_url'] . $template_path;
 
 // store template html to variable
@@ -69,60 +57,11 @@ $html = new simple_html_dom();
 // load template html
 $html->load($template_html);
 
-// convert template <img> src relevant to website root
-$template_images = $html->find('img[src]');
-foreach($template_images as $template_image) {
-	$img_src = $template_image->src;
-	$template_image->src = $template_base_url . $img_src;
-}
-
-// convert template <input> src relevant to website root
-$template_inputs = $html->find('input[src]');
-foreach($template_inputs as $template_input) {
-	$input_src = $template_input->src;
-	$template_input->src = $template_base_url . $input_src;
-}
+// set template elements src attribute relevant to website root
+$html = set_template_src_attribute($html, $template_base_url);
 
 // set page content
-$a_active_elements = array();
-if($www_pages_id > 0) {
-	// get template active elements ids
-	$sql = 'SELECT id, element_id FROM www_template_active_elements WHERE www_templates_id=' . $www_templates_id . ' ORDER BY display_order';
-	$rs = $conn->Execute($sql);
-	if($rs === false) {
-		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-	}
-	$a_elements = $rs->GetRows();
-
-	foreach($a_elements as $element) {
-		// push to active elements array
-		array_push($a_active_elements, '#' . $element['element_id']);
-		// get content
-		$sql = 'SELECT html FROM www_content ' .
-			'WHERE www_pages_id=' . $www_pages_id .
-			' AND www_template_active_elements_id=' . $element['id'] .
-			' AND lk_publish_status_id=' . CONST_PUBLISH_STATUS_PUBLISHED_KEY .
-			' AND date_published<=' . $now .
-			' ORDER BY date_published DESC';
-		$rs = $conn->SelectLimit($sql, 1, 0);
-		//$rs = $conn->Execute($sql);
-		if($rs === false) {
-			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
-		}
-		if($rs->RecordCount() == 1) {
-			// set element content
-			$selector = '[id=' . $element['element_id'] . ']';
-			$res = $html->find($selector, 0);
-			if($res) {
-				$res->innertext = $rs->fields['html'];
-			}
-		}
-	}
-}
-
-// set value to active elements hidden input
-$active_elements = implode(', ', $a_active_elements);
-
+$html = set_page_version_content($conn, $www_page_versions_id, $www_templates_id, $html);
 
 // remove page head
 $template_head = $html->getElementByTagName('head');

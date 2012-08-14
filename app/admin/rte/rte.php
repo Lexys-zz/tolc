@@ -10,18 +10,13 @@ require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // check for logged in user
 if(!isset($_SESSION['username'])) {
-	print 'Access denied' . ' (' . __FILE__ . ')';
+	print CONST_ACCESS_DENIED . ' (' . __FILE__ . ')';
 	exit;
 }
 
 // get vars
 $element_id = $_GET['element_id'];
 $rte_title = gettext('Edit');
-if(isset($_GET['element_id'])) {
-	$rte_title .= ' (#' . $element_id . ')';
-} else {
-	$rte_title .= ' (' . gettext('whole page') . ')';
-}
 
 $publish_status_len = count($a_publish_status_keys);
 ?>
@@ -45,7 +40,6 @@ $publish_status_len = count($a_publish_status_keys);
 </head>
 
 <body>
-
 
 <div id="rte_tools">
 	<a id="btn_save"><?php print gettext('Save') ?></a>

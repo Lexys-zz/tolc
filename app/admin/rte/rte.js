@@ -74,7 +74,7 @@ $(function () {
     });
 
     $("#btn_save").click(function () {
-        console.debug(tinyMCE.activeEditor.getContent());
+
     });
 
 });
