@@ -13,7 +13,6 @@ $(function () {
         script_url: tinymce_url,
 
         // General options
-        mode : "textareas",
         theme: "advanced",
         plugins: "lists,advlist,style,table,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,media,searchreplace,contextmenu,paste,directionality,noneditable,visualchars,nonbreaking,xhtmlxtras,template,ezfilemanager",
         language: lang,

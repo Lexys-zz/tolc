@@ -2,6 +2,14 @@
 session_start();
 session_regenerate_id(true);
 
+// prevent direct access
+$isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND
+	strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+if(!$isAjax) {
+	print 'Access denied - not an AJAX request...' . ' (' . __FILE__ . ')';
+	exit;
+}
+
 require_once '../../conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once ADODB_PATH . '/adodb.inc.php';
