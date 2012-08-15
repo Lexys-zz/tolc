@@ -82,4 +82,27 @@ $(function () {
     });
 
 
+    $("#date_publish_start").datetimepicker(
+        {
+            dateFormat: $("#dateformat").val(),
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true
+        },
+        $.datepicker.regional[ $("#lang").val() ],
+        $.timepicker.regional[ $("#lang").val() ]
+    );
+
+    $("#date_publish_end").datetimepicker(
+        {
+            dateFormat: $("#dateformat").val(),
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true
+        },
+        $.datepicker.regional[ $("#lang").val() ],
+        $.timepicker.regional[ $("#lang").val() ]
+    );
+
+
 });

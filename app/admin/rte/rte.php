@@ -22,15 +22,31 @@ if(!isset($_SESSION['username'])) {
 
 <head>
 	<title><?php print gettext('Edit') ?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
 	<link href="<?php print JQUERY_UI_CSS_URL ?>" rel="stylesheet"
 		  type="text/css"/>
+	<link href="<?php print JQUERY_UI_DATETIMEPICKER_CSS_URL ?>"
+		  rel="stylesheet" type="text/css">
 	<link
 		href="<?php print $tolc_conf['project_url'] ?>/app/admin/rte/rte.css?version=1"
 		rel="stylesheet"
 		type="text/css"/>
+
 	<script type="text/javascript" src="<?php print JQUERY_URL ?>"></script>
 	<script type="text/javascript" src="<?php print JQUERY_UI_URL ?>"></script>
+
+	<script type="text/javascript"
+			src="<?php print JQUERY_UI_DATETIMEPICKER_URL ?>"></script>
+
+	<?php if(substr($_SESSION['locale'], 0, 2) !== 'en') { ?>
+	<script type="text/javascript"
+			src="<?php print JQUERY_UI_i18n_DIR . '/jquery.ui.datepicker-' . substr($_SESSION['locale'], 0, 2) . '.js' ?>"></script>
+	<script type="text/javascript"
+			src="<?php print JQUERY_UI_DATETIMEPICKER_i18n_URL ?>"></script>
+	<?php } ?>
+
 	<script type="text/javascript"
 			src="<?php print JQUERY_TINYMCE_URL ?>"></script>
 	<script type="text/javascript"
@@ -39,16 +55,35 @@ if(!isset($_SESSION['username'])) {
 
 <body>
 
-<div id="rte_tools">
+<div id="rte_tools1">
 
-	<a id="btn_save"><?php print gettext('Save') ?></a>
-	<label for="date_start"><?php print gettext('From') ?></label>
-	<input id="date_start">
-	<label for="date_end"><?php print gettext('Until') ?></label>
-	<input id="date_end">
-	<select id="lk_publish_status_id">
+	<select id="www_page_versions_id">
 	</select>
 
+	<a id="btn_save"><?php print gettext('Save') ?></a>
+
+	<label for="new_version"><?php print gettext('new_version') ?></label>
+	<input id="new_version" type="checkbox">
+
+</div>
+
+<div id="rte_tools2">
+
+	<select id="lk_content_status_id">
+	</select>
+
+	<select id="author_id">
+	</select>
+
+	<label
+		for="date_publish_start"><?php print gettext('published from') ?></label>
+	<input id="date_publish_start">
+
+	<label for="date_publish_end"><?php print gettext('Until') ?></label>
+	<input id="date_publish_end">
+
+	<select id="editor_id">
+	</select>
 
 </div>
 
@@ -56,6 +91,12 @@ if(!isset($_SESSION['username'])) {
 	<textarea id="rte" rows="10" cols="60">
 	</textarea>
 </div>
+
+
+<input id="lang" type="hidden"
+	   value="<?php print substr($_SESSION['locale'], 0, 2) ?>">
+<input id="dateformat" type="hidden" value="dd/mm/yy">
+
 </body>
 
 </html>

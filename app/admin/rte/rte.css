@@ -1,8 +1,22 @@
-#rte_tools {
+#rte_tools1 {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    padding: 5px;
+    clear: both;
+    font-size: 11px;
+    font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
+}
+
+#rte_tools2 {
     margin-top: 3px;
     margin-bottom: 5px;
     padding: 5px;
     clear: both;
     font-size: 11px;
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
+}
+
+/* DATEPICKER FONT-SIZE ----------------------------------------------------- */
+div.ui-datepicker {
+    font-size: 12px;
 }
