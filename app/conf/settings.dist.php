@@ -100,7 +100,7 @@ $tolc_conf['pref_reserved_usernames'] = array(
 );
 
 /* jquery ui CSS theme */
-$tolc_conf['pref_jqueryui_theme'] = 'ui-lightness'; // ui-lightness, smoothness, south-street, humanity, redmond
+$tolc_conf['pref_jqueryui_theme'] = 'ui-lightness'; // ui-lightness, redmond, flick, smoothness, humanity, south-street
 
 /**
  * Using of prepared statements can prevent SQL injection attacks (even if user input is thoroughly sanitized).

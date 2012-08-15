@@ -173,18 +173,17 @@ define('LIB_URL', $tolc_conf['project_url'] . '/lib');
 define('LIB_DIR', $tolc_conf['project_dir'] . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
-define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.7.2/jquery-1.7.2.min.js');
-//define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.0/jquery-1.8.0.min.js');
+define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.0/jquery-1.8.0.min.js');
 
-define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js');
-define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.22.custom/css/' . $tolc_conf['pref_jqueryui_theme'] . '/jquery-ui-1.8.22.custom.css');
+define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.23.custom/js/jquery-ui-1.8.23.custom.min.js');
+define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.23.custom/css/' . $tolc_conf['pref_jqueryui_theme'] . '/jquery-ui-1.8.23.custom.css');
 define('JQUERY_UI_i18n_DIR', LIB_URL . LIB_EXT_DIR . '/jquery-ui-localize');
 define('JQUERY_UI_DATETIMEPICKER_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/jquery-ui-timepicker-addon.js');
 define('JQUERY_UI_DATETIMEPICKER_i18n_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/localization/jquery-ui-timepicker-' . substr($_SESSION['locale'], 0, 2) . '.js');
+define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/jquery-ui-timepicker-addon.css');
 define('JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-extensions/jquery.ui.autocomplete.html.js');
 define('JQUERY_UI_LAYOUT_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/jquery.layout.js');
 define('JQUERY_UI_LAYOUT_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/layout-default.css');
-define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/jquery-ui-timepicker-addon.css');
 define('JSTREE_URL', LIB_URL . LIB_EXT_DIR . '/jstree.v.pre1.0_fix1/jquery.jstree.js');
 define('QTIP2_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-bbb88cf/jquery.qtip.min.js');
 define('QTIP2_CSS_URL', LIB_URL . LIB_EXT_DIR . '/Craga89-qTip2-bbb88cf/jquery.qtip.css');
