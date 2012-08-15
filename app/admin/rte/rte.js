@@ -14,16 +14,24 @@ $(function () {
 
         // General options
         theme: "advanced",
-        plugins: "lists,advlist,style,table,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,media,searchreplace,contextmenu,paste,directionality,noneditable,visualchars,nonbreaking,xhtmlxtras,template,ezfilemanager",
+        plugins: "advhr,advimage,advlink,advlist,contextmenu," +
+            "emotions,iespell,inlinepopups,insertdatetime," +
+            "lists,media,nonbreaking," +
+            ",paste,preview,print,searchreplace,style," +
+            "table,visualchars," +
+            "ezfilemanager",
         language: lang,
         entity_encoding: "raw",
         relative_urls: true, // default
         document_base_url: base_url,
 
         // Theme options
-        theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect,|,forecolor,backcolor",
-        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime",
-        theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,fullscreen|nonbreaking",
+        theme_advanced_buttons1: "code,cleanup,|,formatselect,styleprops,|,bold,italic,underline,strikethrough,|,sub,sup,|," +
+            ",justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,blockquote,|,forecolor,backcolor,|" +
+            ",link,unlink,anchor,image,media,|,bullist,numlist,|,tablecontrols,",
+        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,selectall,|,undo,redo,|,search,replace,|" +
+            "preview,print,|,styleselect,fontselect,fontsizeselect,|,removeformat,visualaid,|,iespell,|,advhr,nonbreaking,|" +
+            ",visualchars,charmap,insertdate,inserttime,emotions,|,help",
         theme_advanced_toolbar_location: "top",
         theme_advanced_toolbar_align: "left",
         theme_advanced_statusbar_location: "bottom",
