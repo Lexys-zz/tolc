@@ -15,7 +15,7 @@ $(function () {
         // General options
         theme: "advanced",
         plugins: "advhr,advimage,advlink,advlist,contextmenu," +
-            "emotions,iespell,inlinepopups,insertdatetime," +
+            "emotions,inlinepopups,insertdatetime," +
             "lists,media,nonbreaking," +
             ",paste,preview,print,searchreplace,style," +
             "table,visualchars," +
@@ -30,7 +30,7 @@ $(function () {
             ",justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,blockquote,|,forecolor,backcolor,|" +
             ",link,unlink,anchor,image,media,|,bullist,numlist,|,tablecontrols,",
         theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,selectall,|,undo,redo,|,search,replace,|" +
-            "preview,print,|,styleselect,fontselect,fontsizeselect,|,removeformat,visualaid,|,iespell,|,advhr,nonbreaking,|" +
+            "preview,print,|,styleselect,fontselect,fontsizeselect,|,removeformat,visualaid,|,advhr,nonbreaking,|" +
             ",visualchars,charmap,insertdate,inserttime,emotions,|,help",
         theme_advanced_toolbar_location: "top",
         theme_advanced_toolbar_align: "left",
