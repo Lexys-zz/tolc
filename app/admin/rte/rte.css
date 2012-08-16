@@ -3,17 +3,45 @@
     margin-bottom: 0px;
     padding: 5px;
     clear: both;
-    font-size: 11px;
+    font-size: 12px;
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
 }
 
-#rte_tools2 {
-    margin-top: 3px;
-    margin-bottom: 5px;
-    padding: 5px;
+.rte_tools {
     clear: both;
-    font-size: 11px;
+    font-size: 12px;
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
+}
+
+#date_publish_start, #date_publish_end {
+    font-size: 12px;
+    font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
+    width: 100px;
+}
+
+fieldset {
+    width: 97%;
+    margin-top: 3px;
+    margin-bottom: 4px;
+    margin-left: 0px;
+}
+
+fieldset legend {
+    width: 50%;
+    font-size: 12px;
+}
+
+fieldset legend div {
+    margin: 0.3em 0.5em;
+}
+
+fieldset .field {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+fieldset .field label {
+    margin-right: 0.4em;
 }
 
 /* DATEPICKER FONT-SIZE ----------------------------------------------------- */

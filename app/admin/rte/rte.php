@@ -7,6 +7,7 @@ require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
+require_once $tolc_conf['project_dir'] . '/app/common/utils_cms.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
 
 // check for logged in user
@@ -14,6 +15,17 @@ if(!isset($_SESSION['username'])) {
 	print CONST_ACCESS_DENIED . ' (' . __FILE__ . ')';
 	exit;
 }
+
+// connect to database
+$conn = get_db_conn($tolc_conf['dbdriver']);
+
+// get page
+$a_page = get_page($conn, $_SESSION['url']);
+$www_pages_id = $a_page['page_id'];
+$page_title = $a_page['page_title'];
+$page_has_been_removed = $a_page['page_has_been_removed'] == 1 ? true : false;
+
+$title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') . ')' : '');
 ?>
 
 
@@ -21,7 +33,7 @@ if(!isset($_SESSION['username'])) {
 <html>
 
 <head>
-	<title><?php print gettext('Edit') ?></title>
+	<title><?php print $title ?></title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -60,37 +72,49 @@ if(!isset($_SESSION['username'])) {
 <div id="user_message">
 </div>
 
-<div id="rte_tools1">
+<fieldset class="ui-widget ui-widget-content">
+	<legend class="ui-widget-header ui-corner-all">
+		<div><?php print gettext('Edit') ?></div>
+	</legend>
 
-	<select id="www_page_versions_id">
-	</select>
+	<div id="rte_tools1" class="rte_tools">
 
-	<a id="btn_save"><?php print gettext('Save') ?></a>
+		<select id="www_page_versions_id">
+		</select>
 
-	<label for="new_version"><?php print gettext('new_version') ?></label>
-	<input id="new_version" type="checkbox">
+		<a id="btn_save"><?php print gettext('Save') ?></a>
 
-</div>
+		<label for="new_version"><?php print gettext('new_version') ?></label>
+		<input id="new_version" type="checkbox">
 
-<div id="rte_tools2">
+	</div>
 
-	<select id="lk_content_status_id">
-	</select>
+	<div id="rte_tools2" class="rte_tools">
 
-	<select id="author_id">
-	</select>
+		<label
+			for="author_id"><?php print gettext('Submitted from') ?></label>
+		<select id="author_id">
+		</select>
 
-	<label
-		for="date_publish_start"><?php print gettext('published from') ?></label>
-	<input id="date_publish_start">
+		<label
+			for="lk_content_status_id"><?php print gettext('as') ?></label>
+		<select id="lk_content_status_id">
+		</select>
 
-	<label for="date_publish_end"><?php print gettext('Until') ?></label>
-	<input id="date_publish_end">
+		<label
+			for="date_publish_start"><?php print gettext('to be published from') ?></label>
+		<input id="date_publish_start">
 
-	<select id="editor_id">
-	</select>
+		<label for="date_publish_end"><?php print gettext('until') ?></label>
+		<input id="date_publish_end">
 
-</div>
+		<label for="editor_id"><?php print gettext('Managed by') ?></label>
+		<select id="editor_id">
+		</select>
+
+	</div>
+
+</fieldset>
 
 <div id="rte_div">
 	<textarea id="rte" rows="10" cols="60">
