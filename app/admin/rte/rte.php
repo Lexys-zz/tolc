@@ -85,7 +85,7 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 
 		<a id="btn_save"><?php print gettext('Save') ?></a>
 
-		<label for="new_version"><?php print gettext('new_version') ?></label>
+		<label for="new_version"><?php print gettext('new version') ?></label>
 		<input id="new_version" type="checkbox">
 
 	</div>
@@ -122,12 +122,13 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 	</textarea>
 </div>
 
-
 <input id="lang" type="hidden"
 	   value="<?php print substr($_SESSION['locale'], 0, 2) ?>">
 <input id="dateformat" type="hidden" value="dd/mm/yy">
-
 <input id="pref_tinymce_toggle_toolbar" type="hidden" value="<?php print $tolc_conf['pref_tinymce_toggle_toolbar'] ? '1' : '0' ?>">
+<input id="rsc_please_select" type="hidden"
+	   value="<?php print gettext('Please, select') ?>">
+
 </body>
 
 </html>

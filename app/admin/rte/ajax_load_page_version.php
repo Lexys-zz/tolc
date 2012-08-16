@@ -24,14 +24,59 @@ if(!isset($_SESSION['username'])) {
 	exit;
 }
 
-// init
-$a_res = array();
-
 // get vars
 $www_page_versions_id = 1;
 
+// get current time (in UTC)
+$dt = now();
+
+// init
+$a_res = array();
+
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
+
+// authors --------------------------------------------------------------
+
+$sql = 'SELECT id, fullname FROM www_users ORDER BY fullname';
+$rs = $conn->Execute($sql);
+if($rs === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+}
+$a_res['authors'] = $rs->GetRows();
+
+// authors --------------------------------------------------------------
+
+$sql = 'SELECT id, fullname FROM www_users WHERE lk_roles_id < ' . CONST_ROLE_COMMON_USER_KEY . ' ORDER BY fullname';
+$rs = $conn->Execute($sql);
+if($rs === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+}
+$a_res['editors'] = $rs->GetRows();
+
+
+// content status --------------------------------------------------------------
+$a_content_status_keys = array(
+	CONST_CONTENT_STATUS_DRAFT_KEY,
+	CONST_CONTENT_STATUS_PENDING_REVIEW_KEY,
+	CONST_CONTENT_STATUS_UNDER_REVIEW_KEY,
+	CONST_CONTENT_STATUS_APPROVED_KEY,
+	CONST_CONTENT_STATUS_REJECTED_KEY
+);
+
+$a_content_status_values = array(
+	CONST_CONTENT_STATUS_DRAFT_VALUE,
+	CONST_CONTENT_STATUS_PENDING_REVIEW_VALUE,
+	CONST_CONTENT_STATUS_UNDER_REVIEW_VALUE,
+	CONST_CONTENT_STATUS_APPROVED_VALUE,
+	CONST_CONTENT_STATUS_REJECTED_VALUE
+);
+
+$a_res['content_status_keys'] = $a_content_status_keys;
+$a_res['content_status_values'] = $a_content_status_values;
+
+// page version content --------------------------------------------------------
+
 
 // get current user
 $a_user = get_user($conn, $_SESSION['username']);
@@ -39,8 +84,6 @@ $www_users_id = $a_user['user_id'];
 $lk_roles_id = $a_user['lk_roles_id'];
 $user_email = $a_user['user_email'];
 
-// get current time (in UTC)
-$dt = now();
 
 // get page
 $a_page = get_page($conn, $_SESSION['url']);

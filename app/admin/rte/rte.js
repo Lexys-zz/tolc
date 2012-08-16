@@ -8,6 +8,7 @@ $(function () {
     var lang = $("#lang").val();
     var dateformat = $("#dateformat").val();
     var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
+    var rsc_please_select = $("#rsc_please_select").val();
 
     /* timnymce ------------------------------------------------------------------*/
     $("#rte").tinymce({
@@ -128,6 +129,7 @@ $(function () {
 function load_page_version() {
 
     var project_url = $("#project_url", window.opener.document).val();
+    var rsc_please_select = $("#rsc_please_select").val();
 
     // load content to tinymce
     $.ajax({
@@ -139,7 +141,10 @@ function load_page_version() {
         success: function (data) {
 
             var j = $.parseJSON(data);
-            //console.log(j.html);
+
+            create_content_status(j.content_status_keys, j.content_status_values, 0);
+            create_authors(j.authors, 0, '');
+            create_editors(j.editors, 0, rsc_please_select);
 
             $("#rte").html(j.html);
         }
@@ -157,4 +162,50 @@ function update_user_message(msg) {
     $("#user_message").jui_alert({
         message: msg
     });
+}
+
+function create_content_status(a_keys, a_val, selid) {
+    var options = '';
+
+    $.each(a_keys, function (index, value) {
+        var selected = '';
+        if (selid == value) {
+            selected = ' selected';
+        }
+        options += '<option value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
+    });
+    $("#lk_content_status_id").html(options);
+
+}
+
+function create_authors(a_data, selid, please_select) {
+    var options = '';
+    if(please_select) {
+        options += '<option value="0">' + please_select + ' </option>';
+    }
+    $.each(a_data, function (index, value) {
+        var selected = '';
+        if (selid == a_data[index].id) {
+            selected = ' selected';
+        }
+        options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
+    });
+    $("#author_id").html(options);
+
+}
+
+function create_editors(a_data, selid, please_select) {
+    var options = '';
+    if(please_select) {
+        options += '<option value="0">' + please_select + ' </option>';
+    }
+    $.each(a_data, function (index, value) {
+        var selected = '';
+        if (selid == a_data[index].id) {
+            selected = ' selected';
+        }
+        options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
+    });
+    $("#editor_id").html(options);
+
 }
