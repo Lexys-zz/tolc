@@ -64,6 +64,7 @@ $tolc_conf['pref_reserved_urls'] = array(
 
 /* this will substitute template active elements default content (if it has value) */
 $tolc_conf['pref_tpl_content_subst'] = 'insert content here';
+$tolc_conf['pref_tinymce_toggle_toolbar'] = true;
 
 /* tidy settings (http://tidy.sourceforge.net/docs/quickref.html) */
 $tolc_conf['pref_use_tidy'] = true;

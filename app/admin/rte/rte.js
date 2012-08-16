@@ -3,9 +3,11 @@ $(function () {
     var tinymce_url = $("#tinymce_url", window.opener.document).val();
     var ezfilemanager_url = $("#ezfilemanager_url", window.opener.document).val();
     var content_css_url = $("#content_css_url", window.opener.document).val();
-    var lang = $("#lang", window.opener.document).val();
-    var rte_content = $("#rte_content", window.opener.document).val();
     var base_url = $("#base_url", window.opener.document).val();
+
+    var lang = $("#lang").val();
+    var dateformat = $("#dateformat").val();
+    var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
 
     /* timnymce ------------------------------------------------------------------*/
     $("#rte").tinymce({
@@ -17,7 +19,7 @@ $(function () {
         plugins: "advhr,advimage,advlink,advlist,contextmenu," +
             "emotions,inlinepopups,insertdatetime," +
             "lists,media,nonbreaking," +
-            ",paste,preview,print,searchreplace,style," +
+            "paste,print,searchreplace,style," +
             "table,visualchars," +
             "ezfilemanager",
         language: lang,
@@ -30,7 +32,7 @@ $(function () {
             ",justifyleft,justifycenter,justifyright,justifyfull,|,outdent,indent,blockquote,|,forecolor,backcolor,|" +
             ",link,unlink,anchor,image,media,|,bullist,numlist,|,tablecontrols,",
         theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,selectall,|,undo,redo,|,search,replace,|" +
-            "preview,print,|,styleselect,fontselect,fontsizeselect,|,removeformat,visualaid,|,advhr,nonbreaking,|" +
+            ",print,|,styleselect,fontselect,fontsizeselect,|,removeformat,visualaid,|,advhr,nonbreaking,|" +
             ",visualchars,charmap,insertdate,inserttime,emotions,|,help",
         theme_advanced_toolbar_location: "top",
         theme_advanced_toolbar_align: "left",
@@ -39,6 +41,24 @@ $(function () {
 
         // Example content CSS (should be your site CSS)
         content_css: content_css_url,
+
+        setup: function (ed) {
+            if (pref_tinymce_toggle_toolbar) {
+                ed.onInit.add(function (ed) {
+                    $('#rte_tbl .mceToolbar').hide();
+
+                    ed.getDoc().addEventListener("blur", function () {
+                        $('#rte_tbl .mceToolbar').hide();
+                    }, true);
+
+                    ed.getDoc().addEventListener("focus", function () {
+                        $('#rte_tbl .mceToolbar').show();
+                    }, true);
+                });
+            } else {
+                var do_nothing = 0;
+            }
+        },
 
         file_browser_callback: function (field_name, url, type, win) {
             var cmsURL = ezfilemanager_url + "?type=" + type + "&tmce=1";
@@ -74,27 +94,33 @@ $(function () {
 
     $("#date_publish_start").datetimepicker(
         {
-            dateFormat: $("#dateformat").val(),
+            dateFormat: dateformat,
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
         },
-        $.datepicker.regional[ $("#lang").val() ],
-        $.timepicker.regional[ $("#lang").val() ]
+        $.datepicker.regional[ lang ],
+        $.timepicker.regional[ lang ]
     );
 
     $("#date_publish_end").datetimepicker(
         {
-            dateFormat: $("#dateformat").val(),
+            dateFormat: dateformat,
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
         },
-        $.datepicker.regional[ $("#lang").val() ],
-        $.timepicker.regional[ $("#lang").val() ]
+        $.datepicker.regional[ lang ],
+        $.timepicker.regional[ lang ]
     );
 
     load_page_version();
+
+    $('legend').siblings().hide();
+
+    $('legend').click(function () {
+        $(this).siblings().slideToggle("slow");
+    });
 
 });
 
@@ -106,12 +132,16 @@ function load_page_version() {
     // load content to tinymce
     $.ajax({
         type: 'POST',
-        url: project_url + "/app/admin/rte/ajax_load_content.php",
+        url: project_url + "/app/admin/rte/ajax_load_page_version.php",
         data: {
             date_published: ''
         },
         success: function (data) {
-            $("#rte").html(data);
+
+            var j = $.parseJSON(data);
+            //console.log(j.html);
+
+            $("#rte").html(j.html);
         }
     });
 

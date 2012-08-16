@@ -24,6 +24,9 @@ if(!isset($_SESSION['username'])) {
 	exit;
 }
 
+// init
+$a_res = array();
+
 // get vars
 $www_page_versions_id = 1;
 
@@ -90,7 +93,9 @@ if($rs)
 if($conn)
 	$conn->Close();
 
-print $page_html;
+$a_res['html'] = $page_html;
+
+print json_encode($a_res);
 
 ?>
 

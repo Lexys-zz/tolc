@@ -27,8 +27,9 @@ fieldset {
 }
 
 fieldset legend {
-    width: 50%;
+    width: 180px;;
     font-size: 12px;
+    cursor: pointer;
 }
 
 fieldset legend div {

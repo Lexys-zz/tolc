@@ -73,7 +73,8 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 </div>
 
 <fieldset class="ui-widget ui-widget-content">
-	<legend class="ui-widget-header ui-corner-all">
+	<legend class="ui-widget-header ui-corner-all"
+			title="<?php print gettext('Show/hide tools') ?>">
 		<div><?php print gettext('Edit') ?></div>
 	</legend>
 
@@ -126,6 +127,7 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 	   value="<?php print substr($_SESSION['locale'], 0, 2) ?>">
 <input id="dateformat" type="hidden" value="dd/mm/yy">
 
+<input id="pref_tinymce_toggle_toolbar" type="hidden" value="<?php print $tolc_conf['pref_tinymce_toggle_toolbar'] ? '1' : '0' ?>">
 </body>
 
 </html>
