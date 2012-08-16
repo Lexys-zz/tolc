@@ -61,19 +61,6 @@ $(function () {
     });
 
 
-    // load content to tinymce
-    $.ajax({
-        type: 'POST',
-        url: project_url + "/app/admin/rte/ajax_load_content.php",
-        data: {
-            date_published: ''
-        },
-        success: function (data) {
-            $("#rte").html(data);
-        }
-    });
-
-
     /* tools -----------------------------------------------------------------*/
     $("#btn_save").button({
         icons: {
@@ -81,6 +68,9 @@ $(function () {
         }
     });
 
+    $('#btn_save').click(function () {
+        save_page_version();
+    });
 
     $("#date_publish_start").datetimepicker(
         {
@@ -104,5 +94,37 @@ $(function () {
         $.timepicker.regional[ $("#lang").val() ]
     );
 
+    load_page_version();
 
 });
+
+
+function load_page_version() {
+
+    var project_url = $("#project_url", window.opener.document).val();
+
+    // load content to tinymce
+    $.ajax({
+        type: 'POST',
+        url: project_url + "/app/admin/rte/ajax_load_content.php",
+        data: {
+            date_published: ''
+        },
+        success: function (data) {
+            $("#rte").html(data);
+        }
+    });
+
+}
+
+
+function save_page_version() {
+    update_user_message('Saving...');
+}
+
+
+function update_user_message(msg) {
+    $("#user_message").jui_alert({
+        message: msg
+    });
+}

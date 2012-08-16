@@ -47,6 +47,8 @@ if(!isset($_SESSION['username'])) {
 			src="<?php print JQUERY_UI_DATETIMEPICKER_i18n_URL ?>"></script>
 	<?php } ?>
 
+	<script type="text/javascript" src="<?php print JUI_ALERT_URL ?>"></script>
+
 	<script type="text/javascript"
 			src="<?php print JQUERY_TINYMCE_URL ?>"></script>
 	<script type="text/javascript"
@@ -54,6 +56,9 @@ if(!isset($_SESSION['username'])) {
 </head>
 
 <body>
+
+<div id="user_message">
+</div>
 
 <div id="rte_tools1">
 
