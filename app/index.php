@@ -123,7 +123,7 @@ $template_meta_html = $a_tpl_head['template_meta_html'];
 
 // get template active elements ids
 $a_active_elements = get_template_active_elements($conn, $www_templates_id);
-$active_elements = isset($_SESSION['username']) ? implode(', ', $a_active_elements) : '';
+$active_elements = (isset($_SESSION['username']) && $www_pages_id > 0) ? implode(', ', $a_active_elements) : '';
 
 // set page content
 if($www_page_versions_id > 0) {
@@ -181,7 +181,7 @@ ob_end_clean();
 
 // TODO REMOVE DEBUG
 if($debug) {
-	$ftest='/srv/http/dev/tolc/log/test.log';
+	$ftest = '/srv/http/dev/tolc/log/test.log';
 	file_put_contents($ftest, '--->functions' . PHP_EOL . $tolc_functions_html . PHP_EOL . PHP_EOL, FILE_APPEND);
 }
 
