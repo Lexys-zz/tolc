@@ -30,12 +30,28 @@ function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = 
  * @param string $str_timezone
  * @return string
  */
-function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function date_decode1($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+	date_default_timezone_set('UTC');
+	$tz1 = new DateTimeZone('UTC');
+	$date = new DateTime($ts, $tz1);
 	$tz = new DateTimeZone($str_timezone);
-	$date = new DateTime($ts);
 	$date->setTimeZone($tz);
 	return $date->format($format);
 }
+
+
+function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_user_timezone = CONST_DEFAULT_TIMEZONE) {
+	$userTimezone = new DateTimeZone($str_user_timezone);
+	$localTimezone = new DateTimeZone('UTC');
+	$localDateTime = new DateTime($ts, $localTimezone);
+	$offset = $userTimezone->getOffset($localDateTime);
+	//return $offset;
+	return date($format, $localDateTime->format('U') + $offset);
+}
+
+
+
+
 
 /**
  * * Multi-byte CASE INSENSITIVE str_replace
@@ -72,7 +88,7 @@ function tz_list() {
 	foreach(timezone_identifiers_list() as $key => $zone) {
 		date_default_timezone_set($zone);
 		$zones_array[$key]['zone'] = $zone;
-		$zones_array[$key]['diff_from_GMT'] = date('P', $timestamp);
+		$zones_array[$key]['diff_from_GMT'] = 'UTC/GMT ' . date('P', $timestamp);
 	}
 	return $zones_array;
 }
