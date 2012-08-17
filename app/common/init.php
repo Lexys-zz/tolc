@@ -55,8 +55,8 @@ if(function_exists('gettext')) {
  * dates appeat to visitor using $_SESSION['timezone']
  */
 /* set server default timezone (it is possible set to php.ini) */
-define('CONST_DEFAULT_TIMEZONE', 'UTC');
-date_default_timezone_set(CONST_DEFAULT_TIMEZONE);
+define('CONST_LOCAL_TIMEZONE', 'UTC');
+date_default_timezone_set(CONST_LOCAL_TIMEZONE);
 
 define('CONST_DATE_FORMAT_TIMESTAMP_FULL', 'YmdHis');
 define('CONST_DATE_FORMAT_TIMESTAMP', 'YmdHi');

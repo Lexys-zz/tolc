@@ -18,7 +18,7 @@ function date_string_format($date_string, $format_string, $timezone_string) {
  * @param string $str_timezone
  * @return string
  */
-function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_LOCAL_TIMEZONE) {
 	return date_string_format('', $format_string, $str_timezone);
 }
 
@@ -30,7 +30,7 @@ function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = 
  * @param string $str_timezone
  * @return string
  */
-function date_decode1($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_DEFAULT_TIMEZONE) {
+function date_decode1($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_LOCAL_TIMEZONE) {
 	date_default_timezone_set('UTC');
 	$tz1 = new DateTimeZone('UTC');
 	$date = new DateTime($ts, $tz1);
@@ -40,7 +40,7 @@ function date_decode1($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone =
 }
 
 
-function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_user_timezone = CONST_DEFAULT_TIMEZONE) {
+function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_user_timezone = CONST_LOCAL_TIMEZONE) {
 	$userTimezone = new DateTimeZone($str_user_timezone);
 	$localTimezone = new DateTimeZone('UTC');
 	$localDateTime = new DateTime($ts, $localTimezone);
@@ -100,7 +100,7 @@ function tz_list() {
  * @param $tz
  * @return array
  */
-function df_list($a_df, $tz = CONST_DEFAULT_TIMEZONE) {
+function df_list($a_df, $tz = CONST_LOCAL_TIMEZONE) {
 	$df_array = array();
 	$tz = new DateTimeZone($tz);
 	$date = new DateTime('');
