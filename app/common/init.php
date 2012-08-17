@@ -61,20 +61,18 @@ date_default_timezone_set(CONST_DEFAULT_TIMEZONE);
 define('CONST_DATE_FORMAT_TIMESTAMP_FULL', 'YmdHis');
 define('CONST_DATE_FORMAT_TIMESTAMP', 'YmdHi');
 
-define('CONST_DATE_FORMAT_DATETIME_FULL', $tolc_conf['pref_date_format'] . ' ' . 'H:i:s');
-define('CONST_DATE_FORMAT_DATETIME', $tolc_conf['pref_date_format'] . ' ' . 'H:i');
+define('CONST_DATE_FORMAT_DATETIME_FULL', 'd/m/Y H:i:s');
+define('CONST_DATE_FORMAT_DATETIME', 'd/m/Y H:i');
 
 $a_date_format = array(
-	'm/d/Y',
-	'm/d/y',
-	'd/m/Y',
-	'd/m/y',
-	'm-d-Y',
-	'm-d-y',
-	'd-m-Y',
-	'd-m-y',
-	'D, M j, Y',
-	'M j ' . "'" . 'y'
+	'd/m/Y H:i:s',
+	'd/m/y H:i:s',
+	'm/d/Y H:i:s',
+	'm/d/y H:i:s',
+	'd-m-Y H:i:s',
+	'd-m-y H:i:s',
+	'm-d-Y H:i:s',
+	'm-d-y H:i:s'
 );
 
 /* initialize $_SESSION['dateformat'] (default visitor dateformat) */

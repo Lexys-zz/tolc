@@ -76,7 +76,7 @@ $tolc_conf['pref_tidy_encoding'] = 'UTF8';
 
 /* visitor regional settings (default values) */
 $tolc_conf['pref_timezone'] = 'UTC';
-$tolc_conf['pref_date_format'] = 'd/m/Y'; // http://php.net/manual/en/datetime.formats.date.php
+$tolc_conf['pref_date_format'] = 'd/m/Y H:i:s'; // http://php.net/manual/en/datetime.formats.date.php
 $tolc_conf['pref_decimal_mark'] = '.';
 $tolc_conf['pref_thousands_separator'] = ',';
 
