@@ -30,23 +30,18 @@ function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = 
  * @param string $str_timezone
  * @return string
  */
-function date_decode1($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_timezone = CONST_LOCAL_TIMEZONE) {
-	date_default_timezone_set('UTC');
-	$tz1 = new DateTimeZone('UTC');
-	$date = new DateTime($ts, $tz1);
-	$tz = new DateTimeZone($str_timezone);
-	$date->setTimeZone($tz);
-	return $date->format($format);
+function date_decode($str_datetime_UTC, $str_dateformat = CONST_DATE_FORMAT_DATETIME_FULL, $str_user_timezone = CONST_LOCAL_TIMEZONE) {
+	$userTimeZone = new DateTimeZone($str_user_timezone);
+	$date = new DateTime($str_datetime_UTC);
+	$date->setTimeZone($userTimeZone);
+	return $date->format($str_dateformat);
 }
 
 
-function date_decode($ts, $format = CONST_DATE_FORMAT_DATETIME, $str_user_timezone = CONST_LOCAL_TIMEZONE) {
-	$userTimezone = new DateTimeZone($str_user_timezone);
-	$localTimezone = new DateTimeZone('UTC');
-	$localDateTime = new DateTime($ts, $localTimezone);
-	$offset = $userTimezone->getOffset($localDateTime);
-	//return $offset;
-	return date($format, $localDateTime->format('U') + $offset);
+function get_time_offset($str_datetime, $str_timezone) {
+	$timezone = new DateTimeZone($str_timezone);
+	$offset = $timezone->getOffset(new DateTime($str_datetime)); // Offset in seconds
+	return $offset;
 }
 
 
