@@ -32,12 +32,78 @@ $dt = now();
 
 // init
 $a_res = array();
+$a_content_status_keys = array(
+	CONST_CONTENT_STATUS_DRAFT_KEY,
+	CONST_CONTENT_STATUS_PENDING_REVIEW_KEY,
+	CONST_CONTENT_STATUS_UNDER_REVIEW_KEY,
+	CONST_CONTENT_STATUS_APPROVED_KEY,
+	CONST_CONTENT_STATUS_REJECTED_KEY
+);
 
+$a_content_status_values = array(
+	CONST_CONTENT_STATUS_DRAFT_VALUE,
+	CONST_CONTENT_STATUS_PENDING_REVIEW_VALUE,
+	CONST_CONTENT_STATUS_UNDER_REVIEW_VALUE,
+	CONST_CONTENT_STATUS_APPROVED_VALUE,
+	CONST_CONTENT_STATUS_REJECTED_VALUE
+);
+
+$a_content_status = array(
+	CONST_CONTENT_STATUS_DRAFT_KEY => CONST_CONTENT_STATUS_DRAFT_VALUE,
+	CONST_CONTENT_STATUS_PENDING_REVIEW_KEY => CONST_CONTENT_STATUS_PENDING_REVIEW_VALUE,
+	CONST_CONTENT_STATUS_UNDER_REVIEW_KEY => CONST_CONTENT_STATUS_UNDER_REVIEW_VALUE,
+	CONST_CONTENT_STATUS_APPROVED_KEY => CONST_CONTENT_STATUS_APPROVED_VALUE,
+	CONST_CONTENT_STATUS_REJECTED_KEY => CONST_CONTENT_STATUS_REJECTED_VALUE
+);
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
-// authors --------------------------------------------------------------
+// get page versions -----------------------------------------------------------
+// get page
+$a_page = get_page($conn, $_SESSION['url']);
+$www_pages_id = $a_page['page_id'];
+$page_title = $a_page['page_title'];
+$page_has_been_removed = $a_page['page_has_been_removed'];
 
+$a_page_versions = array();
+$sql = 'SELECT pv.id,pv.date_inserted,a.fullname as author_fullname,pv.lk_content_status_id,pv.date_publish_start,pv.date_publish_end,e.fullname as editor_fullname ' .
+	'FROM www_page_versions pv ' .
+	'LEFT JOIN www_users a ON (pv.author_id = a.id) ' .
+	'LEFT JOIN www_users e ON (pv.editor_id = e.id) ' .
+	'WHERE pv.www_pages_id = ' . $www_pages_id . ' ' .
+	'ORDER BY pv.date_publish_start DESC';
+
+$rs = $conn->Execute($sql);
+if($rs === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+}
+if($rs->RecordCount() == 0) {
+
+} else {
+	$a_pv = $rs->GetRows();
+
+	foreach($a_pv as $pv) {
+		$version_id = $pv['id'];
+		$version = '(' . date_decode($pv['date_inserted'], $_SESSION['dateformat'], $_SESSION['timezone']) . ') ' .
+			gettext('Submitted from') . ' ' . $pv['author_fullname'] . ' ' .
+			gettext('as') . ' ' . $a_content_status[$pv['lk_content_status_id']] . ' ' .
+			gettext('to be published from') . ' ' . date_decode($pv['date_publish_start'], $_SESSION['dateformat'], $_SESSION['timezone']) . ' ' .
+			gettext('until') . ' ' . date_decode($pv['date_publish_end'], $_SESSION['dateformat'], $_SESSION['timezone']) . ' ' .
+			gettext('Managed by') . ' ' . $pv['editor_fullname'];
+		$lk_content_status_id = $pv['lk_content_status_id'];
+		$a_tmp = array(
+			'version_id' => $version_id,
+			'version' => $version,
+			'content_status' => $lk_content_status_id
+		);
+		array_push($a_page_versions, $a_tmp);
+	}
+}
+
+$a_res['page_versions'] = $a_page_versions;
+
+
+// authors ---------------------------------------------------------------------
 $sql = 'SELECT id, fullname FROM www_users ORDER BY fullname';
 $rs = $conn->Execute($sql);
 if($rs === false) {
@@ -45,15 +111,13 @@ if($rs === false) {
 }
 $a_res['authors'] = $rs->GetRows();
 
-// authors --------------------------------------------------------------
-
+// editors ---------------------------------------------------------------------
 $sql = 'SELECT id, fullname FROM www_users WHERE lk_roles_id < ' . CONST_ROLE_COMMON_USER_KEY . ' ORDER BY fullname';
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
 }
 $a_res['editors'] = $rs->GetRows();
-
 
 // content status --------------------------------------------------------------
 $a_content_status_keys = array(
@@ -84,12 +148,6 @@ $www_users_id = $a_user['user_id'];
 $lk_roles_id = $a_user['lk_roles_id'];
 $user_email = $a_user['user_email'];
 
-
-// get page
-$a_page = get_page($conn, $_SESSION['url']);
-$www_pages_id = $a_page['page_id'];
-$page_title = $a_page['page_title'];
-$page_has_been_removed = $a_page['page_has_been_removed'];
 
 // get template
 $a_template = get_page_template($conn, $www_pages_id, $dt);
@@ -138,6 +196,7 @@ if($conn)
 
 $a_res['html'] = $page_html;
 
+// -----------------------------------------------------------------------------
 print json_encode($a_res);
 
 ?>

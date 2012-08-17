@@ -96,6 +96,8 @@ $(function () {
     $("#date_publish_start").datetimepicker(
         {
             dateFormat: dateformat,
+            showSecond: true,
+            timeFormat: 'hh:mm:ss',
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
@@ -107,6 +109,8 @@ $(function () {
     $("#date_publish_end").datetimepicker(
         {
             dateFormat: dateformat,
+            showSecond: true,
+            timeFormat: 'hh:mm:ss',
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
@@ -141,11 +145,10 @@ function load_page_version() {
         success: function (data) {
 
             var j = $.parseJSON(data);
-
-            create_content_status(j.content_status_keys, j.content_status_values, 0);
+            create_page_versions(j.page_versions, 1)
             create_authors(j.authors, 0, '');
+            create_content_status(j.content_status_keys, j.content_status_values, 0);
             create_editors(j.editors, 0, rsc_please_select);
-
             $("#rte").html(j.html);
         }
     });
@@ -207,5 +210,18 @@ function create_editors(a_data, selid, please_select) {
         options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
     });
     $("#editor_id").html(options);
+
+}
+
+function create_page_versions(a_data, selid) {
+    var options = '';
+    $.each(a_data, function (index, value) {
+        var selected = '';
+        if (selid == a_data[index].version_id) {
+            selected = ' selected';
+        }
+        options += '<option value="' + a_data[index].version_id + '"' + selected + '>' + a_data[index].version + '</option>';
+    });
+    $("#www_page_versions_id").html(options);
 
 }

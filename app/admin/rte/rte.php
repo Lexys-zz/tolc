@@ -80,38 +80,56 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 
 	<div id="rte_tools1" class="rte_tools">
 
+		<label for="www_page_versions_id"><?php print gettext('Page versions') ?></label>
 		<select id="www_page_versions_id">
 		</select>
-
-		<a id="btn_save"><?php print gettext('Save') ?></a>
-
-		<label for="new_version"><?php print gettext('new version') ?></label>
-		<input id="new_version" type="checkbox">
 
 	</div>
 
 	<div id="rte_tools2" class="rte_tools">
 
-		<label
-			for="author_id"><?php print gettext('Submitted from') ?></label>
-		<select id="author_id">
-		</select>
+		<div id="save" class="label_over_input">
+			<a id="btn_save"><?php print gettext('Save') ?></a>
+			<br>
+			<input id="new_version" type="checkbox">
+			<label for="new_version"><?php print gettext('as new version') ?></label>
+		</div>
 
-		<label
-			for="lk_content_status_id"><?php print gettext('as') ?></label>
-		<select id="lk_content_status_id">
-		</select>
+		<div id="author" class="label_over_input">
+			<label
+				for="author_id"><?php print gettext('Submitted from') ?></label>
+			<br>
+			<select id="author_id">
+			</select>
+		</div>
 
-		<label
-			for="date_publish_start"><?php print gettext('to be published from') ?></label>
-		<input id="date_publish_start">
+		<div id="date_start" class="label_over_input">
+			<label
+				for="date_publish_start"><?php print gettext('published from') ?></label>
+			<br>
+			<input id="date_publish_start">
+		</div>
 
-		<label for="date_publish_end"><?php print gettext('until') ?></label>
-		<input id="date_publish_end">
+		<div id="date_end" class="label_over_input">
+			<label for="date_publish_end"><?php print gettext('until') ?></label>
+			<br>
+			<input id="date_publish_end">
+		</div>
 
-		<label for="editor_id"><?php print gettext('Managed by') ?></label>
-		<select id="editor_id">
-		</select>
+		<div id="content_status" class="label_over_input">
+			<label
+				for="lk_content_status_id"><?php print gettext('status') ?></label>
+			<br>
+			<select id="lk_content_status_id">
+			</select>
+		</div>
+
+		<div id="editor" class="label_over_input">
+			<label for="editor_id"><?php print gettext('Managed by') ?></label>
+			<br>
+			<select id="editor_id">
+			</select>
+		</div>
 
 	</div>
 

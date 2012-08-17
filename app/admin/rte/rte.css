@@ -13,10 +13,15 @@
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
 }
 
+.label_over_input {
+    float: left;
+    padding-right: 15px;
+}
+
 #date_publish_start, #date_publish_end {
     font-size: 12px;
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
-    width: 100px;
+    width: 140px;
 }
 
 fieldset {
