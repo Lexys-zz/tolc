@@ -84,11 +84,11 @@ if($rs->RecordCount() == 0) {
 
 	foreach($a_pv as $pv) {
 		$version_id = $pv['id'];
-		$version = '(' . date_decode($pv['date_inserted'], $_SESSION['dateformat'], $_SESSION['user_timezone']) . ') ' .
+		$version = '(' . date_decode($pv['date_inserted'], $_SESSION['user_dateformat'], $_SESSION['user_timezone']) . ') ' .
 			gettext('Submitted from') . ' ' . $pv['author_fullname'] . ' ' .
 			gettext('as') . ' ' . $a_content_status[$pv['lk_content_status_id']] . ' ' .
-			gettext('to be published from') . ' ' . date_decode($pv['date_publish_start'], $_SESSION['dateformat'], $_SESSION['user_timezone']) . ' ' .
-			gettext('until') . ' ' . date_decode($pv['date_publish_end'], $_SESSION['dateformat'], $_SESSION['user_timezone']) . ' ' .
+			gettext('to be published from') . ' ' . date_decode($pv['date_publish_start'], $_SESSION['user_dateformat'], $_SESSION['user_timezone']) . ' ' .
+			gettext('until') . ' ' . date_decode($pv['date_publish_end'], $_SESSION['user_dateformat'], $_SESSION['user_timezone']) . ' ' .
 			gettext('Managed by') . ' ' . $pv['editor_fullname'];
 		$lk_content_status_id = $pv['lk_content_status_id'];
 		$a_tmp = array(

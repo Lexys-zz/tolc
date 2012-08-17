@@ -80,9 +80,9 @@ if(!isset($_SESSION['user_timezone'])) {
 	$_SESSION['user_timezone'] = $tolc_conf['pref_timezone'];
 }
 
-/* initialize $_SESSION['dateformat'] (default visitor dateformat) */
-if(!isset($_SESSION['dateformat'])) {
-	$_SESSION['dateformat'] = $tolc_conf['pref_date_format'];
+/* initialize $_SESSION['user_dateformat'] (default visitor dateformat) */
+if(!isset($_SESSION['user_dateformat'])) {
+	$_SESSION['user_dateformat'] = $tolc_conf['pref_date_format'];
 }
 
 /**

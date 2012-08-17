@@ -15,7 +15,7 @@ require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
 
 $current_timezone = $_SESSION['user_timezone'];
-$current_dateformat = $_SESSION['dateformat'];
+$current_dateformat = $_SESSION['user_dateformat'];
 
 ?>
 

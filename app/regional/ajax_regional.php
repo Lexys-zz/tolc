@@ -18,5 +18,5 @@ $timezone = $_POST['timezone'];
 $dateformat = $_POST['dateformat'];
 
 $_SESSION['user_timezone'] = $timezone;
-$_SESSION['dateformat'] = $dateformat;
+$_SESSION['user_dateformat'] = $dateformat;
 ?>
