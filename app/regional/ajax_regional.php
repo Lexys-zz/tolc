@@ -17,6 +17,6 @@ require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 $timezone = $_POST['timezone'];
 $dateformat = $_POST['dateformat'];
 
-$_SESSION['timezone'] = $timezone;
+$_SESSION['user_timezone'] = $timezone;
 $_SESSION['dateformat'] = $dateformat;
 ?>

@@ -52,7 +52,7 @@ if(function_exists('gettext')) {
 /**
  * DATES HANDLING
  * all dates stored as strings, formatted as 14-digit timestamps in UTC
- * dates appeat to visitor using $_SESSION['timezone']
+ * dates appeat to visitor using $_SESSION['user_timezone']
  */
 /* set server default timezone (it is possible set to php.ini) */
 define('CONST_LOCAL_TIMEZONE', 'UTC');
@@ -75,14 +75,14 @@ $a_date_format = array(
 	'm-d-y H:i:s'
 );
 
+/* initialize $_SESSION['user_timezone'] (default visitor timezone) */
+if(!isset($_SESSION['user_timezone'])) {
+	$_SESSION['user_timezone'] = $tolc_conf['pref_timezone'];
+}
+
 /* initialize $_SESSION['dateformat'] (default visitor dateformat) */
 if(!isset($_SESSION['dateformat'])) {
 	$_SESSION['dateformat'] = $tolc_conf['pref_date_format'];
-}
-
-/* initialize $_SESSION['timezone'] (default visitor timezone) */
-if(!isset($_SESSION['timezone'])) {
-	$_SESSION['timezone'] = $tolc_conf['pref_timezone'];
 }
 
 /**
