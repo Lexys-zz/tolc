@@ -37,7 +37,7 @@ if ($rs->RecordCount() == 1) {
     if($rs->fields['username'] == $username && $rs->fields['password'] == $password) {
         $_SESSION['username'] = $username;
         $_SESSION['locale'] = $language . $tolc_conf['pref_default_locale_encoding'];
-		$_SESSION['must_change_passwd'] = $rs->fields['must_change_passwd'] == 1 ? true : false;
+		$_SESSION['must_change_passwd'] = ($rs->fields['must_change_passwd'] == 1) ? true : false;
     } else {
         print gettext('Login failed') . '...';
     }
