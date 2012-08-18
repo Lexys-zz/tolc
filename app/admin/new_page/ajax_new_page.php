@@ -32,7 +32,7 @@ $parent_id = $_POST['parent_id'];
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
 // get current time (in UTC)
-$now = $conn->qstr(now());
+$now = $conn->qstr(now($_SESSION['user_timezone']));
 
 // get current user id
 $sql = 'SELECT id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);

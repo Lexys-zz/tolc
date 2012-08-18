@@ -1,25 +1,30 @@
 <?php
 
 /**
- * @param $date_string
- * @param $format_string
- * @param $timezone_string
+ * Converts current time for given timezone (considering DST) to 14-digit UTC timestamp (YYYYMMDDHHMMSS)
+ *
+ * DateTime requires PHP >= 5.2
+ *
+ * @param $str_user_timezone
+ * @param string $str_server_timezone
+ * @param string $str_server_dateformat
  * @return string
  */
-function date_string_format($date_string, $format_string, $timezone_string) {
-	$tz = new DateTimeZone($timezone_string);
-	$date = new DateTime($date_string);
-	$date->setTimeZone($tz);
-	return $date->format($format_string);
-}
+function now($str_user_timezone,
+			 $str_server_timezone = CONST_SERVER_TIMEZONE,
+			 $str_server_dateformat = CONST_SERVER_DATEFORMAT) {
 
-/**
- * @param string $format_string
- * @param string $str_timezone
- * @return string
- */
-function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = CONST_LOCAL_TIMEZONE) {
-	return date_string_format('', $format_string, $str_timezone);
+	// set timezone to user timezone
+	date_default_timezone_set($str_user_timezone);
+
+	$date = new DateTime('now');
+	$date->setTimezone(new DateTimeZone($str_server_timezone));
+	$str_server_now = $date->format($str_server_dateformat);
+
+	// return timezone to server default
+	date_default_timezone_set($str_server_timezone);
+
+	return $str_server_now;
 }
 
 
@@ -88,8 +93,8 @@ function date_decode($str_server_datetime,
 function date_encode($str_user_datetime,
 					 $str_user_timezone,
 					 $str_user_dateformat,
-					 $str_server_timezone = CONST_LOCAL_TIMEZONE,
-					 $str_server_dateformat = CONST_DATE_FORMAT_TIMESTAMP_FULL,
+					 $str_server_timezone = CONST_SERVER_TIMEZONE,
+					 $str_server_dateformat = CONST_SERVER_DATEFORMAT,
 					 $str_safe_dateformat_strtotime = CONST_SAFE_DATEFORMAT_STRTOTIME) {
 
 	// set timezone to user timezone
@@ -177,7 +182,7 @@ function tz_list() {
  * @param $tz
  * @return array
  */
-function df_list($a_df, $tz = CONST_LOCAL_TIMEZONE) {
+function df_list($a_df, $tz = CONST_SERVER_TIMEZONE) {
 	$df_array = array();
 	$tz = new DateTimeZone($tz);
 	$date = new DateTime('');

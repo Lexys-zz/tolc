@@ -51,20 +51,20 @@ if(function_exists('gettext')) {
 
 /**
  * DATES HANDLING
- * all dates stored as strings, formatted as 14-digit timestamps in UTC
- * dates appeat to visitor using $_SESSION['user_timezone']
+ * all dates stored as strings, formatted as 14-digit timestamps in UTC using date_encode()
+ * dates are served to visitor using date_decode()
+ * $_SESSION['user_timezone'] and $_SESSION['user_dateformat'] used as arguments
  */
-/* set server default timezone (it is possible set to php.ini) */
-define('CONST_LOCAL_TIMEZONE', 'UTC');
-date_default_timezone_set(CONST_LOCAL_TIMEZONE);
+/* set server default timezone (it is possible to set from php.ini) */
+define('CONST_SERVER_TIMEZONE', 'UTC');
+date_default_timezone_set(CONST_SERVER_TIMEZONE);
 
-define('CONST_DATE_FORMAT_TIMESTAMP_FULL', 'YmdHis');
+/* set server dateformat */
+define('CONST_SERVER_DATEFORMAT', 'YmdHis');
+
 define('CONST_DATE_FORMAT_TIMESTAMP', 'YmdHi');
-
 define('CONST_DATE_FORMAT_DATETIME_FULL', 'd/m/Y H:i:s');
 define('CONST_DATE_FORMAT_DATETIME', 'd/m/Y H:i');
-
-define('CONST_SAFE_DATEFORMAT_STRTOTIME', 'Y-m-d H:i:s');
 
 $a_date_format = array(
 	'd/m/Y H:i:s',
@@ -76,6 +76,8 @@ $a_date_format = array(
 	'm-d-Y H:i:s',
 	'm-d-y H:i:s'
 );
+
+define('CONST_SAFE_DATEFORMAT_STRTOTIME', 'Y-m-d H:i:s');
 
 /* initialize $_SESSION['user_timezone'] (default visitor timezone) */
 if(!isset($_SESSION['user_timezone'])) {

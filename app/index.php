@@ -40,7 +40,7 @@ if(isset($_SESSION['username'])) {
 }
 
 // get current time (in UTC)
-$dt = now();
+$dt = now($_SESSION['user_timezone']);
 
 // check for reserved url (CASE INSENSITIVE)
 if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_reserved_urls']))) {
