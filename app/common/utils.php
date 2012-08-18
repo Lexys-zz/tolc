@@ -22,31 +22,113 @@ function now($format_string = CONST_DATE_FORMAT_TIMESTAMP_FULL, $str_timezone = 
 	return date_string_format('', $format_string, $str_timezone);
 }
 
+
 /**
- * Converts a 14-digit timestamp to date string
+ * Converts a 14-digit UTC timestamp to date string of given timezone (considering DST)
  *
- * @param $ts
- * @param string $format
- * @param string $str_timezone
+ * DateTime requires PHP >= 5.2
+ *
+ * @param $str_server_datetime
+ *
+ * Normally is a 14-digit UTC timestamp (YYYYMMDDHHMMSS). It can also be 8-digit (date), 12-digit (datetime without seconds).
+ * Missing digits filled with zero (000000 or 00).
+ *
+ * It can also be 'now', null or empty string. In this case returns the current time.
+ *
+ * Other values throw an error.
+ *
+ * @param string $str_user_timezone
+ * @param $str_user_dateformat
  * @return string
  */
-function date_decode($str_datetime_UTC, $str_dateformat = CONST_DATE_FORMAT_DATETIME_FULL, $str_user_timezone = CONST_LOCAL_TIMEZONE) {
+function date_decode($str_server_datetime,
+					 $str_user_timezone,
+					 $str_user_dateformat) {
+
+	// create date object
+	try {
+		$date = new DateTime($str_server_datetime);
+	} catch(Exception $e) {
+		trigger_error('date_decode: Invalid datetime: ' . $e->getMessage(), E_USER_ERROR);
+	}
+
+	// convert to user timezone
 	$userTimeZone = new DateTimeZone($str_user_timezone);
-	$date = new DateTime($str_datetime_UTC);
 	$date->setTimeZone($userTimeZone);
-	return $date->format($str_dateformat);
+
+	// convert to user dateformat
+	$str_user_datetime = $date->format($str_user_dateformat);
+
+	return $str_user_datetime;
 }
 
+/**
+ * Converts a date string of given timezone (considering DST) and format to 14-digit UTC timestamp (YYYYMMDDHHMMSS)
+ *
+ * DateTime::createFromFormat requires PHP >= 5.3
+ *
+ * <li><b>Note about strtotime</b>: Dates in the m/d/y or d-m-y formats are disambiguated by looking at the separator between the various components:
+ * if the separator is a slash (/), then the American m/d/y is assumed;
+ * whereas if the separator is a dash (-) or a dot (.), then the European d-m-y format is assumed.
+ *
+ * To avoid potential ambiguity, it's best to use ISO 8601 (YYYY-MM-DD) dates or DateTime::createFromFormat() when possible.
+ *
+ * @param $str_user_datetime
+ * @param $str_user_timezone
+ * @param $str_user_dateformat
+ * @param string $str_server_timezone
+ * @param string $str_server_dateformat
+ * @param string $str_safe_dateformat_strtotime
+ * @return string
+ *
+ * @link http://www.php.net/manual/en/function.strtotime.php
+ * @link http://stackoverflow.com/questions/4163641/php-using-strtotime-with-a-uk-date-format-dd-mm-yy
+ * @link http://derickrethans.nl/british-date-format-parsing.html
+ */
+function date_encode($str_user_datetime,
+					 $str_user_timezone,
+					 $str_user_dateformat,
+					 $str_server_timezone = CONST_LOCAL_TIMEZONE,
+					 $str_server_dateformat = CONST_DATE_FORMAT_TIMESTAMP_FULL,
+					 $str_safe_dateformat_strtotime = CONST_SAFE_DATEFORMAT_STRTOTIME) {
 
+	// set timezone to user timezone
+	date_default_timezone_set($str_user_timezone);
+
+	// create date object using any given format
+	if($str_user_datetime == 'now' || !$str_user_datetime) {
+		$date = new DateTime('', new DateTimeZone($str_user_timezone));
+	} else {
+		$date = DateTime::createFromFormat($str_user_dateformat, $str_user_datetime, new DateTimeZone($str_user_timezone));
+		if($date === false) {
+			trigger_error('date_encode: Invalid date', E_USER_ERROR);
+		}
+	}
+
+	// convert given datetime to safe format for strtotime
+	$str_user_datetime = $date->format($str_safe_dateformat_strtotime);
+
+	// convert to UTC
+	$str_server_datetime = gmdate($str_server_dateformat, strtotime($str_user_datetime));
+
+	// return timezone to server default
+	date_default_timezone_set($str_server_timezone);
+
+	return $str_server_datetime;
+}
+
+/**
+ * Return the offset (in seconds) from UTC of a given timezone timestring (considering DST)
+ *
+ * @param $str_datetime
+ * @param $str_timezone
+ * @return int
+ */
 function get_time_offset($str_datetime, $str_timezone) {
 	$timezone = new DateTimeZone($str_timezone);
-	$offset = $timezone->getOffset(new DateTime($str_datetime)); // Offset in seconds
+	$offset = $timezone->getOffset(new DateTime($str_datetime));
 	return $offset;
 }
-
-
-
-
 
 /**
  * * Multi-byte CASE INSENSITIVE str_replace
@@ -55,7 +137,7 @@ function get_time_offset($str_datetime, $str_timezone) {
  * @param $naCo
  * @param $wCzym
  * @return string
- * @source http://www.php.net/manual/en/function.mb-ereg-replace.php#55659
+ * @link http://www.php.net/manual/en/function.mb-ereg-replace.php#55659
  */
 function mb_str_ireplace($co, $naCo, $wCzym) {
 	$wCzymM = mb_strtolower($wCzym);
@@ -75,7 +157,7 @@ function mb_str_ireplace($co, $naCo, $wCzym) {
  * Timezones list with GMT offset
  *
  * @return array
- * @source http://stackoverflow.com/a/9328760
+ * @link http://stackoverflow.com/a/9328760
  */
 function tz_list() {
 	$zones_array = array();
@@ -117,7 +199,7 @@ function df_list($a_df, $tz = CONST_LOCAL_TIMEZONE) {
  * @param bool|\boole $img True to return a complete IMG tag False for just the URL
  * @param array $atts Optional, additional key/value attributes to include in the IMG tag
  * @return String containing either just a URL or a complete image tag
- * @source http://gravatar.com/site/implement/images/php/
+ * @link http://gravatar.com/site/implement/images/php/
  */
 function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array()) {
 	$url = 'http://www.gravatar.com/avatar/';
@@ -138,7 +220,7 @@ function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts 
  * @param $email
  * @param bool $decode_url
  * @return string
- * @source https://en.gravatar.com/site/implement/profiles/php/
+ * @link https://en.gravatar.com/site/implement/profiles/php/
  */
 function get_gravatar_profile($email, $decode_url = false) {
 	$url_encoded = 'http://www.gravatar.com/' . md5(strtolower(trim($email)));
@@ -160,4 +242,5 @@ function get_gravatar_profile($email, $decode_url = false) {
 	}
 
 }
+
 ?>

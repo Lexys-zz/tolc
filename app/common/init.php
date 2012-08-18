@@ -64,6 +64,8 @@ define('CONST_DATE_FORMAT_TIMESTAMP', 'YmdHi');
 define('CONST_DATE_FORMAT_DATETIME_FULL', 'd/m/Y H:i:s');
 define('CONST_DATE_FORMAT_DATETIME', 'd/m/Y H:i');
 
+define('CONST_SAFE_DATEFORMAT_STRTOTIME', 'Y-m-d H:i:s');
+
 $a_date_format = array(
 	'd/m/Y H:i:s',
 	'd/m/y H:i:s',
