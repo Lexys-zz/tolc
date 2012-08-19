@@ -62,19 +62,25 @@ date_default_timezone_set(CONST_SERVER_TIMEZONE);
 /* set server dateformat */
 define('CONST_SERVER_DATEFORMAT', 'YmdHis');
 
-define('CONST_DATE_FORMAT_TIMESTAMP', 'YmdHi');
-define('CONST_DATE_FORMAT_DATETIME_FULL', 'd/m/Y H:i:s');
-define('CONST_DATE_FORMAT_DATETIME', 'd/m/Y H:i');
+/* available date formats */
+define('CONST_DF_EU_FULLYEAR_LZ_SLASH_24H_LZ', 'EU_FULLYEAR_LZ_SLASH_24H_LZ');  // EU format (day/month/year) with full year, slash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_EU_SHORTYEAR_LZ_SLASH_24H_LZ', 'EU_SHORTYEAR_LZ_SLASH_24H_LZ'); // EU format (day/month/year) with short year, slash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_FULLYEAR_LZ_SLASH_24H_LZ', 'US_FULLYEAR_LZ_SLASH_24H_LZ');  // US format (month/day/year) with full year, slash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_SHORTYEAR_LZ_SLASH_24H_LZ', 'US_SHORTYEAR_LZ_SLASH_24H_LZ'); // US format (month/day/year) with short year, slash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_EU_FULLYEAR_LZ_DASH_24H_LZ', 'EU_FULLYEAR_LZ_DASH_24H_LZ');   // EU format (day/month/year) with full year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_EU_SHORTYEAR_LZ_DASH_24H_LZ', 'EU_SHORTYEAR_LZ_DASH_24H_LZ');  // EU format (day/month/year) with short year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_FULLYEAR_LZ_DASH_24H_LZ', 'US_FULLYEAR_LZ_DASH_24H_LZ');   // US format (month/day/year) with full year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_SHORTYEAR_LZ_DASH_24H_LZ', 'US_SHORTYEAR_LZ_DASH_24H_LZ');  // US format (month/day/year) with short year, dash as delimiter with leading zeros. 24h clock with leading zeros.
 
 $a_date_format = array(
-	'd/m/Y H:i:s',
-	'd/m/y H:i:s',
-	'm/d/Y H:i:s',
-	'm/d/y H:i:s',
-	'd-m-Y H:i:s',
-	'd-m-y H:i:s',
-	'm-d-Y H:i:s',
-	'm-d-y H:i:s'
+	CONST_DF_EU_FULLYEAR_LZ_SLASH_24H_LZ => array('php_datetime' => 'd/m/Y H:i:s', 'php_datetime_short' => 'd/m/Y H:i', 'php_date' => 'd/m/Y', 'jq_date' => 'dd/mm/yy', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_EU_SHORTYEAR_LZ_SLASH_24H_LZ => array('php_datetime' => 'd/m/y H:i:s', 'php_datetime_short' => 'd/m/y H:i', 'php_date' => 'd/m/y', 'jq_date' => 'dd/mm/y', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_US_FULLYEAR_LZ_SLASH_24H_LZ => array('php_datetime' => 'm/d/Y H:i:s', 'php_datetime_short' => 'm/d/Y H:i', 'php_date' => 'm/d/Y', 'jq_date' => 'mm/dd/yy', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_US_SHORTYEAR_LZ_SLASH_24H_LZ => array('php_datetime' => 'm/d/y H:i:s', 'php_datetime_short' => 'm/d/y H:i', 'php_date' => 'm/d/y', 'jq_date' => 'mm/dd/y', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_EU_FULLYEAR_LZ_DASH_24H_LZ => array('php_datetime' => 'd-m-Y H:i:s', 'php_datetime_short' => 'd-m-Y H:i', 'php_date' => 'd-m-Y', 'jq_date' => 'dd-mm-yy', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_EU_SHORTYEAR_LZ_DASH_24H_LZ => array('php_datetime' => 'd-m-y H:i:s', 'php_datetime_short' => 'd-m-y H:i', 'php_date' => 'd-m-y', 'jq_date' => 'dd-mm-y', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_US_FULLYEAR_LZ_DASH_24H_LZ => array('php_datetime' => 'm-d-Y H:i:s', 'php_datetime_short' => 'm-d-Y H:i', 'php_date' => 'm-d-Y', 'jq_date' => 'mm-dd-yy', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
+	CONST_DF_US_SHORTYEAR_LZ_DASH_24H_LZ => array('php_datetime' => 'm-d-y H:i:s', 'php_datetime_short' => 'm-d-y H:i', 'php_date' => 'm-d-y', 'jq_date' => 'mm-dd-y', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm')
 );
 
 define('CONST_SAFE_DATEFORMAT_STRTOTIME', 'Y-m-d H:i:s');
@@ -86,7 +92,7 @@ if(!isset($_SESSION['user_timezone'])) {
 
 /* initialize $_SESSION['user_dateformat'] (default visitor dateformat) */
 if(!isset($_SESSION['user_dateformat'])) {
-	$_SESSION['user_dateformat'] = $tolc_conf['pref_date_format'];
+	$_SESSION['user_dateformat'] = CONST_DF_EU_FULLYEAR_LZ_SLASH_24H_LZ;
 }
 
 /**

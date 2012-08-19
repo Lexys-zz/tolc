@@ -16,7 +16,6 @@ require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
 
 $current_timezone = $_SESSION['user_timezone'];
 $current_dateformat = $_SESSION['user_dateformat'];
-
 ?>
 
 <div id="row_timezone" class="field_container">
@@ -34,10 +33,10 @@ $current_dateformat = $_SESSION['user_dateformat'];
 	<label id="lbl_dateformat" for="dateformat"
 		   class="required"><?php print gettext('Date format') ?></label>
 	<select id="dateformat">
-		<?php foreach(df_list($a_date_format, $current_timezone) as $df => $example) { ?>
-		<option <?php print $current_dateformat == $df ? ' selected' : '' ?>
-			value="<?php print $df ?>"><?php print str_replace('_', '&nbsp;', str_pad($example, 20, "_", STR_PAD_LEFT)) .
-			str_replace('_', '&nbsp;', str_pad($df, 15, '_', STR_PAD_LEFT)) ?></option>
+		<?php foreach(df_list($a_date_format, $current_timezone) as $df_key => $df_val) { ?>
+		<option <?php print $current_dateformat == $df_key ? ' selected' : '' ?>
+			value="<?php print $df_key ?>"><?php print str_replace('_', '&nbsp;', str_pad($df_val['example'], 20, "_", STR_PAD_LEFT)) .
+			str_replace('_', '&nbsp;', str_pad($df_val['dateformat'], 15, '_', STR_PAD_LEFT)) ?></option>
 		<?php } ?>
 	</select>
 </div>

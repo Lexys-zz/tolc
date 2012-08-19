@@ -29,18 +29,20 @@ function now($str_user_timezone,
 
 
 /**
- * Converts a 14-digit UTC timestamp to date string of given timezone (considering DST)
+ * Converts a UTC timestamp to date string of given timezone (considering DST) and given dateformat
  *
  * DateTime requires PHP >= 5.2
  *
  * @param $str_server_datetime
  *
- * Normally is a 14-digit UTC timestamp (YYYYMMDDHHMMSS). It can also be 8-digit (date), 12-digit (datetime without seconds).
- * Missing digits filled with zero (000000 or 00).
+ * <li>Normally is a 14-digit UTC timestamp (YYYYMMDDHHMMSS). It can also be 8-digit (date), 12-digit (datetime without seconds).
+ * If given dateformat (<var>$str_user_dateformat</var>) is longer than <var>$str_server_datetime</var>,
+ * the missing digits of input value are filled with zero,
+ * so (YYYYMMDD is equivalent to YYYYMMDD000000 and YYYYMMDDHHMM is equivalent to YYYYMMDDHHMM00).
  *
- * It can also be 'now', null or empty string. In this case returns the current time.
+ * <li>It can also be 'now', null or empty string. In this case returns the current time.
  *
- * Other values throw an error.
+ * <li>Other values (invalid datetime strings) throw an error. Milliseconds are not supported.
  *
  * @param string $str_user_timezone
  * @param $str_user_dateformat
@@ -79,6 +81,14 @@ function date_decode($str_server_datetime,
  * To avoid potential ambiguity, it's best to use ISO 8601 (YYYY-MM-DD) dates or DateTime::createFromFormat() when possible.
  *
  * @param $str_user_datetime
+ *
+ * <li><var>$str_user_timezone</var> and <var>$str_user_dateformat</var> must match. Otherwise error occurs.
+ *
+ * <li>If <var>$str_server_dateformat</var> is longer than <var>$str_user_dateformat</var>,
+ * the missing time digits filled with zero, but if all times digits are missing current time is returned.
+ *
+ * <li>Other values (invalid datetime strings) throw an error. Milliseconds are not supported.
+ *
  * @param $str_user_timezone
  * @param $str_user_dateformat
  * @param string $str_server_timezone
@@ -187,9 +197,10 @@ function df_list($a_df, $tz = CONST_SERVER_TIMEZONE) {
 	$tz = new DateTimeZone($tz);
 	$date = new DateTime('');
 	$date->setTimeZone($tz);
-	foreach($a_df as $df) {
-		$dt = $date->format($df);
-		$df_array[$df] = $dt;
+	foreach($a_df as $df_key => $df_val) {
+		$df = $df_val['php_datetime'];
+		$df_example = $date->format($df);
+		$df_array[$df_key] = array('dateformat' => $df, 'example' => $df_example);
 	}
 	return $df_array;
 }

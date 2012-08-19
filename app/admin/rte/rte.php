@@ -142,7 +142,8 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 
 <input id="lang" type="hidden"
 	   value="<?php print substr($_SESSION['locale'], 0, 2) ?>">
-<input id="dateformat" type="hidden" value="dd/mm/yy">
+<input id="dateformat" type="hidden" value="<?php print $a_date_format[$_SESSION['user_dateformat']]['jq_date'] ?>">
+<input id="timeformat" type="hidden" value="<?php print $a_date_format[$_SESSION['user_dateformat']]['jq_time'] ?>">
 <input id="pref_tinymce_toggle_toolbar" type="hidden" value="<?php print $tolc_conf['pref_tinymce_toggle_toolbar'] ? '1' : '0' ?>">
 <input id="rsc_please_select" type="hidden"
 	   value="<?php print gettext('Please, select') ?>">

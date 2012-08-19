@@ -7,6 +7,7 @@ $(function () {
 
     var lang = $("#lang").val();
     var dateformat = $("#dateformat").val();
+    var timeformat = $("#timeformat").val();
     var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
     var rsc_please_select = $("#rsc_please_select").val();
 
@@ -96,7 +97,7 @@ $(function () {
     $("#date_publish_start").datetimepicker(
         {
             dateFormat: dateformat,
-            timeFormat: 'hh:mm:ss',
+            timeFormat: timeformat,
             showSecond: true,
             changeMonth: true,
             changeYear: true,
@@ -109,7 +110,7 @@ $(function () {
     $("#date_publish_end").datetimepicker(
         {
             dateFormat: dateformat,
-            timeFormat: 'hh:mm:ss',
+            timeFormat: timeformat,
             showSecond: true,
             changeMonth: true,
             changeYear: true,
