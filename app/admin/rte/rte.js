@@ -96,8 +96,8 @@ $(function () {
     $("#date_publish_start").datetimepicker(
         {
             dateFormat: dateformat,
-            showSecond: true,
             timeFormat: 'hh:mm:ss',
+            showSecond: true,
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
@@ -109,8 +109,8 @@ $(function () {
     $("#date_publish_end").datetimepicker(
         {
             dateFormat: dateformat,
-            showSecond: true,
             timeFormat: 'hh:mm:ss',
+            showSecond: true,
             changeMonth: true,
             changeYear: true,
             showButtonPanel: true
