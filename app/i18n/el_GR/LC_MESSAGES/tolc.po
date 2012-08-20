@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-16 21:58+0200\n"
-"PO-Revision-Date: 2012-08-16 21:58+0200\n"
+"POT-Creation-Date: 2012-08-20 13:28+0200\n"
+"PO-Revision-Date: 2012-08-20 13:29+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -173,7 +173,7 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: admin/new_page/ajax_new_page_form.php:63
-#: admin/rte/rte.php:130
+#: admin/rte/rte.php:149
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -294,33 +294,48 @@ msgstr "Εμφάνιση/απόκρυψη εργαλείων"
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: admin/rte/rte.php:86
+#: admin/rte/rte.php:83
+msgid "Page versions"
+msgstr "Εκδόσεις σελίδας"
+
+#: admin/rte/rte.php:92
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: admin/rte/rte.php:88
-msgid "new version"
-msgstr "νέα έκδοση"
+#: admin/rte/rte.php:95
+msgid "as new version"
+msgstr "ως νέα έκδοση"
 
-#: admin/rte/rte.php:96
+#: admin/rte/rte.php:100
+#: admin/rte/ajax_load_page_version.php:88
 msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
-#: admin/rte/rte.php:101
-msgid "as"
-msgstr "σαν"
+#: admin/rte/rte.php:108
+msgid "published from"
+msgstr "δημοσίευση από"
 
-#: admin/rte/rte.php:106
-msgid "to be published from"
-msgstr "προς δημοσίευση από"
-
-#: admin/rte/rte.php:109
+#: admin/rte/rte.php:114
+#: admin/rte/ajax_load_page_version.php:91
 msgid "until"
 msgstr "μέχρι"
 
-#: admin/rte/rte.php:112
+#: admin/rte/rte.php:121
+msgid "status"
+msgstr "κατάσταση"
+
+#: admin/rte/rte.php:128
+#: admin/rte/ajax_load_page_version.php:92
 msgid "Managed by"
 msgstr "Διαχείριση από"
+
+#: admin/rte/ajax_load_page_version.php:89
+msgid "as"
+msgstr "σαν"
+
+#: admin/rte/ajax_load_page_version.php:90
+msgid "to be published from"
+msgstr "προς δημοσίευση από"
 
 #: inc_tolc_functions/inc_admin_mode.php:18
 #: inc_tolc_functions/inc_login_required_new_page.php:2
@@ -428,55 +443,55 @@ msgstr "Ο κωδικός δεν δόθηκε"
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/init.php:111
+#: common/init.php:119
 msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
-#: common/init.php:121
+#: common/init.php:129
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/init.php:122
+#: common/init.php:130
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/init.php:123
+#: common/init.php:131
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/init.php:140
+#: common/init.php:148
 msgid "admin"
 msgstr "διαχειριστής"
 
-#: common/init.php:141
+#: common/init.php:149
 msgid "editor in chief"
 msgstr "αρχισυντάκτης"
 
-#: common/init.php:142
+#: common/init.php:150
 msgid "editor"
 msgstr "συντάκτης"
 
-#: common/init.php:143
+#: common/init.php:151
 msgid "common user"
 msgstr "κοινός χρήστης"
 
-#: common/init.php:163
+#: common/init.php:171
 msgid "draft"
 msgstr "πρόχειρο"
 
-#: common/init.php:164
+#: common/init.php:172
 msgid "pending review"
 msgstr "προς αξιολόγηση"
 
-#: common/init.php:165
+#: common/init.php:173
 msgid "under review"
 msgstr "υπό αξιολόγηση"
 
-#: common/init.php:166
+#: common/init.php:174
 msgid "approved"
 msgstr "εγκεκριμένο"
 
-#: common/init.php:167
+#: common/init.php:175
 msgid "rejected"
 msgstr "απορριφθέν"
 
@@ -497,11 +512,11 @@ msgstr "Το όνομα χρήστη (username) μπορεί να περιέχε
 msgid "Password can use any combination of the following characters"
 msgstr "Ο κωδικός χρήστη (password) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
 
-#: regional/ajax_regional_form.php:24
+#: regional/ajax_regional_form.php:23
 msgid "Timezone"
 msgstr "Ζώνη ώρας"
 
-#: regional/ajax_regional_form.php:35
+#: regional/ajax_regional_form.php:34
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
 
