@@ -55,6 +55,15 @@ $a_content_status = array(
 	CONST_CONTENT_STATUS_APPROVED_KEY => CONST_CONTENT_STATUS_APPROVED_VALUE,
 	CONST_CONTENT_STATUS_REJECTED_KEY => CONST_CONTENT_STATUS_REJECTED_VALUE
 );
+
+$a_content_status_css = array(
+	CONST_CONTENT_STATUS_DRAFT_KEY => 'status_draft',
+	CONST_CONTENT_STATUS_PENDING_REVIEW_KEY => 'status_pending_review',
+	CONST_CONTENT_STATUS_UNDER_REVIEW_KEY => 'status_under_review',
+	CONST_CONTENT_STATUS_APPROVED_KEY => 'status_approved',
+	CONST_CONTENT_STATUS_REJECTED_KEY => 'status_rejected'
+);
+
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
@@ -139,6 +148,7 @@ $a_content_status_values = array(
 
 $a_res['content_status_keys'] = $a_content_status_keys;
 $a_res['content_status_values'] = $a_content_status_values;
+$a_res['content_status_css'] = $a_content_status_css;
 
 // page version content --------------------------------------------------------
 

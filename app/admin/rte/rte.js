@@ -58,7 +58,7 @@ $(function () {
                     }, true);
                 });
             } else {
-                var do_nothing = 0;
+                var do_nothing = 0; // MSIE < 9.0
             }
         },
 
@@ -90,8 +90,10 @@ $(function () {
         }
     });
 
-    $('#btn_save').click(function () {
-        save_page_version();
+    $("#btn_delete").button({
+        icons: {
+            primary: 'ui-icon-trash'
+        }
     });
 
     $("#date_publish_start").datetimepicker(
@@ -120,18 +122,34 @@ $(function () {
         $.timepicker.regional[ lang ]
     );
 
-    load_page_version();
-
     $('legend').siblings().hide();
 
     $('legend').click(function () {
         $(this).siblings().slideToggle("slow");
     });
 
+    $('#btn_delete').click(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        delete_page_version(www_page_versions_id);
+    });
+
+
+    $('#btn_save').click(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        save_page_version(www_page_versions_id);
+    });
+
+    $('#www_page_versions_id').change(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        load_page_version(www_page_versions_id);
+    });
+
+    load_page_version(0);
+
 });
 
 
-function load_page_version() {
+function load_page_version(www_page_versions_id) {
 
     var project_url = $("#project_url", window.opener.document).val();
     var rsc_please_select = $("#rsc_please_select").val();
@@ -141,14 +159,14 @@ function load_page_version() {
         type: 'POST',
         url: project_url + "/app/admin/rte/ajax_load_page_version.php",
         data: {
-            date_published: ''
+            www_page_versions_id: www_page_versions_id
         },
         success: function (data) {
 
             var j = $.parseJSON(data);
-            create_page_versions(j.page_versions, 1)
+            create_page_versions(j.page_versions, j.content_status_css, 1)
             create_authors(j.authors, 0, '');
-            create_content_status(j.content_status_keys, j.content_status_values, 0);
+            create_content_status(j.content_status_keys, j.content_status_values, j.content_status_css, 0);
             create_editors(j.editors, 0, rsc_please_select);
             $("#rte").html(j.html);
         }
@@ -156,25 +174,11 @@ function load_page_version() {
 
 }
 
-
-function save_page_version() {
-    update_user_message('Saving...');
-}
-
-
-function update_user_message(msg) {
-    $("#user_message").jui_alert({
-        message: msg
-    });
-}
-
-function create_content_status(a_keys, a_val, selid) {
+function create_content_status(a_keys, a_val, a_css_class, selid) {
     var options = '';
-    var a_css_class = new Array('status_draft', 'status_pending_review', 'status_under_review', 'status_approved', 'status_rejected');
 
     $.each(a_keys, function (index, value) {
-        var i = value - 1;
-        var css_class = 'class="' + a_css_class[i] + '"';
+        var css_class = 'class="' + a_css_class[value] + '" ';
         var selected = (selid == value ? ' selected' : '');
         options += '<option ' + css_class + 'value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
     });
@@ -188,10 +192,7 @@ function create_authors(a_data, selid, please_select) {
         options += '<option value="0">' + please_select + ' </option>';
     }
     $.each(a_data, function (index, value) {
-        var selected = '';
-        if (selid == a_data[index].id) {
-            selected = ' selected';
-        }
+        var selected = (selid == a_data[index].id ? ' selected' : '');
         options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
     });
     $("#author_id").html(options);
@@ -204,25 +205,65 @@ function create_editors(a_data, selid, please_select) {
         options += '<option value="0">' + please_select + ' </option>';
     }
     $.each(a_data, function (index, value) {
-        var selected = '';
-        if (selid == a_data[index].id) {
-            selected = ' selected';
-        }
+        var selected = (selid == a_data[index].id ? ' selected' : '');
         options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
     });
     $("#editor_id").html(options);
 
 }
 
-function create_page_versions(a_data, selid) {
+function create_page_versions(a_data, a_css_class, selid) {
     var options = '';
     $.each(a_data, function (index, value) {
-        var selected = '';
-        if (selid == a_data[index].version_id) {
-            selected = ' selected';
-        }
-        options += '<option value="' + a_data[index].version_id + '"' + selected + '>' + a_data[index].version + '</option>';
+        var i = a_data[index].content_status;
+        var css_class = 'class="' + a_css_class[i] + '" ';
+        var selected = (selid == a_data[index].version_id ? ' selected' : '');
+        options += '<option ' + css_class + 'value="' + a_data[index].version_id + '"' + selected + '>' + a_data[index].version + '</option>';
     });
     $("#www_page_versions_id").html(options);
 
+}
+
+// -----------------------------------------------------------------------------
+function save_page_version(www_page_versions_id) {
+
+    var project_url = $("#project_url", window.opener.document).val();
+
+    // load content to tinymce
+    $.ajax({
+        type: 'POST',
+        url: project_url + "/app/admin/rte/ajax_save_page_version.php",
+        data: {
+            www_page_versions_id: www_page_versions_id
+        },
+        success: function (data) {
+            load_page_version(www_page_versions_id);
+        }
+    });
+}
+
+
+// -----------------------------------------------------------------------------
+function delete_page_version(www_page_versions_id) {
+
+    var project_url = $("#project_url", window.opener.document).val();
+
+    // load content to tinymce
+    $.ajax({
+        type: 'POST',
+        url: project_url + "/app/admin/rte/ajax_delete_page_version.php",
+        data: {
+            www_page_versions_id: www_page_versions_id
+        },
+        success: function (data) {
+            load_page_version(0);
+        }
+    });
+}
+
+// -----------------------------------------------------------------------------
+function update_user_message(msg) {
+    $("#user_message").jui_alert({
+        message: msg
+    });
 }

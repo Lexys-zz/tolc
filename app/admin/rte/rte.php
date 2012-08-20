@@ -84,6 +84,7 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 		<select id="www_page_versions_id">
 		</select>
 
+		<a id="btn_delete"><?php print gettext('Delete') ?></a>
 	</div>
 
 	<div id="rte_tools2" class="rte_tools">
