@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 14:08+0200\n"
-"PO-Revision-Date: 2012-08-20 14:08+0200\n"
+"POT-Creation-Date: 2012-08-20 19:25+0200\n"
+"PO-Revision-Date: 2012-08-20 19:25+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -173,7 +173,7 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: admin/new_page/ajax_new_page_form.php:63
-#: admin/rte/rte.php:149
+#: admin/rte/rte.php:150
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -298,36 +298,35 @@ msgstr "Επεξεργασία"
 msgid "Page versions"
 msgstr "Εκδόσεις σελίδας"
 
-#: admin/rte/rte.php:92
+#: admin/rte/rte.php:87
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: admin/rte/rte.php:93
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: admin/rte/rte.php:95
+#: admin/rte/rte.php:96
 msgid "as new version"
 msgstr "ως νέα έκδοση"
 
-#: admin/rte/rte.php:100
-#: admin/rte/ajax_load_page_version.php:88
+#: admin/rte/rte.php:101
 msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
-#: admin/rte/rte.php:108
-#: admin/rte/ajax_load_page_version.php:89
+#: admin/rte/rte.php:109
 msgid "Published from"
 msgstr "Δημοσίευση από"
 
-#: admin/rte/rte.php:114
-#: admin/rte/ajax_load_page_version.php:91
+#: admin/rte/rte.php:115
 msgid "until"
 msgstr "μέχρι"
 
-#: admin/rte/rte.php:121
-#: admin/rte/ajax_load_page_version.php:92
+#: admin/rte/rte.php:122
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: admin/rte/rte.php:128
-#: admin/rte/ajax_load_page_version.php:93
+#: admin/rte/rte.php:129
 msgid "Managed by"
 msgstr "Διαχείριση από"
 
