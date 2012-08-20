@@ -18,6 +18,10 @@
     padding-right: 15px;
 }
 
+select {
+    background: #ffffff;
+}
+
 #date_publish_start, #date_publish_end {
     font-size: 12px;
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
@@ -49,6 +53,27 @@ fieldset .field {
 fieldset .field label {
     margin-right: 0.4em;
 }
+
+.status_draft {
+    color: #747576;
+}
+
+.status_pending_review {
+    color: blue;
+}
+
+.status_under_review {
+    color: orange;
+}
+
+.status_approved {
+    color: #008000;
+}
+
+.status_rejected {
+    color: #f01616;
+}
+
 
 /* DATEPICKER FONT-SIZE ----------------------------------------------------- */
 div.ui-datepicker {

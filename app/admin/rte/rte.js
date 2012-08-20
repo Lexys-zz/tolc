@@ -170,13 +170,13 @@ function update_user_message(msg) {
 
 function create_content_status(a_keys, a_val, selid) {
     var options = '';
+    var a_css_class = new Array('status_draft', 'status_pending_review', 'status_under_review', 'status_approved', 'status_rejected');
 
     $.each(a_keys, function (index, value) {
-        var selected = '';
-        if (selid == value) {
-            selected = ' selected';
-        }
-        options += '<option value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
+        var i = value - 1;
+        var css_class = 'class="' + a_css_class[i] + '"';
+        var selected = (selid == value ? ' selected' : '');
+        options += '<option ' + css_class + 'value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
     });
     $("#lk_content_status_id").html(options);
 
@@ -184,7 +184,7 @@ function create_content_status(a_keys, a_val, selid) {
 
 function create_authors(a_data, selid, please_select) {
     var options = '';
-    if(please_select) {
+    if (please_select) {
         options += '<option value="0">' + please_select + ' </option>';
     }
     $.each(a_data, function (index, value) {
@@ -200,7 +200,7 @@ function create_authors(a_data, selid, please_select) {
 
 function create_editors(a_data, selid, please_select) {
     var options = '';
-    if(please_select) {
+    if (please_select) {
         options += '<option value="0">' + please_select + ' </option>';
     }
     $.each(a_data, function (index, value) {

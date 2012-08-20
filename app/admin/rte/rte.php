@@ -105,7 +105,7 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 
 		<div id="date_start" class="label_over_input">
 			<label
-				for="date_publish_start"><?php print gettext('published from') ?></label>
+				for="date_publish_start"><?php print gettext('Published from') ?></label>
 			<br>
 			<input id="date_publish_start">
 		</div>
@@ -118,7 +118,7 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 
 		<div id="content_status" class="label_over_input">
 			<label
-				for="lk_content_status_id"><?php print gettext('status') ?></label>
+				for="lk_content_status_id"><?php print gettext('Status') ?></label>
 			<br>
 			<select id="lk_content_status_id">
 			</select>
