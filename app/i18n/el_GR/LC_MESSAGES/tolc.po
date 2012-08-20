@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 13:28+0200\n"
-"PO-Revision-Date: 2012-08-20 13:29+0200\n"
+"POT-Creation-Date: 2012-08-20 14:08+0200\n"
+"PO-Revision-Date: 2012-08-20 14:08+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -312,8 +312,9 @@ msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
 #: admin/rte/rte.php:108
-msgid "published from"
-msgstr "δημοσίευση από"
+#: admin/rte/ajax_load_page_version.php:89
+msgid "Published from"
+msgstr "Δημοσίευση από"
 
 #: admin/rte/rte.php:114
 #: admin/rte/ajax_load_page_version.php:91
@@ -321,21 +322,14 @@ msgid "until"
 msgstr "μέχρι"
 
 #: admin/rte/rte.php:121
-msgid "status"
-msgstr "κατάσταση"
+#: admin/rte/ajax_load_page_version.php:92
+msgid "Status"
+msgstr "Κατάσταση"
 
 #: admin/rte/rte.php:128
-#: admin/rte/ajax_load_page_version.php:92
+#: admin/rte/ajax_load_page_version.php:93
 msgid "Managed by"
 msgstr "Διαχείριση από"
-
-#: admin/rte/ajax_load_page_version.php:89
-msgid "as"
-msgstr "σαν"
-
-#: admin/rte/ajax_load_page_version.php:90
-msgid "to be published from"
-msgstr "προς δημοσίευση από"
 
 #: inc_tolc_functions/inc_admin_mode.php:18
 #: inc_tolc_functions/inc_login_required_new_page.php:2
@@ -519,6 +513,12 @@ msgstr "Ζώνη ώρας"
 #: regional/ajax_regional_form.php:34
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
+
+#~ msgid "as"
+#~ msgstr "σαν"
+
+#~ msgid "to be published from"
+#~ msgstr "προς δημοσίευση από"
 
 #~ msgid "From"
 #~ msgstr "Από"
