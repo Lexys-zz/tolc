@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-21 14:42+0200\n"
-"PO-Revision-Date: 2012-08-21 14:42+0200\n"
+"POT-Creation-Date: 2012-08-21 15:16+0200\n"
+"PO-Revision-Date: 2012-08-21 15:16+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -173,7 +173,7 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: admin/new_page/ajax_new_page_form.php:63
-#: admin/rte/rte.php:150
+#: admin/rte/rte.php:167
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -294,39 +294,55 @@ msgstr "Εμφάνιση/απόκρυψη εργαλείων"
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: admin/rte/rte.php:83
+#: admin/rte/rte.php:84
+msgid "Page has been removed. To activate it, press here"
+msgstr "Η σελίδα έχει απομακρυνθεί. Για να ενεργοποιηθεί, πιέστε εδώ"
+
+#: admin/rte/rte.php:85
+msgid "Activate page"
+msgstr "Ενεργοποποίηση σελίδας"
+
+#: admin/rte/rte.php:88
+msgid "To remove the whole page, press here"
+msgstr "Για να απομακρυνθεί η σελίδα, πιέστε εδώ"
+
+#: admin/rte/rte.php:89
+msgid "Remove page"
+msgstr "Απομάκρυνση σελίδας"
+
+#: admin/rte/rte.php:97
 msgid "Page versions"
 msgstr "Εκδόσεις σελίδας"
 
-#: admin/rte/rte.php:87
-msgid "Delete"
-msgstr "Διαγραφή"
+#: admin/rte/rte.php:102
+msgid "Delete version"
+msgstr "Διαγραφή έκδοσης"
 
-#: admin/rte/rte.php:93
-msgid "Save"
-msgstr "Αποθήκευση"
+#: admin/rte/rte.php:103
+msgid "New version like current"
+msgstr "Νέα έκδοση βασισμένη στην τρέχουσα"
 
-#: admin/rte/rte.php:96
-msgid "as new version"
-msgstr "ως νέα έκδοση"
+#: admin/rte/rte.php:109
+msgid "Save version"
+msgstr "Αποθήκευση έκδοσης"
 
-#: admin/rte/rte.php:101
+#: admin/rte/rte.php:114
 msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
-#: admin/rte/rte.php:109
+#: admin/rte/rte.php:122
 msgid "Published from"
 msgstr "Δημοσίευση από"
 
-#: admin/rte/rte.php:115
+#: admin/rte/rte.php:129
 msgid "until"
 msgstr "μέχρι"
 
-#: admin/rte/rte.php:122
+#: admin/rte/rte.php:136
 msgid "Content status"
 msgstr "Κατάσταση περιεχομένου"
 
-#: admin/rte/rte.php:129
+#: admin/rte/rte.php:143
 msgid "Managed by"
 msgstr "Διαχείριση από"
 
@@ -337,6 +353,10 @@ msgstr "Διαχείριση από"
 #: inc_tolc_functions/inc_already_logged_in.php:2
 msgid "Ok"
 msgstr "Εντάξει"
+
+#: inc_tolc_functions/inc_admin_mode.php:19
+msgid "Save"
+msgstr "Αποθήκευση"
 
 #: inc_tolc_functions/inc_admin_mode.php:20
 #: inc_tolc_functions/inc_new_page.php:3
@@ -512,6 +532,12 @@ msgstr "Ζώνη ώρας"
 #: regional/ajax_regional_form.php:34
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
+
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "as new version"
+#~ msgstr "ως νέα έκδοση"
 
 #~ msgid "Status"
 #~ msgstr "Κατάσταση"
