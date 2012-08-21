@@ -119,7 +119,7 @@ $title = $page_title . ($page_has_been_removed ? ' (' . gettext('removed page') 
 
 		<div id="content_status" class="label_over_input">
 			<label
-				for="lk_content_status_id"><?php print gettext('Status') ?></label>
+				for="lk_content_status_id"><?php print gettext('Content status') ?></label>
 			<br>
 			<select id="lk_content_status_id">
 			</select>

@@ -104,7 +104,7 @@ if($rs->RecordCount() == 0) {
 			gettext('Published from') . ': ' . date_decode($pv['date_publish_start'], $_SESSION['user_timezone'], $a_date_format[$_SESSION['user_dateformat']]['php_datetime']) .
 			($pv['date_publish_end'] ? ' ' . gettext('until') . ' ' . date_decode($pv['date_publish_end'], $_SESSION['user_timezone'], $a_date_format[$_SESSION['user_dateformat']]['php_datetime']) : '') .
 			'. ' .
-			gettext('Status') . ': ' . $a_content_status[$pv['lk_content_status_id']] . '. ' .
+			gettext('Content status') . ': ' . $a_content_status[$pv['lk_content_status_id']] . '. ' .
 			($pv['editor_fullname'] ? gettext('Managed by') . ': ' . $pv['editor_fullname'] . '.' : '');
 		$lk_content_status_id = $pv['lk_content_status_id'];
 		$a_tmp = array(
