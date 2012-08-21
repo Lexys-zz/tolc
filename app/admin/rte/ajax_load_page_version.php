@@ -24,11 +24,14 @@ if(!isset($_SESSION['username'])) {
 	exit;
 }
 
-// get vars
-$www_page_versions_id = 1;
-
 // get current time (in UTC)
 $dt = now($_SESSION['user_timezone']);
+
+// get vars
+$www_page_versions_id = $_POST['www_page_versions_id'];
+
+// connect to database
+$conn = get_db_conn($tolc_conf['dbdriver']);
 
 // init
 $a_res = array();
@@ -64,16 +67,19 @@ $a_content_status_css = array(
 	CONST_CONTENT_STATUS_REJECTED_KEY => 'status_rejected'
 );
 
-// connect to database
-$conn = get_db_conn($tolc_conf['dbdriver']);
 
-// get page versions -----------------------------------------------------------
 // get page
 $a_page = get_page($conn, $_SESSION['url']);
 $www_pages_id = $a_page['page_id'];
 $page_title = $a_page['page_title'];
 $page_has_been_removed = $a_page['page_has_been_removed'];
 
+// get page version
+if($www_page_versions_id == 0) {
+
+}
+
+// get page versions -----------------------------------------------------------
 $a_page_versions = array();
 $sql = 'SELECT pv.id,pv.date_inserted,a.fullname as author_fullname,pv.lk_content_status_id,pv.date_publish_start,pv.date_publish_end,e.fullname as editor_fullname ' .
 	'FROM www_page_versions pv ' .
@@ -198,14 +204,16 @@ $page_html = $html->save();
 // clear DOM object
 $html->clear();
 
+$a_res['html'] = $page_html;
+
+
+// -----------------------------------------------------------------------------
 // free memory from database objects
 if($rs)
 	$rs->Close();
 //database disconnect
 if($conn)
 	$conn->Close();
-
-$a_res['html'] = $page_html;
 
 // -----------------------------------------------------------------------------
 print json_encode($a_res);
