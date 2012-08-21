@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_regenerate_id(true);
+session_regenerate_id();
 
 // prevent direct access
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND

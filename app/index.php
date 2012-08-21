@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_regenerate_id(true);
+session_regenerate_id();
 
 require_once 'conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
