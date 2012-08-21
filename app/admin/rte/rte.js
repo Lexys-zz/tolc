@@ -84,15 +84,38 @@ $(function () {
 
 
     /* tools -----------------------------------------------------------------*/
-    $("#btn_save").button({
+    $("#btn_remove").button({
+        text: '',
         icons: {
-            primary: 'ui-icon-check'
+            primary: 'ui-icon ui-icon-arrowthickstop-1-s'
+        }
+    });
+
+    $("#btn_activate").button({
+        text: '',
+        icons: {
+            primary: 'ui-icon ui-icon-arrowthickstop-1-n'
+        }
+    });
+
+    $("#btn_save").button({
+        text: '',
+        icons: {
+            primary: 'ui-icon-disk'
         }
     });
 
     $("#btn_delete").button({
+        text: '',
         icons: {
             primary: 'ui-icon-trash'
+        }
+    });
+
+    $("#btn_clone").button({
+        text: '',
+        icons: {
+            primary: 'ui-icon-copy'
         }
     });
 
@@ -128,11 +151,20 @@ $(function () {
         $(this).siblings().slideToggle("slow");
     });
 
+    $('#btn_remove').click(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        remove_page('1', www_page_versions_id);
+    });
+
+    $('#btn_activate').click(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        remove_page('0', www_page_versions_id);
+    });
+
     $('#btn_delete').click(function () {
         var www_page_versions_id = $('#www_page_versions_id').val();
         delete_page_version(www_page_versions_id);
     });
-
 
     $('#btn_save').click(function () {
         var www_page_versions_id = $('#www_page_versions_id').val();
@@ -144,6 +176,7 @@ $(function () {
         load_page_version(www_page_versions_id);
     });
 
+    remove_page_controls_toggle($("#page_has_been_removed").val());
     load_page_version(0);
 
 });
@@ -247,8 +280,6 @@ function save_page_version(www_page_versions_id) {
 function delete_page_version(www_page_versions_id) {
 
     var project_url = $("#project_url", window.opener.document).val();
-
-    // load content to tinymce
     $.ajax({
         type: 'POST',
         url: project_url + "/app/admin/rte/ajax_delete_page_version.php",
@@ -259,6 +290,39 @@ function delete_page_version(www_page_versions_id) {
             load_page_version(0);
         }
     });
+}
+
+// -----------------------------------------------------------------------------
+function remove_page(flag, page_version_id) {
+
+    var project_url = $("#project_url", window.opener.document).val();
+    $.ajax({
+        type: 'POST',
+        url: project_url + "/app/admin/rte/ajax_remove_page.php",
+        data: {
+            flag: flag
+        },
+        success: function (data) {
+            if($.trim(data) == '') {
+                remove_page_controls_toggle(flag);
+                load_page_version(page_version_id);
+                opener.location.reload();
+            } else {
+                var msg = 'ERROR ' + data;
+                update_user_message(msg);
+            }
+        }
+    });
+}
+
+function remove_page_controls_toggle(page_has_been_removed) {
+    if(page_has_been_removed == '1') {
+        $("#btn_remove, #page_remove").hide();
+        $("#btn_activate, #page_activate").show();
+    } else {
+        $("#btn_remove, #page_remove").show();
+        $("#btn_activate, #page_activate").hide();
+    }
 }
 
 // -----------------------------------------------------------------------------

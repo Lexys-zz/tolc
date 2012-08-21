@@ -1,14 +1,6 @@
-#rte_tools1 {
-    margin-top: 3px;
-    margin-bottom: 0px;
-    padding: 5px;
-    clear: both;
-    font-size: 12px;
-    font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
-}
-
 .rte_tools {
     clear: both;
+    padding: 5px;
     font-size: 12px;
     font-family: "Trebuchet MS", Arial, Verdana, sans-serif;
 }
