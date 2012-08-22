@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-21 15:16+0200\n"
-"PO-Revision-Date: 2012-08-21 15:16+0200\n"
+"POT-Creation-Date: 2012-08-22 18:27+0200\n"
+"PO-Revision-Date: 2012-08-22 18:27+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: \n"
@@ -173,7 +173,7 @@ msgid "Template"
 msgstr "Πρότυπο"
 
 #: admin/new_page/ajax_new_page_form.php:63
-#: admin/rte/rte.php:167
+#: admin/rte/rte.php:173
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -282,67 +282,71 @@ msgstr "Πλήρες όνομα"
 msgid "Email"
 msgstr "Email"
 
-#: admin/rte/rte.php:28
-msgid "removed page"
-msgstr "απομακρυνθείσα σελίδα"
-
-#: admin/rte/rte.php:77
+#: admin/rte/rte.php:80
 msgid "Show/hide tools"
 msgstr "Εμφάνιση/απόκρυψη εργαλείων"
 
-#: admin/rte/rte.php:78
+#: admin/rte/rte.php:81
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: admin/rte/rte.php:84
+#: admin/rte/rte.php:86
 msgid "Page has been removed. To activate it, press here"
 msgstr "Η σελίδα έχει απομακρυνθεί. Για να ενεργοποιηθεί, πιέστε εδώ"
 
-#: admin/rte/rte.php:85
+#: admin/rte/rte.php:87
 msgid "Activate page"
 msgstr "Ενεργοποποίηση σελίδας"
 
-#: admin/rte/rte.php:88
+#: admin/rte/rte.php:89
 msgid "To remove the whole page, press here"
 msgstr "Για να απομακρυνθεί η σελίδα, πιέστε εδώ"
 
-#: admin/rte/rte.php:89
+#: admin/rte/rte.php:90
 msgid "Remove page"
 msgstr "Απομάκρυνση σελίδας"
 
-#: admin/rte/rte.php:97
+#: admin/rte/rte.php:96
+msgid "New content version"
+msgstr "Νέα έκδοση περιεχομένου"
+
+#: admin/rte/rte.php:98
 msgid "Page versions"
 msgstr "Εκδόσεις σελίδας"
 
-#: admin/rte/rte.php:102
+#: admin/rte/rte.php:103
 msgid "Delete version"
 msgstr "Διαγραφή έκδοσης"
 
-#: admin/rte/rte.php:103
+#: admin/rte/rte.php:104
 msgid "New version like current"
 msgstr "Νέα έκδοση βασισμένη στην τρέχουσα"
 
-#: admin/rte/rte.php:109
+#: admin/rte/rte.php:110
+msgid "Add new version"
+msgstr "Καταχώρηση νέας έκδοσης"
+
+#: admin/rte/rte.php:111
 msgid "Save version"
 msgstr "Αποθήκευση έκδοσης"
 
-#: admin/rte/rte.php:114
+#: admin/rte/rte.php:116
 msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
-#: admin/rte/rte.php:122
+#: admin/rte/rte.php:124
 msgid "Published from"
 msgstr "Δημοσίευση από"
 
-#: admin/rte/rte.php:129
+#: admin/rte/rte.php:131
 msgid "until"
 msgstr "μέχρι"
 
-#: admin/rte/rte.php:136
+#: admin/rte/rte.php:138
 msgid "Content status"
 msgstr "Κατάσταση περιεχομένου"
 
-#: admin/rte/rte.php:143
+#: admin/rte/rte.php:145
 msgid "Managed by"
 msgstr "Διαχείριση από"
 
@@ -398,15 +402,15 @@ msgstr "Το πλήρες όνομα του χρήστη δεν δόθηκε"
 msgid "User email is required"
 msgstr "Το email του χρήστη δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:52
+#: inc_tolc_functions/inc_admin_mode.php:59
 msgid "About"
 msgstr "Σχετικά με Tolc"
 
-#: inc_tolc_functions/inc_admin_mode.php:56
+#: inc_tolc_functions/inc_admin_mode.php:63
 msgid "Change password"
 msgstr "Αλλαγή κωδικού (password)"
 
-#: inc_tolc_functions/inc_admin_mode.php:56
+#: inc_tolc_functions/inc_admin_mode.php:63
 msgid "User profile"
 msgstr "Στοιχεία χρήστη"
 
@@ -533,11 +537,11 @@ msgstr "Ζώνη ώρας"
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
 
+#~ msgid "removed page"
+#~ msgstr "απομακρυνθείσα σελίδα"
+
 #~ msgid "Delete"
 #~ msgstr "Διαγραφή"
-
-#~ msgid "as new version"
-#~ msgstr "ως νέα έκδοση"
 
 #~ msgid "Status"
 #~ msgstr "Κατάσταση"
