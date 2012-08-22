@@ -51,6 +51,10 @@
 
 <input type="hidden" id="www_pages_id"
 	   value="<?php print $www_pages_id ?>">
+<input type="hidden" id="page_title"
+	   value="<?php print $page_title ?>">
+<input type="hidden" id="page_has_been_removed"
+	   value="<?php print $page_has_been_removed ?>">
 
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
 </div>

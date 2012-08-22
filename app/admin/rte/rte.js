@@ -5,6 +5,9 @@ $(function () {
     var content_css_url = $("#content_css_url", window.opener.document).val();
     var base_url = $("#base_url", window.opener.document).val();
 
+    var www_pages_id = $("#www_pages_id", window.opener.document).val();
+    var page_has_been_removed = $("#page_has_been_removed", window.opener.document).val();
+
     var lang = $("#lang").val();
     var dateformat = $("#dateformat").val();
     var timeformat = $("#timeformat").val();
@@ -82,7 +85,6 @@ $(function () {
         }
     });
 
-
     /* misc controls ---------------------------------------------------------*/
     $("#btn_remove").button({
         text: '',
@@ -99,6 +101,13 @@ $(function () {
     });
 
     $("#btn_save").button({
+        text: '',
+        icons: {
+            primary: 'ui-icon-disk'
+        }
+    });
+
+    $("#btn_addnew").button({
         text: '',
         icons: {
             primary: 'ui-icon-disk'
@@ -163,9 +172,19 @@ $(function () {
         remove_page('0', www_page_versions_id);
     });
 
+    $('#www_page_versions_id').change(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        load_page_version(www_page_versions_id);
+    });
+
     $('#btn_delete').click(function () {
         var www_page_versions_id = $('#www_page_versions_id').val();
         delete_page_version(www_page_versions_id);
+    });
+
+    $('#btn_clone').click(function () {
+        var www_page_versions_id = $('#www_page_versions_id').val();
+        clone_page_version(www_page_versions_id);
     });
 
     $('#btn_save').click(function () {
@@ -173,19 +192,20 @@ $(function () {
         save_page_version(www_page_versions_id);
     });
 
-    $('#www_page_versions_id').change(function () {
-        var www_page_versions_id = $('#www_page_versions_id').val();
-        load_page_version(www_page_versions_id);
+    $('#btn_addnew').click(function () {
+        addnew_page_version();
     });
 
 
+
+
     /* arrange controls and load page version --------------------------------*/
-    remove_page_controls_toggle($("#page_has_been_removed").val());
+    remove_page_controls_toggle($("#page_has_been_removed", window.opener.document).val());
+    arrange_page_version_controls($("#start_page_versions_id").val());
 
     load_page_version($("#start_page_versions_id").val());
 
 });
-
 
 // -----------------------------------------------------------------------------
 function remove_page_controls_toggle(page_has_been_removed) {
@@ -199,31 +219,48 @@ function remove_page_controls_toggle(page_has_been_removed) {
 }
 
 // -----------------------------------------------------------------------------
+function arrange_page_version_controls(www_page_versions_id) {
+    if(www_page_versions_id > 0) {
+        $("#www_page_versions_id, #lbl_www_page_versions_id, #btn_save, #btn_delete, #btn_clone").show();
+        $("#new_page_version, #btn_addnew").hide();
+    } else {
+        $("#www_page_versions_id, #lbl_www_page_versions_id, #btn_save, #btn_delete, #btn_clone").hide();
+        $("#new_page_version, #btn_addnew").show();
+    }
+}
+
+
+// -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
 
     var project_url = $("#project_url", window.opener.document).val();
     var rsc_please_select = $("#rsc_please_select").val();
+    var www_pages_id = $("#www_pages_id", window.opener.document).val();
 
     // load content to tinymce
     $.ajax({
         type: 'POST',
         url: project_url + "/app/admin/rte/ajax_load_page_version.php",
         data: {
+            www_pages_id: www_pages_id,
             www_page_versions_id: www_page_versions_id
         },
         success: function (data) {
 
             var j = $.parseJSON(data);
-            create_page_versions(j.page_versions, j.content_status_css, 1)
-            create_authors(j.authors, 0, '');
-            create_content_status(j.content_status_keys, j.content_status_values, j.content_status_css, 0);
-            create_editors(j.editors, 0, rsc_please_select);
+            if(www_page_versions_id > 0) {
+                create_page_versions(j.page_versions, j.content_status_css, 1)
+            }
+            create_authors(j.authors, j.current_version.author_id, '');
+            $("#date_publish_start").val(j.current_version.date_publish_start);
+            $("#date_publish_end").val(j.current_version.date_publish_end);
+            create_content_status(j.content_status_keys, j.content_status_values, j.content_status_css, j.current_version.lk_content_status_id);
+            create_editors(j.editors, j.current_version.editor_id, rsc_please_select);
             $("#rte").html(j.html);
         }
     });
 
 }
-
 
 function create_page_versions(a_data, a_css_class, selid) {
     var options = '';
@@ -295,6 +332,10 @@ function save_page_version(www_page_versions_id) {
     });
 }
 
+// -----------------------------------------------------------------------------
+function addnew_page_version() {
+
+}
 
 // -----------------------------------------------------------------------------
 function delete_page_version(www_page_versions_id) {
@@ -310,6 +351,11 @@ function delete_page_version(www_page_versions_id) {
             load_page_version(0);
         }
     });
+}
+
+// -----------------------------------------------------------------------------
+function clone_page_version(www_page_versions_id) {
+
 }
 
 // -----------------------------------------------------------------------------

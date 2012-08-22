@@ -26,12 +26,11 @@ $conn = get_db_conn($tolc_conf['dbdriver']);
 $a_page = get_page($conn, $_SESSION['url']);
 $www_pages_id = $a_page['page_id'];
 $page_title = $a_page['page_title'];
-$page_has_been_removed = $a_page['page_has_been_removed'];
+
 
 // get page version
 $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONTENT_STATUS_APPROVED_KEY, true);
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -93,9 +92,10 @@ $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONT
 
 
 	<div id="rte_tools2" class="rte_tools">
-
-		<label
-			for="www_page_versions_id"><?php print gettext('Page versions') ?></label>
+		<span
+			id="new_page_version"><?php print gettext('New content version') . ': '?></span>
+		<label id="lbl_www_page_versions_id"
+			   for="www_page_versions_id"><?php print gettext('Page versions') ?></label>
 		<br/>
 		<select id="www_page_versions_id">
 		</select>
@@ -107,6 +107,7 @@ $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONT
 	<div id="rte_tools3" class="rte_tools">
 
 		<div id="save" class="label_over_input">
+			<a id="btn_addnew"><?php print gettext('Add new version') ?></a>
 			<a id="btn_save"><?php print gettext('Save version') ?></a>
 		</div>
 
@@ -170,8 +171,7 @@ $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONT
 	   value="<?php print $tolc_conf['pref_tinymce_toggle_toolbar'] ? '1' : '0' ?>">
 <input id="rsc_please_select" type="hidden"
 	   value="<?php print gettext('Please, select') ?>">
-<input id="page_has_been_removed" type="hidden"
-	   value="<?php print $page_has_been_removed ?>">
+
 <input id="start_page_versions_id" type="hidden"
 	   value="<?php print $start_page_versions_id ?>">
 </body>
