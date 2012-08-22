@@ -49,6 +49,9 @@
 <input type="hidden" id="msg_user_email_required"
 	   value="<?php print gettext('User email is required') . '...' ?>">
 
+<input type="hidden" id="www_pages_id"
+	   value="<?php print $www_pages_id ?>">
+
 <div id="about_tolc_form" title="<?php print gettext('About')?>">
 </div>
 

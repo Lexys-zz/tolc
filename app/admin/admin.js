@@ -321,7 +321,7 @@ $(function () {
 /* functions ---------------------------------------------------------------- */
 function rte() {
     var url = $("#project_url").val() + '/app/admin/rte/rte.php';
-    var win_name = 'rte';
+    var win_name = 'rte_' + $("#www_pages_id").val();
     CenterWindow(1200, 800, 50, url, win_name, '');
 }
 
