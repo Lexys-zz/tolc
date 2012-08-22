@@ -11,7 +11,7 @@ $(function () {
     var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
     var rsc_please_select = $("#rsc_please_select").val();
 
-    /* timnymce ------------------------------------------------------------------*/
+    /* timnymce --------------------------------------------------------------*/
     $("#rte").tinymce({
         // Location of TinyMCE script
         script_url: tinymce_url,
@@ -83,7 +83,7 @@ $(function () {
     });
 
 
-    /* tools -----------------------------------------------------------------*/
+    /* misc controls ---------------------------------------------------------*/
     $("#btn_remove").button({
         text: '',
         icons: {
@@ -145,12 +145,14 @@ $(function () {
         $.timepicker.regional[ lang ]
     );
 
+    /* filedset legend effect ------------------------------------------------*/
     $('legend').siblings().hide();
 
     $('legend').click(function () {
         $(this).siblings().slideToggle("slow");
     });
 
+    /* controls events -------------------------------------------------------*/
     $('#btn_remove').click(function () {
         var www_page_versions_id = $('#www_page_versions_id').val();
         remove_page('1', www_page_versions_id);
@@ -176,12 +178,27 @@ $(function () {
         load_page_version(www_page_versions_id);
     });
 
+
+    /* arrange controls and load page version --------------------------------*/
     remove_page_controls_toggle($("#page_has_been_removed").val());
-    load_page_version(0);
+
+    load_page_version($("#start_page_versions_id").val());
 
 });
 
 
+// -----------------------------------------------------------------------------
+function remove_page_controls_toggle(page_has_been_removed) {
+    if(page_has_been_removed == '1') {
+        $("#btn_remove, #page_remove").hide();
+        $("#btn_activate, #page_activate").show();
+    } else {
+        $("#btn_remove, #page_remove").show();
+        $("#btn_activate, #page_activate").hide();
+    }
+}
+
+// -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
 
     var project_url = $("#project_url", window.opener.document).val();
@@ -207,17 +224,19 @@ function load_page_version(www_page_versions_id) {
 
 }
 
-function create_content_status(a_keys, a_val, a_css_class, selid) {
-    var options = '';
 
-    $.each(a_keys, function (index, value) {
-        var css_class = 'class="' + a_css_class[value] + '" ';
-        var selected = (selid == value ? ' selected' : '');
-        options += '<option ' + css_class + 'value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
+function create_page_versions(a_data, a_css_class, selid) {
+    var options = '';
+    $.each(a_data, function (index, value) {
+        var i = a_data[index].content_status;
+        var css_class = 'class="' + a_css_class[i] + '" ';
+        var selected = (selid == a_data[index].version_id ? ' selected' : '');
+        options += '<option ' + css_class + 'value="' + a_data[index].version_id + '"' + selected + '>' + a_data[index].version + '</option>';
     });
-    $("#lk_content_status_id").html(options);
+    $("#www_page_versions_id").html(options);
 
 }
+
 
 function create_authors(a_data, selid, please_select) {
     var options = '';
@@ -229,6 +248,18 @@ function create_authors(a_data, selid, please_select) {
         options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
     });
     $("#author_id").html(options);
+
+}
+
+function create_content_status(a_keys, a_val, a_css_class, selid) {
+    var options = '';
+
+    $.each(a_keys, function (index, value) {
+        var css_class = 'class="' + a_css_class[value] + '" ';
+        var selected = (selid == value ? ' selected' : '');
+        options += '<option ' + css_class + 'value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
+    });
+    $("#lk_content_status_id").html(options);
 
 }
 
@@ -245,17 +276,6 @@ function create_editors(a_data, selid, please_select) {
 
 }
 
-function create_page_versions(a_data, a_css_class, selid) {
-    var options = '';
-    $.each(a_data, function (index, value) {
-        var i = a_data[index].content_status;
-        var css_class = 'class="' + a_css_class[i] + '" ';
-        var selected = (selid == a_data[index].version_id ? ' selected' : '');
-        options += '<option ' + css_class + 'value="' + a_data[index].version_id + '"' + selected + '>' + a_data[index].version + '</option>';
-    });
-    $("#www_page_versions_id").html(options);
-
-}
 
 // -----------------------------------------------------------------------------
 function save_page_version(www_page_versions_id) {
@@ -313,16 +333,6 @@ function remove_page(flag, page_version_id) {
             }
         }
     });
-}
-
-function remove_page_controls_toggle(page_has_been_removed) {
-    if(page_has_been_removed == '1') {
-        $("#btn_remove, #page_remove").hide();
-        $("#btn_activate, #page_activate").show();
-    } else {
-        $("#btn_remove, #page_remove").show();
-        $("#btn_activate, #page_activate").hide();
-    }
 }
 
 // -----------------------------------------------------------------------------

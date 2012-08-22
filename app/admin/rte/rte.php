@@ -16,6 +16,9 @@ if(!isset($_SESSION['username'])) {
 	exit;
 }
 
+// get current time (in UTC)
+$dt = now($_SESSION['user_timezone']);
+
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
 
@@ -24,6 +27,9 @@ $a_page = get_page($conn, $_SESSION['url']);
 $www_pages_id = $a_page['page_id'];
 $page_title = $a_page['page_title'];
 $page_has_been_removed = $a_page['page_has_been_removed'];
+
+// get page version
+$start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONTENT_STATUS_APPROVED_KEY, true);
 ?>
 
 
@@ -166,6 +172,8 @@ $page_has_been_removed = $a_page['page_has_been_removed'];
 	   value="<?php print gettext('Please, select') ?>">
 <input id="page_has_been_removed" type="hidden"
 	   value="<?php print $page_has_been_removed ?>">
+<input id="start_page_versions_id" type="hidden"
+	   value="<?php print $start_page_versions_id ?>">
 </body>
 
 </html>
