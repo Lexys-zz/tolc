@@ -318,8 +318,6 @@ function create_editors(a_data, selid, please_select) {
 function save_page_version(www_page_versions_id) {
 
     var project_url = $("#project_url", window.opener.document).val();
-
-    // load content to tinymce
     $.ajax({
         type: 'POST',
         url: project_url + "/app/admin/rte/ajax_save_page_version.php",
@@ -335,6 +333,27 @@ function save_page_version(www_page_versions_id) {
 // -----------------------------------------------------------------------------
 function addnew_page_version() {
 
+    var project_url = $("#project_url", window.opener.document).val();
+    var www_pages_id = $("#www_pages_id", window.opener.document).val();
+
+    $.ajax({
+        type: 'POST',
+        url: project_url + "/app/admin/rte/ajax_addnew_page_version.php",
+        data: {
+            www_pages_id: www_pages_id,
+            author_id: $("#author_id").val(),
+            date_publish_start: $("#date_publish_start").val(),
+            date_publish_end: $("#date_publish_end").val(),
+            lk_content_status_id: $("#lk_content_status_id").val(),
+            editor_id: $("#editor_id").val(),
+            html: $("#rte").html()
+        },
+        success: function (data) {
+            var j = $.parseJSON(data);
+            load_page_version(j.www_page_versions_id);
+            opener.location.reload();
+        }
+    });
 }
 
 // -----------------------------------------------------------------------------

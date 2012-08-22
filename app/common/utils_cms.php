@@ -307,4 +307,46 @@ function set_page_version_content($conn, $page_version_id, $template_id, $html) 
 	return $html;
 }
 
+/**
+ * @param $conn
+ * @param $template_id
+ * @param $str_html
+ * @return array
+ */
+function get_page_version_content_from_string($conn, $template_id, $str_html) {
+
+	$sql = 'SELECT id, element_id FROM www_template_active_elements WHERE www_templates_id=' . $template_id . ' ORDER BY display_order';
+	$rs = $conn->Execute($sql);
+	if($rs === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+	}
+	$a_elements = $rs->GetRows();
+
+	$a_res = array();
+
+	// create a DOM object
+	$html = new simple_html_dom();
+
+	// load template html
+	$html->load($str_html);
+
+	foreach($a_elements as $element) {
+
+		$element_html  = '';
+		$element_id = $element['id'];
+
+		// set element content
+		$selector = '[id=' . $element['element_id'] . ']';
+		$res = $html->find($selector, 0);
+		if($res) {
+			$element_html = $res->innertext;
+		}
+
+		array_push($a_res, array('www_template_active_elements_id' => $element_id , 'html' => $element_html));
+
+	}
+
+	return $a_res;
+}
+
 ?>
