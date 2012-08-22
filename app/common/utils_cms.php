@@ -72,13 +72,18 @@ function get_page($conn, $url) {
 /**
  * Get page version id for given datetime and content status
  *
+ * If $use_all_versions, just return the last version
+ *
  * @param $conn
  * @param $page_id
  * @param $dt
  * @param $content_status
+ * @param bool $use_all_versions
  * @return int
  */
-function get_page_version($conn, $page_id, $dt, $content_status) {
+function get_page_version($conn, $page_id, $dt, $content_status, $use_all_versions = false) {
+
+	$page_version = 0;
 
 	$dt_safe = $conn->qstr($dt);
 
@@ -94,6 +99,18 @@ function get_page_version($conn, $page_id, $dt, $content_status) {
 	}
 
 	$page_version = ($rs->RecordCount() == 0) ? 0 : $rs->fields['id'];
+
+	if($page_version == 0 && $use_all_versions) {
+		$sql = 'SELECT id FROM www_page_versions ' .
+			'WHERE www_pages_id=' . $page_id .
+			' ORDER BY date_publish_start DESC';
+		$rs = $conn->SelectLimit($sql, 1, 0);
+		if($rs === false) {
+			trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+		}
+
+		$page_version = ($rs->RecordCount() == 0) ? 0 : $rs->fields['id'];
+	}
 
 	return $page_version;
 }
