@@ -105,7 +105,7 @@ if($conn->Execute($sql) === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
 }
 
-// insert first version for new inserted page
+/*// insert first version for new inserted page
 $sql = 'INSERT INTO www_page_versions ' .
 	'(www_pages_id,lk_content_status_id,date_inserted,author_id) ' .
 	'VALUES (' .
@@ -118,7 +118,7 @@ if($conn->Execute($sql) === false) {
 	$err = $conn->ErrorMsg();
 	$conn->RollbackTrans();
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
-}
+}*/
 
 $conn->CommitTrans();
 
