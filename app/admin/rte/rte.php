@@ -30,7 +30,6 @@ $page_title = $a_page['page_title'];
 // get page version
 $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONTENT_STATUS_APPROVED_KEY, true);
 ?>
-
 <!DOCTYPE html>
 <html>
 
