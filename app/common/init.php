@@ -208,8 +208,8 @@ define('TINYMCE_POPUP_URL', JQUERY_TINYMCE_PATH . '/tiny_mce_popup.js');
 define('EZFILEMANAGER_URL', JQUERY_TINYMCE_PATH . '/plugins/ezfilemanager/index.php');
 
 define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
-
 define('SIMPLE_HTML_DOM_PATH', LIB_DIR . LIB_EXT_DIR . '/simplehtmldom_1_5');
+define('HTML_PURIFIER_PATH', LIB_DIR . LIB_EXT_DIR . '/htmlpurifier-4.4.0-lite/library/HTMLPurifier.auto.php');
 
 /**
  * @param $err_no

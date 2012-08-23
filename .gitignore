@@ -13,6 +13,8 @@ favicon.ico
 /log/*
 
 # APP CACHE --------------------------------------------------------------------
+/lib/ext/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer/*
+!/lib/ext/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer/README
 
 # APP TEST ---------------------------------------------------------------------
 /test/*

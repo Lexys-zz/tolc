@@ -1,0 +1,10 @@
+htmlpurifier
+----
+chown -R http /lib/ext/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer
+chmod -R 755  /lib/ext/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer
+
+.gitignore
+/lib/ext/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer/*
+!/lib/ext/htmlpurifier-4.4.0-lite/library/HTMLPurifier/DefinitionCache/Serializer/README
+
+--------------------------------------------------------------------------------
