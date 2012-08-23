@@ -24,7 +24,7 @@ require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
 
 // get params
 $page_url = $_POST['page_url'];
-$page_title = $_POST['page_title'];
+$page_title = htmlentities($_POST['page_title'], ENT_QUOTES, 'UTF-8');
 $www_templates_id = $_POST['www_templates_id'];
 $parent_id = $_POST['parent_id'];
 
