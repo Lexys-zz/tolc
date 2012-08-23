@@ -315,6 +315,10 @@ function set_page_version_content($conn, $page_version_id, $template_id, $html) 
  */
 function get_page_version_content_from_string($conn, $template_id, $str_html) {
 
+	$config = HTMLPurifier_Config::createDefault();
+	$config->set('HTML.TidyLevel', 'medium');
+	$purifier = new HTMLPurifier($config);
+
 	$sql = 'SELECT id, element_id FROM www_template_active_elements WHERE www_templates_id=' . $template_id . ' ORDER BY display_order';
 	$rs = $conn->Execute($sql);
 	if($rs === false) {
@@ -340,6 +344,8 @@ function get_page_version_content_from_string($conn, $template_id, $str_html) {
 		$res = $html->find($selector, 0);
 		if($res) {
 			$element_html = $res->innertext;
+			// apply htmlpurifier
+			$element_html = $purifier->purify($element_html);
 		}
 
 		array_push($a_res, array('www_template_active_elements_id' => $element_id , 'html' => $element_html));

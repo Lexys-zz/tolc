@@ -17,6 +17,7 @@ require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_cms.php';
 require_once SIMPLE_HTML_DOM_PATH . '/simple_html_dom.php';
+require_once HTML_PURIFIER_PATH;
 
 // check for logged in user
 if(!isset($_SESSION['username'])) {
