@@ -197,38 +197,14 @@ $(function () {
     });
 
 
-
-
-    /* arrange controls and load page version --------------------------------*/
+    /* arrange remove page controls ------------------------------------------*/
     remove_page_controls_toggle($("#page_has_been_removed", window.opener.document).val());
-    arrange_page_version_controls($("#start_page_versions_id").val());
 
+
+    /* load page version -----------------------------------------------------*/
     load_page_version($("#start_page_versions_id").val());
 
 });
-
-// -----------------------------------------------------------------------------
-function remove_page_controls_toggle(page_has_been_removed) {
-    if(page_has_been_removed == '1') {
-        $("#btn_remove, #page_remove").hide();
-        $("#btn_activate, #page_activate").show();
-    } else {
-        $("#btn_remove, #page_remove").show();
-        $("#btn_activate, #page_activate").hide();
-    }
-}
-
-// -----------------------------------------------------------------------------
-function arrange_page_version_controls(www_page_versions_id) {
-    if(www_page_versions_id > 0) {
-        $("#www_page_versions_id, #lbl_www_page_versions_id, #btn_save, #btn_delete, #btn_clone").show();
-        $("#new_page_version, #btn_addnew").hide();
-    } else {
-        $("#www_page_versions_id, #lbl_www_page_versions_id, #btn_save, #btn_delete, #btn_clone").hide();
-        $("#new_page_version, #btn_addnew").show();
-    }
-}
-
 
 // -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
@@ -257,10 +233,23 @@ function load_page_version(www_page_versions_id) {
             create_content_status(j.content_status_keys, j.content_status_values, j.content_status_css, j.current_version.lk_content_status_id);
             create_editors(j.editors, j.current_version.editor_id, rsc_please_select);
             $("#rte").html(j.html);
+
+            arrange_page_version_controls(www_page_versions_id);
         }
     });
 
 }
+
+function arrange_page_version_controls(www_page_versions_id) {
+    if(www_page_versions_id > 0) {
+        $("#www_page_versions_id, #lbl_www_page_versions_id, #btn_save, #btn_delete, #btn_clone").show();
+        $("#new_page_version, #btn_addnew").hide();
+    } else {
+        $("#www_page_versions_id, #lbl_www_page_versions_id, #btn_save, #btn_delete, #btn_clone").hide();
+        $("#new_page_version, #btn_addnew").show();
+    }
+}
+
 
 function create_page_versions(a_data, a_css_class, selid) {
     var options = '';
@@ -398,6 +387,16 @@ function remove_page(flag, page_version_id) {
             }
         }
     });
+}
+
+function remove_page_controls_toggle(page_has_been_removed) {
+    if(page_has_been_removed == '1') {
+        $("#btn_remove, #page_remove").hide();
+        $("#btn_activate, #page_activate").show();
+    } else {
+        $("#btn_remove, #page_remove").show();
+        $("#btn_activate, #page_activate").hide();
+    }
 }
 
 // -----------------------------------------------------------------------------
