@@ -17,7 +17,9 @@ function get_db_conn($driver) {
 			$dsn = $driver . '://' . $tolc_conf['dbuser'] . ':' . rawurlencode($tolc_conf['dbpass']) .
 				'@' . $tolc_conf['dbserver'] . '/' .
 				$tolc_conf['domains_db'][$_SERVER['SERVER_NAME']] . $tolc_conf['dsn_options'];
-			return NewADOConnection($dsn);
+			$conn = NewADOConnection($dsn);
+			$conn->execute('SET NAMES UTF8');
+			return $conn;
 			break;
 		case 'sqlite':
 		case 'oci8':
