@@ -40,6 +40,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_page_templates` WRITE;
 /*!40000 ALTER TABLE `www_page_templates` DISABLE KEYS */;
+INSERT INTO `www_page_templates` VALUES (1,1,1,'20120101000000');
 /*!40000 ALTER TABLE `www_page_templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,6 +50,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_page_versions` WRITE;
 /*!40000 ALTER TABLE `www_page_versions` DISABLE KEYS */;
+INSERT INTO `www_page_versions` VALUES (1,1,4,'20120101000000','20120101000000',NULL,1,NULL);
 /*!40000 ALTER TABLE `www_page_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,6 +60,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_pages` WRITE;
 /*!40000 ALTER TABLE `www_pages` DISABLE KEYS */;
+INSERT INTO `www_pages` VALUES (1,'/','Welcome',NULL,NULL,0);
 /*!40000 ALTER TABLE `www_pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,6 +70,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_template_active_elements` WRITE;
 /*!40000 ALTER TABLE `www_template_active_elements` DISABLE KEYS */;
+INSERT INTO `www_template_active_elements` VALUES (1,1,'content',NULL);
 /*!40000 ALTER TABLE `www_template_active_elements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +80,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_templates` WRITE;
 /*!40000 ALTER TABLE `www_templates` DISABLE KEYS */;
-INSERT INTO `www_templates` VALUES (1,'Default1 (Variant trio)','/app/templates/variant-trio/','index.php','variant-trio.css',NULL),(2,'Default2 (FreshPick10)','/app/templates/FreshPick10/','index.php','css/screen.css',NULL);
+INSERT INTO `www_templates` VALUES (1,'Default1 (Variant trio)','/data/default/tpl/variant-trio/','index.html','variant-trio.css',NULL),(2,'Default2 (FreshPick10)','/data/default/tpl/FreshPick10/','index.html','css/screen.css',NULL);
 /*!40000 ALTER TABLE `www_templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +90,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `www_users` WRITE;
 /*!40000 ALTER TABLE `www_users` DISABLE KEYS */;
-INSERT INTO `www_users` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','user@example.com','Default user',NULL,'20120101',2,1,1);
+INSERT INTO `www_users` VALUES (1,'root','63a9f0ea7bb98050796b649e85481845','user@example.com','Default user',NULL,'20120101000000',2,1,1);
 /*!40000 ALTER TABLE `www_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -99,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-11 18:15:39
+-- Dump completed on 2012-08-24 13:22:51
