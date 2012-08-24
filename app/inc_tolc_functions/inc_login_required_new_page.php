@@ -5,5 +5,5 @@
 	 title="<?php print gettext('New page'); ?>">
 	<?php print gettext('Page does not exist') . '.' . ' ' ?>
 	<a id="login_required"
-	   href="<?php print CONST_PROJECT_HOST . $tolc_conf['pref_reserved_urls']['login'] ?>"><?php print gettext('Login required to create this page') ?></a>...
+	   href="<?php print CONST_PROJECT_HOST . $tolc_conf['project_url'] . $tolc_conf['pref_reserved_urls']['login'] ?>"><?php print gettext('Login required to create this page') ?></a>...
 </div>

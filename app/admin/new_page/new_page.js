@@ -79,8 +79,8 @@ $(function () {
                                     parent_id: $("#parent_id").val()
                                 },
                                 success: function (data) {
-                                    if (data == '') {
-                                        window.location = $("#page_url").val();
+                                    if ($.trim(data) == '') {
+                                        window.location = project_url + $("#page_url").val();
                                     } else {
                                         update_user_message(data);
                                     }
