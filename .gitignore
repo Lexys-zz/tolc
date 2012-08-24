@@ -1,10 +1,10 @@
 # APP SETTINGS -----------------------------------------------------------------
-.htaccess
+/.htaccess
 /app/conf/settings.php
 /app/conf/settings.bak.php
 
 # APP DATA ---------------------------------------------------------------------
-favicon.ico
+/favicon.ico
 /data/*
 !/data/default
 !/data/README
