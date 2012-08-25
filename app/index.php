@@ -16,11 +16,15 @@ $debug = false;
 // retrieve url
 $url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['project_url']));
 
+// sanitize URL
+$url_length = min($tolc_conf['pref_url_max_length'], CONST_URL_DB_MAXLENGTH);
+$remove_accents = $tolc_conf['pref_url_remove_accents'];
+$convert_to_lower_case = $tolc_conf['pref_url_convert_to_lower_case'];
+$replace_space_between_words_with_dash = $tolc_conf['pref_url_replace_space_between_words_with_dash'];
+$url = sanitize_url($url, $url_length, $remove_accents, $convert_to_lower_case, $replace_space_between_words_with_dash);
+
 // check for valid URL
-$url = trim($url);
-$url = preg_replace('/\s+/', ' ', $url); //replace multiple spaces with one
-$url = mb_substr($url, 0, min($tolc_conf['pref_url_max_length'], CONST_URL_DB_MAXLENGTH)); // truncate to max length
-$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
+$valid_url = valid_url($url, CONST_REGEX_SANITIZE_URL, CONST_REGEX_SANITIZE_URL_LEGACY);
 
 // prevent direct access of '/app/index.php'
 if($url == '/app/index.php' || $url == '/app/') {
@@ -52,7 +56,7 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_res
 	$_SESSION['url'] = $url;
 }
 
-if(!$invalid_url) {
+if($valid_url) {
 	// get page
 	$a_page = get_page($conn, $url);
 	$www_pages_id = $a_page['page_id'];
