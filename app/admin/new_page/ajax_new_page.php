@@ -55,6 +55,13 @@ if(preg_match('/\040\040/', $page_url)) {
 	exit;
 }
 
+// sanitize URL
+$url_length = min($tolc_conf['pref_url_max_length'], CONST_URL_DB_MAXLENGTH);
+$remove_accents = $tolc_conf['pref_url_remove_accents'];
+$convert_to_lower_case = $tolc_conf['pref_url_convert_to_lower_case'];
+$replace_space_between_words_with_dash = $tolc_conf['pref_url_replace_space_between_words_with_dash'];
+$page_url = sanitize_url($page_url, $url_length, $remove_accents, $convert_to_lower_case, $replace_space_between_words_with_dash);
+
 // preg_match \w does not work with php < 5.3.10
 // @link http://stackoverflow.com/questions/8915713/php5-3-preg-match-with-umlaute-utf-8-modifier
 if(version_compare(phpversion(), '5.3.10', 'ge')) {

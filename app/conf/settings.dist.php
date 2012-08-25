@@ -53,8 +53,11 @@ $tolc_conf['pref_error_reporting'] = 'E_ALL ^ E_NOTICE';
 $tolc_conf['pref_default_locale_code'] = 'en_GB';
 $tolc_conf['pref_default_locale_encoding'] = '.UTF-8';
 
-/* URL max length */
-$tolc_conf['pref_url_max_length'] = 50;
+/* URL properties */
+$tolc_conf['pref_url_max_length'] = 150;
+$tolc_conf['pref_url_remove_accents'] = true;
+$tolc_conf['pref_url_convert_to_lower_case'] = true;
+$tolc_conf['pref_url_replace_space_between_words_with_dash'] = true;
 
 /* reserved urls */
 $tolc_conf['pref_reserved_urls'] = array(
