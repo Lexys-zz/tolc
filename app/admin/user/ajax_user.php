@@ -20,6 +20,7 @@ require_once '../../conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
 require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
+require_once PHPASS;
 
 // get params
 $username = $_POST['username'];
@@ -30,6 +31,9 @@ $fullname = htmlspecialchars($_POST['fullname'], ENT_QUOTES, 'UTF-8');
 $email = $_POST['email'];
 $url = $_POST['url'];
 $password_strength = $_POST['password_strength'];
+
+// Initialize the hasher without portable hashes (this is more secure)
+$hasher = new PasswordHash(8, false);
 
 // password checks (if password changed)
 if($old_password) {
@@ -144,10 +148,14 @@ if($username_changed) {
 }
 
 // check for correct old_password
-if($old_password && (md5($old_password) !== $current_password)) {
-	print gettext('Old password is not correct') . '...';
-	exit;
+if($old_password) {
+	$valid_old_password = $hasher->CheckPassword($old_password, $current_password);
+	if(!$valid_old_password) {
+		print gettext('Old password is not correct') . '...';
+		exit;
+	}
 }
+
 
 // check for unique email | CASE IN-SENSITIVE
 $email_changed = ($email !== $current_email);
@@ -173,7 +181,7 @@ if($email_changed) {
 // proceed to update
 $sql = 'UPDATE www_users SET ';
 $sql .= $username_changed ? 'username=' . $conn->qstr($username) . ',' : '';
-$sql .= ($old_password && (md5($new_password) !== $current_password)) ? 'password=' . $conn->qstr(md5($new_password)) . ',' : '';
+$sql .= $old_password ? 'password=' . $conn->qstr($hasher->HashPassword($new_password)) . ',' : '';
 $sql .= 'email=' . $conn->qstr($email) . ',';
 $sql .= 'fullname=' . $conn->qstr($fullname) . ',';
 $sql .= $url ? 'url=' . $conn->qstr($url) . ' ' : 'url=null' . ' ';
