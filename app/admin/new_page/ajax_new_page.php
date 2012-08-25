@@ -55,7 +55,15 @@ if(preg_match('/\040\040/', $page_url)) {
 	exit;
 }
 
-if(preg_match(CONST_REGEX_SANITIZE_URL, $page_url)) {
+// preg_match \w does not work with php < 5.3.10
+// @link http://stackoverflow.com/questions/8915713/php5-3-preg-match-with-umlaute-utf-8-modifier
+if(version_compare(phpversion(), '5.3.10', 'ge')) {
+	$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $page_url) ? true : false;
+} else {
+	$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL_LEGACY, $page_url) ? true : false;
+}
+
+if($invalid_url) {
 	print gettext('Invalid URL') . '.' . ' ' . gettext('Valid URL may contain letters, digits, space and the characters') . ' '. '.-_/';
 	exit;
 }

@@ -19,8 +19,27 @@ $url = mb_substr(urldecode($_SERVER['REQUEST_URI']), mb_strlen($tolc_conf['proje
 // check for valid URL
 $url = trim($url);
 $url = preg_replace('/\s+/', ' ', $url); //replace multiple spaces with one
+$url = preg_replace('/-+/', '-', $url); //replace multiple dashes with one
+$url = preg_replace('/_+/', '.', $url); //replace multiple slashes with one
+$url = preg_replace('/\/+/', '/', $url); //replace multiple slashes with one
+$url = preg_replace('/:+/', ':', $url); //replace multiple colon with one
+$url = preg_replace('/.+/', '.', $url); //replace multiple dots with one
+
+$url = removeAccents($url); // remove accented characters
+
+$url = mb_strtolower($url); // convert to lower case
+
+$url = preg_replace('/ /', '-', $url); //replace space between words with dash
+
 $url = mb_substr($url, 0, min($tolc_conf['pref_url_max_length'], CONST_URL_DB_MAXLENGTH)); // truncate to max length
-$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
+
+// preg_match \w does not work with php < 5.3.10
+// @link http://stackoverflow.com/questions/8915713/php5-3-preg-match-with-umlaute-utf-8-modifier
+if(version_compare(phpversion(), '5.3.10', 'ge')) {
+	$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
+} else {
+	$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL_LEGACY, $url) ? true : false;
+}
 
 // prevent direct access of '/app/index.php'
 if($url == '/app/index.php' || $url == '/app/') {
