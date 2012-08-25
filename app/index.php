@@ -24,13 +24,7 @@ $replace_space_between_words_with_dash = $tolc_conf['pref_url_replace_space_betw
 $url = sanitize_url($url, $url_length, $remove_accents, $convert_to_lower_case, $replace_space_between_words_with_dash);
 
 // check for valid URL
-// preg_match \w does not work with php < 5.3.10
-// @link http://stackoverflow.com/questions/8915713/php5-3-preg-match-with-umlaute-utf-8-modifier
-if(version_compare(phpversion(), '5.3.10', 'ge')) {
-	$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? true : false;
-} else {
-	$invalid_url = preg_match(CONST_REGEX_SANITIZE_URL_LEGACY, $url) ? true : false;
-}
+$valid_url = valid_url($url);
 
 // prevent direct access of '/app/index.php'
 if($url == '/app/index.php' || $url == '/app/') {
@@ -62,7 +56,7 @@ if(in_array(mb_strtolower($url), array_map('mb_strtolower', $tolc_conf['pref_res
 	$_SESSION['url'] = $url;
 }
 
-if(!$invalid_url) {
+if($valid_url) {
 	// get page
 	$a_page = get_page($conn, $url);
 	$www_pages_id = $a_page['page_id'];
