@@ -24,7 +24,7 @@ if(!isset($_SESSION['username'])) {
 		unset($_SESSION['url_reserved']);
 	} else {
 		if($www_pages_id == 0) {
-			if(!$invalid_url) {
+			if($valid_url) {
 				include 'inc_tolc_functions/inc_login_required_new_page.php';
 			} else {
 				include 'inc_tolc_functions/inc_invalid_url.php';
@@ -50,7 +50,7 @@ if(!isset($_SESSION['username'])) {
 		unset($_SESSION['url_reserved']);
 	} else {
 		if($www_pages_id == 0) {
-			if(!$invalid_url) {
+			if($valid_url) {
 				include 'inc_tolc_functions/inc_new_page.php';
 			} else {
 				include 'inc_tolc_functions/inc_invalid_url.php';

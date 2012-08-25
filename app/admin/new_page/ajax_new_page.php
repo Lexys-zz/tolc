@@ -63,10 +63,10 @@ $replace_space_between_words_with_dash = $tolc_conf['pref_url_replace_space_betw
 $page_url = sanitize_url($page_url, $url_length, $remove_accents, $convert_to_lower_case, $replace_space_between_words_with_dash);
 
 // check for valid URL
-$valid_url = valid_url($page_url);
+$valid_url = valid_url($page_url, CONST_REGEX_SANITIZE_URL, CONST_REGEX_SANITIZE_URL_LEGACY);
 
 if(!$valid_url) {
-	print gettext('Invalid URL') . '.' . ' ' . gettext('Valid URL may contain letters, digits, space and the characters') . ' '. '.-_/';
+	print gettext('Invalid URL') . '.' . ' ' . gettext('Valid URL may contain letters, digits, space and the characters') . ' ' . '.-_/';
 	exit;
 }
 

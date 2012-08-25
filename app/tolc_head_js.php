@@ -30,7 +30,7 @@ if(!isset($_SESSION['username'])) {
 		}
 	} else {
 		if($www_pages_id == 0) {
-			if(!$invalid_url) {
+			if($valid_url) {
 				?>
 			<script type="text/javascript"
 					src="<?php print $tolc_conf['project_url'] ?>/app/login/login_required_new_page.js?version=4"></script>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['username'])) {
 		}
 	} else {
 		if($www_pages_id == 0) {
-			if(!$invalid_url) {
+			if($valid_url) {
 				?>
 			<script type="text/javascript"
 					src="<?php print $tolc_conf['project_url'] ?>/app/admin/new_page/new_page.js?version=1"></script>

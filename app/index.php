@@ -24,7 +24,7 @@ $replace_space_between_words_with_dash = $tolc_conf['pref_url_replace_space_betw
 $url = sanitize_url($url, $url_length, $remove_accents, $convert_to_lower_case, $replace_space_between_words_with_dash);
 
 // check for valid URL
-$valid_url = valid_url($url);
+$valid_url = valid_url($url, CONST_REGEX_SANITIZE_URL, CONST_REGEX_SANITIZE_URL_LEGACY);
 
 // prevent direct access of '/app/index.php'
 if($url == '/app/index.php' || $url == '/app/') {

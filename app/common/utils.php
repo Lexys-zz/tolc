@@ -308,17 +308,18 @@ function sanitize_url($url,
  * preg_match \w (unicode word characters) does not work with php < 5.3.10
  *
  * @param $url
+ * @param $str_regex
+ * @param $str_regex_php_legacy
  * @return bool
  *
  * @link http://stackoverflow.com/questions/8915713/php5-3-preg-match-with-umlaute-utf-8-modifier
- *
  */
-function valid_url($url) {
+function valid_url($url, $str_regex, $str_regex_php_legacy) {
 	$res = true;
 	if(version_compare(phpversion(), '5.3.10', 'ge')) {
-		$res = preg_match(CONST_REGEX_SANITIZE_URL, $url) ? false : true;
+		$res = preg_match($str_regex, $url) ? false : true;
 	} else {
-		$res = preg_match(CONST_REGEX_SANITIZE_URL_LEGACY, $url) ? false : true;
+		$res = preg_match($str_regex_php_legacy, $url) ? false : true;
 	}
 	return $res;
 }
