@@ -5,3 +5,5 @@ tolc - the simple cms
 
 Documentation (en): http://wiki.medisign.com/tolc
 Documentation (el): http://wiki.medisign.gr/tolc
+
+Discussion group: https://groups.google.com/forum/#!forum/tolc-the-simple-cms
