@@ -6,7 +6,8 @@ if(!$tolc_include) {
 }
 ?>
 <link href="<?php print JQUERY_UI_CSS_URL ?>" rel="stylesheet" type="text/css"/>
-
+<link href="<?php print JQUERY_UI_DATETIMEPICKER_CSS_URL ?>"
+	  rel="stylesheet" type="text/css">
 <?php
 if(!isset($_SESSION['username'])) {
 

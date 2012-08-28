@@ -2,37 +2,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 18:27+0200\n"
-"PO-Revision-Date: 2012-08-22 18:27+0200\n"
+"POT-Creation-Date: 2012-08-28 22:54+0200\n"
+"PO-Revision-Date: 2012-08-28 22:54+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
-"Language: \n"
+"Language: el_GR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: /srv/http/dev/tolc/app\n"
-"X-Poedit-Language: Greek\n"
-"X-Poedit-Country: GREECE\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:65
+#: index.php:69 inc_tolc_functions/inc_login_required_new_page.php:5
+#: inc_tolc_functions/inc_new_page.php:10
 msgid "New page"
 msgstr "Νέα σελίδα"
 
-#: index.php:65
+#: index.php:69 inc_tolc_functions/inc_login_required_new_page.php:6
 msgid "Page does not exist"
 msgstr "Η σελίδα δεν υπάρχει"
 
-#: index.php:69
-#: index.php:74
+#: index.php:73 index.php:78 inc_tolc_functions/inc_page_not_found.php:5
+#: inc_tolc_functions/inc_page_not_found.php:6
 msgid "Page not found"
 msgstr "Η σελίδα δεν βρέθηκε"
 
-#: index.php:81
-#: admin/new_page/ajax_new_page.php:59
-#: admin/user/ajax_user.php:79
+#: index.php:85 admin/new_page/ajax_new_page.php:67
+#: admin/user/ajax_user.php:83 inc_tolc_functions/inc_invalid_url.php:5
+#: inc_tolc_functions/inc_invalid_url.php:6
 msgid "Invalid URL"
 msgstr "Το URL δεν δόθηκε σωστά"
 
@@ -48,8 +47,7 @@ msgstr "Μπορείτε να"
 msgid "change your profile"
 msgstr "τροποποιήσετε τα στοιχεία σας"
 
-#: tolc_panel.php:27
-#: tolc_panel.php:72
+#: tolc_panel.php:27 tolc_panel.php:72
 msgid "or"
 msgstr "ή"
 
@@ -61,8 +59,7 @@ msgstr "τις τοπικές ρυθμίσεις"
 msgid "Disconnect"
 msgstr "Αποσύνδεση"
 
-#: tolc_panel.php:34
-#: tolc_panel.php:83
+#: tolc_panel.php:34 tolc_panel.php:83
 msgid "here"
 msgstr "εδώ"
 
@@ -74,8 +71,7 @@ msgstr "Διαχείριση περιεχομένου"
 msgid "Edit page properties"
 msgstr "Ιδιότητες σελίδας"
 
-#: tolc_panel.php:44
-#: admin/user/ajax_user_form.php:118
+#: tolc_panel.php:44 admin/user/ajax_user_form.php:118
 msgid "URL"
 msgstr "URL"
 
@@ -83,8 +79,7 @@ msgstr "URL"
 msgid "title"
 msgstr "τίτλος"
 
-#: tolc_panel.php:44
-#: tolc_panel.php:62
+#: tolc_panel.php:44 tolc_panel.php:62
 msgid "etc"
 msgstr "κλπ"
 
@@ -144,21 +139,26 @@ msgstr "Βρείτε περισσότερα"
 msgid "Loading"
 msgstr "Παρακαλώ, περιμένετε"
 
-#: admin/new_page/ajax_new_page.php:48
+#: admin/new_page/ajax_new_page.php:46
 msgid "Max length of URL is"
 msgstr "Ο μέγιστος αριθμός χαρακτήρων του URL είναι"
 
-#: admin/new_page/ajax_new_page.php:54
+#: admin/new_page/ajax_new_page.php:52
 msgid "Only one space allowed between words"
 msgstr "Μόνο ένα κενό επιτρέπεται μεταξύ λέξεων"
 
-#: admin/new_page/ajax_new_page.php:59
+#: admin/new_page/ajax_new_page.php:67
+#: inc_tolc_functions/inc_invalid_url.php:6
 msgid "Valid URL may contain letters, digits, space and the characters"
 msgstr "Το URL μπορεί να περιέχει γράμματα, αριθμούς, κενό και τους χαρακτήρες"
 
-#: admin/new_page/ajax_new_page.php:70
+#: admin/new_page/ajax_new_page.php:78
 msgid "URL already exists"
 msgstr "Το URL υπάρχει ήδη"
+
+#: admin/new_page/ajax_new_page.php:88
+msgid "Invalid date"
+msgstr "Η ημερομηνία δεν δόθηκε σωστά"
 
 #: admin/new_page/ajax_new_page_form.php:48
 msgid "New page URL"
@@ -172,77 +172,80 @@ msgstr "Τίτλος σελίδας"
 msgid "Template"
 msgstr "Πρότυπο"
 
-#: admin/new_page/ajax_new_page_form.php:63
-#: admin/rte/rte.php:173
+#: admin/new_page/ajax_new_page_form.php:63 admin/rte/rte.php:171
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
 #: admin/new_page/ajax_new_page_form.php:73
+msgid "Start date"
+msgstr "Ημερομηνία έναρξης"
+
+#: admin/new_page/ajax_new_page_form.php:79
 msgid "Belongs to"
 msgstr "Ανήκει σε"
 
-#: admin/user/ajax_user.php:39
+#: admin/user/ajax_user.php:43
 msgid "Password characters are less than"
 msgstr "Οι χαρακτήρες του κωδικού (password) είναι λιγότεροι από "
 
-#: admin/user/ajax_user.php:43
+#: admin/user/ajax_user.php:47
 msgid "Password characters are more than"
 msgstr "Οι χαρακτήρες του κωδικού (password) είναι περισσότεροι από "
 
-#: admin/user/ajax_user.php:49
+#: admin/user/ajax_user.php:53
 msgid "Password strength is less than"
 msgstr "Το επίπεδο ασφαλείας του κωδικού (password) είναι μικρότερο από"
 
-#: admin/user/ajax_user.php:55
+#: admin/user/ajax_user.php:59
 msgid "New password does not match with its verification"
 msgstr "Το password δεν ταιριάζει με την επαλήθευση"
 
-#: admin/user/ajax_user.php:62
+#: admin/user/ajax_user.php:66
 msgid "New password contains invalid characters"
 msgstr "Ο νέος κωδικός (password) περιέχει μη αποδεκτούς χαρακτήρες"
 
-#: admin/user/ajax_user.php:66
+#: admin/user/ajax_user.php:70
 msgid "Password verification contains invalid characters"
 msgstr "Η επαλήθευση του password περιέχει μη αποδεκτούς χαρακτήρες"
 
-#: admin/user/ajax_user.php:73
+#: admin/user/ajax_user.php:77
 msgid "Invalid email"
 msgstr "Το email δεν δόθηκε σωστά"
 
-#: admin/user/ajax_user.php:106
+#: admin/user/ajax_user.php:110
 msgid "Username characters are less than"
 msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι λιγότεροι από "
 
-#: admin/user/ajax_user.php:110
+#: admin/user/ajax_user.php:114
 msgid "Username characters are more than"
 msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι περισσότεροι από "
 
-#: admin/user/ajax_user.php:117
+#: admin/user/ajax_user.php:121
 msgid "Username contains invalid characters"
 msgstr "Το username περιέχει μη αποδεκτούς χαρακτήρες"
 
-#: admin/user/ajax_user.php:123
+#: admin/user/ajax_user.php:127
 msgid "Selected username is reserved and cannot be used"
 msgstr "Το όνομα χρήστη (username) δεν είναι αποδεκτό"
 
-#: admin/user/ajax_user.php:137
+#: admin/user/ajax_user.php:141
 msgid "Given username is currently in use"
 msgstr "Το όνομα χρήστη (username) χρησιμοποιείται ήδη"
 
-#: admin/user/ajax_user.php:148
+#: admin/user/ajax_user.php:154
 msgid "Old password is not correct"
 msgstr "Ο προηγούμενος κωδικός δεν δόθηκε σωστά"
 
-#: admin/user/ajax_user.php:164
+#: admin/user/ajax_user.php:172
 msgid "Given email is currently in use"
 msgstr "Το email χρησιμοποιείται ήδη"
 
-#: admin/user/ajax_user_form.php:40
+#: admin/user/ajax_user_form.php:40 inc_tolc_functions/inc_admin_mode.php:17
 msgid "help"
 msgstr "οδηγίες"
 
-#: admin/user/ajax_user_form.php:48
-#: admin/user/ajax_user_form.php:53
+#: admin/user/ajax_user_form.php:48 admin/user/ajax_user_form.php:53
+#: login/ajax_login_form.php:44
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
@@ -254,7 +257,7 @@ msgstr "Παλιός κωδικός"
 msgid "New password"
 msgstr "Νέος κωδικός"
 
-#: admin/user/ajax_user_form.php:74
+#: admin/user/ajax_user_form.php:74 login/ajax_login_form.php:50
 msgid "Password"
 msgstr "Κωδικός"
 
@@ -266,7 +269,7 @@ msgstr "Επίπεδο ασφαλείας κωδικού"
 msgid "Generate"
 msgstr "Δημιουργία"
 
-#: admin/user/ajax_user_form.php:85
+#: admin/user/ajax_user_form.php:85 inc_tolc_functions/inc_admin_mode.php:38
 msgid "Unmask"
 msgstr "Εμφάνιση"
 
@@ -282,71 +285,71 @@ msgstr "Πλήρες όνομα"
 msgid "Email"
 msgstr "Email"
 
-#: admin/rte/rte.php:80
+#: admin/rte/rte.php:78
 msgid "Show/hide tools"
 msgstr "Εμφάνιση/απόκρυψη εργαλείων"
 
-#: admin/rte/rte.php:81
+#: admin/rte/rte.php:79 inc_tolc_functions/inc_admin_mode.php:21
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: admin/rte/rte.php:86
+#: admin/rte/rte.php:84
 msgid "Page has been removed. To activate it, press here"
 msgstr "Η σελίδα έχει απομακρυνθεί. Για να ενεργοποιηθεί, πιέστε εδώ"
 
-#: admin/rte/rte.php:87
+#: admin/rte/rte.php:85
 msgid "Activate page"
 msgstr "Ενεργοποποίηση σελίδας"
 
-#: admin/rte/rte.php:89
+#: admin/rte/rte.php:87
 msgid "To remove the whole page, press here"
 msgstr "Για να απομακρυνθεί η σελίδα, πιέστε εδώ"
 
-#: admin/rte/rte.php:90
+#: admin/rte/rte.php:88
 msgid "Remove page"
 msgstr "Απομάκρυνση σελίδας"
 
-#: admin/rte/rte.php:96
+#: admin/rte/rte.php:94
 msgid "New content version"
 msgstr "Νέα έκδοση περιεχομένου"
 
-#: admin/rte/rte.php:98
+#: admin/rte/rte.php:96
 msgid "Page versions"
 msgstr "Εκδόσεις σελίδας"
 
-#: admin/rte/rte.php:103
+#: admin/rte/rte.php:101
 msgid "Delete version"
 msgstr "Διαγραφή έκδοσης"
 
-#: admin/rte/rte.php:104
+#: admin/rte/rte.php:102
 msgid "New version like current"
 msgstr "Νέα έκδοση βασισμένη στην τρέχουσα"
 
-#: admin/rte/rte.php:110
+#: admin/rte/rte.php:108
 msgid "Add new version"
 msgstr "Καταχώρηση νέας έκδοσης"
 
-#: admin/rte/rte.php:111
+#: admin/rte/rte.php:109
 msgid "Save version"
 msgstr "Αποθήκευση έκδοσης"
 
-#: admin/rte/rte.php:116
+#: admin/rte/rte.php:114 admin/rte/ajax_load_page_version.php:135
 msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
-#: admin/rte/rte.php:124
+#: admin/rte/rte.php:122 admin/rte/ajax_load_page_version.php:136
 msgid "Published from"
 msgstr "Δημοσίευση από"
 
-#: admin/rte/rte.php:131
+#: admin/rte/rte.php:129 admin/rte/ajax_load_page_version.php:137
 msgid "until"
 msgstr "μέχρι"
 
-#: admin/rte/rte.php:138
+#: admin/rte/rte.php:136 admin/rte/ajax_load_page_version.php:139
 msgid "Content status"
 msgstr "Κατάσταση περιεχομένου"
 
-#: admin/rte/rte.php:145
+#: admin/rte/rte.php:143 admin/rte/ajax_load_page_version.php:140
 msgid "Managed by"
 msgstr "Διαχείριση από"
 
@@ -363,8 +366,7 @@ msgid "Save"
 msgstr "Αποθήκευση"
 
 #: inc_tolc_functions/inc_admin_mode.php:20
-#: inc_tolc_functions/inc_new_page.php:3
-#: inc_tolc_functions/inc_regional.php:7
+#: inc_tolc_functions/inc_new_page.php:3 inc_tolc_functions/inc_regional.php:7
 #: inc_tolc_functions/inc_login.php:7
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -377,8 +379,7 @@ msgstr "ολόκληρη η σελίδα"
 msgid "Mask"
 msgstr "Απόκρυψη"
 
-#: inc_tolc_functions/inc_admin_mode.php:40
-#: inc_tolc_functions/inc_login.php:9
+#: inc_tolc_functions/inc_admin_mode.php:40 inc_tolc_functions/inc_login.php:9
 msgid "Username is required"
 msgstr "Το όνομα χρήστη δεν δόθηκε"
 
@@ -402,15 +403,15 @@ msgstr "Το πλήρες όνομα του χρήστη δεν δόθηκε"
 msgid "User email is required"
 msgstr "Το email του χρήστη δεν δόθηκε"
 
-#: inc_tolc_functions/inc_admin_mode.php:59
+#: inc_tolc_functions/inc_admin_mode.php:57
 msgid "About"
 msgstr "Σχετικά με Tolc"
 
-#: inc_tolc_functions/inc_admin_mode.php:63
+#: inc_tolc_functions/inc_admin_mode.php:61
 msgid "Change password"
 msgstr "Αλλαγή κωδικού (password)"
 
-#: inc_tolc_functions/inc_admin_mode.php:63
+#: inc_tolc_functions/inc_admin_mode.php:61
 msgid "User profile"
 msgstr "Στοιχεία χρήστη"
 
@@ -435,6 +436,10 @@ msgid "Page template is required"
 msgstr "Το πρότυπο της σελίδας είναι απαραίτητο"
 
 #: inc_tolc_functions/inc_new_page.php:7
+msgid "Starting date is required"
+msgstr "Η ημερομηνία έναρξης είναι απαραίτητη"
+
+#: inc_tolc_functions/inc_new_page.php:8
 msgid "Please, select the parent page (title or URL)"
 msgstr "Παρακαλώ, επιλέξτε τη σελίδα που ανήκει (δίνοντας τίτλο ή URL)"
 
@@ -446,8 +451,7 @@ msgstr "Τοπικές ρυθμίσεις"
 msgid "Apply"
 msgstr "Εφαρμογή"
 
-#: inc_tolc_functions/inc_login.php:2
-#: inc_tolc_functions/inc_login.php:5
+#: inc_tolc_functions/inc_login.php:2 inc_tolc_functions/inc_login.php:5
 #: inc_tolc_functions/inc_already_logged_in.php:5
 msgid "Login"
 msgstr "Σύνδεση"
@@ -460,55 +464,55 @@ msgstr "Ο κωδικός δεν δόθηκε"
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/init.php:119
+#: common/init.php:120
 msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
-#: common/init.php:129
+#: common/init.php:130
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/init.php:130
+#: common/init.php:131
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/init.php:131
+#: common/init.php:132
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/init.php:148
+#: common/init.php:149
 msgid "admin"
 msgstr "διαχειριστής"
 
-#: common/init.php:149
+#: common/init.php:150
 msgid "editor in chief"
 msgstr "αρχισυντάκτης"
 
-#: common/init.php:150
+#: common/init.php:151
 msgid "editor"
 msgstr "συντάκτης"
 
-#: common/init.php:151
+#: common/init.php:152
 msgid "common user"
 msgstr "κοινός χρήστης"
 
-#: common/init.php:171
+#: common/init.php:172
 msgid "draft"
 msgstr "πρόχειρο"
 
-#: common/init.php:172
+#: common/init.php:173
 msgid "pending review"
 msgstr "προς αξιολόγηση"
 
-#: common/init.php:173
+#: common/init.php:174
 msgid "under review"
 msgstr "υπό αξιολόγηση"
 
-#: common/init.php:174
+#: common/init.php:175
 msgid "approved"
 msgstr "εγκεκριμένο"
 
-#: common/init.php:175
+#: common/init.php:176
 msgid "rejected"
 msgstr "απορριφθέν"
 
@@ -516,18 +520,19 @@ msgstr "απορριφθέν"
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: login/ajax_login.php:42
-#: login/ajax_login.php:45
+#: login/ajax_login.php:45 login/ajax_login.php:48
 msgid "Login failed"
 msgstr "Η σύνδεση απέτυχε"
 
 #: help/help.php:33
 msgid "Username can use any combination of the following characters"
-msgstr "Το όνομα χρήστη (username) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
+msgstr ""
+"Το όνομα χρήστη (username) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
 
 #: help/help.php:42
 msgid "Password can use any combination of the following characters"
-msgstr "Ο κωδικός χρήστη (password) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
+msgstr ""
+"Ο κωδικός χρήστη (password) μπορεί να περιέχει τους ακόλουθους χαρακτήρες"
 
 #: regional/ajax_regional_form.php:23
 msgid "Timezone"
@@ -536,6 +541,9 @@ msgstr "Ζώνη ώρας"
 #: regional/ajax_regional_form.php:34
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
+
+#~ msgid "From"
+#~ msgstr "Από"
 
 #~ msgid "removed page"
 #~ msgstr "απομακρυνθείσα σελίδα"
@@ -551,9 +559,6 @@ msgstr "Μορφή ημερομηνίας"
 
 #~ msgid "to be published from"
 #~ msgstr "προς δημοσίευση από"
-
-#~ msgid "From"
-#~ msgstr "Από"
 
 #~ msgid "pending publication"
 #~ msgstr "σε αναμονή για δημοσίευση"

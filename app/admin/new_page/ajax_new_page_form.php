@@ -68,6 +68,12 @@ if($conn)
 	</select>
 </div>
 
+<div id="row_date_start" class="field_container">
+	<label id="lbl_date_start" for="date_start"
+		   class="required"><?php print gettext('Start date') ?></label>
+	<input id="date_start">
+</div>
+
 <div id="row_parent_id" class="field_container">
 	<label id="lbl_parent_title" for="parent_title"
 		   class="required"><?php print gettext('Belongs to') ?></label>

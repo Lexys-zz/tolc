@@ -9,6 +9,15 @@ if(!$tolc_include) {
 <script type="text/javascript" src="<?php print JQUERY_URL ?>"></script>
 <script type="text/javascript" src="<?php print JQUERY_UI_URL ?>"></script>
 <script type="text/javascript" src="<?php print JUI_ALERT_URL ?>"></script>
+<script type="text/javascript"
+		src="<?php print JQUERY_UI_DATETIMEPICKER_URL ?>"></script>
+
+<?php if(substr($_SESSION['locale'], 0, 2) !== 'en') { ?>
+<script type="text/javascript"
+		src="<?php print JQUERY_UI_i18n_DIR . '/jquery.ui.datepicker-' . substr($_SESSION['locale'], 0, 2) . '.js' ?>"></script>
+<script type="text/javascript"
+		src="<?php print JQUERY_UI_DATETIMEPICKER_i18n_URL ?>"></script>
+<?php } ?>
 
 <?php
 if(!isset($_SESSION['username'])) {

@@ -26,13 +26,11 @@ require_once $tolc_conf['project_dir'] . '/app/common/utils.php';
 $page_url = $_POST['page_url'];
 $page_title = htmlspecialchars($_POST['page_title'], ENT_QUOTES, 'UTF-8');
 $www_templates_id = $_POST['www_templates_id'];
+$date_start = $_POST['date_start'];
 $parent_id = $_POST['parent_id'];
 
 // connect to database
 $conn = get_db_conn($tolc_conf['dbdriver']);
-
-// get current time (in UTC)
-$now = $conn->qstr(now($_SESSION['user_timezone']));
 
 // get current user id
 $sql = 'SELECT id FROM www_users WHERE username=' . $conn->qstr($_SESSION['username']);
@@ -82,6 +80,17 @@ if($rs === false) {
 	}
 }
 
+// check valid datetime
+$date_start = trim($date_start);
+$user_tz = $_SESSION['user_timezone'];
+$user_df_php_datetime = $a_date_format[$_SESSION['user_dateformat']]['php_datetime'];
+if(!isValidDateTimeString($date_start, $user_df_php_datetime, $user_tz)) {
+	print gettext('Invalid date') . '...';
+	exit;
+}
+$date_start_encoded = date_encode($date_start, $user_tz, $user_df_php_datetime);
+$date_start_sql = $conn->qstr($date_start_encoded);
+
 // proceed to insert
 $conn->BeginTrans();
 
@@ -107,28 +116,13 @@ $sql = 'INSERT INTO www_page_templates ' .
 	'VALUES (' .
 	$www_pages_id . ',' .
 	$www_templates_id . ',' .
-	$now .
+	$date_start_sql .
 	')';
 if($conn->Execute($sql) === false) {
 	$err = $conn->ErrorMsg();
 	$conn->RollbackTrans();
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
 }
-
-/*// insert first version for new inserted page
-$sql = 'INSERT INTO www_page_versions ' .
-	'(www_pages_id,lk_content_status_id,date_inserted,author_id) ' .
-	'VALUES (' .
-	$www_pages_id . ',' .
-	CONST_CONTENT_STATUS_DRAFT_KEY . ',' .
-	$now . ',' .
-	$www_users_id .
-	')';
-if($conn->Execute($sql) === false) {
-	$err = $conn->ErrorMsg();
-	$conn->RollbackTrans();
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $err, E_USER_ERROR);
-}*/
 
 $conn->CommitTrans();
 
