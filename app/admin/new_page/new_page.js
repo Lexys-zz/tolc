@@ -3,6 +3,10 @@ $(function () {
     var btn_do_new_page_value = $("#btn_do_new_page").val();
     var btn_cancel_new_page_value = $("#btn_cancel_new_page").val();
 
+    var lang = $("#lang").val();
+    var dateformat = $("#dateformat").val();
+    var timeformat = $("#timeformat").val();
+
     $("#new_page_form").dialog({
         autoOpen: true,
         show: "blind",
@@ -28,6 +32,19 @@ $(function () {
                         }
                     }
                 });
+
+                $("#date_start").datetimepicker(
+                    {
+                        dateFormat: dateformat,
+                        timeFormat: timeformat,
+                        showSecond: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        showButtonPanel: true
+                    },
+                    $.datepicker.regional[ lang ],
+                    $.timepicker.regional[ lang ]
+                );
 
                 // mustMatch (no value) implementation
                 $("#parent_title").focusout(function() {
@@ -65,6 +82,10 @@ $(function () {
                             update_user_message($("#msg_template_required").val());
                             break;
                         case 4:
+                            $("#date_start").focus();
+                            update_user_message($("#msg_date_start_required").val());
+                            break;
+                        case 5:
                             $("#parent_title").focus();
                             update_user_message($("#msg_parent_required").val());
                             break;
@@ -76,6 +97,7 @@ $(function () {
                                     page_url: $("#page_url").val(),
                                     page_title: $("#page_title").val(),
                                     www_templates_id: $("#www_templates_id").val(),
+                                    date_start: $("#date_start").val(),
                                     parent_id: $("#parent_id").val()
                                 },
                                 success: function (data) {
@@ -116,11 +138,14 @@ function validate_new_page_form() {
     if ($("#page_title").val().length == 0) {
         return 2;
     }
-    if ($("#www_templates_id").val().length == 0) {
+    if ($("#www_templates_id").val() == 0) {
         return 3;
     }
-    if ($("#parent_id").val().length == 0) {
+    if ($("#date_start").val().length == 0) {
         return 4;
+    }
+    if ($("#parent_id").val().length == 0) {
+        return 5;
     }
     return 0;
 }

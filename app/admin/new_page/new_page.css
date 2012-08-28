@@ -39,6 +39,10 @@
     width: 60%;
 }
 
+#date_start{
+    width: 40%;
+}
+
 .required {
     color: #9c1821 !important;
     font-weight: bold !important;
@@ -46,4 +50,9 @@
 
 .ui-autocomplete li {
     text-align: left;
+}
+
+/* DATEPICKER FONT-SIZE ----------------------------------------------------- */
+div.ui-datepicker {
+    font-size: 12px;
 }
