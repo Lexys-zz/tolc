@@ -324,4 +324,17 @@ function valid_url($url, $str_regex, $str_regex_php_legacy) {
 	return $res;
 }
 
+/**
+ * Check if a string is a valid date(time)
+ *
+ * @param $str_dt
+ * @param $str_dateformat
+ * @param $str_timezone
+ * @return bool
+ */
+function isValidDateTimeString($str_dt, $str_dateformat, $str_timezone) {
+	$date = DateTime::createFromFormat($str_dateformat, $str_dt, new DateTimeZone($str_timezone));
+	return ($date === false ? false : true);
+}
+
 ?>
