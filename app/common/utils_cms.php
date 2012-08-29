@@ -166,6 +166,31 @@ function get_page_template($conn, $page_id, $dt) {
 	return $a_res;
 }
 
+
+/**
+ * Get first template date_start for given page and timezone in format YYYYMMDDHHMMSS
+ *
+ * @param $conn
+ * @param $page_id
+ * @param $str_timezone
+ * @return mixed
+ */
+function get_first_template_date($conn, $page_id, $str_timezone) {
+
+	$sql = 'SELECT date_start FROM www_page_templates WHERE www_pages_id=' . $page_id . ' ORDER BY date_start';
+	$rs = $conn->SelectLimit($sql, 1, 0);
+	if($rs === false) {
+		trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);
+	} else {
+		$date_start = $rs->fields['date_start'];
+	}
+
+	$dt = DateTime::createFromFormat('YmdHis', $date_start);
+    $dt->setTimezone(new DateTimeZone($str_timezone));
+	return $dt->format('YmdHis');
+}
+
+
 /**
  * @param $html
  * @param $template_base_url
