@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     var project_url = $("#project_url", window.opener.document).val();
     var tinymce_url = $("#tinymce_url", window.opener.document).val();
     var ezfilemanager_url = $("#ezfilemanager_url", window.opener.document).val();
@@ -13,6 +13,14 @@ $(function () {
     var timeformat = $("#timeformat").val();
     var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
     var rsc_please_select = $("#rsc_please_select").val();
+
+    var minYear = $("#minYear").val();
+    var minMonth = $("#minMonth").val();
+    var minDay = $("#minDay").val();
+    var minHour = $("#minHour").val();
+    var minMin = $("#minMin").val();
+    var minSec = $("#minSec").val();
+    var minStartDate = new Date(minYear, minMonth - 1, minDay, minHour, minMin, minSec);
 
     /* timnymce --------------------------------------------------------------*/
     $("#rte").tinymce({
@@ -47,16 +55,16 @@ $(function () {
         // Example content CSS (should be your site CSS)
         content_css: content_css_url,
 
-        setup: function (ed) {
-            if (pref_tinymce_toggle_toolbar) {
-                ed.onInit.add(function (ed) {
+        setup: function(ed) {
+            if(pref_tinymce_toggle_toolbar) {
+                ed.onInit.add(function(ed) {
                     $('#rte_tbl .mceToolbar').hide();
 
-                    ed.getDoc().addEventListener("blur", function () {
+                    ed.getDoc().addEventListener("blur", function() {
                         $('#rte_tbl .mceToolbar').hide();
                     }, true);
 
-                    ed.getDoc().addEventListener("focus", function () {
+                    ed.getDoc().addEventListener("focus", function() {
                         $('#rte_tbl .mceToolbar').show();
                     }, true);
                 });
@@ -65,7 +73,7 @@ $(function () {
             }
         },
 
-        file_browser_callback: function (field_name, url, type, win) {
+        file_browser_callback: function(field_name, url, type, win) {
             var cmsURL = ezfilemanager_url + "?type=" + type + "&tmce=1";
             tinyMCE.activeEditor.windowManager.open({
                 file: cmsURL,
@@ -128,6 +136,8 @@ $(function () {
         }
     });
 
+    // TODO Setting mindate/maxdate via options only sets date
+    // https://github.com/trentrichardson/jQuery-Timepicker-Addon/issues/398
     $("#date_publish_start").datetimepicker(
         {
             dateFormat: dateformat,
@@ -135,7 +145,22 @@ $(function () {
             showSecond: true,
             changeMonth: true,
             changeYear: true,
-            showButtonPanel: true
+            minDate: minStartDate,
+            showButtonPanel: true,
+            onSelect: function(dateText, inst) {
+                $.ajax({
+                    type: 'POST',
+                    url: project_url + "/app/admin/rte/ajax_datetime_range.php",
+                    data: {
+                        dt: dateText
+                    },
+                    success: function(data) {
+                        var j = $.parseJSON(data);
+                        var minEndDate = new Date(j.minYear, j.minMonth - 1, j.minDay, j.minHour, j.minMin, j.minSec);
+                        $("#date_publish_end").datepicker("option", "minDate", minEndDate);
+                    }
+                });
+            }
         },
         $.datepicker.regional[ lang ],
         $.timepicker.regional[ lang ]
@@ -148,6 +173,7 @@ $(function () {
             showSecond: true,
             changeMonth: true,
             changeYear: true,
+            minDate: minStartDate,
             showButtonPanel: true
         },
         $.datepicker.regional[ lang ],
@@ -157,42 +183,42 @@ $(function () {
     /* filedset legend effect ------------------------------------------------*/
     $('legend').siblings().hide();
 
-    $('legend').click(function () {
+    $('legend').click(function() {
         $(this).siblings().slideToggle("slow");
     });
 
     /* controls events -------------------------------------------------------*/
-    $('#btn_remove').click(function () {
+    $('#btn_remove').click(function() {
         var www_page_versions_id = $('#www_page_versions_id').val();
         remove_page('1', www_page_versions_id);
     });
 
-    $('#btn_activate').click(function () {
+    $('#btn_activate').click(function() {
         var www_page_versions_id = $('#www_page_versions_id').val();
         remove_page('0', www_page_versions_id);
     });
 
-    $('#www_page_versions_id').change(function () {
+    $('#www_page_versions_id').change(function() {
         var www_page_versions_id = $('#www_page_versions_id').val();
         load_page_version(www_page_versions_id);
     });
 
-    $('#btn_delete').click(function () {
+    $('#btn_delete').click(function() {
         var www_page_versions_id = $('#www_page_versions_id').val();
         delete_page_version(www_page_versions_id);
     });
 
-    $('#btn_clone').click(function () {
+    $('#btn_clone').click(function() {
         var www_page_versions_id = $('#www_page_versions_id').val();
         clone_page_version(www_page_versions_id);
     });
 
-    $('#btn_save').click(function () {
+    $('#btn_save').click(function() {
         var www_page_versions_id = $('#www_page_versions_id').val();
         save_page_version(www_page_versions_id);
     });
 
-    $('#btn_addnew').click(function () {
+    $('#btn_addnew').click(function() {
         addnew_page_version();
     });
 
@@ -204,7 +230,8 @@ $(function () {
     /* load page version -----------------------------------------------------*/
     load_page_version($("#start_page_versions_id").val());
 
-});
+})
+;
 
 // -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
@@ -221,7 +248,7 @@ function load_page_version(www_page_versions_id) {
             www_pages_id: www_pages_id,
             www_page_versions_id: www_page_versions_id
         },
-        success: function (data) {
+        success: function(data) {
 
             var j = $.parseJSON(data);
             if(www_page_versions_id > 0) {
@@ -250,10 +277,9 @@ function arrange_page_version_controls(www_page_versions_id) {
     }
 }
 
-
 function create_page_versions(a_data, a_css_class, selid) {
     var options = '';
-    $.each(a_data, function (index, value) {
+    $.each(a_data, function(index, value) {
         var i = a_data[index].content_status;
         var css_class = 'class="' + a_css_class[i] + '" ';
         var selected = (selid == a_data[index].version_id ? ' selected' : '');
@@ -266,10 +292,10 @@ function create_page_versions(a_data, a_css_class, selid) {
 
 function create_authors(a_data, selid, please_select) {
     var options = '';
-    if (please_select) {
+    if(please_select) {
         options += '<option value="0">' + please_select + ' </option>';
     }
-    $.each(a_data, function (index, value) {
+    $.each(a_data, function(index, value) {
         var selected = (selid == a_data[index].id ? ' selected' : '');
         options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
     });
@@ -280,7 +306,7 @@ function create_authors(a_data, selid, please_select) {
 function create_content_status(a_keys, a_val, a_css_class, selid) {
     var options = '';
 
-    $.each(a_keys, function (index, value) {
+    $.each(a_keys, function(index, value) {
         var css_class = 'class="' + a_css_class[value] + '" ';
         var selected = (selid == value ? ' selected' : '');
         options += '<option ' + css_class + 'value="' + value + '"' + selected + '>' + a_val[index] + '</option>';
@@ -291,10 +317,10 @@ function create_content_status(a_keys, a_val, a_css_class, selid) {
 
 function create_editors(a_data, selid, please_select) {
     var options = '';
-    if (please_select) {
+    if(please_select) {
         options += '<option value="0">' + please_select + ' </option>';
     }
-    $.each(a_data, function (index, value) {
+    $.each(a_data, function(index, value) {
         var selected = (selid == a_data[index].id ? ' selected' : '');
         options += '<option value="' + a_data[index].id + '"' + selected + '>' + a_data[index].fullname + '</option>';
     });
@@ -313,7 +339,7 @@ function save_page_version(www_page_versions_id) {
         data: {
             www_page_versions_id: www_page_versions_id
         },
-        success: function (data) {
+        success: function(data) {
             load_page_version(www_page_versions_id);
         }
     });
@@ -337,7 +363,7 @@ function addnew_page_version() {
             editor_id: $("#editor_id").val(),
             html: $("#rte").html()
         },
-        success: function (data) {
+        success: function(data) {
             var j = $.parseJSON(data);
             load_page_version(j.www_page_versions_id);
             opener.location.reload();
@@ -355,7 +381,7 @@ function delete_page_version(www_page_versions_id) {
         data: {
             www_page_versions_id: www_page_versions_id
         },
-        success: function (data) {
+        success: function(data) {
             load_page_version(0);
         }
     });
@@ -376,7 +402,7 @@ function remove_page(flag, page_version_id) {
         data: {
             flag: flag
         },
-        success: function (data) {
+        success: function(data) {
             if($.trim(data) == '') {
                 remove_page_controls_toggle(flag);
                 load_page_version(page_version_id);

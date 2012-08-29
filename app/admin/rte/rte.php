@@ -27,6 +27,15 @@ $a_page = get_page($conn, $_SESSION['url']);
 $www_pages_id = $a_page['page_id'];
 $page_title = $a_page['page_title'];
 
+// get first template date
+$first_template_date_start = get_first_template_date($conn, $www_pages_id, $_SESSION['user_timezone']);
+$minYear = substr($first_template_date_start, 0, 4);
+$minMonth = substr($first_template_date_start, 4, 2);
+$minDay = substr($first_template_date_start, 6, 2);
+$minHour = substr($first_template_date_start, 8, 2);
+$minMin = substr($first_template_date_start, 10, 2);
+$minSec = substr($first_template_date_start, 12, 2);
+
 // get page version
 $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONTENT_STATUS_APPROVED_KEY, true);
 ?>
@@ -172,6 +181,12 @@ $start_page_versions_id = get_page_version($conn, $www_pages_id, $dt, CONST_CONT
 
 <input id="start_page_versions_id" type="hidden"
 	   value="<?php print $start_page_versions_id ?>">
+<input id="minYear" type="hidden" value="<?php print $minYear ?>">
+<input id="minMonth" type="hidden" value="<?php print $minMonth ?>">
+<input id="minDay" type="hidden" value="<?php print $minDay ?>">
+<input id="minHour" type="hidden" value="<?php print $minHour ?>">
+<input id="minMin" type="hidden" value="<?php print $minMin ?>">
+<input id="minSec" type="hidden" value="<?php print $minSec ?>">
 </body>
 
 </html>
