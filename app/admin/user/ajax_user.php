@@ -109,9 +109,9 @@ if($rs === false) {
 $username_changed = ($username !== $current_username);
 if($username_changed) {
 
-	// prevent root username modification
-	if($current_username == 'root') {
-		print gettext('Username root cannot be changed') . '...';
+	// prevent system reserved username modification
+	if(mb_strtolower($current_username)) {
+		print $current_username . ': ' . gettext('Username is system reserved and cannot be changed') . '...';
 		exit;
 	}
 

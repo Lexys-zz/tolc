@@ -19,6 +19,11 @@ error_reporting($tolc_conf['pref_error_reporting']);
 set_error_handler('error_handler');
 
 /**
+ * system reserved usernames
+ */
+$a_sys_reserved_usernames = array('root', 'demo');
+
+/**
  * constants based on settings
  */
 $host = $_SERVER['SERVER_NAME'];
