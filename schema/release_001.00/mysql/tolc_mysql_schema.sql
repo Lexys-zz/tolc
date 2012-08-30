@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.25, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.27, for Linux (x86_64)
 --
 -- Host: localhost    Database: tolc_tmpl
 -- ------------------------------------------------------
--- Server version	5.5.25
+-- Server version	5.5.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,8 +30,8 @@ CREATE TABLE `www_content` (
   PRIMARY KEY (`id`),
   KEY `www_content_ix1` (`www_page_versions_id`),
   KEY `www_content_ix2` (`www_template_active_elements_id`),
-  CONSTRAINT `www_content_fk2` FOREIGN KEY (`www_template_active_elements_id`) REFERENCES `www_template_active_elements` (`id`),
-  CONSTRAINT `www_content_fk1` FOREIGN KEY (`www_page_versions_id`) REFERENCES `www_page_versions` (`id`)
+  CONSTRAINT `www_content_fk1` FOREIGN KEY (`www_page_versions_id`) REFERENCES `www_page_versions` (`id`),
+  CONSTRAINT `www_content_fk2` FOREIGN KEY (`www_template_active_elements_id`) REFERENCES `www_template_active_elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -74,7 +74,7 @@ CREATE TABLE `www_page_templates` (
   KEY `www_page_templates_ix3` (`date_start`),
   CONSTRAINT `www_page_templates_fk1` FOREIGN KEY (`www_pages_id`) REFERENCES `www_pages` (`id`),
   CONSTRAINT `www_page_templates_fk2` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,12 +89,12 @@ CREATE TABLE `www_page_versions` (
   `www_pages_id` int(11) NOT NULL,
   `lk_content_status_id` int(11) NOT NULL,
   `date_inserted` varchar(14) NOT NULL,
-  `date_publish_start` varchar(14) DEFAULT NULL,
+  `date_publish_start` varchar(14) NOT NULL,
   `date_publish_end` varchar(14) DEFAULT NULL,
   `author_id` int(11) NOT NULL,
   `editor_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +117,7 @@ CREATE TABLE `www_pages` (
   KEY `www_pages_ix3` (`parent_id`),
   KEY `www_pages_ix4` (`display_order`),
   CONSTRAINT `www_pages_fk1` FOREIGN KEY (`parent_id`) REFERENCES `www_pages` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `www_template_active_elements` (
   KEY `www_template_active_elements_ix1` (`www_templates_id`),
   KEY `www_template_active_elements_ix3` (`display_order`),
   CONSTRAINT `www_template_active_elements_fk1` FOREIGN KEY (`www_templates_id`) REFERENCES `www_templates` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,4 +196,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-11 18:22:26
+-- Dump completed on 2012-08-30 16:57:23

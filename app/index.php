@@ -214,7 +214,7 @@ if($template_body) {
 
 // beautify and print page html
 if($tolc_conf['pref_use_tidy'] && function_exists('tidy_parse_string')) {
-	$tidy = tidy_parse_string($html, $tolc_conf['pref_tidy_config'], $tolc_conf['pref_tidy_encoding']);
+	$tidy = tidy_parse_string($html, $tolc_conf['pref_tidy_config'], CONST_UTF8_NO_DASH);
 	$tidy->cleanRepair();
 	echo $tidy;
 } else {
