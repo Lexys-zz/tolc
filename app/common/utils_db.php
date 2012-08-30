@@ -47,6 +47,5 @@ function get_db_conn($driver) {
 			return $db;
 			break;
 	}
-
 }
 ?>
