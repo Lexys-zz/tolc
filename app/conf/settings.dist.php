@@ -55,7 +55,6 @@ $tolc_conf['pref_error_reporting'] = 'E_ALL ^ E_NOTICE';
 
 /* locale */
 $tolc_conf['pref_default_locale_code'] = 'en_GB';
-$tolc_conf['pref_default_locale_encoding'] = '.UTF-8';
 
 /* URL properties */
 $tolc_conf['pref_url_max_length'] = 150;
@@ -81,7 +80,6 @@ $tolc_conf['pref_tidy_config'] = array(
 	'indent' => TRUE,
 	'output-xhtml' => TRUE,
 	'wrap' => 200);
-$tolc_conf['pref_tidy_encoding'] = 'UTF8';
 
 /* visitor regional settings (default values) */
 $tolc_conf['pref_timezone'] = 'UTC';

@@ -39,7 +39,7 @@ if ($rs->RecordCount() == 1) {
     // use case sensitive values
     if($rs->fields['username'] == $username && $hasher->CheckPassword($password, $rs->fields['password'])) {
         $_SESSION['username'] = $username;
-        $_SESSION['locale'] = $language . $tolc_conf['pref_default_locale_encoding'];
+        $_SESSION['locale'] = $language . '.' . CONST_UTF8;
 		$_SESSION['must_change_passwd'] = ($rs->fields['must_change_passwd'] == 1) ? true : false;
     } else {
         print gettext('Login failed') . '...';

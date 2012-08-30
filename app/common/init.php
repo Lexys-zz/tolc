@@ -36,8 +36,11 @@ define('CONST_HELP_TAG', '<img src="' . $tolc_conf['project_url'] . '/app/images
  * localization (gettext)
  */
 /* initialize $_SESSION['locale'] */
+define('CONST_UTF8', 'UTF-8');
+define('CONST_UTF8_NO_DASH', 'UTF8');
+
 if(!isset($_SESSION['locale'])) {
-	$_SESSION['locale'] = $tolc_conf['pref_default_locale_code'] . $tolc_conf['pref_default_locale_encoding'];
+	$_SESSION['locale'] = $tolc_conf['pref_default_locale_code'] . '.' . CONST_UTF8;
 }
 if(function_exists('gettext')) {
 	$locale = $_SESSION['locale'];
@@ -63,14 +66,14 @@ date_default_timezone_set(CONST_SERVER_TIMEZONE);
 define('CONST_SERVER_DATEFORMAT', 'YmdHis');
 
 /* available date formats */
-define('CONST_DF_EU_FULLYEAR_LZ_SLASH_24H_LZ', 'EU_FULLYEAR_LZ_SLASH_24H_LZ');  // EU format (day/month/year) with full year, slash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_EU_FULLYEAR_LZ_SLASH_24H_LZ', 'EU_FULLYEAR_LZ_SLASH_24H_LZ'); // EU format (day/month/year) with full year, slash as delimiter with leading zeros. 24h clock with leading zeros.
 define('CONST_DF_EU_SHORTYEAR_LZ_SLASH_24H_LZ', 'EU_SHORTYEAR_LZ_SLASH_24H_LZ'); // EU format (day/month/year) with short year, slash as delimiter with leading zeros. 24h clock with leading zeros.
-define('CONST_DF_US_FULLYEAR_LZ_SLASH_24H_LZ', 'US_FULLYEAR_LZ_SLASH_24H_LZ');  // US format (month/day/year) with full year, slash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_FULLYEAR_LZ_SLASH_24H_LZ', 'US_FULLYEAR_LZ_SLASH_24H_LZ'); // US format (month/day/year) with full year, slash as delimiter with leading zeros. 24h clock with leading zeros.
 define('CONST_DF_US_SHORTYEAR_LZ_SLASH_24H_LZ', 'US_SHORTYEAR_LZ_SLASH_24H_LZ'); // US format (month/day/year) with short year, slash as delimiter with leading zeros. 24h clock with leading zeros.
-define('CONST_DF_EU_FULLYEAR_LZ_DASH_24H_LZ', 'EU_FULLYEAR_LZ_DASH_24H_LZ');   // EU format (day/month/year) with full year, dash as delimiter with leading zeros. 24h clock with leading zeros.
-define('CONST_DF_EU_SHORTYEAR_LZ_DASH_24H_LZ', 'EU_SHORTYEAR_LZ_DASH_24H_LZ');  // EU format (day/month/year) with short year, dash as delimiter with leading zeros. 24h clock with leading zeros.
-define('CONST_DF_US_FULLYEAR_LZ_DASH_24H_LZ', 'US_FULLYEAR_LZ_DASH_24H_LZ');   // US format (month/day/year) with full year, dash as delimiter with leading zeros. 24h clock with leading zeros.
-define('CONST_DF_US_SHORTYEAR_LZ_DASH_24H_LZ', 'US_SHORTYEAR_LZ_DASH_24H_LZ');  // US format (month/day/year) with short year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_EU_FULLYEAR_LZ_DASH_24H_LZ', 'EU_FULLYEAR_LZ_DASH_24H_LZ'); // EU format (day/month/year) with full year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_EU_SHORTYEAR_LZ_DASH_24H_LZ', 'EU_SHORTYEAR_LZ_DASH_24H_LZ'); // EU format (day/month/year) with short year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_FULLYEAR_LZ_DASH_24H_LZ', 'US_FULLYEAR_LZ_DASH_24H_LZ'); // US format (month/day/year) with full year, dash as delimiter with leading zeros. 24h clock with leading zeros.
+define('CONST_DF_US_SHORTYEAR_LZ_DASH_24H_LZ', 'US_SHORTYEAR_LZ_DASH_24H_LZ'); // US format (month/day/year) with short year, dash as delimiter with leading zeros. 24h clock with leading zeros.
 
 $a_date_format = array(
 	CONST_DF_EU_FULLYEAR_LZ_SLASH_24H_LZ => array('php_datetime' => 'd/m/Y H:i:s', 'php_datetime_short' => 'd/m/Y H:i', 'php_date' => 'd/m/Y', 'jq_date' => 'dd/mm/yy', 'jq_time' => 'hh:mm:ss', 'jq_time_short' => 'hh:mm'),
