@@ -1,13 +1,15 @@
 <?php
 session_start();
-session_regenerate_id(true);
-// check for logged in user
-if(!isset($_SESSION['username'])) {
-    print 'Access denied...';
-    exit;
-}
+session_regenerate_id();
+
 require_once '../../../../../app/conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
+
+// check for logged in user
+if(!isset($_SESSION['username'])) {
+	print CONST_ACCESS_DENIED . ' (' . __FILE__ . ')';
+	exit;
+}
 
 include("includes/config.inc.php");
 include("langs/".LANG.".inc.php");
