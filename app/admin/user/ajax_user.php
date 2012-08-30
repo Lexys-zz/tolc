@@ -22,6 +22,11 @@ require_once ADODB_PATH . '/adodb.inc.php';
 require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
 require_once PHPASS;
 
+if($tolc_conf['demo_mode']) {
+	print gettext('Not available in demo mode') . '...';
+	exit;
+}
+
 // get params
 $username = $_POST['username'];
 $old_password = $_POST['old_password'];
