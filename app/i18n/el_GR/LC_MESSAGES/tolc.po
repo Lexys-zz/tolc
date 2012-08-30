@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 18:24+0200\n"
-"PO-Revision-Date: 2012-08-30 18:25+0200\n"
+"POT-Creation-Date: 2012-08-30 19:21+0200\n"
+"PO-Revision-Date: 2012-08-30 19:22+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: el_GR\n"
@@ -216,31 +216,37 @@ msgstr "Η επαλήθευση του password περιέχει μη αποδε
 msgid "Invalid email"
 msgstr "Το email δεν δόθηκε σωστά"
 
-#: admin/user/ajax_user.php:115
+#: admin/user/ajax_user.php:114
+msgid "Username is system reserved and cannot be changed"
+msgstr ""
+"Το όνομα χρήστη (username) είναι δεσμευμένο από το σύστημα και δεν μπορεί να "
+"αλλάξει"
+
+#: admin/user/ajax_user.php:121
 msgid "Username characters are less than"
 msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι λιγότεροι από "
 
-#: admin/user/ajax_user.php:119
+#: admin/user/ajax_user.php:125
 msgid "Username characters are more than"
 msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι περισσότεροι από "
 
-#: admin/user/ajax_user.php:126
+#: admin/user/ajax_user.php:132
 msgid "Username contains invalid characters"
 msgstr "Το username περιέχει μη αποδεκτούς χαρακτήρες"
 
-#: admin/user/ajax_user.php:132
+#: admin/user/ajax_user.php:138
 msgid "Selected username is reserved and cannot be used"
 msgstr "Το όνομα χρήστη (username) δεν είναι αποδεκτό"
 
-#: admin/user/ajax_user.php:146
+#: admin/user/ajax_user.php:152
 msgid "Given username is currently in use"
 msgstr "Το όνομα χρήστη (username) χρησιμοποιείται ήδη"
 
-#: admin/user/ajax_user.php:159
+#: admin/user/ajax_user.php:165
 msgid "Old password is not correct"
 msgstr "Ο προηγούμενος κωδικός δεν δόθηκε σωστά"
 
-#: admin/user/ajax_user.php:177
+#: admin/user/ajax_user.php:183
 msgid "Given email is currently in use"
 msgstr "Το email χρησιμοποιείται ήδη"
 
@@ -485,55 +491,55 @@ msgstr "Ο κωδικός δεν δόθηκε"
 msgid "Already logged in"
 msgstr "Υπάρχει ήδη σύνδεση"
 
-#: common/init.php:123
+#: common/init.php:128
 msgid "Access denied"
 msgstr "Η πρόσβαση δεν επιτρέπεται"
 
-#: common/init.php:133
+#: common/init.php:138
 msgid "pending registration"
 msgstr "σε αναμονή για έγγραφή"
 
-#: common/init.php:134
+#: common/init.php:139
 msgid "active user"
 msgstr "ενεργός χρήστης"
 
-#: common/init.php:135
+#: common/init.php:140
 msgid "inactive user"
 msgstr "ανενεργός χρήστης"
 
-#: common/init.php:152
+#: common/init.php:157
 msgid "admin"
 msgstr "διαχειριστής"
 
-#: common/init.php:153
+#: common/init.php:158
 msgid "editor in chief"
 msgstr "αρχισυντάκτης"
 
-#: common/init.php:154
+#: common/init.php:159
 msgid "editor"
 msgstr "συντάκτης"
 
-#: common/init.php:155
+#: common/init.php:160
 msgid "common user"
 msgstr "κοινός χρήστης"
 
-#: common/init.php:175
+#: common/init.php:180
 msgid "draft"
 msgstr "πρόχειρο"
 
-#: common/init.php:176
+#: common/init.php:181
 msgid "pending review"
 msgstr "προς αξιολόγηση"
 
-#: common/init.php:177
+#: common/init.php:182
 msgid "under review"
 msgstr "υπό αξιολόγηση"
 
-#: common/init.php:178
+#: common/init.php:183
 msgid "approved"
 msgstr "εγκεκριμένο"
 
-#: common/init.php:179
+#: common/init.php:184
 msgid "rejected"
 msgstr "απορριφθέν"
 
@@ -562,6 +568,9 @@ msgstr "Ζώνη ώρας"
 #: regional/ajax_regional_form.php:34
 msgid "Date format"
 msgstr "Μορφή ημερομηνίας"
+
+#~ msgid "Username root cannot be changed"
+#~ msgstr "Το όνομα χρήστη root δεν μπορεί να αλλάξει"
 
 #~ msgid "From"
 #~ msgstr "Από"

@@ -109,6 +109,12 @@ if($rs === false) {
 $username_changed = ($username !== $current_username);
 if($username_changed) {
 
+	// prevent system reserved username modification
+	if(mb_strtolower($current_username)) {
+		print $current_username . ': ' . gettext('Username is system reserved and cannot be changed') . '...';
+		exit;
+	}
+
 	// check username length
 	$n = strlen($username);
 	if($n < $tolc_conf['pref_username_minchars']) {
