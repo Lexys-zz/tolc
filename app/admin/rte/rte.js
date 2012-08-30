@@ -230,8 +230,7 @@ $(function() {
     /* load page version -----------------------------------------------------*/
     load_page_version($("#start_page_versions_id").val());
 
-})
-;
+});
 
 // -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
