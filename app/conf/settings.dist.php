@@ -43,6 +43,11 @@ $tolc_conf['dsn_options_misc'] = ''; // must start with &
 $tolc_conf['dsn_custom'] = '';
 
 /**
+ * MODE
+ */
+$tolc_conf['demo_mode'] = false;
+
+/**
  * GLOBAL PREFERENCES
  */
 /* valid origins */
