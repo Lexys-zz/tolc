@@ -29,14 +29,18 @@ $tolc_conf['domains_tmpl'] = array(
 
 /**
  * DATABASE CONNECTION STRING
- * (http://phplens.com/lens/adodb/docs-adodb.htm#drivers)
+ * http://phplens.com/lens/adodb/docs-adodb.htm#drivers
+ * http://phplens.com/adodb/code.initialization.html
  */
 $tolc_conf['dbdriver'] = 'mysqli'; // mysqli, mysqlt, mysql, postgres, firebird
 $tolc_conf['dbserver'] = 'SERVER-NAME-OR-IP-HERE';
 $tolc_conf['dbuser'] = 'USER-HERE';
 $tolc_conf['dbpass'] = 'PASSWORD-HERE';
-$tolc_conf['dsn_options'] = '?persist=0&fetchmode=2';
-$tolc_conf['dsn_custom'] = ''; // sqlite, oci8 (oracle), access, ado_mssql
+// mysqli, mysqlt, mysql, postgresql, firebird
+$tolc_conf['dsn_options_persist'] = 0; // 0 or 1
+$tolc_conf['dsn_options_misc'] = ''; // must start with &
+// sqlite, oci8 (oracle), access, ado_mssql
+$tolc_conf['dsn_custom'] = '';
 
 /**
  * GLOBAL PREFERENCES
