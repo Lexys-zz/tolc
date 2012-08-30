@@ -174,7 +174,21 @@ $(function() {
             changeMonth: true,
             changeYear: true,
             minDate: minStartDate,
-            showButtonPanel: true
+            showButtonPanel: true,
+            onSelect: function(dateText, inst) {
+                $.ajax({
+                    type: 'POST',
+                    url: project_url + "/app/admin/rte/ajax_datetime_range.php",
+                    data: {
+                        dt: dateText
+                    },
+                    success: function(data) {
+                        var j = $.parseJSON(data);
+                        var maxStartDate = new Date(j.minYear, j.minMonth - 1, j.minDay, j.minHour, j.minMin, j.minSec);
+                        $("#date_publish_start").datepicker("option", "maxDate", maxStartDate);
+                    }
+                });
+            }
         },
         $.datepicker.regional[ lang ],
         $.timepicker.regional[ lang ]
@@ -219,7 +233,27 @@ $(function() {
     });
 
     $('#btn_addnew').click(function() {
-        addnew_page_version();
+
+        var project_url = $("#project_url", window.opener.document).val();
+        $.ajax({
+            type: 'POST',
+            url: project_url + "/app/admin/rte/ajax_validate_input.php",
+            data: {
+                date_publish_start: $("#date_publish_start").val(),
+                date_publish_end: $("#date_publish_end").val()
+            },
+            success: function(data) {
+                if($.trim(data).length == 0) {
+                    addnew_page_version();
+                } else {
+                    update_user_message($.trim(data));
+                }
+            },
+            error: function (request, status, error) {
+                update_user_message($.trim(request.responseText));
+            }
+        });
+
     });
 
 
@@ -368,7 +402,30 @@ function addnew_page_version() {
             opener.location.reload();
         }
     });
+
 }
+
+// -----------------------------------------------------------------------------
+function validate_input() {
+
+    var project_url = $("#project_url", window.opener.document).val();
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: project_url + "/app/admin/rte/ajax_validate_input.php",
+        data: {
+            date_publish_start: $("#date_publish_start").val(),
+            date_publish_end: $("#date_publish_end").val()
+        },
+        success: function(data) {
+            return $.trim(data);
+        },
+        error: function(request, status, error) {
+            return $.trim(request.responseText);
+        }
+    });
+}
+
 
 // -----------------------------------------------------------------------------
 function delete_page_version(www_page_versions_id) {
