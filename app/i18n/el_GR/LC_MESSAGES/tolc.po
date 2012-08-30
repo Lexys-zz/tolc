@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 18:24+0200\n"
-"PO-Revision-Date: 2012-08-30 18:25+0200\n"
+"POT-Creation-Date: 2012-08-30 19:10+0200\n"
+"PO-Revision-Date: 2012-08-30 19:11+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: el_GR\n"
@@ -216,31 +216,35 @@ msgstr "Η επαλήθευση του password περιέχει μη αποδε
 msgid "Invalid email"
 msgstr "Το email δεν δόθηκε σωστά"
 
-#: admin/user/ajax_user.php:115
+#: admin/user/ajax_user.php:114
+msgid "Username root cannot be changed"
+msgstr "Το όνομα χρήστη root δεν μπορεί να αλλάξει"
+
+#: admin/user/ajax_user.php:121
 msgid "Username characters are less than"
 msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι λιγότεροι από "
 
-#: admin/user/ajax_user.php:119
+#: admin/user/ajax_user.php:125
 msgid "Username characters are more than"
 msgstr "Οι χαρακτήρες του ονόματος χρήστη (username) είναι περισσότεροι από "
 
-#: admin/user/ajax_user.php:126
+#: admin/user/ajax_user.php:132
 msgid "Username contains invalid characters"
 msgstr "Το username περιέχει μη αποδεκτούς χαρακτήρες"
 
-#: admin/user/ajax_user.php:132
+#: admin/user/ajax_user.php:138
 msgid "Selected username is reserved and cannot be used"
 msgstr "Το όνομα χρήστη (username) δεν είναι αποδεκτό"
 
-#: admin/user/ajax_user.php:146
+#: admin/user/ajax_user.php:152
 msgid "Given username is currently in use"
 msgstr "Το όνομα χρήστη (username) χρησιμοποιείται ήδη"
 
-#: admin/user/ajax_user.php:159
+#: admin/user/ajax_user.php:165
 msgid "Old password is not correct"
 msgstr "Ο προηγούμενος κωδικός δεν δόθηκε σωστά"
 
-#: admin/user/ajax_user.php:177
+#: admin/user/ajax_user.php:183
 msgid "Given email is currently in use"
 msgstr "Το email χρησιμοποιείται ήδη"
 

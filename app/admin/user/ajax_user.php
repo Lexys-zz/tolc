@@ -109,6 +109,12 @@ if($rs === false) {
 $username_changed = ($username !== $current_username);
 if($username_changed) {
 
+	// prevent root username modification
+	if($current_username == 'root') {
+		print gettext('Username root cannot be changed') . '...';
+		exit;
+	}
+
 	// check username length
 	$n = strlen($username);
 	if($n < $tolc_conf['pref_username_minchars']) {
