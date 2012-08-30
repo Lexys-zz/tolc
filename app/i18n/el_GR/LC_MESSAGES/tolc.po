@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tolc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 22:54+0200\n"
-"PO-Revision-Date: 2012-08-28 22:54+0200\n"
+"POT-Creation-Date: 2012-08-30 14:29+0200\n"
+"PO-Revision-Date: 2012-08-30 14:29+0200\n"
 "Last-Translator: Christos Pontikis <pontikis@gmail.com>\n"
 "Language-Team:  <pontikis@medisign.com>\n"
 "Language: el_GR\n"
@@ -172,7 +172,7 @@ msgstr "Τίτλος σελίδας"
 msgid "Template"
 msgstr "Πρότυπο"
 
-#: admin/new_page/ajax_new_page_form.php:63 admin/rte/rte.php:171
+#: admin/new_page/ajax_new_page_form.php:63 admin/rte/rte.php:180
 msgid "Please, select"
 msgstr "Παρακαλώ, επιλέξτε"
 
@@ -285,73 +285,90 @@ msgstr "Πλήρες όνομα"
 msgid "Email"
 msgstr "Email"
 
-#: admin/rte/rte.php:78
+#: admin/rte/rte.php:87
 msgid "Show/hide tools"
 msgstr "Εμφάνιση/απόκρυψη εργαλείων"
 
-#: admin/rte/rte.php:79 inc_tolc_functions/inc_admin_mode.php:21
+#: admin/rte/rte.php:88 inc_tolc_functions/inc_admin_mode.php:21
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: admin/rte/rte.php:84
+#: admin/rte/rte.php:93
 msgid "Page has been removed. To activate it, press here"
 msgstr "Η σελίδα έχει απομακρυνθεί. Για να ενεργοποιηθεί, πιέστε εδώ"
 
-#: admin/rte/rte.php:85
+#: admin/rte/rte.php:94
 msgid "Activate page"
 msgstr "Ενεργοποποίηση σελίδας"
 
-#: admin/rte/rte.php:87
+#: admin/rte/rte.php:96
 msgid "To remove the whole page, press here"
 msgstr "Για να απομακρυνθεί η σελίδα, πιέστε εδώ"
 
-#: admin/rte/rte.php:88
+#: admin/rte/rte.php:97
 msgid "Remove page"
 msgstr "Απομάκρυνση σελίδας"
 
-#: admin/rte/rte.php:94
+#: admin/rte/rte.php:103
 msgid "New content version"
 msgstr "Νέα έκδοση περιεχομένου"
 
-#: admin/rte/rte.php:96
+#: admin/rte/rte.php:105
 msgid "Page versions"
 msgstr "Εκδόσεις σελίδας"
 
-#: admin/rte/rte.php:101
+#: admin/rte/rte.php:110
 msgid "Delete version"
 msgstr "Διαγραφή έκδοσης"
 
-#: admin/rte/rte.php:102
+#: admin/rte/rte.php:111
 msgid "New version like current"
 msgstr "Νέα έκδοση βασισμένη στην τρέχουσα"
 
-#: admin/rte/rte.php:108
+#: admin/rte/rte.php:117
 msgid "Add new version"
 msgstr "Καταχώρηση νέας έκδοσης"
 
-#: admin/rte/rte.php:109
+#: admin/rte/rte.php:118
 msgid "Save version"
 msgstr "Αποθήκευση έκδοσης"
 
-#: admin/rte/rte.php:114 admin/rte/ajax_load_page_version.php:135
+#: admin/rte/rte.php:123 admin/rte/ajax_load_page_version.php:135
 msgid "Submitted from"
 msgstr "Υποβλήθηκε από"
 
-#: admin/rte/rte.php:122 admin/rte/ajax_load_page_version.php:136
+#: admin/rte/rte.php:131 admin/rte/ajax_load_page_version.php:136
 msgid "Published from"
 msgstr "Δημοσίευση από"
 
-#: admin/rte/rte.php:129 admin/rte/ajax_load_page_version.php:137
+#: admin/rte/rte.php:138 admin/rte/ajax_load_page_version.php:137
 msgid "until"
 msgstr "μέχρι"
 
-#: admin/rte/rte.php:136 admin/rte/ajax_load_page_version.php:139
+#: admin/rte/rte.php:145 admin/rte/ajax_load_page_version.php:139
 msgid "Content status"
 msgstr "Κατάσταση περιεχομένου"
 
-#: admin/rte/rte.php:143 admin/rte/ajax_load_page_version.php:140
+#: admin/rte/rte.php:152 admin/rte/ajax_load_page_version.php:140
 msgid "Managed by"
 msgstr "Διαχείριση από"
+
+#: admin/rte/ajax_validate_input.php:33
+msgid "Please, give start date"
+msgstr "Παρακαλώ, δώστε την ημερομηνία έναρξης"
+
+#: admin/rte/ajax_validate_input.php:39
+msgid "Start date is not valid"
+msgstr "Η ημερομηνία έναρξης δεν δόθηκε σωστά"
+
+#: admin/rte/ajax_validate_input.php:47
+msgid "End date is not valid"
+msgstr "Η ημερομηνία λήξης δεν δόθηκε σωστά"
+
+#: admin/rte/ajax_validate_input.php:63
+msgid "End date must be greater than start date"
+msgstr ""
+"Η ημερομηνία λήξης πρέπει να είναι μεγαλύτερη από την ημερομηνία έναρξης"
 
 #: inc_tolc_functions/inc_admin_mode.php:18
 #: inc_tolc_functions/inc_login_required_new_page.php:2
