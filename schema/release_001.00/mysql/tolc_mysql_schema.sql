@@ -179,11 +179,12 @@ CREATE TABLE `www_users` (
   `must_change_passwd` tinyint(4) NOT NULL DEFAULT '1',
   `lk_roles_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `www_users_ix1` (`username`),
-  KEY `www_users_ix2` (`fullname`),
-  KEY `www_users_ix3` (`date_registered`),
-  KEY `www_users_ix4` (`lk_user_status_id`),
-  KEY `www_users_ix5` (`lk_roles_id`)
+  UNIQUE KEY `www_users_ix1` (`username`),
+  UNIQUE KEY `www_users_ix2` (`email`),
+  KEY `www_users_ix3` (`fullname`),
+  KEY `www_users_ix4` (`date_registered`),
+  KEY `www_users_ix5` (`lk_user_status_id`),
+  KEY `www_users_ix6` (`lk_roles_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -196,4 +197,4 @@ CREATE TABLE `www_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-08-30 16:57:23
+-- Dump completed on 2012-08-30 19:05:14
