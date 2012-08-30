@@ -69,7 +69,7 @@ $tolc_conf['pref_reserved_urls'] = array(
 );
 
 /* this will substitute template active elements default content (if it has value) */
-$tolc_conf['pref_tpl_content_subst'] = 'insert content here';
+//$tolc_conf['pref_tpl_content_subst'] = 'insert content here';
 
 /* true will not work with MSIE < 9.0 */
 $tolc_conf['pref_tinymce_toggle_toolbar'] = false;
