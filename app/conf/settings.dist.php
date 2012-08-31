@@ -20,6 +20,15 @@ $tolc_conf['domains_db'] = array(
 );
 
 /**
+ * DATA FOLDER PER DOMAIN (or SERVER NAME or IP)
+ * NOT PERMITTED CHARACTERS ;\.&,:$><
+ */
+$tolc_conf['domains_data_folder'] = array(
+	'www.domain.tld' => 'tolc',
+	'localhost' => 'tolc_dev'
+);
+
+/**
  * DEFAULT TEMPLATE ID PER DOMAIN (or SERVER NAME or IP)
  */
 $tolc_conf['domains_tmpl'] = array(

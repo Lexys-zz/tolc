@@ -1,13 +1,25 @@
 <?php
 session_start();
-session_regenerate_id(true);
-// check for logged in user
-if(!isset($_SESSION['username'])) {
-    print 'Access denied...';
-    exit;
-}
+session_regenerate_id();
+
 require_once '../../../../../app/conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
+require_once ADODB_PATH . '/adodb.inc.php';
+require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
+require_once $tolc_conf['project_dir'] . '/app/common/utils_cms.php';
+
+// check for logged in user
+if(!isset($_SESSION['username'])) {
+	print CONST_ACCESS_DENIED . ' (' . __FILE__ . ')';
+	exit;
+}
+
+// connect to database
+$conn = get_db_conn($tolc_conf['dbdriver']);
+
+// get user
+$a_user = get_user($conn, $_SESSION['username']);
+$lk_roles_id = $a_user['lk_roles_id'];
 
 include("includes/config.inc.php");
 include("langs/".LANG.".inc.php");
