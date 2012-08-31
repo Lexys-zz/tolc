@@ -1,0 +1,26 @@
+var ajax__addnew__page__version_8php =
+[
+    [ "$a_page_version_content", "db/d3f/ajax__addnew__page__version_8php.html#aa465cb87dd3c45ac6a677abe070bc9d3", null ],
+    [ "$a_template", "db/d3f/ajax__addnew__page__version_8php.html#a7d6a2c15b45ad61216139b285de3856a", null ],
+    [ "$author_id", "db/d3f/ajax__addnew__page__version_8php.html#ac2c618c43ebce7a2a8736661bf14d4af", null ],
+    [ "$conn", "db/d3f/ajax__addnew__page__version_8php.html#aa8a5a87b9c1a6a0819b88447cbe41877", null ],
+    [ "$date_publish_end", "db/d3f/ajax__addnew__page__version_8php.html#a20725122103bf2d1653e2bb3b8e760f1", null ],
+    [ "$date_publish_end_sql", "db/d3f/ajax__addnew__page__version_8php.html#ada85825ef63e9b6d83ba9e23a6aa48ce", null ],
+    [ "$date_publish_start", "db/d3f/ajax__addnew__page__version_8php.html#aaae83b6fdc22e67db03862c501b1c750", null ],
+    [ "$date_publish_start_encoded", "db/d3f/ajax__addnew__page__version_8php.html#a0d3e67f8c29e28fc1473b44221348abe", null ],
+    [ "$date_publish_start_sql", "db/d3f/ajax__addnew__page__version_8php.html#adcd300511d8e495226998bfd7dd8fe48", null ],
+    [ "$editor_id", "db/d3f/ajax__addnew__page__version_8php.html#a4b9cc07eeb1dbf3ef44b2230fc7d6358", null ],
+    [ "$editor_id_sql", "db/d3f/ajax__addnew__page__version_8php.html#a8be558b2f080e7f270544dc49342c444", null ],
+    [ "$html", "db/d3f/ajax__addnew__page__version_8php.html#a6f96e7fc92441776c9d1cd3386663b40", null ],
+    [ "$isAjax", "db/d3f/ajax__addnew__page__version_8php.html#ad847b1d5d75085490c4954a4b94521a1", null ],
+    [ "$lk_content_status_id", "db/d3f/ajax__addnew__page__version_8php.html#af1dbb25ca2c1c607bc85ea9a9e75c4cd", null ],
+    [ "$now", "db/d3f/ajax__addnew__page__version_8php.html#af1d5ccdee975b8f4d20aaffc5b28557c", null ],
+    [ "$res", "db/d3f/ajax__addnew__page__version_8php.html#a49a8a4009b02e49717caa88b128affc5", null ],
+    [ "$sql", "db/d3f/ajax__addnew__page__version_8php.html#a047170d6020a882807665812a27e2525", null ],
+    [ "$template_id", "db/d3f/ajax__addnew__page__version_8php.html#a244cfb00f58fe64d22802920d642cf8a", null ],
+    [ "$user_df_php_datetime", "db/d3f/ajax__addnew__page__version_8php.html#ab74db288cd92349906022ba161ff1043", null ],
+    [ "$user_tz", "db/d3f/ajax__addnew__page__version_8php.html#ab0cabe855f548fc3664de27589616efd", null ],
+    [ "$www_pages_id", "db/d3f/ajax__addnew__page__version_8php.html#a2ee0dbecb1c2b92cf425284093e0542d", null ],
+    [ "else", "db/d3f/ajax__addnew__page__version_8php.html#a2fef2a57694dba58d0bf17d40acfdad6", null ],
+    [ "if", "db/d3f/ajax__addnew__page__version_8php.html#a2110cc584fcd9b40af2653f0d4379d91", null ]
+];
