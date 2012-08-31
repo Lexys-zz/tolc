@@ -6,6 +6,7 @@ var searchData=
   ['jquery_5ftinymce_5furl',['JQUERY_TINYMCE_URL',['../d6/d75/init_8php.html#a733dd6fca000ff85ccf8b7487fb45c2a',1,'init.php']]],
   ['jquery_5fui_5fcss_5furl',['JQUERY_UI_CSS_URL',['../d6/d75/init_8php.html#a00668fb39eb1c2de16640d3496fb6cc4',1,'init.php']]],
   ['jquery_5fui_5fdatetimepicker_5fcss_5furl',['JQUERY_UI_DATETIMEPICKER_CSS_URL',['../d6/d75/init_8php.html#a5a6eb265fea49bef33f92dd0ea337a63',1,'init.php']]],
+  ['jquery_5fui_5fdatetimepicker_5fi18n_5furl',['JQUERY_UI_DATETIMEPICKER_i18n_URL',['../d6/d75/init_8php.html#add641b93661e385343f620981297919c',1,'init.php']]],
   ['jquery_5fui_5fdatetimepicker_5furl',['JQUERY_UI_DATETIMEPICKER_URL',['../d6/d75/init_8php.html#a160f73a430c6f636b78ca4e5ca571092',1,'init.php']]],
   ['jquery_5fui_5fext_5fautocomplete_5fhtml_5furl',['JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL',['../d6/d75/init_8php.html#a8af029b12311aa3cdbd7ff40ee898d47',1,'init.php']]],
   ['jquery_5fui_5fi18n_5fdir',['JQUERY_UI_i18n_DIR',['../d6/d75/init_8php.html#a711d5605d93e795ef30d42c93c2ed93b',1,'init.php']]],

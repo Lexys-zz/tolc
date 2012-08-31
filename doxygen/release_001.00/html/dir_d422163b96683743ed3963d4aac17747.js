@@ -8,7 +8,7 @@ var dir_d422163b96683743ed3963d4aac17747 =
     [ "login", "dir_d022fdaee890331f5dcc3c4114e6f347.html", "dir_d022fdaee890331f5dcc3c4114e6f347" ],
     [ "regional", "dir_236aa9cce9399c4f127ea15c2f3beec0.html", "dir_236aa9cce9399c4f127ea15c2f3beec0" ],
     [ "index.php", "de/d20/index_8php.html", "de/d20/index_8php" ],
-    [ "tolc_functions.php", "da/d28/tolc__functions_8php.html", null ],
+    [ "tolc_functions.php", "da/d28/tolc__functions_8php.html", "da/d28/tolc__functions_8php" ],
     [ "tolc_head_css.php", "d3/d01/tolc__head__css_8php.html", null ],
     [ "tolc_head_favicon.php", "d9/de3/tolc__head__favicon_8php.html", null ],
     [ "tolc_head_js.php", "d5/d6a/tolc__head__js_8php.html", null ],
