@@ -159,7 +159,7 @@ if($rs === false) {
 $a_res['authors'] = $rs->GetRows();
 
 // editors ---------------------------------------------------------------------
-$sql = 'SELECT id, fullname FROM www_users WHERE lk_roles_id < ' . CONST_ROLE_COMMON_USER_KEY . ' ORDER BY fullname';
+$sql = 'SELECT id, fullname FROM www_users WHERE lk_roles_id < ' . CONST_ROLE_AUTHOR_KEY . ' ORDER BY fullname';
 $rs = $conn->Execute($sql);
 if($rs === false) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->ErrorMsg(), E_USER_ERROR);

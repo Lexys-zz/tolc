@@ -19,6 +19,28 @@ error_reporting($tolc_conf['pref_error_reporting']);
 set_error_handler('error_handler');
 
 /**
+ * initialize data folder
+ */
+$site_data_folder = $tolc_conf['domains_data_folder'][$_SERVER['SERVER_NAME']];
+define('CONST_DATA_FOLDER_REGEX', '/[;\\\\\\.&,:$><]/i');
+if(preg_match(CONST_DATA_FOLDER_REGEX, $site_data_folder) > 0) {
+	die('Invalid characters ;\.&,:$>< in site data folder...');
+}
+
+$site_data_path = $tolc_conf['project_dir'] . '/data/' . $site_data_folder;
+$site_tpl_path = $site_data_path . '/tpl';
+$site_files_path = $site_data_path . '/files';
+if(!file_exists($site_data_path)) {
+	mkdir($site_data_path, 0775);
+}
+if(!file_exists($site_tpl_path)) {
+	mkdir($site_tpl_path, 0775);
+}
+if(!file_exists($site_files_path)) {
+	mkdir($site_files_path, 0775);
+}
+
+/**
  * system reserved usernames
  */
 $a_sys_reserved_usernames = array('root', 'demo');
@@ -108,7 +130,7 @@ if(!isset($_SESSION['user_dateformat'])) {
  * UPLOADS_URL must be writable from web server, trailing slash required
  */
 define('CONST_BASE_URL', $tolc_conf['project_url'] . '/'); // used by tinymce
-define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/'); // used from ezfilemanager
+define('UPLOADS_URL', $tolc_conf['project_url'] . '/data/' . $site_data_folder . '/'); // used from ezfilemanager
 
 /**
  * sanitize URL regex
@@ -150,24 +172,20 @@ $a_user_status_values = array(CONST_USER_STATUS_PENDING_VALUE,
 
 /* user roles */
 define('CONST_ROLE_ADMIN_KEY', 1);
-define('CONST_ROLE_EDITOR_IN_CHIEF_KEY', 2);
-define('CONST_ROLE_EDITOR_KEY', 3);
-define('CONST_ROLE_COMMON_USER_KEY', 4);
+define('CONST_ROLE_EDITOR_KEY', 2);
+define('CONST_ROLE_AUTHOR_KEY', 3);
 
 define('CONST_ROLE_ADMIN_VALUE', gettext('admin'));
-define('CONST_ROLE_EDITOR_IN_CHIEF_VALUE', gettext('editor in chief'));
 define('CONST_ROLE_EDITOR_VALUE', gettext('editor'));
-define('CONST_ROLE_COMMON_USER_VALUE', gettext('common user'));
+define('CONST_ROLE_AUTHOR_VALUE', gettext('author'));
 
 $a_role_keys = array(CONST_ROLE_ADMIN_KEY,
-	CONST_ROLE_EDITOR_IN_CHIEF_KEY,
 	CONST_ROLE_EDITOR_KEY,
-	CONST_ROLE_COMMON_USER_KEY
+	CONST_ROLE_AUTHOR_KEY
 );
 $a_role_values = array(CONST_ROLE_ADMIN_VALUE,
-	CONST_ROLE_EDITOR_IN_CHIEF_VALUE,
 	CONST_ROLE_EDITOR_VALUE,
-	CONST_ROLE_COMMON_USER_VALUE
+	CONST_ROLE_AUTHOR_VALUE
 );
 
 /* content status */

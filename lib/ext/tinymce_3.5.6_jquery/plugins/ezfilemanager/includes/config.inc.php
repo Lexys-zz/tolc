@@ -40,24 +40,18 @@ error_reporting(E_ALL);//Change to error_reporting(0) for live sites
     define('PASSWORD','demo');//Password
     define('LANG',substr($_SESSION['locale'],0,2));//en,nl,de see langs folder
     define('USER_DIR','');//for multiuser directories, implementation is up to you, trailing slash required, leave empty for single user
-    define("UPLOAD_DIR",UPLOADS_URL);//upload directory relative to your document root directory, trailing slash required
-    define("SITE_URL","http://".$_SERVER['HTTP_HOST']);
-    /* If the below does not work for you because of server settings Set ABSOLUT_PATH manually*/
-    if ($_SERVER['DOCUMENT_ROOT']){//Try to find ABSOLUT_PATH,
-    $_SERVER['DOCUMENT_ROOT'] .= (substr($_SERVER['DOCUMENT_ROOT'],-1)=='/')?'':'/'; 
-    define('ABSOLUT_PATH',$_SERVER['DOCUMENT_ROOT']);//The domain root absolute path
-    }else{
-    define('ABSOLUT_PATH', str_replace($_SERVER['SCRIPT_NAME'], "/", $_SERVER['SCRIPT_FILENAME']));  
-    }
+    define("UPLOAD_DIR",UPLOADS_URL . ($lk_roles_id == CONST_ROLE_ADMIN_KEY ? '' : 'files/'));//upload directory relative to your document root directory, trailing slash required
+    define("SITE_URL",CONST_PROJECT_FULL_URL);
+	define('ABSOLUT_PATH', $tolc_conf['project_dir']);
 /* OPTIONAL SWITCHES */
     define('IMAGE_FILES','png,jpg,jpeg,gif');//allowed image files extensions
     define('MEDIA_FILES','swf,flv,mp3,mp4,mov,avi,mpg,qt');//allowed meadia files extensions
     define('OTHER_FILES','html,pdf,ppt,txt,doc,docx,odt,xls,xlsx,ods,rtf,xml,xsl,dtd,zip,7z,gz,rar');//allowed other files extensions
     define('DATE_FORMAT','M d Y H:i');//http://php.net/manual/en/function.date.php
     define('KEEP_COPY','120');//seconds, how long to keep copy in memory
-    define('ENABLE_DELETE',true);//allow file/dir deleting  (true/false)
-    define('ENABLE_RENAME',true);//allow file/dir renaming  (true/false)
-    define('ENABLE_COPY',true);//allow file copy  (true/false)
+    define('ENABLE_DELETE',in_array($lk_roles_id, array(CONST_ROLE_ADMIN_KEY, CONST_ROLE_EDITOR_KEY)));//allow file/dir deleting  (true/false)
+    define('ENABLE_RENAME',in_array($lk_roles_id, array(CONST_ROLE_ADMIN_KEY, CONST_ROLE_EDITOR_KEY)));//allow file/dir renaming  (true/false)
+    define('ENABLE_COPY',in_array($lk_roles_id, array(CONST_ROLE_ADMIN_KEY, CONST_ROLE_EDITOR_KEY)));//allow file copy  (true/false)
     define('ENABLE_NEW_DIR',true);//allow new dir creation  (true/false)
     define('CHECK_IF_WRITABLE',true); //do checks to see if dir is writable (true/false)
     define('PRESERVE_CASE',false);//If false, new files/dirs will be converted to lowercase
