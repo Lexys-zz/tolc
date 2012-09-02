@@ -1,5 +1,6 @@
 # APP SETTINGS -----------------------------------------------------------------
 /.htaccess
+/app/common/session.php
 /app/conf/settings.php
 /app/conf/settings.bak.php
 
