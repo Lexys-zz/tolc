@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings to share session between subdomains (Internet Explorer share sessions by default)
+ * Settings to share session between subdomains
  * http://php.net/manual/en/function.session-set-cookie-params.php
  *
  * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
