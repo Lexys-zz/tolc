@@ -12,9 +12,6 @@ if(!$isAjax) {
 
 require_once '../../conf/settings.php';
 require_once $tolc_conf['project_dir'] . '/app/common/init.php';
-require_once ADODB_PATH . '/adodb.inc.php';
-require_once $tolc_conf['project_dir'] . '/app/common/utils_db.php';
-require_once $tolc_conf['project_dir'] . '/app/common/utils_cms.php';
 
 // check for logged in user
 if(!isset($_SESSION['username'])) {
@@ -53,6 +50,4 @@ $a_res = array(
 );
 
 print json_encode($a_res);
-
 ?>
-
