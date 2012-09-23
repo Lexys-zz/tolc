@@ -22,7 +22,7 @@ $(function() {
     var minSec = $("#minSec").val();
     var minStartDate = new Date(minYear, minMonth - 1, minDay, minHour, minMin, minSec);
 
-    /* timnymce --------------------------------------------------------------*/
+    /* tinymce ---------------------------------------------------------------*/
     $("#rte").tinymce({
         // Location of TinyMCE script
         script_url: tinymce_url,
@@ -136,8 +136,10 @@ $(function() {
         }
     });
 
-    // TODO Setting mindate/maxdate via options only sets date
-    // https://github.com/trentrichardson/jQuery-Timepicker-Addon/issues/398
+
+    /*
+     * @link https://github.com/trentrichardson/jQuery-Timepicker-Addon/issues/398
+     */
     $("#date_publish_start").datetimepicker(
         {
             dateFormat: dateformat,
@@ -147,24 +149,28 @@ $(function() {
             changeYear: true,
             minDate: minStartDate,
             showButtonPanel: true,
-            onSelect: function(dateText, inst) {
-                $.ajax({
-                    type: 'POST',
-                    url: project_url + "/app/admin/rte/ajax_datetime_range.php",
-                    data: {
-                        dt: dateText
-                    },
-                    success: function(data) {
-                        var j = $.parseJSON(data);
-                        var minEndDate = new Date(j.minYear, j.minMonth - 1, j.minDay, j.minHour, j.minMin, j.minSec);
-                        $("#date_publish_end").datepicker("option", "minDate", minEndDate);
-                    }
-                });
+            onSelect: function(selectedDateTime, inst) {
+
+                var theDate = $("#date_publish_start").datetimepicker("getDate");
+                /*
+                * Alternative syntax:
+                * var theDate = $.datepicker.parseDateTime(dateformat, timeformat, selectedDateTime);
+                */
+
+                if(theDate != null) {
+                    var str_old_datetime = $("#date_publish_end").val();
+
+                    $("#date_publish_end").datetimepicker("option", "minDate", theDate);
+                    $("#date_publish_end").datetimepicker("option", "minDateTime", theDate);
+
+                    $("#date_publish_end").val(str_old_datetime);
+                }
             }
         },
         $.datepicker.regional[ lang ],
         $.timepicker.regional[ lang ]
     );
+
 
     $("#date_publish_end").datetimepicker(
         {
@@ -175,19 +181,22 @@ $(function() {
             changeYear: true,
             minDate: minStartDate,
             showButtonPanel: true,
-            onSelect: function(dateText, inst) {
-                $.ajax({
-                    type: 'POST',
-                    url: project_url + "/app/admin/rte/ajax_datetime_range.php",
-                    data: {
-                        dt: dateText
-                    },
-                    success: function(data) {
-                        var j = $.parseJSON(data);
-                        var maxStartDate = new Date(j.minYear, j.minMonth - 1, j.minDay, j.minHour, j.minMin, j.minSec);
-                        $("#date_publish_start").datepicker("option", "maxDate", maxStartDate);
-                    }
-                });
+            onSelect: function(selectedDateTime, inst) {
+
+                var theDate = $("#date_publish_end").datetimepicker("getDate");
+                /*
+                 * Alternative syntax:
+                 * var theDate = $.datepicker.parseDateTime(dateformat, timeformat, selectedDateTime);
+                 */
+
+                if(theDate != null) {
+                    var str_old_datetime = $("#date_publish_start").val();
+
+                    $("#date_publish_start").datetimepicker("option", "maxDate", theDate);
+                    $("#date_publish_start").datetimepicker("option", "maxDateTime", theDate);
+
+                    $("#date_publish_start").val(str_old_datetime);
+                }
             }
         },
         $.datepicker.regional[ lang ],
@@ -249,7 +258,7 @@ $(function() {
                     update_user_message($.trim(data));
                 }
             },
-            error: function (request, status, error) {
+            error: function(request, status, error) {
                 update_user_message($.trim(request.responseText));
             }
         });
@@ -265,6 +274,29 @@ $(function() {
     load_page_version($("#start_page_versions_id").val());
 
 });
+
+// -----------------------------------------------------------------------------
+function getMinEndDate(minStartDate) {
+    var StartDate = $("#date_publish_start").datetimepicker("getDate");
+    return (StartDate != null ? StartDate : minStartDate);
+}
+
+function setEndMinDateTime(date_start_id, date_end_id) {
+    var theDate = $("#" + date_start_id).datetimepicker("getDate");
+    /*
+     * Alternative syntax:
+     * var theDate = $.datepicker.parseDateTime(dateformat, timeformat, selectedDateTime);
+     */
+
+    if(theDate != null) {
+        var str_old_datetime = $("#" + date_end_id).val();
+
+        $("#" + date_end_id).datetimepicker("option", "minDate", theDate);
+        $("#" + date_end_id).datetimepicker("option", "minDateTime", theDate);
+
+        $("#" + date_end_id).val(str_old_datetime);
+    }
+}
 
 // -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
