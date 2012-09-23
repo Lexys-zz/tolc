@@ -14,15 +14,7 @@ $(function() {
     var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
     var rsc_please_select = $("#rsc_please_select").val();
 
-    var minYear = $("#minYear").val();
-    var minMonth = $("#minMonth").val();
-    var minDay = $("#minDay").val();
-    var minHour = $("#minHour").val();
-    var minMin = $("#minMin").val();
-    var minSec = $("#minSec").val();
-    var minStartDate = new Date(minYear, minMonth - 1, minDay, minHour, minMin, minSec);
-
-    /* timnymce --------------------------------------------------------------*/
+    /* tinymce ---------------------------------------------------------------*/
     $("#rte").tinymce({
         // Location of TinyMCE script
         script_url: tinymce_url,
@@ -136,8 +128,10 @@ $(function() {
         }
     });
 
-    // TODO Setting mindate/maxdate via options only sets date
-    // https://github.com/trentrichardson/jQuery-Timepicker-Addon/issues/398
+
+    /*
+     * @link https://github.com/trentrichardson/jQuery-Timepicker-Addon/issues/398
+     */
     $("#date_publish_start").datetimepicker(
         {
             dateFormat: dateformat,
@@ -145,26 +139,30 @@ $(function() {
             showSecond: true,
             changeMonth: true,
             changeYear: true,
-            minDate: minStartDate,
+            //minDate: minStartDate,
             showButtonPanel: true,
-            onSelect: function(dateText, inst) {
-                $.ajax({
-                    type: 'POST',
-                    url: project_url + "/app/admin/rte/ajax_datetime_range.php",
-                    data: {
-                        dt: dateText
-                    },
-                    success: function(data) {
-                        var j = $.parseJSON(data);
-                        var minEndDate = new Date(j.minYear, j.minMonth - 1, j.minDay, j.minHour, j.minMin, j.minSec);
-                        $("#date_publish_end").datepicker("option", "minDate", minEndDate);
-                    }
-                });
+            onSelect: function(selectedDateTime, inst) {
+
+                var theDate = $("#date_publish_start").datetimepicker("getDate");
+                /*
+                * Alternative syntax:
+                * var theDate = $.datepicker.parseDateTime(dateformat, timeformat, selectedDateTime);
+                */
+
+                if(theDate != null) {
+                    var str_old_datetime = $("#date_publish_end").val();
+
+                    $("#date_publish_end").datetimepicker("option", "minDate", theDate);
+                    $("#date_publish_end").datetimepicker("option", "minDateTime", theDate);
+
+                    $("#date_publish_end").val(str_old_datetime);
+                }
             }
         },
         $.datepicker.regional[ lang ],
         $.timepicker.regional[ lang ]
     );
+
 
     $("#date_publish_end").datetimepicker(
         {
@@ -173,21 +171,24 @@ $(function() {
             showSecond: true,
             changeMonth: true,
             changeYear: true,
-            minDate: minStartDate,
+            //minDate: minStartDate,
             showButtonPanel: true,
-            onSelect: function(dateText, inst) {
-                $.ajax({
-                    type: 'POST',
-                    url: project_url + "/app/admin/rte/ajax_datetime_range.php",
-                    data: {
-                        dt: dateText
-                    },
-                    success: function(data) {
-                        var j = $.parseJSON(data);
-                        var maxStartDate = new Date(j.minYear, j.minMonth - 1, j.minDay, j.minHour, j.minMin, j.minSec);
-                        $("#date_publish_start").datepicker("option", "maxDate", maxStartDate);
-                    }
-                });
+            onSelect: function(selectedDateTime, inst) {
+
+                var theDate = $("#date_publish_end").datetimepicker("getDate");
+                /*
+                 * Alternative syntax:
+                 * var theDate = $.datepicker.parseDateTime(dateformat, timeformat, selectedDateTime);
+                 */
+
+                if(theDate != null) {
+                    var str_old_datetime = $("#date_publish_start").val();
+
+                    $("#date_publish_start").datetimepicker("option", "maxDate", theDate);
+                    $("#date_publish_start").datetimepicker("option", "maxDateTime", theDate);
+
+                    $("#date_publish_start").val(str_old_datetime);
+                }
             }
         },
         $.datepicker.regional[ lang ],
@@ -249,7 +250,7 @@ $(function() {
                     update_user_message($.trim(data));
                 }
             },
-            error: function (request, status, error) {
+            error: function(request, status, error) {
                 update_user_message($.trim(request.responseText));
             }
         });
@@ -288,13 +289,40 @@ function load_page_version(www_page_versions_id) {
                 create_page_versions(j.page_versions, j.content_status_css, 1)
             }
             create_authors(j.authors, j.current_version.author_id, '');
-            $("#date_publish_start").val(j.current_version.date_publish_start);
-            $("#date_publish_end").val(j.current_version.date_publish_end);
             create_content_status(j.content_status_keys, j.content_status_values, j.content_status_css, j.current_version.lk_content_status_id);
             create_editors(j.editors, j.current_version.editor_id, rsc_please_select);
             $("#rte").html(j.html);
 
             arrange_page_version_controls(www_page_versions_id);
+
+            /*
+             * set date range
+             */
+            var minYear = $("#minYear").val();
+            var minMonth = $("#minMonth").val();
+            var minDay = $("#minDay").val();
+            var minHour = $("#minHour").val();
+            var minMin = $("#minMin").val();
+            var minSec = $("#minSec").val();
+            var minStartDate = new Date(minYear, minMonth - 1, minDay, minHour, minMin, minSec);
+
+            // date_publish_start
+            $("#date_publish_start").datetimepicker("option", "minDate", minStartDate);
+            $("#date_publish_start").datetimepicker("option", "minDateTime", minStartDate);
+
+            var EndDate = $.datepicker.parseDateTime($("#dateformat").val(), $("#timeformat").val(), j.current_version.date_publish_end);
+            $("#date_publish_start").datetimepicker("option", "maxDate", EndDate);
+            $("#date_publish_start").datetimepicker("option", "maxDateTime", EndDate);
+
+            $("#date_publish_start").val(j.current_version.date_publish_start);
+
+            // date_publish_end
+            var StartDate = $.datepicker.parseDateTime($("#dateformat").val(), $("#timeformat").val(), j.current_version.date_publish_start);
+            var minEndDate = (StartDate != null ? StartDate : minStartDate);
+            $("#date_publish_end").datetimepicker("option", "minDate", minEndDate);
+            $("#date_publish_end").datetimepicker("option", "minDateTime", minEndDate);
+
+            $("#date_publish_end").val(j.current_version.date_publish_end);
         }
     });
 

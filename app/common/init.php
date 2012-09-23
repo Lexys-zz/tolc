@@ -208,14 +208,14 @@ define('LIB_URL', $tolc_conf['project_url'] . '/lib');
 define('LIB_DIR', $tolc_conf['project_dir'] . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
-define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.0/jquery-1.8.0.min.js');
+define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.2/jquery-1.8.2.min.js');
 
 define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.23.custom/js/jquery-ui-1.8.23.custom.min.js');
 define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.23.custom/css/' . $tolc_conf['pref_jqueryui_theme'] . '/jquery-ui-1.8.23.custom.css');
 define('JQUERY_UI_i18n_DIR', LIB_URL . LIB_EXT_DIR . '/jquery-ui-localize');
-define('JQUERY_UI_DATETIMEPICKER_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/jquery-ui-timepicker-addon.js');
-define('JQUERY_UI_DATETIMEPICKER_i18n_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/localization/jquery-ui-timepicker-' . substr($_SESSION['locale'], 0, 2) . '.js');
-define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.1/jquery-ui-timepicker-addon.css');
+define('JQUERY_UI_DATETIMEPICKER_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.3/jquery-ui-timepicker-addon.js');
+define('JQUERY_UI_DATETIMEPICKER_i18n_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.3/localization/jquery-ui-timepicker-' . substr($_SESSION['locale'], 0, 2) . '.js');
+define('JQUERY_UI_DATETIMEPICKER_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-timepicker-addon-1.0.3/jquery-ui-timepicker-addon.css');
 define('JQUERY_UI_EXT_AUTOCOMPLETE_HTML_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-extensions/jquery.ui.autocomplete.html.js');
 define('JQUERY_UI_LAYOUT_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/jquery.layout.js');
 define('JQUERY_UI_LAYOUT_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-layout.v.1.3.0-rc30.4/layout-default.css');
@@ -227,7 +227,7 @@ define('PASSWORDSTRENGTH_CSS_URL', LIB_URL . LIB_EXT_DIR . '/passwordstrength/pa
 define('JUI_ALERT_URL', LIB_URL . '/jui_alert_1.0/jquery.jui_alert.js');
 define('JQ_EASY_SLIDE_PANEL_URL', LIB_URL . LIB_EXT_DIR . '/jqEasySlidePanel_1.0/jquery.slidePanel.js');
 
-define('JQUERY_TINYMCE_DIR', '/tinymce_3.5.6_jquery');
+define('JQUERY_TINYMCE_DIR', '/tinymce_3.5.7_jquery');
 define('JQUERY_TINYMCE_PATH', LIB_URL . LIB_EXT_DIR . JQUERY_TINYMCE_DIR);
 define('JQUERY_TINYMCE_URL', JQUERY_TINYMCE_PATH . '/jquery.tinymce.js');
 define('TINYMCE_URL', JQUERY_TINYMCE_PATH . '/tiny_mce.js');
@@ -235,7 +235,7 @@ define('TINYMCE_POPUP_URL', JQUERY_TINYMCE_PATH . '/tiny_mce_popup.js');
 define('EZFILEMANAGER_URL', JQUERY_TINYMCE_PATH . '/plugins/ezfilemanager/index.php');
 
 define('PHPASS', LIB_DIR . LIB_EXT_DIR . '/phpass-0.3/PasswordHash.php');
-define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.17');
+define('ADODB_PATH', LIB_DIR . LIB_EXT_DIR . '/adodb_5.18a');
 define('SIMPLE_HTML_DOM_PATH', LIB_DIR . LIB_EXT_DIR . '/simplehtmldom_1_5');
 define('HTML_PURIFIER_PATH', LIB_DIR . LIB_EXT_DIR . '/htmlpurifier-4.4.0-lite/library/HTMLPurifier.auto.php');
 
