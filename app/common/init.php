@@ -208,7 +208,7 @@ define('LIB_URL', $tolc_conf['project_url'] . '/lib');
 define('LIB_DIR', $tolc_conf['project_dir'] . '/lib');
 define('LIB_EXT_DIR', '/ext');
 
-define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.0/jquery-1.8.0.min.js');
+define('JQUERY_URL', LIB_URL . LIB_EXT_DIR . '/jquery-1.8.2/jquery-1.8.2.min.js');
 
 define('JQUERY_UI_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.23.custom/js/jquery-ui-1.8.23.custom.min.js');
 define('JQUERY_UI_CSS_URL', LIB_URL . LIB_EXT_DIR . '/jquery-ui-1.8.23.custom/css/' . $tolc_conf['pref_jqueryui_theme'] . '/jquery-ui-1.8.23.custom.css');
