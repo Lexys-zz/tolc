@@ -14,14 +14,6 @@ $(function() {
     var pref_tinymce_toggle_toolbar = $("#pref_tinymce_toggle_toolbar").val() == '1' ? true : false;
     var rsc_please_select = $("#rsc_please_select").val();
 
-    var minYear = $("#minYear").val();
-    var minMonth = $("#minMonth").val();
-    var minDay = $("#minDay").val();
-    var minHour = $("#minHour").val();
-    var minMin = $("#minMin").val();
-    var minSec = $("#minSec").val();
-    var minStartDate = new Date(minYear, minMonth - 1, minDay, minHour, minMin, minSec);
-
     /* tinymce ---------------------------------------------------------------*/
     $("#rte").tinymce({
         // Location of TinyMCE script
@@ -147,7 +139,7 @@ $(function() {
             showSecond: true,
             changeMonth: true,
             changeYear: true,
-            minDate: minStartDate,
+            //minDate: minStartDate,
             showButtonPanel: true,
             onSelect: function(selectedDateTime, inst) {
 
@@ -179,7 +171,7 @@ $(function() {
             showSecond: true,
             changeMonth: true,
             changeYear: true,
-            minDate: minStartDate,
+            //minDate: minStartDate,
             showButtonPanel: true,
             onSelect: function(selectedDateTime, inst) {
 
@@ -276,29 +268,6 @@ $(function() {
 });
 
 // -----------------------------------------------------------------------------
-function getMinEndDate(minStartDate) {
-    var StartDate = $("#date_publish_start").datetimepicker("getDate");
-    return (StartDate != null ? StartDate : minStartDate);
-}
-
-function setEndMinDateTime(date_start_id, date_end_id) {
-    var theDate = $("#" + date_start_id).datetimepicker("getDate");
-    /*
-     * Alternative syntax:
-     * var theDate = $.datepicker.parseDateTime(dateformat, timeformat, selectedDateTime);
-     */
-
-    if(theDate != null) {
-        var str_old_datetime = $("#" + date_end_id).val();
-
-        $("#" + date_end_id).datetimepicker("option", "minDate", theDate);
-        $("#" + date_end_id).datetimepicker("option", "minDateTime", theDate);
-
-        $("#" + date_end_id).val(str_old_datetime);
-    }
-}
-
-// -----------------------------------------------------------------------------
 function load_page_version(www_page_versions_id) {
 
     var project_url = $("#project_url", window.opener.document).val();
@@ -320,13 +289,40 @@ function load_page_version(www_page_versions_id) {
                 create_page_versions(j.page_versions, j.content_status_css, 1)
             }
             create_authors(j.authors, j.current_version.author_id, '');
-            $("#date_publish_start").val(j.current_version.date_publish_start);
-            $("#date_publish_end").val(j.current_version.date_publish_end);
             create_content_status(j.content_status_keys, j.content_status_values, j.content_status_css, j.current_version.lk_content_status_id);
             create_editors(j.editors, j.current_version.editor_id, rsc_please_select);
             $("#rte").html(j.html);
 
             arrange_page_version_controls(www_page_versions_id);
+
+            /*
+             * set date range
+             */
+            var minYear = $("#minYear").val();
+            var minMonth = $("#minMonth").val();
+            var minDay = $("#minDay").val();
+            var minHour = $("#minHour").val();
+            var minMin = $("#minMin").val();
+            var minSec = $("#minSec").val();
+            var minStartDate = new Date(minYear, minMonth - 1, minDay, minHour, minMin, minSec);
+
+            // date_publish_start
+            $("#date_publish_start").datetimepicker("option", "minDate", minStartDate);
+            $("#date_publish_start").datetimepicker("option", "minDateTime", minStartDate);
+
+            var EndDate = $.datepicker.parseDateTime($("#dateformat").val(), $("#timeformat").val(), j.current_version.date_publish_end);
+            $("#date_publish_start").datetimepicker("option", "maxDate", EndDate);
+            $("#date_publish_start").datetimepicker("option", "maxDateTime", EndDate);
+
+            $("#date_publish_start").val(j.current_version.date_publish_start);
+
+            // date_publish_end
+            var StartDate = $.datepicker.parseDateTime($("#dateformat").val(), $("#timeformat").val(), j.current_version.date_publish_start);
+            var minEndDate = (StartDate != null ? StartDate : minStartDate);
+            $("#date_publish_end").datetimepicker("option", "minDate", minEndDate);
+            $("#date_publish_end").datetimepicker("option", "minDateTime", minEndDate);
+
+            $("#date_publish_end").val(j.current_version.date_publish_end);
         }
     });
 
